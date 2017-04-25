@@ -21,6 +21,12 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func sideBarShowButtonAction(_ sender: Any) {
+        let listSB = UIStoryboard(name: "MainView", bundle: nil)
+        let sideBarVC = listSB.instantiateViewController(withIdentifier: "SideBar")
+        
+        present(sideBarVC, animated: false, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="595-Ii-jiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,7 +22,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="E8O-iC-3wb"/>
+                    <navigationItem key="navigationItem" id="E8O-iC-3wb">
+                        <barButtonItem key="leftBarButtonItem" image="sideMenu_Bt" id="qOh-cn-rsI">
+                            <connections>
+                                <action selector="sideBarShowButtonAction:" destination="YGZ-vq-BQf" id="9Al-IA-Enf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHF-RG-6wF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -31,7 +37,7 @@
         <!--Main Side Bar View Controller-->
         <scene sceneID="6Qw-GB-cHc">
             <objects>
-                <viewController storyboardIdentifier="SideBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="22f-Sh-Inb" customClass="MainSideBarViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SideBar" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="22f-Sh-Inb" customClass="MainSideBarViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="68n-te-pYo"/>
                         <viewControllerLayoutGuide type="bottom" id="8Tz-Lx-Jjp"/>
@@ -39,12 +45,31 @@
                     <view key="view" contentMode="scaleToFill" id="hVu-pX-OED">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgE-kN-FVW">
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="667"/>
+                                <color key="backgroundColor" red="1" green="0.65615546177574724" blue="0.77022797716531588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="lvK-Py-XNn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sgE-kN-FVW" firstAttribute="leading" secondItem="hVu-pX-OED" secondAttribute="leading" id="LeG-6Q-mp1"/>
+                            <constraint firstItem="8Tz-Lx-Jjp" firstAttribute="top" secondItem="sgE-kN-FVW" secondAttribute="bottom" id="TUy-4h-8Ct"/>
+                            <constraint firstItem="sgE-kN-FVW" firstAttribute="top" secondItem="68n-te-pYo" secondAttribute="bottom" constant="-20" id="Ypb-1n-hpD"/>
+                            <constraint firstAttribute="trailing" secondItem="sgE-kN-FVW" secondAttribute="trailing" priority="750" constant="105" id="Z1f-ME-43o"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sideBarLeadingConstraint" destination="LeG-6Q-mp1" id="oUo-55-gux"/>
+                        <outlet property="sideBarView" destination="sgE-kN-FVW" id="qt0-Q5-l6X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i41-U3-bIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1394" y="-38"/>
+            <point key="canvasLocation" x="1392.8" y="-38.23088455772114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DDV-TN-Syu">
@@ -62,7 +87,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bnL-uy-VHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42.399999999999999" y="-38.23088455772114"/>
+            <point key="canvasLocation" x="-111" y="-38"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="sideMenu_Bt" width="25" height="19"/>
+    </resources>
 </document>
