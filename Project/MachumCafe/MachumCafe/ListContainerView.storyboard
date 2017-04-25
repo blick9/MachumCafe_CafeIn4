@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FsF-yt-tfK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--List Container View Controller-->
+        <scene sceneID="4ey-WD-Fln">
+            <objects>
+                <viewController id="H4B-Hk-kTG" customClass="ListContainerViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Wk-kH-mIc"/>
+                        <viewControllerLayoutGuide type="bottom" id="dwo-LK-Bsc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bva-Oe-efw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-u8-9Wq">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="Hrr-hb-S2h" kind="embed" id="rYR-W9-fg8"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                    </view>
+                    <navigationItem key="navigationItem" id="zlF-jy-VmJ">
+                        <rightBarButtonItems>
+                            <barButtonItem image="filter_Bt" id="84q-ye-2ug"/>
+                            <barButtonItem image="map_Bt" id="zF9-r4-EPs"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lch-jh-453" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112.8" y="139.880059970015"/>
+        </scene>
+        <!--ListView-->
+        <scene sceneID="d9B-Xu-v7i">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ListView" referencedIdentifier="ListView" id="Hrr-hb-S2h" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wfe-4a-lGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-120" y="575"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="4Ad-Ps-NBy">
+            <objects>
+                <viewControllerPlaceholder id="fHl-Sh-Is7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u5v-V9-VmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="281" y="575"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ihi-UC-DZc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FsF-yt-tfK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGW-IK-2fB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="H4B-Hk-kTG" kind="relationship" relationship="rootViewController" id="loD-pa-2HA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUa-Jy-mnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-634" y="140"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="filter_Bt" width="20" height="20"/>
+        <image name="map_Bt" width="19" height="18"/>
+    </resources>
+</document>

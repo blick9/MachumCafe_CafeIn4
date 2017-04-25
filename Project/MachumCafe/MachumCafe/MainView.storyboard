@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="Ofa-jR-dim">
+            <objects>
+                <viewController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YGZ-vq-BQf" customClass="MainViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JVo-Vc-SsV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ox6-AF-ea0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9RO-6K-g8r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="E8O-iC-3wb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oHF-RG-6wF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="650" y="-38"/>
+        </scene>
+        <!--Main Side Bar View Controller-->
+        <scene sceneID="6Qw-GB-cHc">
+            <objects>
+                <viewController storyboardIdentifier="SideBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="22f-Sh-Inb" customClass="MainSideBarViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="68n-te-pYo"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Tz-Lx-Jjp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hVu-pX-OED">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i41-U3-bIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1394" y="-38"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DDV-TN-Syu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="595-Ii-jiZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iiz-BR-TRk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YGZ-vq-BQf" kind="relationship" relationship="rootViewController" id="CQz-pD-qlT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bnL-uy-VHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-42.399999999999999" y="-38.23088455772114"/>
+        </scene>
+    </scenes>
+</document>
