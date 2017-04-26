@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "맞춤카페"
 
         // Do any additional setup after loading the view.
     }
@@ -22,12 +23,20 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func sideBarShowButtonAction(_ sender: Any) {
-        let listSB = UIStoryboard(name: "MainView", bundle: nil)
-        let sideBarVC = listSB.instantiateViewController(withIdentifier: "SideBar")
+        let mainViewStoryboard = UIStoryboard(name: "MainView", bundle: nil)
+        let sideBarViewController = mainViewStoryboard.instantiateViewController(withIdentifier: "SideBar")
         
-        present(sideBarVC, animated: false, completion: nil)
+        present(sideBarViewController, animated: false, completion: nil)
     }
 
+    @IBAction func tempShowListButtonAction(_ sender: Any) {
+        let listContainerViewStoryboard = UIStoryboard(name: "ListContainerView", bundle: nil)
+        let listContainerViewController = listContainerViewStoryboard.instantiateViewController(withIdentifier: "ListContainer")
+        
+        navigationController?.pushViewController(listContainerViewController, animated: true)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

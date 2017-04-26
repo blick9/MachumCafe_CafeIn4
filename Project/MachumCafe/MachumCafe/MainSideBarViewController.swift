@@ -14,6 +14,7 @@ class MainSideBarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar + 1)
         sideBarLeadingConstraint.constant = -sideBarView.frame.width
         // Do any additional setup after loading the view.
     }
@@ -33,29 +34,14 @@ class MainSideBarViewController: UIViewController {
         })
     }
     
-    
-//    @IBAction func closeButton(_ sender: Any) {
-//        UIView.animate(withDuration: 0.3, animations: {
-//            self.sideBarLeadingConstraint.constant = -250
-//            self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
-//            self.view.layoutIfNeeded()
-//        }) { (bool) in
-//            UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar - 1)
-//            self.dismiss(animated: false, completion: nil)
-//            //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "test"), object: nil)
-//        }
-//    }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func emptyAreaButtonAction(_ sender: Any) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.sideBarLeadingConstraint.constant = -250
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+            self.view.layoutIfNeeded()
+        }) { (bool) in
+            UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar - 1)
+            self.dismiss(animated: false, completion: nil)
+        }
     }
-    */
-
 }

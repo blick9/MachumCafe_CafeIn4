@@ -33,7 +33,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bva-Mx-vSx">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bva-Mx-vSx">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                                                     <color key="backgroundColor" red="0.94498242161128909" green="1" blue="0.80681792621773774" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>

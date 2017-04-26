@@ -20,6 +20,16 @@
                     <view key="view" contentMode="scaleToFill" id="9RO-6K-g8r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5h8-d5-BCk">
+                                <rect key="frame" x="48" y="134" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="목록보기 (임시)"/>
+                                <connections>
+                                    <action selector="tempShowListButtonAction:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="Yrh-Y7-osz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="E8O-iC-3wb">
@@ -32,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHF-RG-6wF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650" y="-38"/>
+            <point key="canvasLocation" x="648.79999999999995" y="-38.23088455772114"/>
         </scene>
         <!--Main Side Bar View Controller-->
         <scene sceneID="6Qw-GB-cHc">
@@ -53,6 +63,15 @@
                                     <constraint firstAttribute="width" constant="270" id="lvK-Py-XNn"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNv-u2-EG4">
+                                <rect key="frame" x="270" y="0.0" width="105" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="`"/>
+                                <connections>
+                                    <action selector="emptyAreaButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="9GM-nK-B6t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>

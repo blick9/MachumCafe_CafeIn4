@@ -13,7 +13,7 @@
         <!--List Container View Controller-->
         <scene sceneID="4ey-WD-Fln">
             <objects>
-                <viewController id="H4B-Hk-kTG" customClass="ListContainerViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListContainer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H4B-Hk-kTG" customClass="ListContainerViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Wk-kH-mIc"/>
                         <viewControllerLayoutGuide type="bottom" id="dwo-LK-Bsc"/>
@@ -22,7 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-u8-9Wq">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i3H-xV-eYi" userLabel="ListMapView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="fHl-Sh-Is7" kind="embed" id="k0L-tX-Acm"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-u8-9Wq" userLabel="ListView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
@@ -34,9 +41,17 @@
                     <navigationItem key="navigationItem" id="zlF-jy-VmJ">
                         <rightBarButtonItems>
                             <barButtonItem image="filter_Bt" id="84q-ye-2ug"/>
-                            <barButtonItem image="map_Bt" id="zF9-r4-EPs"/>
+                            <barButtonItem image="map_Bt" id="zF9-r4-EPs">
+                                <connections>
+                                    <action selector="listViewSwitchToggleButtonAction:" destination="H4B-Hk-kTG" id="oxk-gh-PC2"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="listMapView" destination="i3H-xV-eYi" id="1bX-8X-UHf"/>
+                        <outlet property="listView" destination="Tac-u8-9Wq" id="QbO-Tq-odO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lch-jh-453" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,22 +63,22 @@
                 <viewControllerPlaceholder storyboardName="ListView" referencedIdentifier="ListView" id="Hrr-hb-S2h" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfe-4a-lGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-120" y="575"/>
+            <point key="canvasLocation" x="-120" y="568"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--ListMap-->
         <scene sceneID="4Ad-Ps-NBy">
             <objects>
-                <viewControllerPlaceholder id="fHl-Sh-Is7" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ListMapView" referencedIdentifier="ListMap" id="fHl-Sh-Is7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5v-V9-VmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="575"/>
+            <point key="canvasLocation" x="348" y="568"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ihi-UC-DZc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FsF-yt-tfK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGW-IK-2fB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JGW-IK-2fB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

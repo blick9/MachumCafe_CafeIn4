@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D5F55AB47AB6A2919F41773 /* Pods_MachumCafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */; };
 		A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723B6671EAF3FBF00469FE4 /* AppDelegate.swift */; };
 		A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */; };
 		A723B6721EAF3FBF00469FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A723B6701EAF3FBF00469FE4 /* LaunchScreen.storyboard */; };
@@ -22,9 +23,12 @@
 		A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A431EAF4A5700EB24C6 /* MainViewController.swift */; };
 		A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A451EAF4A7600EB24C6 /* MainSideBarViewController.swift */; };
 		A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */; };
+		A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */; };
+		A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.release.xcconfig"; sourceTree = "<group>"; };
 		A723B6641EAF3FBF00469FE4 /* MachumCafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachumCafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A723B6671EAF3FBF00469FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,6 +46,10 @@
 		A7B73A431EAF4A5700EB24C6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A7B73A451EAF4A7600EB24C6 /* MainSideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSideBarViewController.swift; sourceTree = "<group>"; };
 		A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
+		A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListMapView.storyboard; sourceTree = "<group>"; };
+		A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
+		D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.debug.xcconfig"; sourceTree = "<group>"; };
+		DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachumCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D5F55AB47AB6A2919F41773 /* Pods_MachumCafe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DDEAADB916F56D1B1A1ED7B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */,
+				1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		34EC646EB29D465BF22D8288 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A723B65B1EAF3FBF00469FE4 = {
 			isa = PBXGroup;
 			children = (
 				A723B6661EAF3FBF00469FE4 /* MachumCafe */,
 				A723B6651EAF3FBF00469FE4 /* Products */,
+				1DDEAADB916F56D1B1A1ED7B /* Pods */,
+				34EC646EB29D465BF22D8288 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +120,8 @@
 				A723B6801EAF432300469FE4 /* ListViewController.swift */,
 				A723B6821EAF433500469FE4 /* ListTableViewCell.swift */,
 				A723B67B1EAF42E600469FE4 /* ListView.storyboard */,
+				A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */,
+				A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */,
 			);
 			name = ListContainerView;
 			sourceTree = "<group>";
@@ -141,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A723B6761EAF3FBF00469FE4 /* Build configuration list for PBXNativeTarget "MachumCafe" */;
 			buildPhases = (
+				7C4E1D000D5FD3F87430185D /* [CP] Check Pods Manifest.lock */,
 				A723B6601EAF3FBF00469FE4 /* Sources */,
 				A723B6611EAF3FBF00469FE4 /* Frameworks */,
 				A723B6621EAF3FBF00469FE4 /* Resources */,
+				9E67F4C8EAF8AC2FB2276372 /* [CP] Embed Pods Frameworks */,
+				941795F361C981C4ED4575B5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,11 +231,60 @@
 				A723B67C1EAF42E600469FE4 /* ListView.storyboard in Resources */,
 				A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */,
 				A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */,
+				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7C4E1D000D5FD3F87430185D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		941795F361C981C4ED4575B5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E67F4C8EAF8AC2FB2276372 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A723B6601EAF3FBF00469FE4 /* Sources */ = {
@@ -217,6 +299,7 @@
 				A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */,
 				A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
+				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +411,7 @@
 		};
 		A723B6771EAF3FBF00469FE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MachumCafe/Info.plist;
@@ -340,6 +424,7 @@
 		};
 		A723B6781EAF3FBF00469FE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MachumCafe/Info.plist;
