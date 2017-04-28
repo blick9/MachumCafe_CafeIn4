@@ -11,32 +11,55 @@ import UIKit
 class ListContainerViewController: UIViewController {
     @IBOutlet weak var listMapView: UIView!
     @IBOutlet weak var listView: UIView!
+    @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
+    
     var isMapView = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        listMapView.removeFromSuperview()
         self.navigationItem.title = "맞춤카페 목록"
-
-        // Do any additional setup after loading the view.
+        //TODO:- 초기화될 때 Map View 없애기. 동시에 생겨 불필요함
+//        listMapView.removeFromSuperview()
+        
+        //TODO:- < 버튼 옆 Text 없애기
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        print(#function, "Container")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+
+    }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
         if isMapView {
-            view.addSubview(listView)
             listMapView.removeFromSuperview()
+            view.addSubview(listView)
+            viewSwitchButtonItem.image = #imageLiteral(resourceName: "map_Bt")
         } else {
-            view.addSubview(listMapView)
             listView.removeFromSuperview()
+            view.addSubview(listMapView)
+            viewSwitchButtonItem.image = #imageLiteral(resourceName: "sideMenu_Bt")
         }
         isMapView = !isMapView
     }
 
+    @IBAction func showFilterViewButtonItem(_ sender: Any) {
+        let filterStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
+        let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterView")
+        present(filterViewController, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
