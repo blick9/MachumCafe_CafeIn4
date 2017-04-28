@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,10 +58,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgE-kN-FVW">
-                                <rect key="frame" x="0.0" y="0.0" width="270" height="667"/>
-                                <color key="backgroundColor" red="1" green="0.65615546177574724" blue="0.77022797716531588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AeL-HH-pjk">
+                                        <rect key="frame" x="77" y="35" width="96" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="AeL-HH-pjk" secondAttribute="height" multiplier="1:1" id="Ffp-NU-39Z"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7z-DZ-zae">
+                                        <rect key="frame" x="114" y="174" width="0.0" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인 후 이용하세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFo-uT-Eph">
+                                        <rect key="frame" x="52" y="153" width="146" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-Hb-thG">
+                                        <rect key="frame" x="102.5" y="182" width="45" height="30"/>
+                                        <state key="normal" title="Log-In"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98852796052631575" green="0.98852796052631575" blue="0.98852796052631575" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="lvK-Py-XNn"/>
+                                    <constraint firstItem="AeL-HH-pjk" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="Bax-3F-I4o"/>
+                                    <constraint firstItem="IFo-uT-Eph" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="GPQ-yC-iaK"/>
+                                    <constraint firstItem="AeL-HH-pjk" firstAttribute="top" secondItem="sgE-kN-FVW" secondAttribute="top" constant="35" id="Isk-FQ-SAH"/>
+                                    <constraint firstItem="IFo-uT-Eph" firstAttribute="top" secondItem="AeL-HH-pjk" secondAttribute="bottom" constant="22" id="P3I-NX-T1q"/>
+                                    <constraint firstItem="AeL-HH-pjk" firstAttribute="leading" secondItem="sgE-kN-FVW" secondAttribute="leading" priority="750" constant="77" id="QWP-Y2-9kq"/>
+                                    <constraint firstAttribute="width" constant="250" id="lvK-Py-XNn"/>
+                                    <constraint firstItem="PQR-Hb-thG" firstAttribute="top" secondItem="IFo-uT-Eph" secondAttribute="bottom" constant="8" id="qQH-Mv-f8M"/>
+                                    <constraint firstItem="PQR-Hb-thG" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="qxw-V3-4XR"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNv-u2-EG4">
@@ -82,6 +115,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="logInButton" destination="PQR-Hb-thG" id="GIP-cn-et6"/>
                         <outlet property="sideBarLeadingConstraint" destination="LeG-6Q-mp1" id="oUo-55-gux"/>
                         <outlet property="sideBarView" destination="sgE-kN-FVW" id="qt0-Q5-l6X"/>
                     </connections>

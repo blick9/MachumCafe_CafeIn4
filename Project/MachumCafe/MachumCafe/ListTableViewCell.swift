@@ -11,6 +11,8 @@ import UIKit
 class ListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var cafeNameLabel: UILabel!
+    @IBOutlet weak var cafeAddressLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -12,6 +12,7 @@ class ListMapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(#function, "Map")
 
         // Do any additional setup after loading the view.
     }
