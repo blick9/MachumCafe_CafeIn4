@@ -25,6 +25,8 @@
 		A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */; };
 		A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */; };
 		A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */; };
+		A7B73A531EB2597000EB24C6 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A521EB2597000EB24C6 /* FilterViewController.swift */; };
+		A7B73A551EB2597700EB24C6 /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A541EB2597700EB24C6 /* FilterView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListMapView.storyboard; sourceTree = "<group>"; };
 		A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
+		A7B73A521EB2597000EB24C6 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		A7B73A541EB2597700EB24C6 /* FilterView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilterView.storyboard; sourceTree = "<group>"; };
 		D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.debug.xcconfig"; sourceTree = "<group>"; };
 		DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachumCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -106,6 +110,7 @@
 				A723B6841EAF435800469FE4 /* LogIn & SignUp */,
 				A7B73A421EAF4A4000EB24C6 /* MainView */,
 				A723B67D1EAF42F200469FE4 /* ListContainerView */,
+				A7B73A511EB2595E00EB24C6 /* FilterView */,
 				A7B73A491EAF4E2A00EB24C6 /* Extension */,
 				A7B73A4A1EAF4F4E00EB24C6 /* Resource */,
 			);
@@ -116,11 +121,11 @@
 			isa = PBXGroup;
 			children = (
 				A723B67E1EAF431700469FE4 /* ListContainerViewController.swift */,
-				A723B6791EAF42D700469FE4 /* ListContainerView.storyboard */,
 				A723B6801EAF432300469FE4 /* ListViewController.swift */,
-				A723B6821EAF433500469FE4 /* ListTableViewCell.swift */,
-				A723B67B1EAF42E600469FE4 /* ListView.storyboard */,
 				A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */,
+				A723B6821EAF433500469FE4 /* ListTableViewCell.swift */,
+				A723B6791EAF42D700469FE4 /* ListContainerView.storyboard */,
+				A723B67B1EAF42E600469FE4 /* ListView.storyboard */,
 				A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */,
 			);
 			name = ListContainerView;
@@ -162,6 +167,15 @@
 				A723B6731EAF3FBF00469FE4 /* Info.plist */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		A7B73A511EB2595E00EB24C6 /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				A7B73A521EB2597000EB24C6 /* FilterViewController.swift */,
+				A7B73A541EB2597700EB24C6 /* FilterView.storyboard */,
+			);
+			name = FilterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +245,7 @@
 				A723B67C1EAF42E600469FE4 /* ListView.storyboard in Resources */,
 				A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */,
 				A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */,
+				A7B73A551EB2597700EB24C6 /* FilterView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 			);
@@ -296,6 +311,7 @@
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
 				A723B67F1EAF431700469FE4 /* ListContainerViewController.swift in Sources */,
+				A7B73A531EB2597000EB24C6 /* FilterViewController.swift in Sources */,
 				A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */,
 				A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,

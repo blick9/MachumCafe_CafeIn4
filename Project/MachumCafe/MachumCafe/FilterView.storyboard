@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Filter View Controller-->
+        <scene sceneID="Sf5-QG-eWK">
+            <objects>
+                <viewController id="uKK-o8-uwZ" customClass="FilterViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="te9-Zj-WRq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dcx-sR-0pW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O1O-N2-Ey6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vfd-iL-zDZ">
+                        <barButtonItem key="leftBarButtonItem" image="back_Bt" id="mUS-v9-hfO">
+                            <connections>
+                                <action selector="closeButtonAction:" destination="uKK-o8-uwZ" id="Kjd-OS-l6H"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Kd7-Aa-CDj"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B5n-fE-4YP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879" y="35"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WeZ-a9-7K8">
+            <objects>
+                <navigationController storyboardIdentifier="FilterView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aJu-HI-y5m" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SF-Me-Z1C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uKK-o8-uwZ" kind="relationship" relationship="rootViewController" id="1YY-XT-Thr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v86-4S-3uI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="149.59999999999999" y="34.632683658170919"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back_Bt" width="12" height="20"/>
+    </resources>
+</document>
