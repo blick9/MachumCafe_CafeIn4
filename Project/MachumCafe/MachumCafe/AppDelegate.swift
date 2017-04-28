@@ -12,16 +12,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
+        [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor(red: 51, green: 51, blue: 51)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 255, green: 232, blue: 129)]
         
         UINavigationBar.appearance().isTranslucent = false
-
+        
+        NetworkUser.logIn(email: "1", password: "1") { (isUser) in
+            print(isUser)
+        }
+        NetworkCafe.getAllCafeList()
+        
         return true
     }
 
