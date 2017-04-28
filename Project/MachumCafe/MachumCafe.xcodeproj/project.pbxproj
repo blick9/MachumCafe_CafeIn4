@@ -25,6 +25,12 @@
 		A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */; };
 		A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */; };
 		A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */; };
+		B5622CD71EB21B4900FD98F1 /* NetworkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5622CD61EB21B4900FD98F1 /* NetworkUser.swift */; };
+		B5622CD91EB21B5000FD98F1 /* NetworkCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5622CD81EB21B5000FD98F1 /* NetworkCafe.swift */; };
+		B5622CE01EB2330A00FD98F1 /* ModelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5622CDF1EB2330A00FD98F1 /* ModelUser.swift */; };
+		B59C2CED1EB2E3F200CAD25F /* ModelCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C2CEC1EB2E3F200CAD25F /* ModelCafe.swift */; };
+		B5AF77F71EB317250001A919 /* URLpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF77F61EB317250001A919 /* URLpath.swift */; };
+		B5AF77F91EB31A9F0001A919 /* NetworkBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF77F81EB31A9F0001A919 /* NetworkBookmark.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +54,12 @@
 		A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListMapView.storyboard; sourceTree = "<group>"; };
 		A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
+		B5622CD61EB21B4900FD98F1 /* NetworkUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUser.swift; sourceTree = "<group>"; };
+		B5622CD81EB21B5000FD98F1 /* NetworkCafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCafe.swift; sourceTree = "<group>"; };
+		B5622CDF1EB2330A00FD98F1 /* ModelUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUser.swift; sourceTree = "<group>"; };
+		B59C2CEC1EB2E3F200CAD25F /* ModelCafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCafe.swift; sourceTree = "<group>"; };
+		B5AF77F61EB317250001A919 /* URLpath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLpath.swift; sourceTree = "<group>"; };
+		B5AF77F81EB31A9F0001A919 /* NetworkBookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkBookmark.swift; sourceTree = "<group>"; };
 		D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.debug.xcconfig"; sourceTree = "<group>"; };
 		DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachumCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				A723B6671EAF3FBF00469FE4 /* AppDelegate.swift */,
+				B5622CDE1EB232E100FD98F1 /* Model */,
+				B5622CD51EB21B2C00FD98F1 /* Networking */,
 				A723B6841EAF435800469FE4 /* LogIn & SignUp */,
 				A7B73A421EAF4A4000EB24C6 /* MainView */,
 				A723B67D1EAF42F200469FE4 /* ListContainerView */,
@@ -162,6 +176,26 @@
 				A723B6731EAF3FBF00469FE4 /* Info.plist */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		B5622CD51EB21B2C00FD98F1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B5622CD61EB21B4900FD98F1 /* NetworkUser.swift */,
+				B5622CD81EB21B5000FD98F1 /* NetworkCafe.swift */,
+				B5AF77F61EB317250001A919 /* URLpath.swift */,
+				B5AF77F81EB31A9F0001A919 /* NetworkBookmark.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		B5622CDE1EB232E100FD98F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5622CDF1EB2330A00FD98F1 /* ModelUser.swift */,
+				B59C2CEC1EB2E3F200CAD25F /* ModelCafe.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		941795F361C981C4ED4575B5 /* [CP] Copy Pods Resources */ = {
@@ -291,16 +325,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5AF77F91EB31A9F0001A919 /* NetworkBookmark.swift in Sources */,
 				A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */,
 				A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */,
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
 				A723B67F1EAF431700469FE4 /* ListContainerViewController.swift in Sources */,
+				B5622CE01EB2330A00FD98F1 /* ModelUser.swift in Sources */,
 				A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */,
 				A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */,
+				B59C2CED1EB2E3F200CAD25F /* ModelCafe.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
+				B5622CD91EB21B5000FD98F1 /* NetworkCafe.swift in Sources */,
 				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
+				B5622CD71EB21B4900FD98F1 /* NetworkUser.swift in Sources */,
+				B5AF77F71EB317250001A919 /* URLpath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
