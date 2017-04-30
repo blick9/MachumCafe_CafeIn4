@@ -6,6 +6,7 @@
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
 
+//TODO: 모델 getter 만들기
 import UIKit
 
 @UIApplicationMain
@@ -21,12 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 255, green: 232, blue: 129)]
         
         UINavigationBar.appearance().isTranslucent = false
-        
-        NetworkUser.logIn(email: "1", password: "1") { (isUser) in
-            print(isUser)
-        }
-        NetworkCafe.getAllCafeList()
-        
+
         return true
     }
 
