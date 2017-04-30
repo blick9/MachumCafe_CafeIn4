@@ -25,6 +25,8 @@
 		A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */; };
 		A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */; };
 		A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */; };
+		B532F1851EB3009C00CD9673 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532F1841EB3009C00CD9673 /* BookmarkViewController.swift */; };
+		B532F1871EB300B800CD9673 /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B532F1861EB300B800CD9673 /* BookmarkView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListMapView.storyboard; sourceTree = "<group>"; };
 		A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
+		B532F1841EB3009C00CD9673 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		B532F1861EB300B800CD9673 /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
 		D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.debug.xcconfig"; sourceTree = "<group>"; };
 		DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachumCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -106,6 +110,7 @@
 				A723B6841EAF435800469FE4 /* LogIn & SignUp */,
 				A7B73A421EAF4A4000EB24C6 /* MainView */,
 				A723B67D1EAF42F200469FE4 /* ListContainerView */,
+				B532F1831EB2F8D400CD9673 /* BookmarkView */,
 				A7B73A491EAF4E2A00EB24C6 /* Extension */,
 				A7B73A4A1EAF4F4E00EB24C6 /* Resource */,
 			);
@@ -162,6 +167,15 @@
 				A723B6731EAF3FBF00469FE4 /* Info.plist */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		B532F1831EB2F8D400CD9673 /* BookmarkView */ = {
+			isa = PBXGroup;
+			children = (
+				B532F1841EB3009C00CD9673 /* BookmarkViewController.swift */,
+				B532F1861EB300B800CD9673 /* BookmarkView.storyboard */,
+			);
+			name = BookmarkView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +247,7 @@
 				A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
+				B532F1871EB300B800CD9673 /* BookmarkView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B532F1851EB3009C00CD9673 /* BookmarkViewController.swift in Sources */,
 				A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */,
 				A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */,
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
