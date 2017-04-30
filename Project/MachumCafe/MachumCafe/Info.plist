@@ -49,5 +49,12 @@
 	<true/>
 	<key>URL</key>
 	<string>http://localhost:3000</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>googlechromes</string>
+        <string>comgooglemaps</string>
+    </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Allow location</string>
 </dict>
 </plist>
