@@ -8,7 +8,7 @@
 
 import UIKit
 
-class cafeDetailTableViewCell: UITableViewCell {
+class CafeDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
 

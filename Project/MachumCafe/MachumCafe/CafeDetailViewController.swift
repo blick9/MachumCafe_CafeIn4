@@ -8,7 +8,7 @@
 
 import UIKit
 
-class cafeDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CafeDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
@@ -71,7 +71,7 @@ class cafeDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! cafeDetailTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
             cell.detailLabel.text = cafeName[indexPath.row]
             cell.iconImage.image = cafeIcon[indexPath.row]
             return cell

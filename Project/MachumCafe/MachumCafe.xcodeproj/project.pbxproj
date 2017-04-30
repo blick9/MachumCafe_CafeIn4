@@ -25,9 +25,9 @@
 		A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */; };
 		A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */; };
 		A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */; };
-		B7E57D9D1EB322C000A6D9A7 /* cafeDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E57D991EB322C000A6D9A7 /* cafeDetailView.storyboard */; };
-		B7E57D9E1EB322C000A6D9A7 /* cafeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57D9A1EB322C000A6D9A7 /* cafeDetailTableViewCell.swift */; };
-		B7E57D9F1EB322C000A6D9A7 /* cafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57D9B1EB322C000A6D9A7 /* cafeDetailViewController.swift */; };
+		B7E57D9D1EB322C000A6D9A7 /* CafeDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E57D991EB322C000A6D9A7 /* CafeDetailView.storyboard */; };
+		B7E57D9E1EB322C000A6D9A7 /* CafeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57D9A1EB322C000A6D9A7 /* CafeDetailTableViewCell.swift */; };
+		B7E57D9F1EB322C000A6D9A7 /* CafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57D9B1EB322C000A6D9A7 /* CafeDetailViewController.swift */; };
 		B7E57DA01EB322C000A6D9A7 /* reviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57D9C1EB322C000A6D9A7 /* reviewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,9 +52,9 @@
 		A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListMapView.storyboard; sourceTree = "<group>"; };
 		A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
-		B7E57D991EB322C000A6D9A7 /* cafeDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = cafeDetailView.storyboard; sourceTree = "<group>"; };
-		B7E57D9A1EB322C000A6D9A7 /* cafeDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cafeDetailTableViewCell.swift; sourceTree = "<group>"; };
-		B7E57D9B1EB322C000A6D9A7 /* cafeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cafeDetailViewController.swift; sourceTree = "<group>"; };
+		B7E57D991EB322C000A6D9A7 /* CafeDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CafeDetailView.storyboard; sourceTree = "<group>"; };
+		B7E57D9A1EB322C000A6D9A7 /* CafeDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailTableViewCell.swift; sourceTree = "<group>"; };
+		B7E57D9B1EB322C000A6D9A7 /* CafeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailViewController.swift; sourceTree = "<group>"; };
 		B7E57D9C1EB322C000A6D9A7 /* reviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reviewTableViewCell.swift; sourceTree = "<group>"; };
 		D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.debug.xcconfig"; sourceTree = "<group>"; };
 		DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachumCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,9 +176,9 @@
 		B7E57DA11EB322C700A6D9A7 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				B7E57D991EB322C000A6D9A7 /* cafeDetailView.storyboard */,
-				B7E57D9A1EB322C000A6D9A7 /* cafeDetailTableViewCell.swift */,
-				B7E57D9B1EB322C000A6D9A7 /* cafeDetailViewController.swift */,
+				B7E57D991EB322C000A6D9A7 /* CafeDetailView.storyboard */,
+				B7E57D9A1EB322C000A6D9A7 /* CafeDetailTableViewCell.swift */,
+				B7E57D9B1EB322C000A6D9A7 /* CafeDetailViewController.swift */,
 				B7E57D9C1EB322C000A6D9A7 /* reviewTableViewCell.swift */,
 			);
 			name = DetailView;
@@ -252,7 +252,7 @@
 				A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */,
 				A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
-				B7E57D9D1EB322C000A6D9A7 /* cafeDetailView.storyboard in Resources */,
+				B7E57D9D1EB322C000A6D9A7 /* CafeDetailView.storyboard in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,11 +315,11 @@
 				A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */,
 				A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */,
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
-				B7E57D9E1EB322C000A6D9A7 /* cafeDetailTableViewCell.swift in Sources */,
+				B7E57D9E1EB322C000A6D9A7 /* CafeDetailTableViewCell.swift in Sources */,
 				B7E57DA01EB322C000A6D9A7 /* reviewTableViewCell.swift in Sources */,
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
 				A723B67F1EAF431700469FE4 /* ListContainerViewController.swift in Sources */,
-				B7E57D9F1EB322C000A6D9A7 /* cafeDetailViewController.swift in Sources */,
+				B7E57D9F1EB322C000A6D9A7 /* CafeDetailViewController.swift in Sources */,
 				A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */,
 				A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
