@@ -15,11 +15,13 @@ import SwiftyJSON
 class ListMapViewController: UIViewController,GMSMapViewDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var googleMap: GMSMapView!
+    @IBOutlet weak var cafeName: UILabel!
+    @IBOutlet weak var cafeAddress: UILabel!
     
     var locationManager = CLLocationManager()
     var placesClient: GMSPlacesClient!
     var currentLocation = [String: Double]()
-    let urlMapKey = "AIzaSyDT_p0qtF5htzJ8Ly4h8fxfG-gB30aMp9M"
+    let urlMapKey = "AIzaSyBNTjHJ-wYRN_p9x7HMJu-_sI2LG-kzVj4"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,11 +59,11 @@ class ListMapViewController: UIViewController,GMSMapViewDelegate,CLLocationManag
         createMarker(titleMarker: "", snippetMarker: "", iconMarker: #imageLiteral(resourceName: "locationIcon"), latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
     
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//        // cafeName.text = marker.title
-//        // cafeAddress.text = marker.snippet
-//        return true
-//    }
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+         cafeName.text = marker.title
+         cafeAddress.text = marker.snippet
+        return true
+    }
     
     // Part - Method : 맵에 마커 생성하는 기능
     func createMarker(titleMarker : String, snippetMarker : String, iconMarker: UIImage, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
@@ -79,7 +81,7 @@ class ListMapViewController: UIViewController,GMSMapViewDelegate,CLLocationManag
         var cafeInfo = [String : Any]()
         var cafeInfoArray = [[String : Any]]()
         
-        let aroundMeURL = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=\(latitude),\(longtitude)&radius=700&type=cafe&key=AIzaSyDT_p0qtF5htzJ8Ly4h8fxfG-gB30aMp9M"
+        let aroundMeURL = "https://maps.googleapis.com/maps/api/place/radarsearch/json?location=\(latitude),\(longtitude)&radius=700&type=cafe&key=\(urlMapKey)"
         
         Alamofire.request(aroundMeURL).responseJSON { responds in
             let json = JSON(data: responds.data!)
@@ -103,7 +105,7 @@ class ListMapViewController: UIViewController,GMSMapViewDelegate,CLLocationManag
     // Part - Method : 마커 뿌리기
     func spreadMarker (cafeInfoArray : [[String : Any]]) {
         for cafeInfo in cafeInfoArray {
-            let cafeURL = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(String(describing: cafeInfo["cafeInfoID"]!))&language=ko&key=AIzaSyDT_p0qtF5htzJ8Ly4h8fxfG-gB30aMp9M"
+            let cafeURL = "https://maps.googleapis.com/maps/api/place/details/json?placeid=\(String(describing: cafeInfo["cafeInfoID"]!))&language=ko&key=\(urlMapKey)"
             
             Alamofire.request(cafeURL).responseJSON { responds in
                 let json = JSON(data: responds.data!)
