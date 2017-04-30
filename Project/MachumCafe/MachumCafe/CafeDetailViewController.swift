@@ -77,7 +77,7 @@ class CafeDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! reviewTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
             cell.reviewerNickName.text = reviewer[indexPath.row]
             return cell
         }

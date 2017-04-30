@@ -8,7 +8,7 @@
 
 import UIKit
 
-class reviewTableViewCell: UITableViewCell {
+class CafeDetailReviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var reviewProfil: UIImageView!
     @IBOutlet weak var reviewerNickName: UILabel!

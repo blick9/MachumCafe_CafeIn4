@@ -21,18 +21,18 @@
 
   * ### Git 규칙
     * #### Branch
-      * `master` - `develop` - `기능단위브랜치` 로 구성한다.  
+      * `master` - `develop` - `View단위브랜치` 로 구성한다.  
       * `master` 에는 즉시 배포하여도 문제 없는 상태의 코드로 구성한다.
-      * `develop` 는 개발중인 코드를 Merge하는 브랜치로, `기능단위브랜치`와 Merge된다.
-      * `기능단위브랜치`는 Github issue에 등록된 이슈 번호를 기준으로 `f`+`이슈번호`로 명명한다.  
-      -> 예) `f1`
-      * 개발이 완료된 `기능단위브랜치`는 삭제한다.
+      * `develop` 는 개발중인 코드를 Merge하는 브랜치로, `View단위브랜치`와 Merge된다.
+      * `View단위브랜치`는 백로그를 참고하여 View단위로 생성하며, `View이름` 으로 명명한다.
+      -> 예) `ListView`
+      * 개발이 완료된 `View단위브랜치`는 삭제하지 않는다.
 
     * #### Commit
       * 커밋메세지 시작부에는 커밋하는 사람의 이니셜을 기입한다.  
       * 커밋메세지는 한글로 자세히 작성한다.  
         -> 예) `[9] LogInViewController 이메일 TextField 추가`
-      * 커밋은 최대한 자주한다.
+      * `View단위브랜치`에서 특정 기능 개발이 완료되었을 경우 커밋시 issue에 등록된 해당 기능을 `close` 한다.
 
     * #### Merge & Pull Request
       * `develop`와 `기능단위브랜치`의 Merge는 Pull Request를 통해 팀원들의 리뷰를 거친 후 실행한다.  
