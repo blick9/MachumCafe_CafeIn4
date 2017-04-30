@@ -10,7 +10,7 @@ import Foundation
 
 class ModelUser {
     
-    fileprivate var id = String()
+    var id = String()
     fileprivate var email = String()
     fileprivate var nickname = String()
     fileprivate var bookmark = [String]()
@@ -27,6 +27,5 @@ class ModelUser {
 
 class User {
     static let sharedInstance = User()
-    
     var user = ModelUser()
 }
