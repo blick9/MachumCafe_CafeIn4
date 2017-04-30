@@ -6,8 +6,7 @@
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
 
-// 데이터모델 저장할때 콜백으로 Controller에서 저장해야할지 Networking에서 저장해야 할지 고민(동기화 시점 때문에 특히 카페리스트들)
-// 카페리스트 & 북마크리스트 다시 불릴때 Array remove가 좋은방법일지 고민
+//TODO: 모델 getter 만들기
 import UIKit
 
 @UIApplicationMain
@@ -23,12 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 255, green: 232, blue: 129)]
         
         UINavigationBar.appearance().isTranslucent = false
-        NetworkCafe.getAllCafeList()
-        NetworkUser.logIn(email: "asdf", password: "asdf") { (isUser) in
-            if isUser == true {
-                NetworkBookmark.getMyBookmark(userId: User.sharedInstance.user.id)
-            }
-        }
+
         return true
     }
 

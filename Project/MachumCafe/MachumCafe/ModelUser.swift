@@ -27,6 +27,5 @@ class ModelUser {
 
 class User {
     static let sharedInstance = User()
-    
     var user = ModelUser()
 }

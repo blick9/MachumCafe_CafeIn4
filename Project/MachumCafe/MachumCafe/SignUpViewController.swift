@@ -19,10 +19,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        NetworkBookmark.getMyBookmark(userId: User.sharedInstance.user.id)
-        print(Cafe.sharedInstance.bookmarkList)
-        dump(Cafe.sharedInstance.bookmarkList)
-        print(Cafe.sharedInstance.bookmarkList.count)
     }
     
     
@@ -34,9 +30,6 @@ class SignUpViewController: UIViewController {
     
     @IBAction func closeButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        print(Cafe.sharedInstance.bookmarkList)
-        dump(Cafe.sharedInstance.bookmarkList)
-        print(Cafe.sharedInstance.bookmarkList.count)
     }
     
     @IBAction func signUpButton(_ sender: Any) {
