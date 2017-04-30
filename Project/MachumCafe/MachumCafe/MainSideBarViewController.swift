@@ -11,7 +11,11 @@ import UIKit
 class MainSideBarViewController: UIViewController {
     @IBOutlet weak var sideBarView: UIView!
     @IBOutlet weak var sideBarLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var userInfoLabel: UILabel!
     @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var myBookmarkButton: UIButton!
+    @IBOutlet weak var reportButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +24,23 @@ class MainSideBarViewController: UIViewController {
         sideBarView.layer.shadowOpacity = 0.5
         sideBarView.layer.shadowColor = UIColor.black.cgColor
         sideBarView.layer.shadowRadius = 3
+        
+        // 코드 정리 시 지울 것
+        buttonInit()
+    }
+    
+    func buttonInit() {
+        //Button Design
         logInButton.layer.borderWidth = 1
         logInButton.layer.borderColor = UIColor.gray.cgColor
         logInButton.layer.cornerRadius = self.logInButton.frame.height/CGFloat(2)
         logInButton.tintColor = UIColor.lightGray
         logInButton.contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
-        // Do any additional setup after loading the view.
+        
+        reportButton.tintColor = UIColor.black
+        myBookmarkButton.tintColor = UIColor.black
     }
+    
 
     
     override func didReceiveMemoryWarning() {

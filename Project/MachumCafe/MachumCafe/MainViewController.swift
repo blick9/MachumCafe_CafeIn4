@@ -14,7 +14,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "맞춤카페"
 
-        // Do any additional setup after loading the view.
+        firstInit()
+    }
+    
+    func firstInit() {
+        let cafeData = ModelCafe(id: "idtest1234", name: "커피스미스", phoneNumber: "02-1234-5678", address: "서울시 강남구 역삼동 999", hours: "11:00~12:00", latitude: "00000.00000", longitude: "1111.11111", category: ["24시", "흡연실", "주차가능"], summary: nil, mainMenu: nil)
+        Cafe.sharedInstance.appendCafeList(cafe: cafeData)
     }
 
     override func didReceiveMemoryWarning() {
