@@ -13,6 +13,7 @@ class NetworkCafe {
     
     //카페 목록 데이터모델에 저장
     static func getAllCafeList() {
+        Cafe.sharedInstance.cafeList.removeAll()
         let url = URLpath.getURL()
 
         Alamofire.request("\(url)/api/v1/cafe").responseJSON { (response) in

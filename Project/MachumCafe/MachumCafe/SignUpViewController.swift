@@ -18,8 +18,11 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        NetworkBookmark.getMyBookmark(userId: User.sharedInstance.user.id)
+        print(Cafe.sharedInstance.bookmarkList)
+        dump(Cafe.sharedInstance.bookmarkList)
+        print(Cafe.sharedInstance.bookmarkList.count)
     }
     
     
@@ -31,6 +34,9 @@ class SignUpViewController: UIViewController {
     
     @IBAction func closeButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        print(Cafe.sharedInstance.bookmarkList)
+        dump(Cafe.sharedInstance.bookmarkList)
+        print(Cafe.sharedInstance.bookmarkList.count)
     }
     
     @IBAction func signUpButton(_ sender: Any) {
@@ -52,20 +58,16 @@ class SignUpViewController: UIViewController {
     
     func registerReq (callback : @escaping (_ isUser : Bool) -> Void) {
         var isUser = Bool()
-        var url = URL(string: "http://localhost:3000/api/v1/user/register")
+        let url = URL(string: "http://localhost:3000/api/v1/user/register")
         let parameters : Parameters = [
             "email" : self.emailTextField.text!,
             "password" : self.passwordTextField.text!
         ]
-        print(1)
         Alamofire.request(url!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-            print(2)
-            print(response,"=========================")
             if let res = response.result.value as? [String : Any ] {
                 print("response",res)
                 if let value = res["message"] as? Bool {
                     isUser = value
-                    print("value",value)
                 }
             }
             callback(isUser)

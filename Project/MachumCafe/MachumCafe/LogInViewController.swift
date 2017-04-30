@@ -25,7 +25,7 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func logInButton(_ sender: Any) {
-        
+        NetworkBookmark.setMyBookmark(userId: User.sharedInstance.user.id, cafeId: Cafe.sharedInstance.cafeList[4].id)
     }
     
     func loginreq (callback: @escaping (_ isUser : Bool) -> Void) {

@@ -14,6 +14,7 @@ class NetworkUser {
     static func register(email: String, password: String, nickname: String, callback: @escaping (_ isUser: Bool) -> Void) {
         let url = URLpath.getURL()
         var isUser = Bool()
+        
         let parameters : Parameters = [
             "email" : email,
             "password" : password,
@@ -34,6 +35,7 @@ class NetworkUser {
     static func logIn(email: String, password: String, callback: @escaping (_ isUser: Bool) -> Void) {
         let url = URLpath.getURL()
         var isUser = Bool()
+        
         let parameters : Parameters = [
             "email" : email,
             "password" : password
