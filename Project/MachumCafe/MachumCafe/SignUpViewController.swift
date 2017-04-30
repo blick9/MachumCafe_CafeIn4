@@ -34,7 +34,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
-        registerReq { (isUser) in
+        NetworkUser.register(email: emailTextField.text!, password: passwordTextField.text!, nickname: nicknameTextField.text!) { (isUser) in
             if isUser == true {
                 let alert = UIAlertController(title: "Alert", message: "회원가입 완료!", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -46,10 +46,10 @@ class SignUpViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
-        
     }
-    
-    
+}
+
+   /*
     func registerReq (callback : @escaping (_ isUser : Bool) -> Void) {
         var isUser = Bool()
         var url = URL(string: "http://localhost:3000/api/v1/user/register")
@@ -57,9 +57,7 @@ class SignUpViewController: UIViewController {
             "email" : self.emailTextField.text!,
             "password" : self.passwordTextField.text!
         ]
-        print(1)
         Alamofire.request(url!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-            print(2)
             print(response,"=========================")
             if let res = response.result.value as? [String : Any ] {
                 print("response",res)
@@ -70,9 +68,8 @@ class SignUpViewController: UIViewController {
             }
             callback(isUser)
         }
+    */
     
-        
-    }
 
     /*
     // MARK: - Navigation
@@ -84,4 +81,4 @@ class SignUpViewController: UIViewController {
     }
     */
 
-}
+
