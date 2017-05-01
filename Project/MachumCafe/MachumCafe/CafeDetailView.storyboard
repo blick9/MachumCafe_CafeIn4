@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Y4U-S4-YBL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Y4U-S4-YBL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Cafedetail View Controller-->
         <scene sceneID="5lG-0k-MKx">
             <objects>
-                <viewController id="ejC-8o-OCk" customClass="cafedetailViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CafeDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ejC-8o-OCk" customClass="cafedetailViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hMl-6x-16p"/>
                         <viewControllerLayoutGuide type="bottom" id="rV4-sb-V7t"/>
@@ -220,7 +220,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y4U-S4-YBL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XEu-Qd-9Nn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="XEu-Qd-9Nn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -231,7 +231,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6AD-bw-Ubp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029.5999999999999" y="787.55622188905556"/>
+            <point key="canvasLocation" x="1218" y="788"/>
         </scene>
     </scenes>
     <resources>

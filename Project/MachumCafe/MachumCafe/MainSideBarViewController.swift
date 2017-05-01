@@ -20,6 +20,7 @@ class MainSideBarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        checkIsUser()
         UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar + 1)
         sideBarLeadingConstraint.constant = -(self.sideBarView.frame.width+10)
         sideBarView.layer.shadowOpacity = 0.5
@@ -30,6 +31,25 @@ class MainSideBarViewController: UIViewController {
         
         // 코드 정리 시 지울 것
         buttonInit()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(#function)
+        checkIsUser()
+    }
+    
+    func checkIsUser() {
+        switch User.sharedInstance.isUser {
+        case false :
+            userProfileImageView.image = #imageLiteral(resourceName: "profil_side")
+            userInfoLabel.text = "로그인 후 이용하세요."
+            logInButton.isHidden = false
+        case true :
+            userProfileImageView.image = #imageLiteral(resourceName: "profil_side")
+            userInfoLabel.text = ("\(User.sharedInstance.user.getUser()["nickname"] as! String)님")
+            logInButton.isHidden = true
+        }
     }
     
     func buttonInit() {
@@ -65,7 +85,11 @@ class MainSideBarViewController: UIViewController {
     }
     
     @IBAction func bookmarkButtonAction(_ sender: Any) {
-    
+        let bookmarkStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
+        let bookmarkViewController = bookmarkStoryboard.instantiateViewController(withIdentifier: "Bookmark")
+//        let navigationVC = UINavigationController(rootViewController: bookmarkViewController)
+//        self.navigationController?.pushViewController(navigationVC, animated: true)
+        present(bookmarkViewController, animated: true, completion: nil)
     }
     
     @IBAction func reportButtonAction(_ sender: Any) {
