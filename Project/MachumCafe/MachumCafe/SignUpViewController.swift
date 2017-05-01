@@ -22,7 +22,6 @@ class SignUpViewController: UIViewController {
     }
     
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,10 +32,12 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
-        NetworkUser.register(email: emailTextField.text!, password: passwordTextField.text!, nickname: nicknameTextField.text!) { (isUser) in
-            if isUser == true {
-                let alert = UIAlertController(title: "Alert", message: "회원가입 완료!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        NetworkUser.register(email: emailTextField.text!, password: passwordTextField.text!, nickname: nicknameTextField.text!) { (message) in
+            if message == true {
+                let alert = UIAlertController(title: "Alert", message: "회원가입 완료 :)!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
                 self.present(alert, animated: true, completion: nil)
             }
             else {

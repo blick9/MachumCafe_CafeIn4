@@ -24,9 +24,10 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func logInButton(_ sender: Any) {
-        NetworkUser.logIn(email: emailTextField.text!, password: passwordTextField.text!) { (isUser) in
-            if isUser == true {
+     @IBAction func logInButton(_ sender: Any) {
+        NetworkUser.logIn(email: emailTextField.text!, password: passwordTextField.text!) { (message, user) in
+           if message {
+                User.sharedInstance.user = user
                     let alert = UIAlertController(title: "Alert", message: "로그인!", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
@@ -36,9 +37,9 @@ class LogInViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
+            }
         }
     }
-}
 
     /*
     func loginreq (callback: @escaping (_ isUser : Bool) -> Void) {
