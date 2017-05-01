@@ -50,7 +50,7 @@ class ListContainerViewController: UIViewController {
         } else {
             listView.removeFromSuperview()
             view.addSubview(listMapView)
-            viewSwitchButtonItem.image = #imageLiteral(resourceName: "sideMenu_Bt")
+            viewSwitchButtonItem.image = #imageLiteral(resourceName: "list_Bt")
         }
         isMapView = !isMapView
     }
