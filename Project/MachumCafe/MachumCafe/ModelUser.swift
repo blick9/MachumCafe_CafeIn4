@@ -36,5 +36,6 @@ class ModelUser {
 
 class User {
     static let sharedInstance = User()
+    var isUser = Bool()
     var user = ModelUser()
 }
