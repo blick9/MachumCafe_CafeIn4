@@ -26,33 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         
-//        NetworkUser.register(email: "asdf", password: "asdf", nickname: "asdfasdf") { (bool) in
-//            print(bool)
-//        }
-
-//        NetworkUser.logIn(email: "asdf", password: "asdf") { (bool, user) in
-//            User.sharedInstance.user = user
-//        }
-        
-        NetworkUser.getUser { (message, user) in
-            User.sharedInstance.user = user
-            print(user)
-        }
-        
-        NetworkCafe.getAllCafeList { (cafe) in
-            Cafe.sharedInstance.cafeList.append(contentsOf: cafe)
-            print(User.sharedInstance.user.getUser()["id"] as! String)
-            print(Cafe.sharedInstance.cafeList[0].getCafe()["id"] as! String)
-        }
-        
-//        NetworkBookmark.setMyBookmark(userId: User.sharedInstance.user.getUser()["id"] as! String, cafeId: Cafe.sharedInstance.cafeList[0].getCafe()["id"] as! String) { (bool, string) in
-//            print(bool)
-//        }
-//        
-//        NetworkBookmark.getMyBookmark(userId: User.sharedInstance.user.getUser()["id"] as! String) { (message, cafe) in
-//            print(cafe)
-//        }
-        
         return true
     }
 
