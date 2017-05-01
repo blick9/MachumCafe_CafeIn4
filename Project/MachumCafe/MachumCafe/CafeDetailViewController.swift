@@ -1,4 +1,4 @@
-//
+
 //  cafedetailViewController.swift
 //  MachumCafe_Practice
 //
@@ -12,7 +12,7 @@ class CafeDetailViewController: UIViewController {
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     
-    var indexPath = Int()
+    var index = Int()
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
@@ -37,20 +37,21 @@ class CafeDetailViewController: UIViewController {
         reviewTableView.isScrollEnabled = false
         cafeNameLabel.sizeToFit()
         let sceenCenter = fullView.center.x
-        let reviewMoreButton = UIButton(frame: CGRect(x: Double(sceenCenter), y: Double(reviewHeight.constant+50), width: 185.0, height: 50.0))
+        /*let reviewMoreButton = UIButton(frame: CGRect(x: Double(sceenCenter), y: Double(reviewHeight.constant+50), width: 185.0, height: 50.0))
         reviewMoreButton.layer.cornerRadius = 5
         reviewMoreButton.backgroundColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
         reviewMoreButton.setTitle("\(reviewer.count)개의 리뷰 더 보기", for: .normal)
         reviewMoreButton.setTitleColor(UIColor.white, for: .normal)
        // reviewMoreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         reviewMoreButton.titleLabel?.font = UIFont(name: "Apple SD 산돌고딕 Neo 일반체" , size: 14)
-        self.view.addSubview(reviewMoreButton)
+        self.view.addSubview(reviewMoreButton)*/
         
         // Do any additional setup after loading the view.
     }
     
     func initView() {
-         cafeNameLabel.text = Cafe.sharedInstance.cafeList[indexPath].getCafe()["name"] as! String
+        cafeNameLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["name"] as! String
+        
     }
     
     
@@ -83,8 +84,15 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
+            
+            var temp = [Any]()
+            
+            for val in Cafe.sharedInstance.cafeList[index].getCafe() {
+                temp.append(val.value)
+            }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
-            cell.detailLabel.text = cafeName[indexPath.row]
+            cell.detailLabel.text = temp[indexPath.row] as? String
             cell.iconImage.image = cafeIcon[indexPath.row]
             return cell
         }

@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NetworkCafe.getAllCafeList { (cafe) in
-            Cafe.sharedInstance.cafeList.append(contentsOf: cafe)
+            Cafe.sharedInstance.cafeList = cafe
         }
         
         return true
