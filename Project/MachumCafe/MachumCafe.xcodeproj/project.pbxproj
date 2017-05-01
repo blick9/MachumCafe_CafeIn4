@@ -33,6 +33,8 @@
 		A7B73A5F1EB32E1300EB24C6 /* URLpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */; };
 		A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A601EB32E2200EB24C6 /* ModelCafe.swift */; };
 		A7B73A631EB32E2200EB24C6 /* ModelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A611EB32E2200EB24C6 /* ModelUser.swift */; };
+		A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */; };
+		A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */; };
 		B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */; };
 		B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */; };
 		B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */; };
@@ -71,6 +73,8 @@
 		A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLpath.swift; sourceTree = "<group>"; };
 		A7B73A601EB32E2200EB24C6 /* ModelCafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCafe.swift; sourceTree = "<group>"; };
 		A7B73A611EB32E2200EB24C6 /* ModelUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUser.swift; sourceTree = "<group>"; };
+		A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingView.storyboard; sourceTree = "<group>"; };
 		B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
 		B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewCell.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				B58AAFD71EB6CC82002313CC /* Bookmark */,
 				A723B67D1EAF42F200469FE4 /* ListContainerView */,
 				A7B73A511EB2595E00EB24C6 /* FilterView */,
+				A7C0F2F41EB7909A0086ADAA /* SettingView */,
 				A7B73A491EAF4E2A00EB24C6 /* Extension */,
 				A7B73A4A1EAF4F4E00EB24C6 /* Resource */,
 			);
@@ -227,6 +232,15 @@
 				A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		A7C0F2F41EB7909A0086ADAA /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */,
+				A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */,
+			);
+			name = SettingView;
 			sourceTree = "<group>";
 		};
 		B58AAFD71EB6CC82002313CC /* Bookmark */ = {
@@ -318,6 +332,7 @@
 				A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */,
 				A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */,
 				A7B73A551EB2597700EB24C6 /* FilterView.storyboard in Resources */,
+				A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
 				B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */,
 				B7E57DB01EB7026900A6D9A7 /* Info.plist in Resources */,
@@ -399,6 +414,7 @@
 				A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
 				B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */,
+				A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */,
 				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
 				A7B73A5D1EB32E1300EB24C6 /* NetworkCafe.swift in Sources */,
