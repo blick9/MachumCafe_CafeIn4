@@ -13,7 +13,6 @@ class NetworkCafe {
     
     // MARK: 카페 목록 데이터모델에 저장
     static func getAllCafeList(callback: @escaping (_ result: [ModelCafe]) -> Void) {
-        Cafe.sharedInstance.cafeList.removeAll()
         let url = URLpath.getURL()
         var result = [ModelCafe]()
 

@@ -12,7 +12,6 @@ import Alamofire
 class NetworkBookmark {
     // MARK: 즐겨찾기 목록 데이터모델에 저장
     static func getMyBookmark(userId: String, callback: @escaping (_ message: Bool, _ result: [ModelCafe]) -> Void) {
-        Cafe.sharedInstance.bookmarkList.removeAll()
         let url = URLpath.getURL()
         var message = Bool()
         var result = [ModelCafe]()
