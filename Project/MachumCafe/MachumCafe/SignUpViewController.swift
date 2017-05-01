@@ -34,15 +34,19 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func signUpButton(_ sender: Any) {
+        if passwordTextField.text! != cofirmPasswordTextField.text! {
+            let alert = UIAlertController(title: "Alert", message: "비밀번호가 일치하지 않습니다.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         NetworkUser.register(email: emailTextField.text!, password: passwordTextField.text!, nickname: nicknameTextField.text!) { (message) in
-            if message == true {
+            if message {
                 let alert = UIAlertController(title: "Alert", message: "회원가입 완료 :)!", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
-                        self.dismiss(animated: true, completion: nil)
-                    }))
+                    self.dismiss(animated: true, completion: nil)
+                }))
                 self.present(alert, animated: true, completion: nil)
-            }
-            else {
+            } else {
                 let alert = UIAlertController(title: "Alert", message: "이미 가입된 사용자입니다.", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -50,39 +54,5 @@ class SignUpViewController: UIViewController {
         }
     }
 }
-
-   /*
-    func registerReq (callback : @escaping (_ isUser : Bool) -> Void) {
-        var isUser = Bool()
-        let url = URL(string: "http://localhost:3000/api/v1/user/register")
-        let parameters : Parameters = [
-            "email" : self.emailTextField.text!,
-            "password" : self.passwordTextField.text!
-        ]
-        Alamofire.request(url!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-<<<<<<< HEAD
-            print(response,"=========================")
-=======
->>>>>>> develop
-            if let res = response.result.value as? [String : Any ] {
-                print("response",res)
-                if let value = res["message"] as? Bool {
-                    isUser = value
-                }
-            }
-            callback(isUser)
-        }
-    */
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 

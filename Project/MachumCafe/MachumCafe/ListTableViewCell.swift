@@ -13,6 +13,7 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var cafeAddressLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

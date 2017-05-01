@@ -54,7 +54,6 @@ class ModelCafe {
 
 class Cafe {
     static let sharedInstance = Cafe()
-    
     var cafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
 }

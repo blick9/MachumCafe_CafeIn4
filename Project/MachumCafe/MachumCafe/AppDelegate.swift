@@ -5,6 +5,7 @@
 //  Created by Febrix on 2017. 4. 25..
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
+// TODO: logout시 서버 세션 삭제 및 User.sharedInstance.isUser = false로 변경
 import UIKit
 import GoogleMaps
 import GooglePlaces
@@ -26,18 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         
-//        NetworkUser.logIn(email: "min@gmail.com", password: "1234") { (message, user) in
-//            print(message)
-//            User.sharedInstance.user = user
-//            dump(User.sharedInstance.user)
-//        }
         NetworkUser.getUser { (message, user) in
-            print(message)
-            User.sharedInstance.user = user
-            dump(User.sharedInstance.user)
+            if message {
+                User.sharedInstance.user = user
+                User.sharedInstance.isUser = true
+            }
         }
-        
-
         return true
     }
 
