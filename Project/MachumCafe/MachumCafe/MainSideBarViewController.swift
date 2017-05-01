@@ -85,7 +85,11 @@ class MainSideBarViewController: UIViewController {
     }
     
     @IBAction func bookmarkButtonAction(_ sender: Any) {
-    
+        let bookmarkStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
+        let bookmarkViewController = bookmarkStoryboard.instantiateViewController(withIdentifier: "Bookmark")
+//        let navigationVC = UINavigationController(rootViewController: bookmarkViewController)
+//        self.navigationController?.pushViewController(navigationVC, animated: true)
+        present(bookmarkViewController, animated: true, completion: nil)
     }
     
     @IBAction func reportButtonAction(_ sender: Any) {
