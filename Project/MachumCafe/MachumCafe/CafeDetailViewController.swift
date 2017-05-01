@@ -10,6 +10,10 @@ import UIKit
 
 class CafeDetailViewController: UIViewController {
     
+    @IBOutlet weak var cafeNameLabel: UILabel!
+    
+    var indexPath = Int()
+    
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
     @IBOutlet weak var detailTableView: UITableView!
@@ -27,9 +31,11 @@ class CafeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
         detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         detailTableView.isScrollEnabled = false
         reviewTableView.isScrollEnabled = false
+        cafeNameLabel.sizeToFit()
         let sceenCenter = fullView.center.x
         let reviewMoreButton = UIButton(frame: CGRect(x: Double(sceenCenter), y: Double(reviewHeight.constant+50), width: 185.0, height: 50.0))
         reviewMoreButton.layer.cornerRadius = 5
@@ -41,7 +47,10 @@ class CafeDetailViewController: UIViewController {
         self.view.addSubview(reviewMoreButton)
         
         // Do any additional setup after loading the view.
-        
+    }
+    
+    func initView() {
+         cafeNameLabel.text = Cafe.sharedInstance.cafeList[indexPath].getCafe()["name"] as! String
     }
     
     

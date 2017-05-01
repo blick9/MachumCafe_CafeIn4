@@ -52,4 +52,13 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailView" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! CafeDetailViewController
+                controller.indexPath = indexPath.row
+            }
+        }
+    }
+    
 }
