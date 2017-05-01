@@ -5,24 +5,26 @@
 //  Created by Febrix on 2017. 4. 25..
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
-
-//TODO: 모델 getter 만들기
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    var googleAPIKey = "AIzaSyBJK14xRWA8NkVirhJxmpuO9FvKvARRmfY"
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        GMSServices.provideAPIKey(googleAPIKey)
+        GMSPlacesClient.provideAPIKey(googleAPIKey)
         
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor(red: 51, green: 51, blue: 51)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 255, green: 232, blue: 129)]
         
         UINavigationBar.appearance().isTranslucent = false
-        
         
 //        NetworkUser.logIn(email: "min@gmail.com", password: "1234") { (message, user) in
 //            print(message)
@@ -35,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dump(User.sharedInstance.user)
         }
         
+
         return true
     }
 

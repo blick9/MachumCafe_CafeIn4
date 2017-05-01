@@ -514,6 +514,7 @@
 			baseConfigurationReference = D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MachumCafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = febrix.9000.kuchen.MachumCafe;
@@ -527,6 +528,7 @@
 			baseConfigurationReference = 1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MachumCafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = febrix.9000.kuchen.MachumCafe;
