@@ -84,7 +84,7 @@
                                         <rect key="frame" x="11" y="258" width="198" height="30"/>
                                         <state key="normal" title="즐겨찾기"/>
                                         <connections>
-                                            <segue destination="ciX-ez-zWU" kind="show" id="3rF-A2-5vw"/>
+                                            <action selector="bookmarkButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="NYc-3X-V8t"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjF-21-hLR">
@@ -156,14 +156,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i41-U3-bIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2138" y="-38"/>
-        </scene>
-        <!--Bookmark-->
-        <scene sceneID="C2C-Cn-TYa">
-            <objects>
-                <viewControllerPlaceholder storyboardName="BookmarkView" referencedIdentifier="Bookmark" id="ciX-ez-zWU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ee3-y5-oce" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2773" y="-39"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DDV-TN-Syu">
