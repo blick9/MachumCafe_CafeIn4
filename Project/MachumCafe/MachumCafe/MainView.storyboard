@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,7 +58,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgE-kN-FVW">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7z-DZ-zae">
                                         <rect key="frame" x="114" y="174" width="0.0" height="0.0"/>
@@ -67,35 +68,36 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인 후 이용하세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFo-uT-Eph">
-                                        <rect key="frame" x="52" y="147" width="146" height="21"/>
+                                        <rect key="frame" x="37" y="147" width="146" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-Hb-thG">
-                                        <rect key="frame" x="103" y="176" width="45" height="30"/>
+                                        <rect key="frame" x="88" y="176" width="45" height="30"/>
                                         <state key="normal" title="Log-In"/>
                                         <connections>
                                             <action selector="logInButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="cyE-2c-BvS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxC-0C-tcW">
-                                        <rect key="frame" x="11" y="258" width="228" height="30"/>
+                                        <rect key="frame" x="11" y="258" width="198" height="30"/>
                                         <state key="normal" title="즐겨찾기"/>
                                         <connections>
-                                            <action selector="bookmarkButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="j4I-PA-bIy"/>
+                                            <segue destination="ciX-ez-zWU" kind="show" id="3rF-A2-5vw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjF-21-hLR">
-                                        <rect key="frame" x="11" y="605" width="228" height="30"/>
+                                        <rect key="frame" x="11" y="605" width="198" height="30"/>
                                         <state key="normal" title="등록제안"/>
                                         <connections>
                                             <action selector="reportButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="av7-7y-rVg"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profil_side" translatesAutoresizingMaskIntoConstraints="NO" id="AeL-HH-pjk">
-                                        <rect key="frame" x="85" y="40" width="80" height="80"/>
+                                        <rect key="frame" x="70" y="40" width="80" height="80"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="AeL-HH-pjk" secondAttribute="height" multiplier="1:1" id="7fQ-57-zak"/>
                                             <constraint firstAttribute="height" constant="80" id="Mvo-ra-fP1"/>
                                         </constraints>
                                     </imageView>
@@ -109,19 +111,19 @@
                                     <constraint firstItem="wxC-0C-tcW" firstAttribute="top" secondItem="PQR-Hb-thG" secondAttribute="bottom" constant="52" id="HYG-5e-k8M"/>
                                     <constraint firstAttribute="trailing" secondItem="wxC-0C-tcW" secondAttribute="trailing" constant="11" id="Qav-Xs-3vN"/>
                                     <constraint firstAttribute="trailing" secondItem="AjF-21-hLR" secondAttribute="trailing" constant="11" id="hyA-X2-PVe"/>
-                                    <constraint firstAttribute="width" constant="250" id="lvK-Py-XNn"/>
+                                    <constraint firstAttribute="width" constant="220" id="lvK-Py-XNn"/>
                                     <constraint firstItem="PQR-Hb-thG" firstAttribute="top" secondItem="IFo-uT-Eph" secondAttribute="bottom" constant="8" id="qQH-Mv-f8M"/>
                                     <constraint firstItem="PQR-Hb-thG" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="qxw-V3-4XR"/>
                                     <constraint firstItem="AjF-21-hLR" firstAttribute="leading" secondItem="sgE-kN-FVW" secondAttribute="leading" constant="11" id="tec-NA-IVJ"/>
                                     <constraint firstItem="AeL-HH-pjk" firstAttribute="top" secondItem="sgE-kN-FVW" secondAttribute="top" constant="40" id="uWn-Or-OJd"/>
                                     <constraint firstAttribute="bottom" secondItem="AjF-21-hLR" secondAttribute="bottom" constant="32" id="ugf-3b-WnI"/>
                                     <constraint firstItem="AeL-HH-pjk" firstAttribute="centerX" secondItem="IFo-uT-Eph" secondAttribute="centerX" id="zKn-Z1-egx"/>
-                                    <constraint firstItem="AeL-HH-pjk" firstAttribute="leading" secondItem="sgE-kN-FVW" secondAttribute="leading" constant="85" id="zwY-hM-4Qr"/>
+                                    <constraint firstItem="AeL-HH-pjk" firstAttribute="leading" secondItem="sgE-kN-FVW" secondAttribute="leading" priority="750" constant="85" id="zwY-hM-4Qr"/>
                                     <constraint firstItem="wxC-0C-tcW" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="zyM-DI-5LH"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNv-u2-EG4">
-                                <rect key="frame" x="250" y="0.0" width="125" height="667"/>
+                                <rect key="frame" x="220" y="0.0" width="155" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="closeViewButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="S1p-Vb-Qd6"/>
@@ -140,6 +142,7 @@
                             <constraint firstItem="LNv-u2-EG4" firstAttribute="bottom" secondItem="8Tz-Lx-Jjp" secondAttribute="top" id="z1C-d1-rHq"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DoY-wr-e8H"/>
                     <connections>
                         <outlet property="logInButton" destination="PQR-Hb-thG" id="GIP-cn-et6"/>
                         <outlet property="myBookmarkButton" destination="wxC-0C-tcW" id="AxH-L6-Vsq"/>
@@ -152,7 +155,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i41-U3-bIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392.8" y="-38.23088455772114"/>
+            <point key="canvasLocation" x="2138" y="-38"/>
+        </scene>
+        <!--Bookmark-->
+        <scene sceneID="C2C-Cn-TYa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BookmarkView" referencedIdentifier="Bookmark" id="ciX-ez-zWU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ee3-y5-oce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2773" y="-39"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DDV-TN-Syu">
