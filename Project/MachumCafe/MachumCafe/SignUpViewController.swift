@@ -18,7 +18,6 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -52,18 +51,20 @@ class SignUpViewController: UIViewController {
    /*
     func registerReq (callback : @escaping (_ isUser : Bool) -> Void) {
         var isUser = Bool()
-        var url = URL(string: "http://localhost:3000/api/v1/user/register")
+        let url = URL(string: "http://localhost:3000/api/v1/user/register")
         let parameters : Parameters = [
             "email" : self.emailTextField.text!,
             "password" : self.passwordTextField.text!
         ]
         Alamofire.request(url!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+<<<<<<< HEAD
             print(response,"=========================")
+=======
+>>>>>>> develop
             if let res = response.result.value as? [String : Any ] {
                 print("response",res)
                 if let value = res["message"] as? Bool {
                     isUser = value
-                    print("value",value)
                 }
             }
             callback(isUser)

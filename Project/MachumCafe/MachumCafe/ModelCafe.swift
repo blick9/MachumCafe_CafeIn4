@@ -10,7 +10,7 @@ import Foundation
 
 class ModelCafe {
     
-    fileprivate var id = String()
+    var id = String()
     fileprivate var name = String()
     fileprivate var phoneNumber = String()
     fileprivate var address = String()
