@@ -10,7 +10,7 @@ import Foundation
 
 class ModelCafe {
     
-    var id = String()
+    fileprivate var id = String()
     fileprivate var name = String()
     fileprivate var phoneNumber = String()
     fileprivate var address = String()
@@ -34,6 +34,21 @@ class ModelCafe {
         self.category = category
         self.summary = summary
         self.mainMenu = mainMenu
+    }
+    
+    func getCafe() -> [String : Any] {
+        var cafeDic = [String : Any]()
+        cafeDic["id"] = id
+        cafeDic["name"] = name
+        cafeDic["phoneNumber"] = phoneNumber
+        cafeDic["address"] = address
+        cafeDic["hours"] = hours
+        cafeDic["latitude"] = latitude
+        cafeDic["longitude"] = longitude
+        cafeDic["category"] = category
+        cafeDic["summary"] = summary
+        cafeDic["mainMenu"] = mainMenu
+        return cafeDic
     }
 }
 
