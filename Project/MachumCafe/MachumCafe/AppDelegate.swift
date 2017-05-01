@@ -26,6 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         
+//        NetworkUser.logIn(email: "min@gmail.com", password: "1234") { (message, user) in
+//            print(message)
+//            User.sharedInstance.user = user
+//            dump(User.sharedInstance.user)
+//        }
+        NetworkUser.getUser { (message, user) in
+            print(message)
+            User.sharedInstance.user = user
+            dump(User.sharedInstance.user)
+        }
+        
+
         return true
     }
 
