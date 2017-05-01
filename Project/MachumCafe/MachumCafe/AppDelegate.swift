@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            User.sharedInstance.user = user
 //            dump(User.sharedInstance.user)
 //        }
+        net
         NetworkUser.getUser { (message, user) in
             print(message)
             User.sharedInstance.user = user
