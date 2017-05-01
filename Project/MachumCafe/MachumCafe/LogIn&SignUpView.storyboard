@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wtn-jU-sPB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,7 +40,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="signUpButton"/>
                                 <connections>
-                                    <segue destination="81r-S3-LVg" kind="modal" id="dIs-Ej-gfE"/>
+                                    <segue destination="81r-S3-LVg" kind="show" id="SP3-RW-MNo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQz-mF-tss">
@@ -54,9 +54,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6g-rP-mDg">
-                                <rect key="frame" x="27" y="45" width="12" height="20"/>
+                                <rect key="frame" x="329" y="45" width="19" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="back_Bt_gray"/>
+                                <state key="normal" image="cancelButton"/>
+                                <connections>
+                                    <action selector="closeButtonAction:" destination="Wtn-jU-sPB" eventType="touchUpInside" id="vLy-on-Hsx"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uTa-eM-KQn">
                                 <rect key="frame" x="108" y="284" width="203" height="30"/>
@@ -83,6 +86,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Dkb-Dp-4NM"/>
                     <connections>
                         <outlet property="emailTextField" destination="uTa-eM-KQn" id="4Ay-Ct-PDQ"/>
                         <outlet property="passwordTextField" destination="1t3-e2-Anc" id="9FB-2W-0C1"/>
@@ -90,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nbm-c0-9f2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-220" y="54.422788605697157"/>
+            <point key="canvasLocation" x="719.20000000000005" y="54.422788605697157"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="xAC-4o-29f">
@@ -125,14 +129,6 @@
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqA-tG-Ccl">
-                                <rect key="frame" x="329" y="45" width="19" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="cancelButton"/>
-                                <connections>
-                                    <action selector="closeButton:" destination="81r-S3-LVg" eventType="touchUpInside" id="G1c-we-Fis"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mainLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vFk-ro-b2X">
                                 <rect key="frame" x="85" y="125" width="206" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -188,9 +184,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqA-tG-Ccl">
+                                <rect key="frame" x="31" y="45" width="13" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back_Bt_gray"/>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="81r-S3-LVg" eventType="touchUpInside" id="dM5-Zy-bf6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4yc-y6-hBT"/>
                     <connections>
                         <outlet property="cofirmPasswordTextField" destination="VsU-JE-VdV" id="hpP-lA-rhY"/>
                         <outlet property="emailTextField" destination="MT6-wN-vvx" id="hwh-7B-Euq"/>
@@ -200,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAi-Me-CYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="605.60000000000002" y="53.523238380809602"/>
+            <point key="canvasLocation" x="1456.8" y="53.523238380809602"/>
         </scene>
     </scenes>
     <resources>

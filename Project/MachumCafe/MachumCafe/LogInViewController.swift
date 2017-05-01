@@ -39,7 +39,12 @@ class LogInViewController: UIViewController {
                 }
             }
         }
+    
+    @IBAction func closeButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
+    
+}
 
     /*
     func loginreq (callback: @escaping (_ isUser : Bool) -> Void) {
