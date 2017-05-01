@@ -40,6 +40,7 @@
 		B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */; };
 		B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA51EB59F2200A6D9A7 /* CafeDetailViewController.swift */; };
 		B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA91EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift */; };
+		B7E57DB01EB7026900A6D9A7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7E57DAF1EB7026900A6D9A7 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +49,6 @@
 		A723B6671EAF3FBF00469FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A723B6711EAF3FBF00469FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A723B6731EAF3FBF00469FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A723B6791EAF42D700469FE4 /* ListContainerView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListContainerView.storyboard; sourceTree = "<group>"; };
 		A723B67B1EAF42E600469FE4 /* ListView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListView.storyboard; sourceTree = "<group>"; };
 		A723B67E1EAF431700469FE4 /* ListContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListContainerViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +78,7 @@
 		B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CafeDetailView.storyboard; sourceTree = "<group>"; };
 		B7E57DA51EB59F2200A6D9A7 /* CafeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailViewController.swift; sourceTree = "<group>"; };
 		B7E57DA91EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailReviewTableViewCell.swift; sourceTree = "<group>"; };
+		B7E57DAF1EB7026900A6D9A7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.debug.xcconfig"; sourceTree = "<group>"; };
 		DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachumCafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,7 +195,7 @@
 			children = (
 				A723B6701EAF3FBF00469FE4 /* LaunchScreen.storyboard */,
 				A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */,
-				A723B6731EAF3FBF00469FE4 /* Info.plist */,
+				B7E57DAF1EB7026900A6D9A7 /* Info.plist */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -319,6 +320,7 @@
 				A7B73A551EB2597700EB24C6 /* FilterView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
 				B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */,
+				B7E57DB01EB7026900A6D9A7 /* Info.plist in Resources */,
 				B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 			);
