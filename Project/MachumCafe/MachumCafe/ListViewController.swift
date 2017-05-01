@@ -39,24 +39,15 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         return Cafe.sharedInstance.cafeList.count
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
-//        cell.backgroundImageView.image = tempArray[0][indexPath.row] as! UIImage
-//        let tempModel = Cafe.sharedInstance.cafeList[0] as! ModelCafe
-//        
-//        
-//        cell.cafeAddressLabel.text = tempArray[2][indexPath.row] as! String
-//        
-//        return cell
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
         let cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
-//        print(cafeData)
+        
 //        cell.backgroundImageView.image = (tempArray[0][indexPath.row] as! UIImage)
         cell.cafeNameLabel.text = cafeData["name"] as? String
         cell.cafeAddressLabel.text = cafeData["address"] as? String
+        cell.distanceLabel.text = "1.2km"
         
         return cell
     }
