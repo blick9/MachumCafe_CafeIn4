@@ -17,6 +17,7 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
         print(#function, "Table")
         // Do any additional setup after loading the view.
@@ -37,6 +38,17 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Cafe.sharedInstance.cafeList.count
     }
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
+//        cell.backgroundImageView.image = tempArray[0][indexPath.row] as! UIImage
+//        let tempModel = Cafe.sharedInstance.cafeList[0] as! ModelCafe
+//        
+//        
+//        cell.cafeAddressLabel.text = tempArray[2][indexPath.row] as! String
+//        
+//        return cell
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
