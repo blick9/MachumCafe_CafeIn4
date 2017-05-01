@@ -10,7 +10,7 @@ import Foundation
 
 class ModelUser {
     
-    var id = String()
+    fileprivate var id = String()
     fileprivate var email = String()
     fileprivate var nickname = String()
     fileprivate var bookmark = [String]()
@@ -22,6 +22,15 @@ class ModelUser {
         self.email = email
         self.nickname = nickname
         self.bookmark = bookmark
+    }
+    
+    func getUser() -> [String : Any] {
+        var userDic = [String : Any]()
+        userDic["id"] = id
+        userDic["email"] = email
+        userDic["nickname"] = nickname
+        userDic["bookmark"] = bookmark
+        return userDic
     }
 }
 

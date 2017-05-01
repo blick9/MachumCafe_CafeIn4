@@ -5,8 +5,6 @@
 //  Created by Febrix on 2017. 4. 25..
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
-
-//TODO: 모델 getter 만들기
 import UIKit
 import GoogleMaps
 import GooglePlaces
@@ -27,6 +25,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 255, green: 232, blue: 129)]
         
         UINavigationBar.appearance().isTranslucent = false
+        
+//        NetworkUser.logIn(email: "min@gmail.com", password: "1234") { (message, user) in
+//            print(message)
+//            User.sharedInstance.user = user
+//            dump(User.sharedInstance.user)
+//        }
+        NetworkUser.getUser { (message, user) in
+            print(message)
+            User.sharedInstance.user = user
+            dump(User.sharedInstance.user)
+        }
+        
 
         return true
     }

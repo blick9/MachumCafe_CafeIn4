@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wSw-Xt-1RD" id="uEH-gx-lLS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bva-Mx-vSx">
@@ -39,18 +39,18 @@
                                                     <color key="backgroundColor" red="0.94498242161128909" green="1" blue="0.80681792621773774" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CafeImageBlackLayerTableCell" translatesAutoresizingMaskIntoConstraints="NO" id="Yua-Zm-33X" userLabel="BlackLayer">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="377" height="180"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qci-mE-oGf">
                                                     <rect key="frame" x="10" y="90" width="357" height="34"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="29"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="23"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62y-l0-bhi">
-                                                    <rect key="frame" x="11" y="121" width="356" height="21"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                    <color key="textColor" red="0.87543174339999996" green="0.87543174339999996" blue="0.87543174339999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="11" y="117" width="356" height="21.5"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="12"/>
+                                                    <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0Y-uU-oTA">
@@ -67,14 +67,14 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="Qci-mE-oGf" secondAttribute="trailing" id="BSV-sz-Ua0"/>
                                                 <constraint firstAttribute="bottom" secondItem="Bva-Mx-vSx" secondAttribute="bottom" id="Bs9-8a-05V"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Qci-mE-oGf" secondAttribute="bottom" constant="47" id="EA8-Yp-8dz"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="62y-l0-bhi" secondAttribute="bottom" constant="29" id="Eod-tL-wEF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="62y-l0-bhi" secondAttribute="bottom" constant="32.5" id="Eod-tL-wEF"/>
                                                 <constraint firstItem="Yua-Zm-33X" firstAttribute="centerY" secondItem="Bva-Mx-vSx" secondAttribute="centerY" id="G4n-3g-AUj"/>
                                                 <constraint firstItem="Yua-Zm-33X" firstAttribute="centerX" secondItem="Bva-Mx-vSx" secondAttribute="centerX" id="HYl-Im-MY7"/>
-                                                <constraint firstItem="Yua-Zm-33X" firstAttribute="width" secondItem="Bva-Mx-vSx" secondAttribute="width" id="Mqs-xC-rBP"/>
+                                                <constraint firstItem="Yua-Zm-33X" firstAttribute="width" secondItem="Bva-Mx-vSx" secondAttribute="width" constant="2" id="Mqs-xC-rBP"/>
                                                 <constraint firstItem="Bva-Mx-vSx" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="top" id="WE0-En-yhK"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bva-Mx-vSx" secondAttribute="trailing" id="dNc-64-9nE"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="leading" secondItem="uEH-gx-lLS" secondAttribute="leadingMargin" constant="3" id="eA9-nk-nK2"/>
-                                                <constraint firstItem="62y-l0-bhi" firstAttribute="top" secondItem="Qci-mE-oGf" secondAttribute="bottom" constant="-3" id="emK-OW-nW8"/>
+                                                <constraint firstItem="62y-l0-bhi" firstAttribute="top" secondItem="Qci-mE-oGf" secondAttribute="bottom" constant="-7" id="emK-OW-nW8"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="trailing" secondItem="uEH-gx-lLS" secondAttribute="trailingMargin" id="r25-xa-kov"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -104,7 +104,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CafeImageBlackLayerTableCell" width="376" height="183"/>
+        <image name="CafeImageBlackLayerTableCell" width="376" height="180"/>
         <image name="detailBookmark_Bt" width="23" height="22"/>
     </resources>
 </document>
