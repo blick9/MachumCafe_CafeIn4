@@ -22,11 +22,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i3H-xV-eYi" userLabel="ListMapView">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ktj-mb-iTF" userLabel="ListMapView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="fHl-Sh-Is7" kind="embed" id="k0L-tX-Acm"/>
+                                    <segue destination="fHl-Sh-Is7" kind="embed" id="dVv-ws-Vxe"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-u8-9Wq" userLabel="ListView">
@@ -40,7 +40,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="zlF-jy-VmJ">
                         <rightBarButtonItems>
-                            <barButtonItem image="filter_Bt" id="84q-ye-2ug"/>
+                            <barButtonItem image="filter_Bt" id="84q-ye-2ug">
+                                <connections>
+                                    <action selector="showFilterViewButtonItem:" destination="H4B-Hk-kTG" id="hD6-Lj-72V"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="map_Bt" id="zF9-r4-EPs">
                                 <connections>
                                     <action selector="listViewSwitchToggleButtonAction:" destination="H4B-Hk-kTG" id="oxk-gh-PC2"/>
@@ -49,8 +53,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="listMapView" destination="i3H-xV-eYi" id="1bX-8X-UHf"/>
-                        <outlet property="listView" destination="Tac-u8-9Wq" id="QbO-Tq-odO"/>
+                        <outlet property="listMapView" destination="ktj-mb-iTF" id="a2O-qy-VBn"/>
+                        <outlet property="listView" destination="Tac-u8-9Wq" id="ty2-7Y-drR"/>
+                        <outlet property="viewSwitchButtonItem" destination="zF9-r4-EPs" id="CCa-ux-96p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lch-jh-453" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,7 +83,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FsF-yt-tfK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JGW-IK-2fB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGW-IK-2fB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
