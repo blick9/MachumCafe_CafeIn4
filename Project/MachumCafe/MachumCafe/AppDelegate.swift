@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         
+        NetworkCafe.getAllCafeList { (cafe) in
+            Cafe.sharedInstance.cafeList = cafe
+        }
+        
         NetworkUser.getUser { (message, user) in
             if message {
                 User.sharedInstance.user = user
@@ -34,10 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+<<<<<<< HEAD
         NetworkCafe.getAllCafeList { (cafe) in
             Cafe.sharedInstance.cafeList = cafe
         }
         
+=======
+>>>>>>> develop
         return true
     }
 
