@@ -34,6 +34,11 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func signUpButton(_ sender: Any) {
+        if passwordTextField.text! != cofirmPasswordTextField.text! {
+            let alert = UIAlertController(title: "Alert", message: "비밀번호가 일치하지 않습니다.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         NetworkUser.register(email: emailTextField.text!, password: passwordTextField.text!, nickname: nicknameTextField.text!) { (message) in
             if message {
                 let alert = UIAlertController(title: "Alert", message: "회원가입 완료 :)!", preferredStyle: UIAlertControllerStyle.alert)
