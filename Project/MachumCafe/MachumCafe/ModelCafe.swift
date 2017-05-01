@@ -35,6 +35,21 @@ class ModelCafe {
         self.summary = summary
         self.mainMenu = mainMenu
     }
+    
+    func getCafe() -> [String : Any] {
+        var cafeDic = [String : Any]()
+        cafeDic["id"] = id
+        cafeDic["name"] = name
+        cafeDic["phoneNumber"] = phoneNumber
+        cafeDic["address"] = address
+        cafeDic["hours"] = hours
+        cafeDic["latitude"] = latitude
+        cafeDic["longitude"] = longitude
+        cafeDic["category"] = category
+        cafeDic["summary"] = summary
+        cafeDic["mainMenu"] = mainMenu
+        return cafeDic
+    }
 }
 
 class Cafe {

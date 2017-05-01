@@ -23,10 +23,18 @@ class ModelUser {
         self.nickname = nickname
         self.bookmark = bookmark
     }
+    
+    func getUser() -> [String : Any] {
+        var userDic = [String : Any]()
+        userDic["id"] = id
+        userDic["email"] = email
+        userDic["nickname"] = nickname
+        userDic["bookmark"] = bookmark
+        return userDic
+    }
 }
 
 class User {
     static let sharedInstance = User()
-    
     var user = ModelUser()
 }
