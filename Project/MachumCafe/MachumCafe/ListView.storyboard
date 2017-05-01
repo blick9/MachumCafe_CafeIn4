@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dy3-tv-K7e">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wSw-Xt-1RD" id="uEH-gx-lLS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bva-Mx-vSx">
@@ -90,6 +90,7 @@
                                             <outlet property="cafeAddressLabel" destination="62y-l0-bhi" id="a70-bc-Oae"/>
                                             <outlet property="cafeNameLabel" destination="Qci-mE-oGf" id="BFB-kB-axo"/>
                                             <outlet property="distanceLabel" destination="C8J-TL-mI0" id="u5B-fJ-ZeI"/>
+                                            <segue destination="fWC-di-gae" kind="show" identifier="DetailView" id="JB9-6v-gDu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -102,13 +103,22 @@
                             <constraint firstItem="1Sj-Fu-oxb" firstAttribute="top" secondItem="O0U-QT-c3A" secondAttribute="bottom" id="vEZ-zz-GpQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MQR-sG-4AI"/>
                     <connections>
                         <outlet property="tableView" destination="1Sj-Fu-oxb" id="Cs1-wd-53p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8K-Tl-c31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144.80000000000001" y="81.409295352323838"/>
+            <point key="canvasLocation" x="1084" y="81.409295352323838"/>
+        </scene>
+        <!--CafeDetail-->
+        <scene sceneID="m20-MD-pjc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="CafeDetail" id="fWC-di-gae" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C5z-DD-Qn8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828.8" y="-54.872563718140931"/>
         </scene>
     </scenes>
     <resources>
