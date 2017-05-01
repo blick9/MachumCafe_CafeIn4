@@ -12,6 +12,7 @@ class MainSideBarViewController: UIViewController {
     @IBOutlet weak var sideBarView: UIView!
     @IBOutlet weak var sideBarLeadingConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var userInfoLabel: UILabel!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var myBookmarkButton: UIButton!
@@ -24,6 +25,8 @@ class MainSideBarViewController: UIViewController {
         sideBarView.layer.shadowOpacity = 0.5
         sideBarView.layer.shadowColor = UIColor.black.cgColor
         sideBarView.layer.shadowRadius = 3
+        userProfileImageView.layer.masksToBounds = true
+        userProfileImageView.layer.cornerRadius = CGFloat(userProfileImageView.frame.height / 2)
         
         // 코드 정리 시 지울 것
         buttonInit()
@@ -41,8 +44,6 @@ class MainSideBarViewController: UIViewController {
         myBookmarkButton.tintColor = UIColor.black
     }
     
-
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -57,7 +58,22 @@ class MainSideBarViewController: UIViewController {
         })
     }
     
-    @IBAction func emptyAreaButtonAction(_ sender: Any) {
+    @IBAction func logInButtonAction(_ sender: Any) {
+        let logInStoryboard = UIStoryboard(name: "LogIn&SignUpView", bundle: nil)
+        let logInViewController = logInStoryboard.instantiateViewController(withIdentifier: "LogIn")
+        present(logInViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func bookmarkButtonAction(_ sender: Any) {
+    
+    }
+    
+    @IBAction func reportButtonAction(_ sender: Any) {
+    
+    }
+    
+    
+    @IBAction func closeViewButtonAction(_ sender: Any) {
         UIView.animate(withDuration: 0.3, animations: {
             self.sideBarLeadingConstraint.constant = -(self.sideBarView.frame.width+10)
             self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
