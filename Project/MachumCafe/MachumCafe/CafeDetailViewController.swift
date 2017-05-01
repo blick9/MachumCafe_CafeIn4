@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CafeDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CafeDetailViewController: UIViewController {
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
@@ -58,12 +58,15 @@ class CafeDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView.tag == 1 {
             return cafeIcon.count
         }
-        
+            
         else {
             return reviewer.count
         }
@@ -83,16 +86,4 @@ class CafeDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

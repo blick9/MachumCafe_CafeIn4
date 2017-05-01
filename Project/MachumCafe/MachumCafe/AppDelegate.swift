@@ -33,6 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 User.sharedInstance.isUser = true
             }
         }
+        
+        NetworkCafe.getAllCafeList { (cafe) in
+            Cafe.sharedInstance.cafeList.append(contentsOf: cafe)
+        }
+        
         return true
     }
 
