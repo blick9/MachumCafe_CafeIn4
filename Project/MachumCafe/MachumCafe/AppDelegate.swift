@@ -38,6 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+<<<<<<< HEAD
+        NetworkCafe.getAllCafeList { (cafe) in
+            Cafe.sharedInstance.cafeList = cafe
+        }
+        
+=======
+>>>>>>> develop
         return true
     }
 
