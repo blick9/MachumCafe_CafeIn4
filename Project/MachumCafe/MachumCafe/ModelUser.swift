@@ -32,6 +32,10 @@ class ModelUser {
         userDic["bookmark"] = bookmark
         return userDic
     }
+    
+    func setBookmark(bookmarks : [String]) {
+        bookmark = bookmarks
+    }
 }
 
 class User {

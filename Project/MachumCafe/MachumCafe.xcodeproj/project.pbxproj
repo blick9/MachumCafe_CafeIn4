@@ -33,6 +33,7 @@
 		A7B73A5F1EB32E1300EB24C6 /* URLpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */; };
 		A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A601EB32E2200EB24C6 /* ModelCafe.swift */; };
 		A7B73A631EB32E2200EB24C6 /* ModelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A611EB32E2200EB24C6 /* ModelUser.swift */; };
+		A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */; };
 		A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */; };
 		A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */; };
 		B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */; };
@@ -73,6 +74,7 @@
 		A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLpath.swift; sourceTree = "<group>"; };
 		A7B73A601EB32E2200EB24C6 /* ModelCafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCafe.swift; sourceTree = "<group>"; };
 		A7B73A611EB32E2200EB24C6 /* ModelUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUser.swift; sourceTree = "<group>"; };
+		A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticFunction.swift; sourceTree = "<group>"; };
 		A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingView.storyboard; sourceTree = "<group>"; };
 		B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				A723B68C1EAF483F00469FE4 /* ExtentionUIColorClass.swift */,
+				A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */,
 				A7B73A5E1EB32E1300EB24C6 /* NetworkUser.swift in Sources */,
 				A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */,
+				A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */,
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
 				B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */,

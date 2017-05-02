@@ -10,15 +10,18 @@ import UIKit
 
 class CafeDetailViewController: UIViewController {
     
-    @IBOutlet weak var cafeNameLabel: UILabel!
-    
     var index = Int()
+    var getUserID = String()
+    var getUserBookmarkArray = [String]()
+    var indexCafeID = String()
     
+    @IBOutlet weak var cafeNameLabel: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
-
     @IBOutlet var fullView: UIView!
  //  @IBOutlet weak var reviewMoreButton: UIButton!
     
@@ -31,7 +34,7 @@ class CafeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initView()
+        viewInit()
         detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         detailTableView.isScrollEnabled = false
         reviewTableView.isScrollEnabled = false
@@ -49,11 +52,60 @@ class CafeDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func initView() {
-        cafeNameLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["name"] as! String
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // UserBookmark 정보 불러오기
+        getUserID = User.sharedInstance.user.getUser()["id"] as! String
+        getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        indexCafeID = Cafe.sharedInstance.cafeList[index].getCafe()["id"] as! String
+        bookmarkButton.isSelected = getUserBookmarkArray.contains(indexCafeID) ? true : false
     }
     
+    func viewInit() {
+        bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
+        bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
+        cafeNameLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["name"] as! String
+        bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
+    }
+    
+    func bookmarkToggleButton() {
+        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: indexCafeID) { (message, des) in
+            print(des)
+            if message {
+                NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe) in
+                    Cafe.sharedInstance.bookmarkList = cafe
+                    
+                    // User 정보 중에 Bookmark 만 받아와서 User 모델에 다시 덮어씌우는 GET 메서드가 필요함.
+                    var bookmarkData = [String]()
+                    for item in cafe {
+                        bookmarkData.append(item.getCafe()["id"] as! String)
+                    }
+                    User.sharedInstance.user.setBookmark(bookmarks: bookmarkData)
+                    print(User.sharedInstance.user.getUser()["bookmark"]!)
+                })
+                self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
+            } else {
+                self.presentAlert(title: "즐겨찾기 오류", message: "로그인 후 이용해주세요")
+//                UIAlertController().presentSuggestionLogInAlert(title: "즐겨찾기 오류", message: "로그인 후 이용해주세요.")
+            }
+        }
+    }
+    
+    func presentAlert(title : String, message : String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "닫기", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        let logInAction = UIAlertAction(title: "로그인", style: .default) { _ in
+            let logInStoryboard = UIStoryboard(name: "LogIn&SignUpView", bundle: nil)
+            let logInViewController = logInStoryboard.instantiateViewController(withIdentifier: "LogIn")
+            self.present(logInViewController, animated: true, completion: nil)
+            
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(logInAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         tableViewHeight.constant = CGFloat(Double(cafeIcon.count) * Double(detailTableView.rowHeight))
