@@ -37,14 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 User.sharedInstance.isUser = true
             }
         }
-        
-<<<<<<< HEAD
-        NetworkCafe.getAllCafeList { (cafe) in
-            Cafe.sharedInstance.cafeList = cafe
-        }
-        
-=======
->>>>>>> develop
+
         return true
     }
 
