@@ -65,7 +65,7 @@ class CafeDetailViewController: UIViewController {
         NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: indexCafeID) { (message, des) in
             print(des)
             if message {
-                NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe) in
+                NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe, userBookmark) in
                     Cafe.sharedInstance.bookmarkList = cafe
                     
                     // User 정보 중에 Bookmark 만 받아와서 User 모델에 다시 덮어씌우는 GET 메서드가 필요함.

@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 User.sharedInstance.isUser = true
             }
         }
+        
         return true
     }
 
