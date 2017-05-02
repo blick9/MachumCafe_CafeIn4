@@ -12,10 +12,9 @@ import Alamofire
 class NetworkCafe {
     
     // MARK: 카페 목록 데이터모델에 저장
-    static func getAllCafeList(callback: @escaping (_ result: [ModelCafe]) -> Void) {
-        Cafe.sharedInstance.cafeList.removeAll()
+    static func getAllCafeList(callback: @escaping (_ cafeList: [ModelCafe]) -> Void) {
         let url = URLpath.getURL()
-        var result = [ModelCafe]()
+        var cafeList = [ModelCafe]()
 
         Alamofire.request("\(url)/api/v1/cafe").responseJSON { (response) in
             if let cafes = response.result.value as? [[String : Any]] {
@@ -38,11 +37,11 @@ class NetworkCafe {
                     let longitude = cafe["longitude"] as? String,
                     let category = cafe["category"] as? [String] {
                         let modelCafe = ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu)
-                        result.append(modelCafe)
+                        cafeList.append(modelCafe)
                     }
                 }
             }
-            callback(result)
+            callback(cafeList)
         }
     }
     

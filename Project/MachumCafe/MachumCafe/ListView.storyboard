@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dy3-tv-K7e">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -56,7 +56,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0Y-uU-oTA">
                                                     <rect key="frame" x="344" y="149" width="23" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="detailBookmark_Bt"/>
+                                                    <state key="normal" image="Bookmark_Bt"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="거리" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8J-TL-mI0">
                                                     <rect key="frame" x="325" y="7" width="42" height="21"/>
@@ -90,6 +90,7 @@
                                             <outlet property="cafeAddressLabel" destination="62y-l0-bhi" id="a70-bc-Oae"/>
                                             <outlet property="cafeNameLabel" destination="Qci-mE-oGf" id="BFB-kB-axo"/>
                                             <outlet property="distanceLabel" destination="C8J-TL-mI0" id="u5B-fJ-ZeI"/>
+                                            <segue destination="fWC-di-gae" kind="show" identifier="DetailView" id="JB9-6v-gDu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -102,17 +103,26 @@
                             <constraint firstItem="1Sj-Fu-oxb" firstAttribute="top" secondItem="O0U-QT-c3A" secondAttribute="bottom" id="vEZ-zz-GpQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MQR-sG-4AI"/>
                     <connections>
                         <outlet property="tableView" destination="1Sj-Fu-oxb" id="Cs1-wd-53p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8K-Tl-c31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144.80000000000001" y="81.409295352323838"/>
+            <point key="canvasLocation" x="1084" y="81.409295352323838"/>
+        </scene>
+        <!--CafeDetail-->
+        <scene sceneID="m20-MD-pjc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="CafeDetail" id="fWC-di-gae" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C5z-DD-Qn8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1828.8" y="-54.872563718140931"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Bookmark_Bt" width="26" height="23"/>
         <image name="CafeImageBlackLayerTableCell" width="376" height="180"/>
-        <image name="detailBookmark_Bt" width="23" height="22"/>
     </resources>
 </document>

@@ -17,6 +17,7 @@ class MainSideBarViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var myBookmarkButton: UIButton!
     @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var settingButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,6 @@ class MainSideBarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(#function)
         checkIsUser()
     }
     
@@ -62,6 +62,16 @@ class MainSideBarViewController: UIViewController {
         
         reportButton.tintColor = UIColor.black
         myBookmarkButton.tintColor = UIColor.black
+        
+        //Make Underline
+        
+        // Make Underline
+        let attrs = [NSFontAttributeName : UIFont.systemFont(ofSize: 15),
+                     NSForegroundColorAttributeName : UIColor.gray,
+                     NSUnderlineStyleAttributeName : 1] as [String : Any]
+        
+        let buttonTitleString = NSMutableAttributedString(string: "설정", attributes:attrs)
+        settingButton.setAttributedTitle(buttonTitleString, for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,8 +97,8 @@ class MainSideBarViewController: UIViewController {
     @IBAction func bookmarkButtonAction(_ sender: Any) {
         let bookmarkStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
         let bookmarkViewController = bookmarkStoryboard.instantiateViewController(withIdentifier: "Bookmark")
-//        let navigationVC = UINavigationController(rootViewController: bookmarkViewController)
-//        self.navigationController?.pushViewController(navigationVC, animated: true)
+        //        let navigationVC = UINavigationController(rootViewController: bookmarkViewController)
+        //        self.navigationController?.pushViewController(bookmarkViewController, animated: true)
         present(bookmarkViewController, animated: true, completion: nil)
     }
     
@@ -96,6 +106,11 @@ class MainSideBarViewController: UIViewController {
     
     }
     
+    @IBAction func settingButtonAction(_ sender: Any) {
+        let settingStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
+        let settingViewController = settingStoryboard.instantiateViewController(withIdentifier: "SettingView")
+        present(settingViewController, animated: true, completion: nil)
+    }
     
     @IBAction func closeViewButtonAction(_ sender: Any) {
         UIView.animate(withDuration: 0.3, animations: {

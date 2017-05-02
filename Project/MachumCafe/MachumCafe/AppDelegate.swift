@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = false
         
         NetworkCafe.getAllCafeList { (cafe) in
-            Cafe.sharedInstance.cafeList.append(contentsOf: cafe)
+            Cafe.sharedInstance.cafeList = cafe
         }
         
         NetworkUser.getUser { (message, user) in

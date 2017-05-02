@@ -32,10 +32,10 @@ class NetworkUser {
     }
     
     // MARK: 로그인
-    static func logIn(email: String, password: String, callback: @escaping (_ message: Bool, _ result: ModelUser) -> Void) {
+    static func logIn(email: String, password: String, callback: @escaping (_ message: Bool, _ user: ModelUser) -> Void) {
         let url = URLpath.getURL()
         var message = Bool()
-        var result = ModelUser()
+        var user = ModelUser()
         
         let parameters : Parameters = [
             "email" : email,
@@ -47,42 +47,42 @@ class NetworkUser {
                 if let resMessage = res["message"] as? Bool {
                     message = resMessage
                 }
-                if let user = res["user"] as? [String : Any] {
-                    if let id = user["_id"] as? String,
-                    let email = user["email"] as? String,
-                    let nickname = user["nickname"] as? String,
-                    let bookmark = user["bookmark"] as? [String] {
+                if let resUser = res["user"] as? [String : Any] {
+                    if let id = resUser["_id"] as? String,
+                    let email = resUser["email"] as? String,
+                    let nickname = resUser["nickname"] as? String,
+                    let bookmark = resUser["bookmark"] as? [String] {
                         let modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark)
-                        result = modelUser
+                        user = modelUser
                     }
                 }
             }
-            callback(message, result)
+            callback(message, user)
         }
     }
     
     // MARK: 세션정보 있을 경우 유저모델 저장
-    static func getUser(callback: @escaping (_ message: Bool, _ result: ModelUser) -> Void) {
+    static func getUser(callback: @escaping (_ message: Bool, _ user: ModelUser) -> Void) {
         let url = URLpath.getURL()
         var message = Bool()
-        var result = ModelUser()
+        var user = ModelUser()
         
         Alamofire.request("\(url)/api/v1/user/login").responseJSON { (response) in
             if let res = response.result.value as? [String : Any] {
                 if let resMessage = res["message"] as? Bool {
                     message = resMessage
                 }
-                if let user = res["user"] as? [String : Any] {
-                    if let id = user["_id"] as? String,
-                    let email = user["email"] as? String,
-                    let nickname = user["nickname"] as? String,
-                    let bookmark = user["bookmark"] as? [String] {
+                if let resUser = res["user"] as? [String : Any] {
+                    if let id = resUser["_id"] as? String,
+                    let email = resUser["email"] as? String,
+                    let nickname = resUser["nickname"] as? String,
+                    let bookmark = resUser["bookmark"] as? [String] {
                         let modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark)
-                        result = modelUser
+                        user = modelUser
                     }
                 }
             }
-            callback(message, result)
+            callback(message, user)
         }
     }
     
