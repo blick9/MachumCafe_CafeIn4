@@ -67,6 +67,33 @@
                                                     <outlet property="iconImage" destination="qWm-A1-VSx" id="4kI-I0-c7b"/>
                                                 </connections>
                                             </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" tag="2" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="45" id="qR6-s3-C4M" customClass="CafeDetailCategoryTableViewCell" customModule="MachumCafe" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="73" width="375" height="45"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qR6-s3-C4M" id="yoy-Pa-TIr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="parkingCategoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="tjZ-yB-0EJ">
+                                                            <rect key="frame" x="37" y="8" width="80" height="27"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="parkingCategoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="uAH-gh-qT1">
+                                                            <rect key="frame" x="128" y="8" width="80" height="27"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="parkingCategoryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jWQ-tW-R4w">
+                                                            <rect key="frame" x="219" y="9" width="80" height="27"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="categoryIcon1" destination="tjZ-yB-0EJ" id="66e-SL-lbe"/>
+                                                    <outlet property="categoryIcon2" destination="uAH-gh-qT1" id="8al-nG-6sT"/>
+                                                    <outlet property="categoryIcon3" destination="jWQ-tW-R4w" id="dzM-I3-Ihi"/>
+                                                </connections>
+                                            </tableViewCell>
                                         </prototypes>
                                         <connections>
                                             <outlet property="dataSource" destination="ejC-8o-OCk" id="0bK-QJ-Hxx"/>
@@ -219,6 +246,7 @@
     <resources>
         <image name="1" width="800" height="533"/>
         <image name="Bookmark_Bt" width="26" height="23"/>
+        <image name="parkingCategoryIcon" width="80" height="27"/>
         <image name="profil_side" width="80" height="80"/>
         <image name="share_Bt" width="20" height="19"/>
         <image name="telephoneD" width="15" height="15"/>

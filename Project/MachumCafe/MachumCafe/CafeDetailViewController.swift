@@ -116,10 +116,11 @@ class CafeDetailViewController: UIViewController {
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView.tag == 1 {
-            return cafeIcon.count
+            return 4
         }
             
         else {
@@ -128,14 +129,9 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if tableView.tag == 1 {
-            var temp = [Any]()
-            for val in Cafe.sharedInstance.cafeList[index].getCafe() {
-                temp.append(val.value)
-            }
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
-            //cell.detailLabel.text = temp[indexPath.row] as? String
             if indexPath.row == 0 {
                 cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["phoneNumber"] as? String
             }
@@ -146,17 +142,25 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["hours"] as? String
             }
             if indexPath.row == 3 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
                 
+                cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
+                cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
+                cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
             }
+//            if cell.tag == 2 {
+//                cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
+//                cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
+//                cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
+//            }
             
             cell.iconImage.image = cafeIcon[indexPath.row]
             return cell
-        }
+            }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
             cell.reviewerNickName.text = reviewer[indexPath.row]
             return cell
         }
-        
     }
 }
