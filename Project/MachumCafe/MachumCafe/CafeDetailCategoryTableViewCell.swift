@@ -1,22 +1,19 @@
 //
-//  cafeDetailTableViewCell.swift
-//  MachumCafe_Practice
+//  CafeDetailCategoryTableViewCell.swift
+//  MachumCafe
 //
-//  Created by Danb on 2017. 4. 24..
+//  Created by Danb on 2017. 5. 2..
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
 
 import UIKit
 
-class CafeDetailTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var iconImage: UIImageView!
-
-    @IBOutlet weak var detailLabel: UILabel!
+class CafeDetailCategoryTableViewCell: UITableViewCell {
     
-    
-    
-    
+    @IBOutlet weak var categoryIcon1: UIImageView!
+    @IBOutlet weak var categoryIcon2: UIImageView!
+    @IBOutlet weak var categoryIcon3: UIImageView!
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
