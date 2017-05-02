@@ -11,10 +11,11 @@ import Alamofire
 
 class NetworkBookmark {
     // MARK: 즐겨찾기 목록 데이터모델에 저장
-    static func getMyBookmark(userId: String, callback: @escaping (_ message: Bool, _ result: [ModelCafe]) -> Void) {
+    static func getMyBookmark(userId: String, callback: @escaping (_ message: Bool, _ cafeList: [ModelCafe], _ userBookmark: [String]) -> Void) {
         let url = URLpath.getURL()
         var message = Bool()
-        var result = [ModelCafe]()
+        var cafeList = [ModelCafe]()
+        var userBookmark = [String]()
         
         Alamofire.request("\(url)/api/v1/bookmark/\(userId)").responseJSON { (response) in
             if let res = response.result.value as? [String : Any] {
@@ -41,12 +42,15 @@ class NetworkBookmark {
                             let longitude = cafe["longitude"] as? String,
                             let category = cafe["category"] as? [String] {
                             let modelCafe = ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu)
-                            result.append(modelCafe)
+                            cafeList.append(modelCafe)
                         }
                     }
                 }
+                if let resUserBookmark = res["userBookmark"] as? [String] {
+                    userBookmark = resUserBookmark
+                }
             }
-            callback(message, result)
+            callback(message, cafeList, userBookmark)
         }
     }
     
