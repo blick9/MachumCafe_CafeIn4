@@ -56,17 +56,7 @@ class NetworkBookmark {
             callback(message, cafeList, userBookmark)
         }
     }
-    
-    // MARK: 카페 이미지 데이터모델에 저장
-    static func getImagesData(imagesName: [String], cafe: ModelCafe) {
-        
-        for imageName in imagesName {
-            Alamofire.request("\(url)/api/v1/cafe/\(imageName)").responseData(completionHandler: { (response) in
-                cafe.setImagesData(imageData: response.result.value!)
-            })
-        }
-    }
-    
+
     // MARK: 즐겨찾기 추가 & 삭제
     static func setMyBookmark(userId: String, cafeId: String, callback: @escaping (_ message: Bool, _ description: String) -> Void) {
         var message = Bool()
