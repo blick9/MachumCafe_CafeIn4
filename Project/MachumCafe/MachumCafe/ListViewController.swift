@@ -29,7 +29,6 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // TODO: Bookmark 식별
         
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
@@ -38,7 +37,6 @@ class ListViewController: UIViewController {
     
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
-        print("1234")
         print(buttonTag, buttonTag.tag)
         let cafeID = Cafe.sharedInstance.cafeList[buttonTag.tag].getCafe()["id"] as! String
         NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (message, des) in
@@ -47,6 +45,7 @@ class ListViewController: UIViewController {
                 NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe, userBookmark) in
                     Cafe.sharedInstance.bookmarkList = cafe
                     User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
+                    self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
                     print(User.sharedInstance.user.getUser()["bookmark"]!)
                 })
                 buttonTag.isSelected = !buttonTag.isSelected
@@ -56,10 +55,6 @@ class ListViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 
 extension ListViewController : UITableViewDelegate, UITableViewDataSource {
@@ -77,8 +72,6 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
         let cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
         var imagesData = cafeData["imagesData"] as! [Data]
-
-//        cell.backgroundImageView.image = (tempArray[0][indexPath.row] as! UIImage)
         
         cell.backgroundImageView.image = UIImage(data: imagesData[0])
         cell.cafeNameLabel.text = cafeData["name"] as? String
