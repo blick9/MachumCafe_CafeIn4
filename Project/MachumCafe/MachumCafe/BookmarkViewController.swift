@@ -64,7 +64,7 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
             if let item = self.collectionView.indexPathsForSelectedItems{
                 let indexPath = item[0]
                     print(indexPath.row)
-                let controller = segue.destination as! CafeDetailViewController
+                _ = segue.destination as! CafeDetailViewController
                 for cafe in Cafe.sharedInstance.cafeList {
                     if let cafeID = cafe.getCafe()["id"] {
                         if cafeID as! String == userBookmark[indexPath.row] {
