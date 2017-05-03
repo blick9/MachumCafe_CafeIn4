@@ -147,13 +147,9 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
                 cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
                 cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
+                return cell
             }
-//            if cell.tag == 2 {
-//                cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
-//                cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
-//                cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
-//            }
-            
+
             cell.iconImage.image = cafeIcon[indexPath.row]
             return cell
             }
