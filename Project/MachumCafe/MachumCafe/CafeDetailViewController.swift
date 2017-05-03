@@ -15,6 +15,7 @@ class CafeDetailViewController: UIViewController {
     var getUserBookmarkArray = [String]()
     var indexCafeID = String()
     
+    @IBOutlet weak var detailCategoryCell: UIView!
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
@@ -26,7 +27,7 @@ class CafeDetailViewController: UIViewController {
  //  @IBOutlet weak var reviewMoreButton: UIButton!
     
     let cafeName = ["02-512-2395", "서울특별시 강남구 도산대로67길 13-12(청담동)","평일 AM 11:00 ~ AM 01:00","주차 가능","매장 내 위치","주차 가능","매장 내 위치"]
-    let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD"),nil]
+    let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
     
     let reviewer = ["구제이", "한나", "메이플"]
     
@@ -39,6 +40,7 @@ class CafeDetailViewController: UIViewController {
         detailTableView.isScrollEnabled = false
         reviewTableView.isScrollEnabled = false
         cafeNameLabel.sizeToFit()
+        
         //dump(Cafe.sharedInstance.cafeList[1].getCafe())
 
         
@@ -52,6 +54,10 @@ class CafeDetailViewController: UIViewController {
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         indexCafeID = Cafe.sharedInstance.cafeList[index].getCafe()["id"] as! String
         bookmarkButton.isSelected = getUserBookmarkArray.contains(indexCafeID) ? true : false
+        
+        tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight) + Double(detailCategoryCell.frame.size.height))
+        reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
+        self.view.layoutIfNeeded()
     }
     
     func viewInit() {
@@ -76,12 +82,7 @@ class CafeDetailViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        tableViewHeight.constant = CGFloat(Double(cafeIcon.count) * Double(detailTableView.rowHeight))
-        reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
     
-//        self.view.layoutIfNeeded()
-    }
     
 
     override func didReceiveMemoryWarning() {
@@ -92,6 +93,20 @@ class CafeDetailViewController: UIViewController {
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView.tag == 1 {
+            if indexPath.row == 3 {
+                return 75
+            }
+            else {
+                return 53
+            }
+        }
+        else {
+            return 100
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -108,6 +123,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
+            cell.detailLabel.sizeToFit()
             if indexPath.row == 0 {
                 cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["phoneNumber"] as? String
             }
@@ -119,17 +135,12 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             }
             if indexPath.row == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
-                
                 cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
                 cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
                 cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
+                return cell
             }
-//            if cell.tag == 2 {
-//                cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
-//                cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
-//                cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
-//            }
-            
+
             cell.iconImage.image = cafeIcon[indexPath.row]
             return cell
             }
