@@ -18,7 +18,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "맞춤카페"
         bannerArray = [#imageLiteral(resourceName: "mainBanner1"),#imageLiteral(resourceName: "mainBanner2"),#imageLiteral(resourceName: "mainBanner3")]
-       // mainBannerScrollView.frame = view.frame
         
         for i in 0..<bannerArray.count {
             let bannerView = UIImageView()
@@ -26,7 +25,6 @@ class MainViewController: UIViewController {
             bannerView.image = bannerArray[i]
             let xPosition = self.view.frame.width * CGFloat(i)
             bannerView.frame = CGRect(x: xPosition, y: 0, width: self.mainBannerScrollView.frame.width, height: self.mainBannerScrollView.frame.height)
-            
             mainBannerScrollView.contentSize.width = mainBannerScrollView.frame.width * CGFloat(i + 1)
             mainBannerScrollView.addSubview(bannerView)
         }
