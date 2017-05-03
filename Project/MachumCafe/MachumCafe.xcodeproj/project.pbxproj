@@ -44,7 +44,6 @@
 		B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */; };
 		B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA51EB59F2200A6D9A7 /* CafeDetailViewController.swift */; };
 		B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA91EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift */; };
-		B7E57DB01EB7026900A6D9A7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7E57DAF1EB7026900A6D9A7 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -341,7 +340,6 @@
 				A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
 				B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */,
-				B7E57DB01EB7026900A6D9A7 /* Info.plist in Resources */,
 				B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 			);

@@ -57,7 +57,7 @@ class CafeDetailViewController: UIViewController {
     func viewInit() {
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
-        cafeNameLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["name"] as! String
+        cafeNameLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["name"] as? String
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
     }
     
