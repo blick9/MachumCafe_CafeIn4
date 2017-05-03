@@ -15,7 +15,7 @@ class CafeDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     
     
-    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
