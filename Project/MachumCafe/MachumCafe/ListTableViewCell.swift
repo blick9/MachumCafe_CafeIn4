@@ -14,7 +14,14 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var cafeAddressLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
-
+    @IBOutlet weak var bookmarkButton: UIButton!
+    
+    
+    override func layoutSubviews() {
+        self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
+        self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,5 +32,4 @@ class ListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
