@@ -78,13 +78,13 @@
                                                                 <constraint firstAttribute="width" constant="80" id="yIb-XR-UdE"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAH-gh-qT1">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uAH-gh-qT1">
                                                             <rect key="frame" x="129" y="16" width="80" height="27"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="H3d-c3-a8g"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWQ-tW-R4w">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="jWQ-tW-R4w">
                                                             <rect key="frame" x="220" y="16" width="80" height="27"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="bpJ-sa-26R"/>
@@ -92,6 +92,8 @@
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="jWQ-tW-R4w" firstAttribute="bottom" secondItem="tjZ-yB-0EJ" secondAttribute="bottom" id="C1u-YM-nh0"/>
+                                                        <constraint firstItem="jWQ-tW-R4w" firstAttribute="bottom" secondItem="uAH-gh-qT1" secondAttribute="bottom" id="EJw-ls-Keq"/>
                                                         <constraint firstItem="uAH-gh-qT1" firstAttribute="trailing" secondItem="jWQ-tW-R4w" secondAttribute="leading" constant="-11" id="RMf-Zo-p1Z"/>
                                                         <constraint firstItem="uAH-gh-qT1" firstAttribute="top" secondItem="jWQ-tW-R4w" secondAttribute="top" id="Soi-98-omi"/>
                                                         <constraint firstItem="tjZ-yB-0EJ" firstAttribute="trailing" secondItem="uAH-gh-qT1" secondAttribute="leading" constant="-11" id="SxU-YM-nnJ"/>
@@ -106,6 +108,7 @@
                                                     <outlet property="categoryIcon1" destination="tjZ-yB-0EJ" id="66e-SL-lbe"/>
                                                     <outlet property="categoryIcon2" destination="uAH-gh-qT1" id="8al-nG-6sT"/>
                                                     <outlet property="categoryIcon3" destination="jWQ-tW-R4w" id="dzM-I3-Ihi"/>
+                                                    <outlet property="detailCategoryView" destination="yoy-Pa-TIr" id="zEu-KY-fo8"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -115,7 +118,7 @@
                                         </connections>
                                     </tableView>
                                     <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="101" sectionHeaderHeight="60" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DgO-TJ-FRg" userLabel="reviewTable View">
-                                        <rect key="frame" x="0.0" y="464" width="375" height="181"/>
+                                        <rect key="frame" x="0.0" y="458" width="375" height="181"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="181" id="eZa-JQ-Z3p"/>
@@ -179,7 +182,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BwK-7Z-hkT" userLabel="line">
-                                        <rect key="frame" x="8" y="464" width="359" height="4"/>
+                                        <rect key="frame" x="8" y="454" width="359" height="4"/>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="7cw-48-1bQ"/>
@@ -210,7 +213,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9X9-VU-4mY">
-                                        <rect key="frame" x="38" y="675" width="299" height="52"/>
+                                        <rect key="frame" x="38" y="669" width="299" height="52"/>
                                         <state key="normal" image="reviewMoreButton"/>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="PiZ-92-6C6">
@@ -231,10 +234,10 @@
                                     <constraint firstItem="ViB-iS-Sqq" firstAttribute="top" secondItem="O3u-gt-fNw" secondAttribute="top" id="PIv-EU-Exk"/>
                                     <constraint firstItem="DgO-TJ-FRg" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leadingMargin" constant="-8" id="RLv-Ks-vRY"/>
                                     <constraint firstItem="HUB-vG-q52" firstAttribute="trailing" secondItem="ViB-iS-Sqq" secondAttribute="trailing" id="SH5-KI-SSk"/>
+                                    <constraint firstItem="BwK-7Z-hkT" firstAttribute="top" secondItem="HUB-vG-q52" secondAttribute="bottom" constant="-10" id="VKC-Tx-tlt"/>
                                     <constraint firstItem="9X9-VU-4mY" firstAttribute="top" secondItem="DgO-TJ-FRg" secondAttribute="bottom" constant="30" id="WUg-tB-QxH"/>
                                     <constraint firstItem="HUB-vG-q52" firstAttribute="trailing" secondItem="PiZ-92-6C6" secondAttribute="trailing" id="Zmm-0P-B7O"/>
-                                    <constraint firstItem="BwK-7Z-hkT" firstAttribute="top" secondItem="HUB-vG-q52" secondAttribute="bottom" id="aKP-E8-OgX"/>
-                                    <constraint firstItem="DgO-TJ-FRg" firstAttribute="top" secondItem="BwK-7Z-hkT" secondAttribute="bottom" constant="-4" id="foD-sN-BaX"/>
+                                    <constraint firstItem="DgO-TJ-FRg" firstAttribute="top" secondItem="BwK-7Z-hkT" secondAttribute="bottom" id="foD-sN-BaX"/>
                                     <constraint firstItem="BwK-7Z-hkT" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leadingMargin" id="fyG-KA-QQd"/>
                                     <constraint firstItem="HUB-vG-q52" firstAttribute="leading" secondItem="PiZ-92-6C6" secondAttribute="leading" id="g4m-Yq-flg"/>
                                     <constraint firstItem="HUB-vG-q52" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leading" id="gc5-Qj-R4u"/>
@@ -256,7 +259,6 @@
                     <connections>
                         <outlet property="bookmarkButton" destination="KOa-uo-k0F" id="lfO-IR-i9t"/>
                         <outlet property="cafeNameLabel" destination="ooV-Jh-HWD" id="P7w-bi-P4K"/>
-                        <outlet property="detailCategoryCell" destination="yoy-Pa-TIr" id="s4Z-m3-25H"/>
                         <outlet property="detailTableView" destination="HUB-vG-q52" id="qlA-Fp-Vqg"/>
                         <outlet property="reviewHeight" destination="eZa-JQ-Z3p" id="iBo-B0-imx"/>
                         <outlet property="reviewTableView" destination="DgO-TJ-FRg" id="NvW-Am-zij"/>

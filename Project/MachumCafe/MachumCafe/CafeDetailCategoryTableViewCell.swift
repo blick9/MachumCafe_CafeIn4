@@ -13,7 +13,9 @@ class CafeDetailCategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryIcon1: UIImageView!
     @IBOutlet weak var categoryIcon2: UIImageView!
     @IBOutlet weak var categoryIcon3: UIImageView!
- 
+    @IBOutlet weak var detailCategoryView: UIView!
+    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

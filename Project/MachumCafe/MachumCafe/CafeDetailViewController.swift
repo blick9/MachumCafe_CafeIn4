@@ -15,7 +15,7 @@ class CafeDetailViewController: UIViewController {
     var getUserBookmarkArray = [String]()
     var indexCafeID = String()
     
-    @IBOutlet weak var detailCategoryCell: UIView!
+
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
@@ -55,7 +55,9 @@ class CafeDetailViewController: UIViewController {
         indexCafeID = Cafe.sharedInstance.cafeList[index].getCafe()["id"] as! String
         bookmarkButton.isSelected = getUserBookmarkArray.contains(indexCafeID) ? true : false
         
-        tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight) + Double(detailCategoryCell.frame.size.height))
+        //테이블뷰
+        let cell = detailTableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
+        tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight) + Double(cell.frame.height))
         reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
         self.view.layoutIfNeeded()
     }
@@ -81,8 +83,6 @@ class CafeDetailViewController: UIViewController {
             }
         }
     }
-    
-    
     
 
     override func didReceiveMemoryWarning() {
