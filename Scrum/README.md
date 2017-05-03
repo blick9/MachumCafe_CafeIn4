@@ -3,7 +3,7 @@
   * ### 05.03(수)
     * #### 전한나
       * [ ] MainView 구현
-      * [ ] CafeDefault Image HTTP 통신으로 ModelCafe에 Image 적용
+      * [x] CafeDefault Image HTTP 통신으로 ModelCafe에 Image 적용
     * #### 구찬우
       * [ ] CafeDetailView 데이터 보여주는 방식 수정
       * [ ] 현재 사용자 위치 보여주기
@@ -19,7 +19,7 @@
       * [x] Bookmark GET API Response 수정
       * [x] networkBookmark Class 수정
       * [ ] MainView 구현
-      * [ ] CafeDefault Image 서버와 연동
+      * [x] CafeDefault Image 서버와 연동
     * #### 구찬우
       * [x] ListView Bookmark 상태 적용하기
       * [ ] ModelCafe Data MapView에 보여주기
