@@ -28,30 +28,10 @@ class MainViewController: UIViewController {
         
         present(sideBarViewController, animated: false, completion: nil)
     }
-   
-    @IBAction func allDayButton(_ sender: Any) {
+    
+    
+    @IBAction func categoryButtons(_ sender: UIButton) {
         navigationController?.pushViewController(listContainerViewController, animated: true)
     }
-    
-    @IBAction func smokingButton(_ sender: Any) {
-        navigationController?.pushViewController(listContainerViewController, animated: true)
-    }
-    
-    @IBAction func parkingButton(_ sender: Any) {
-        navigationController?.pushViewController(listContainerViewController, animated: true)
-    }
-    
-    @IBAction func dessertButton(_ sender: Any) {
-        navigationController?.pushViewController(listContainerViewController, animated: true)
-    }
-    
-    @IBAction func restRoomButton(_ sender: Any) {
-        navigationController?.pushViewController(listContainerViewController, animated: true)
-    }
-    
-    @IBAction func meetingRoomButton(_ sender: Any) {
-        navigationController?.pushViewController(listContainerViewController, animated: true)
-    }
-    
     
 }

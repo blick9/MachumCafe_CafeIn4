@@ -36,39 +36,39 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="24h"/>
                                 <connections>
-                                    <action selector="allDayButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="uJQ-I4-SGH"/>
+                                    <action selector="categoryButtons:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="GgM-Tt-8uN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpX-9X-2Up">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpX-9X-2Up">
                                 <rect key="frame" x="142" y="247" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="smoke"/>
                                 <connections>
-                                    <action selector="smokingButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="zYE-UV-r51"/>
+                                    <action selector="categoryButtons:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="SHz-ZJ-rkY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH3-Gk-CzM">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH3-Gk-CzM">
                                 <rect key="frame" x="142" y="365" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="restroom"/>
                                 <connections>
-                                    <action selector="restRoomButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="oMX-kr-ei6"/>
+                                    <action selector="categoryButtons:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="ncC-wU-OoC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeg-gc-XNu">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeg-gc-XNu">
                                 <rect key="frame" x="260" y="365" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="meetingroom"/>
                                 <connections>
-                                    <action selector="meetingRoomButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="bjo-yL-CgP"/>
+                                    <action selector="categoryButtons:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="FDl-cU-ZyU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ny-IF-Ozu">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ny-IF-Ozu">
                                 <rect key="frame" x="260" y="247" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="parking"/>
                                 <connections>
-                                    <action selector="parkingButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="DfN-MD-G1c"/>
+                                    <action selector="categoryButtons:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="oTK-uV-vMC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLl-SV-zdY">
@@ -76,12 +76,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="FindMyCafe_Bt"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-Y1-uB5">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-Y1-uB5">
                                 <rect key="frame" x="25" y="365" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="dessert"/>
                                 <connections>
-                                    <action selector="dessertButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="eks-bd-8tb"/>
+                                    <action selector="categoryButtons:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="ixZ-pV-Jji"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -99,10 +99,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="bannerImage" destination="6xJ-hB-bLg" id="pLW-MS-rZa"/>
-                        <outlet property="bannerView" destination="F6t-lT-pER" id="FLx-hf-uFg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHF-RG-6wF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
