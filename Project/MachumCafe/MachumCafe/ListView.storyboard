@@ -87,6 +87,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backgroundImageView" destination="Bva-Mx-vSx" id="633-oo-jyt"/>
+                                            <outlet property="bookmarkButton" destination="v0Y-uU-oTA" id="V8w-Nf-0fM"/>
                                             <outlet property="cafeAddressLabel" destination="62y-l0-bhi" id="a70-bc-Oae"/>
                                             <outlet property="cafeNameLabel" destination="Qci-mE-oGf" id="BFB-kB-axo"/>
                                             <outlet property="distanceLabel" destination="C8J-TL-mI0" id="u5B-fJ-ZeI"/>
