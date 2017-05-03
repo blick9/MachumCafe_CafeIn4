@@ -22,11 +22,11 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
-    @IBOutlet var fullView: UIView!
+    
  //  @IBOutlet weak var reviewMoreButton: UIButton!
     
     let cafeName = ["02-512-2395", "서울특별시 강남구 도산대로67길 13-12(청담동)","평일 AM 11:00 ~ AM 01:00","주차 가능","매장 내 위치","주차 가능","매장 내 위치"]
-    let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD"),#imageLiteral(resourceName: "parkD"),#imageLiteral(resourceName: "restroomD")]
+    let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD"),nil]
     
     let reviewer = ["구제이", "한나", "메이플"]
     
@@ -39,15 +39,8 @@ class CafeDetailViewController: UIViewController {
         detailTableView.isScrollEnabled = false
         reviewTableView.isScrollEnabled = false
         cafeNameLabel.sizeToFit()
-        let sceenCenter = fullView.center.x
-        /*let reviewMoreButton = UIButton(frame: CGRect(x: Double(sceenCenter), y: Double(reviewHeight.constant+50), width: 185.0, height: 50.0))
-        reviewMoreButton.layer.cornerRadius = 5
-        reviewMoreButton.backgroundColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1.0)
-        reviewMoreButton.setTitle("\(reviewer.count)개의 리뷰 더 보기", for: .normal)
-        reviewMoreButton.setTitleColor(UIColor.white, for: .normal)
-       // reviewMoreButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-        reviewMoreButton.titleLabel?.font = UIFont(name: "Apple SD 산돌고딕 Neo 일반체" , size: 14)
-        self.view.addSubview(reviewMoreButton)*/
+        //dump(Cafe.sharedInstance.cafeList[1].getCafe())
+
         
         // Do any additional setup after loading the view.
     }
@@ -74,37 +67,13 @@ class CafeDetailViewController: UIViewController {
             if message {
                 NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe, userBookmark) in
                     Cafe.sharedInstance.bookmarkList = cafe
-                    
-                    // User 정보 중에 Bookmark 만 받아와서 User 모델에 다시 덮어씌우는 GET 메서드가 필요함.
-                    var bookmarkData = [String]()
-                    for item in cafe {
-                        bookmarkData.append(item.getCafe()["id"] as! String)
-                    }
-                    User.sharedInstance.user.setBookmark(bookmarks: bookmarkData)
-                    print(User.sharedInstance.user.getUser()["bookmark"]!)
+                    User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
                 })
                 self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
             } else {
-                self.presentAlert(title: "즐겨찾기 오류", message: "로그인 후 이용해주세요")
-//                UIAlertController().presentSuggestionLogInAlert(title: "즐겨찾기 오류", message: "로그인 후 이용해주세요.")
+                UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기 오류", message: "로그인 후 이용해주세요.")
             }
         }
-    }
-    
-    func presentAlert(title : String, message : String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "닫기", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
-        let logInAction = UIAlertAction(title: "로그인", style: .default) { _ in
-            let logInStoryboard = UIStoryboard(name: "LogIn&SignUpView", bundle: nil)
-            let logInViewController = logInStoryboard.instantiateViewController(withIdentifier: "LogIn")
-            self.present(logInViewController, animated: true, completion: nil)
-            
-        }
-        alertController.addAction(okAction)
-        alertController.addAction(logInAction)
-        present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,10 +92,11 @@ class CafeDetailViewController: UIViewController {
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView.tag == 1 {
-            return cafeIcon.count
+            return 4
         }
             
         else {
@@ -135,24 +105,38 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if tableView.tag == 1 {
-            
-            var temp = [Any]()
-            
-            for val in Cafe.sharedInstance.cafeList[index].getCafe() {
-                temp.append(val.value)
-            }
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
-            cell.detailLabel.text = temp[indexPath.row] as? String
+            if indexPath.row == 0 {
+                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["phoneNumber"] as? String
+            }
+            if indexPath.row == 1 {
+                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["address"] as? String
+            }
+            if indexPath.row == 2 {
+                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["hours"] as? String
+            }
+            if indexPath.row == 3 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
+                
+                cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
+                cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
+                cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
+            }
+//            if cell.tag == 2 {
+//                cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
+//                cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
+//                cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
+//            }
+            
             cell.iconImage.image = cafeIcon[indexPath.row]
             return cell
-        }
+            }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
             cell.reviewerNickName.text = reviewer[indexPath.row]
             return cell
         }
-        
     }
 }
