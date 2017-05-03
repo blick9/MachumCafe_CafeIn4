@@ -11,9 +11,10 @@ import Alamofire
 
 class NetworkCafe {
     
+    private static let url = URLpath.getURL()
+    
     // MARK: 카페 목록 데이터모델에 저장
     static func getAllCafeList(callback: @escaping (_ cafeList: [ModelCafe]) -> Void) {
-        let url = URLpath.getURL()
         var cafeList = [ModelCafe]()
 
         Alamofire.request("\(url)/api/v1/cafe").responseJSON { (response) in
@@ -48,7 +49,6 @@ class NetworkCafe {
     
     // MARK: 카페 이미지 데이터모델에 저장
     static func getImagesData(imagesName: [String], cafe: ModelCafe) {
-        let url = URLpath.getURL()
         
         for imageName in imagesName {
             Alamofire.request("\(url)/api/v1/cafe/\(imageName)").responseData(completionHandler: { (response) in
