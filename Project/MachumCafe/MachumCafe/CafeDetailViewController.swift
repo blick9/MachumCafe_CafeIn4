@@ -10,7 +10,7 @@ import UIKit
 
 class CafeDetailViewController: UIViewController {
     
-    var index = Int()
+    var cafeData = [String:Any]()
     var getUserID = String()
     var getUserBookmarkArray = [String]()
     var indexCafeID = String()
@@ -52,7 +52,7 @@ class CafeDetailViewController: UIViewController {
         // UserBookmark 정보 불러오기
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        indexCafeID = Cafe.sharedInstance.cafeList[index].getCafe()["id"] as! String
+        indexCafeID = cafeData["id"] as! String
         bookmarkButton.isSelected = getUserBookmarkArray.contains(indexCafeID) ? true : false
         
         //테이블뷰 높이 오토레이아웃 설정
@@ -63,9 +63,10 @@ class CafeDetailViewController: UIViewController {
     }
     
     func viewInit() {
+        navigationItem.title = cafeData["name"] as? String
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
-        cafeNameLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["name"] as? String
+        cafeNameLabel.text = cafeData["name"] as? String
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
     }
     
@@ -125,13 +126,13 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
             cell.detailLabel.sizeToFit()
             if indexPath.row == 0 {
-                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["phoneNumber"] as? String
+                cell.detailLabel.text = cafeData["phoneNumber"] as? String
             }
             if indexPath.row == 1 {
-                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["address"] as? String
+                cell.detailLabel.text = cafeData["address"] as? String
             }
             if indexPath.row == 2 {
-                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["hours"] as? String
+                cell.detailLabel.text = cafeData["hours"] as? String
             }
             if indexPath.row == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
