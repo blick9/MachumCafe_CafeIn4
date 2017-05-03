@@ -9,8 +9,6 @@
 import UIKit
 
 class ListViewController: UIViewController {
-    let tempArray = [[#imageLiteral(resourceName: "1"),#imageLiteral(resourceName: "2"),#imageLiteral(resourceName: "3"),#imageLiteral(resourceName: "4")],["압구정 사치커피", "스타벅스 역삼점", "카페 티", "클로이 뭐래츠"],["서울시 강남구 압구정동 471-47", "서울시 강남구 역삼동 714-28", "서울시 서초구 서초동 1024-5", "경기도 성남시 분당구 정자동 729번지"]]
-    
     var getUserID = String()
     var getUserBookmarkArray = [String]()
     
@@ -89,7 +87,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "DetailView" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! CafeDetailViewController
-                controller.index = indexPath.row
+                controller.cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
             }
         }
     }
