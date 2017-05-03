@@ -40,9 +40,6 @@ class CafeDetailViewController: UIViewController {
         reviewTableView.isScrollEnabled = false
         cafeNameLabel.sizeToFit()
         
-        //dump(Cafe.sharedInstance.cafeList[1].getCafe())
-
-        
         // Do any additional setup after loading the view.
     }
     
