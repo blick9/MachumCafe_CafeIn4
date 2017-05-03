@@ -52,7 +52,7 @@ class CafeDetailViewController: UIViewController {
         indexCafeID = Cafe.sharedInstance.cafeList[index].getCafe()["id"] as! String
         bookmarkButton.isSelected = getUserBookmarkArray.contains(indexCafeID) ? true : false
         
-        //테이블뷰
+        //테이블뷰 높이 오토레이아웃 설정
         let cell = detailTableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
         tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight) + Double(cell.frame.height))
         reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
