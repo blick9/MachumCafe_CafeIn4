@@ -44,8 +44,11 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
         let cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
-        
+        var imagesData = cafeData["imagesData"] as! [Data]
+
 //        cell.backgroundImageView.image = (tempArray[0][indexPath.row] as! UIImage)
+        
+        cell.backgroundImageView.image = UIImage(data: imagesData[0])
         cell.cafeNameLabel.text = cafeData["name"] as? String
         cell.cafeAddressLabel.text = cafeData["address"] as? String
         cell.distanceLabel.text = "1.2km"

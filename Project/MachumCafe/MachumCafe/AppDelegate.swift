@@ -27,8 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().isTranslucent = false
         
-        NetworkCafe.getAllCafeList { (cafe) in
-            Cafe.sharedInstance.cafeList = cafe
+        NetworkCafe.getAllCafeList { (cafeList) in
+            Cafe.sharedInstance.cafeList = cafeList
+            for cafe in cafeList {
+                NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe)
+            }
         }
         
         NetworkUser.getUser { (message, user) in

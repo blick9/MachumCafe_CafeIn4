@@ -20,10 +20,12 @@ class ModelCafe {
     fileprivate var category = [String]()
     fileprivate var summary : String?
     fileprivate var mainMenu : [String]?
+    fileprivate var imagesName = [String]()
+    fileprivate var imagesData : [Data]?
     
     init() {}
-    
-    init(id: String, name: String, phoneNumber: String, address: String, hours: String, latitude: String, longitude: String, category: [String], summary: String?, mainMenu: [String]?) {
+        
+    init(id: String, name: String, phoneNumber: String, address: String, hours: String, latitude: String, longitude: String, category: [String], summary: String?, mainMenu: [String]?, imagesName: [String]) {
         self.id = id
         self.name = name
         self.phoneNumber = phoneNumber
@@ -34,6 +36,12 @@ class ModelCafe {
         self.category = category
         self.summary = summary
         self.mainMenu = mainMenu
+        self.imagesName = imagesName
+        self.imagesData = [Data]()
+    }
+    
+    func setImagesData(imageData: Data) {
+        self.imagesData?.append(imageData)
     }
     
     func getCafe() -> [String : Any] {
@@ -48,6 +56,8 @@ class ModelCafe {
         cafeDic["category"] = category
         cafeDic["summary"] = summary
         cafeDic["mainMenu"] = mainMenu
+        cafeDic["imagesName"] = imagesName
+        cafeDic["imagesData"] = imagesData
         return cafeDic
     }
 }

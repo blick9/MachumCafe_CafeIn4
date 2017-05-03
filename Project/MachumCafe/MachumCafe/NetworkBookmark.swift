@@ -34,14 +34,15 @@ class NetworkBookmark {
                             mainMenu = isMainMenu
                         }
                         if let id = cafe["_id"] as? String,
-                            let name = cafe["name"] as? String,
-                            let phoneNumber = cafe["phoneNumber"] as? String,
-                            let address = cafe["address"] as? String,
-                            let hours = cafe["hours"] as? String,
-                            let latitude = cafe["latitude"] as? String,
-                            let longitude = cafe["longitude"] as? String,
-                            let category = cafe["category"] as? [String] {
-                            let modelCafe = ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu)
+                        let name = cafe["name"] as? String,
+                        let phoneNumber = cafe["phoneNumber"] as? String,
+                        let address = cafe["address"] as? String,
+                        let hours = cafe["hours"] as? String,
+                        let latitude = cafe["latitude"] as? String,
+                        let longitude = cafe["longitude"] as? String,
+                        let category = cafe["category"] as? [String],
+                        let imagesName = cafe["imagesName"] as? [String] {
+                            let modelCafe = ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu, imagesName: imagesName)
                             cafeList.append(modelCafe)
                         }
                     }
@@ -51,6 +52,17 @@ class NetworkBookmark {
                 }
             }
             callback(message, cafeList, userBookmark)
+        }
+    }
+    
+    // MARK: 카페 이미지 데이터모델에 저장
+    static func getImagesData(imagesName: [String], cafe: ModelCafe) {
+        let url = URLpath.getURL()
+        
+        for imageName in imagesName {
+            Alamofire.request("\(url)/api/v1/cafe/\(imageName)").responseData(completionHandler: { (response) in
+                cafe.setImagesData(imageData: response.result.value!)
+            })
         }
     }
     
