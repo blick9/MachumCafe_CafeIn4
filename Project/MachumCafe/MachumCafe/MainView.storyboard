@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="595-Ii-jiZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="595-Ii-jiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,16 +22,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5h8-d5-BCk">
-                                <rect key="frame" x="48" y="134" width="130" height="30"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F6t-lT-pER">
+                                <rect key="frame" x="0.0" y="64" width="375" height="135"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xJ-hB-bLg">
+                                        <rect key="frame" x="0.0" y="-64" width="375" height="135"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pO-HB-Avo">
+                                <rect key="frame" x="25" y="247" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="목록보기 (임시)"/>
+                                <state key="normal" image="24h"/>
                                 <connections>
-                                    <action selector="tempShowListButtonAction:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="Yrh-Y7-osz"/>
+                                    <action selector="allDayButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="uJQ-I4-SGH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpX-9X-2Up">
+                                <rect key="frame" x="142" y="247" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="smoke"/>
+                                <connections>
+                                    <action selector="smokingButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="zYE-UV-r51"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH3-Gk-CzM">
+                                <rect key="frame" x="142" y="365" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="restroom"/>
+                                <connections>
+                                    <action selector="restRoomButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="oMX-kr-ei6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeg-gc-XNu">
+                                <rect key="frame" x="260" y="365" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="meetingroom"/>
+                                <connections>
+                                    <action selector="meetingRoomButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="bjo-yL-CgP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ny-IF-Ozu">
+                                <rect key="frame" x="260" y="247" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="parking"/>
+                                <connections>
+                                    <action selector="parkingButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="DfN-MD-G1c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLl-SV-zdY">
+                                <rect key="frame" x="24" y="499" width="325" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="FindMyCafe_Bt"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-Y1-uB5">
+                                <rect key="frame" x="25" y="365" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="dessert"/>
+                                <connections>
+                                    <action selector="dessertButton:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="eks-bd-8tb"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="F6t-lT-pER" secondAttribute="trailing" id="dCh-oN-jo7"/>
+                            <constraint firstItem="F6t-lT-pER" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" id="qDz-NO-0FA"/>
+                            <constraint firstItem="F6t-lT-pER" firstAttribute="top" secondItem="JVo-Vc-SsV" secondAttribute="bottom" id="riS-X6-lBs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="E8O-iC-3wb">
                         <barButtonItem key="leftBarButtonItem" image="sideMenu_Bt" id="qOh-cn-rsI">
@@ -40,6 +99,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bannerImage" destination="6xJ-hB-bLg" id="pLW-MS-rZa"/>
+                        <outlet property="bannerView" destination="F6t-lT-pER" id="FLx-hf-uFg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHF-RG-6wF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,7 +247,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="595-Ii-jiZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iiz-BR-TRk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iiz-BR-TRk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -199,7 +262,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="24h" width="90" height="90"/>
+        <image name="FindMyCafe_Bt" width="325" height="52"/>
+        <image name="dessert" width="90" height="90"/>
+        <image name="meetingroom" width="90" height="90"/>
+        <image name="parking" width="90" height="90"/>
         <image name="profil_side" width="80" height="80"/>
+        <image name="restroom" width="90" height="90"/>
         <image name="sideMenu_Bt" width="25" height="19"/>
+        <image name="smoke" width="86" height="86"/>
     </resources>
 </document>
