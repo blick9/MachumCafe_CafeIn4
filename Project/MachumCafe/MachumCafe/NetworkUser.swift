@@ -30,7 +30,7 @@ class NetworkUser {
     }
     
     // MARK: 로그인
-    static func logIn(email: String, password: String, callback: @escaping (_ message: Bool, _ user: ModelUser) -> Void) {
+    static func logIn(email: String, password: String, callback: @escaping (_ message: Bool, _ modelUser: ModelUser) -> Void) {
         let parameters : Parameters = [
             "email" : email,
             "password" : password
@@ -53,7 +53,7 @@ class NetworkUser {
     }
     
     // MARK: 세션정보 있을 경우 유저모델 저장
-    static func getUser(callback: @escaping (_ message: Bool, _ user: ModelUser) -> Void) {
+    static func getUser(callback: @escaping (_ message: Bool, _ modelUser: ModelUser) -> Void) {
         Alamofire.request("\(url)/api/v1/user/login").responseJSON { (response) in
 
             var modelUser = ModelUser()
