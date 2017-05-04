@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--검색필터-->
+        <!--Filter View Controller-->
         <scene sceneID="Sf5-QG-eWK">
             <objects>
                 <viewController id="uKK-o8-uwZ" customClass="FilterViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,28 +22,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-B4-bvh">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcI-9A-jgi">
+                                <rect key="frame" x="197" y="602" width="162" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.62745098039215685" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="확인">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmFilter:" destination="uKK-o8-uwZ" eventType="touchUpInside" id="iGd-oT-JfQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-B4-bvh">
                                 <rect key="frame" x="16" y="602" width="162" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="초기화">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcI-9A-jgi">
-                                <rect key="frame" x="197" y="602" width="162" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="편의" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGP-IN-f57">
+                                <rect key="frame" x="77" y="271" width="40" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.62745098039215685" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="확인">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="convenient" translatesAutoresizingMaskIntoConstraints="NO" id="UFP-to-LzD">
+                                <rect key="frame" x="28" y="260" width="41" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zwy-cJ-bWy" customClass="FilterButtonUIView" customModule="MachumCafe" customModuleProvider="target">
+                                <rect key="frame" x="139" y="176" width="210" height="210"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="WcI-9A-jgi" secondAttribute="trailing" constant="16" id="6ut-Bt-73A"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="NEe-B4-bvh" secondAttribute="bottom" constant="20" id="Ai6-f2-hQP"/>
+                            <constraint firstItem="NEe-B4-bvh" firstAttribute="width" secondItem="WcI-9A-jgi" secondAttribute="width" id="JEU-I0-UQP"/>
+                            <constraint firstItem="WcI-9A-jgi" firstAttribute="leading" secondItem="NEe-B4-bvh" secondAttribute="trailing" constant="19" id="QkW-WU-arB"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="WcI-9A-jgi" secondAttribute="bottom" constant="20" id="f6a-Mj-iSg"/>
+                            <constraint firstItem="NEe-B4-bvh" firstAttribute="leading" secondItem="O1O-N2-Ey6" secondAttribute="leading" constant="16" id="maQ-PT-vcY"/>
+                            <constraint firstItem="NEe-B4-bvh" firstAttribute="centerY" secondItem="WcI-9A-jgi" secondAttribute="centerY" id="uIK-Ly-ISM"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="검색필터" id="vfd-iL-zDZ">
+                    <navigationItem key="navigationItem" id="vfd-iL-zDZ">
                         <barButtonItem key="leftBarButtonItem" image="back_Bt" id="mUS-v9-hfO">
                             <connections>
                                 <action selector="closeButtonAction:" destination="uKK-o8-uwZ" id="Kjd-OS-l6H"/>
@@ -59,7 +86,7 @@
             <objects>
                 <navigationController storyboardIdentifier="FilterView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aJu-HI-y5m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SF-Me-Z1C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9SF-Me-Z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -75,5 +102,6 @@
     </scenes>
     <resources>
         <image name="back_Bt" width="12" height="20"/>
+        <image name="convenient" width="42" height="44"/>
     </resources>
 </document>

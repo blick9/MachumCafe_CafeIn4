@@ -27,7 +27,7 @@ class FilterButtonUIView: UIView {
         bathroom.backgroundColor = UIColor.red
         meetingroom.backgroundColor = UIColor.blue
         
-        allnight.currentTitle = 
+        
         allnight.addTarget(self, action: #selector(ratingButtonTapped(button:)), for: .touchDown)
         
         addSubview(allnight)
