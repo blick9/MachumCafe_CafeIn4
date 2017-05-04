@@ -41,15 +41,9 @@ class SignUpViewController: UIViewController {
         }
         NetworkUser.register(email: emailTextField.text!, password: passwordTextField.text!, nickname: nicknameTextField.text!) { (message) in
             if message {
-                let alert = UIAlertController(title: "Alert", message: "회원가입 완료 :)!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
+                UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "회원가입 완료 :)", isHandler: true)
             } else {
-                let alert = UIAlertController(title: "Alert", message: "이미 가입된 사용자입니다.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "이미 가입된 사용자입니다.", isHandler: false)
             }
         }
     }

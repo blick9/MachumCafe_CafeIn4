@@ -22,6 +22,18 @@ extension UIAlertController {
         alertController.addAction(logInAction)
         target.present(alertController, animated: true, completion: nil)
     }
+    
+    func oneButtonAlert(target: UIViewController, title: String, message: String, isHandler: Bool) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        if isHandler {
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                target.dismiss(animated: true, completion: nil)
+            }))
+        } else {
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        }
+        target.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension UIActivityIndicatorView {
