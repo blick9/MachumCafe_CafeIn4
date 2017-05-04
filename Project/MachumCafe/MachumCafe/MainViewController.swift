@@ -28,6 +28,11 @@ class MainViewController: UIViewController {
             mainBannerScrollView.contentSize.width = mainBannerScrollView.frame.width * CGFloat(i + 1)
             mainBannerScrollView.addSubview(bannerView)
         }
+        
+        if let xib = Bundle.main.loadNibNamed("LocationLabelView", owner: self, options: nil)?.first as? LocationLabelView {
+            self.view.addSubview(xib)
+            xib.setLocationButton.addTarget(xib, action: #selector(xib.presentSetLocationView(target:)), for: .touchUpInside)
+        }
     }
     
     override func didReceiveMemoryWarning() {
