@@ -17,7 +17,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var bathroom: UIButton!
     @IBOutlet weak var meetingroom: UIButton!
     var buttonArray = [UIButton]()
-    
+    var filterArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +40,20 @@ class FilterViewController: UIViewController {
     }
     func pickFilter(_ button: UIButton) {
         button.isSelected = !button.isSelected
-        print(button.currentTitle)
+        
+//        if button.isSelected == false {
+//            filterArray
+//        }
+        filterArray.append(button.currentTitle!)
+        print(filterArray)
+        
         
     }
 
-    
-    
-
-    
+    @IBAction func resetFilterArray(_ sender: Any) {
+        filterArray.removeAll()
+        buttonArray.map(){if $0.isSelected == true {$0.isSelected = false}}
+    }
     @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

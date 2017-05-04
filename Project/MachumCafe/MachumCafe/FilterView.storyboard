@@ -40,6 +40,9 @@
                                 <state key="normal" title="초기화">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetFilterArray:" destination="uKK-o8-uwZ" eventType="touchUpInside" id="ZbW-cE-8pp"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="편의" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGP-IN-f57">
                                 <rect key="frame" x="83" y="228" width="40" height="21"/>
@@ -119,7 +122,7 @@
             <objects>
                 <navigationController storyboardIdentifier="FilterView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aJu-HI-y5m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SF-Me-Z1C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9SF-Me-Z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
