@@ -28,7 +28,6 @@ class CafeDetailViewController: UIViewController {
  //  @IBOutlet weak var reviewMoreButton: UIButton!
     
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
-    
     let reviewer = ["구제이", "한나", "메이플"]
     
     
@@ -79,7 +78,7 @@ class CafeDetailViewController: UIViewController {
                 })
                 self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
             } else {
-                UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기 오류", message: "로그인 후 이용해주세요.")
+                UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
             }
         }
     }

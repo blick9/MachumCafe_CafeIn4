@@ -9,29 +9,37 @@
 import UIKit
 
 class BookmarkViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
-    var userId = String()
+    var userId = User.sharedInstance.user.getUser()["id"] as! String
     var userBookmark = [String]()
+    
+    @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewWillAppear(_ animated: Bool) {
-        // 네트워크에서 유저가 가진 북마크 목록 들고 오기
-        getBookmarkList()
+        userBookmark = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        self.collectionView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "즐겨찾기"
         collectionView.delegate = self
         collectionView.dataSource = self
+        getBookmarkList()
     }
     
     func getBookmarkList() {
-        userId = User.sharedInstance.user.getUser()["id"] as! String
-        userBookmark = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        NetworkBookmark.getMyBookmark(userId: userId) { (message, cafe, bookmarkID) in
-            print(message)
-            Cafe.sharedInstance.bookmarkList = cafe
+        let activityIndicator = UIActivityIndicatorView()
+        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.collectionView)
+        NetworkBookmark.getMyBookmark(userId: userId) { (message, cafeList, bookmarkID) in
+            Cafe.sharedInstance.bookmarkList = cafeList
+            for cafe in cafeList {
+                NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe)
+            }
             self.collectionView.reloadData()
+            activityIndicator.stopActivityIndicator(view: self.collectionView, currentIndicator: startedIndicator)
         }
     }
+    
+    
     
     @IBAction func closeButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -50,29 +58,24 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! BookmarkViewCell
-        
-        cell.bookmarkCafeName.text = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()["name"] as? String
-        cell.bookmarkCafeAddress.text = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()["address"] as? String
+        let bookmarkCafeData = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()
+        let imagesData = bookmarkCafeData["imagesData"] as? [Data]
+        print(imagesData)
+//        if let test = imagesData?[0] {
+//            print(test)
+//            cell.bookmarkCafeImage.image = UIImage(data: test)
+//        }
+        cell.bookmarkCafeName.text = bookmarkCafeData["name"] as? String
+        cell.bookmarkCafeAddress.text = bookmarkCafeData["address"] as? String
              return cell
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("You selected cell #\(indexPath.item)!")
-//        prepare(for: , sender: <#T##Any?#>)
-//    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailView" {
-            if let item = self.collectionView.indexPathsForSelectedItems{
-                let indexPath = item[0]
-                    print(indexPath.row)
-                _ = segue.destination as! CafeDetailViewController
-                for cafe in Cafe.sharedInstance.cafeList {
-                    if let cafeID = cafe.getCafe()["id"] {
-                        if cafeID as! String == userBookmark[indexPath.row] {
-                            
-                        }
-                    }
-                }
-                // cafeId를 이용해서 디테일뷰 그릴 수 있게 네트워크카페 api가 있음 좋겠다.
+            if let indexPaths = self.collectionView.indexPathsForSelectedItems{
+                let controller = segue.destination as! CafeDetailViewController
+                controller.cafeData = Cafe.sharedInstance.bookmarkList[indexPaths[0].row].getCafe()
             }
         }
     }
