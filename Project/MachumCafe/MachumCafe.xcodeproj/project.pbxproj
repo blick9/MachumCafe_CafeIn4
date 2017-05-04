@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0D5F55AB47AB6A2919F41773 /* Pods_MachumCafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */; };
+		A702F2161EBB06DA003B390C /* LocationLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A702F2151EBB06DA003B390C /* LocationLabelView.xib */; };
+		A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702F2171EBB07E6003B390C /* LocationLabelView.swift */; };
+		A702F21E1EBB273F003B390C /* SetLocationMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A702F21D1EBB273F003B390C /* SetLocationMapView.storyboard */; };
+		A702F2201EBB2750003B390C /* SetLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702F21F1EBB2750003B390C /* SetLocationMapViewController.swift */; };
 		A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723B6671EAF3FBF00469FE4 /* AppDelegate.swift */; };
 		A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */; };
 		A723B6721EAF3FBF00469FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A723B6701EAF3FBF00469FE4 /* LaunchScreen.storyboard */; };
@@ -54,6 +58,10 @@
 
 /* Begin PBXFileReference section */
 		1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.release.xcconfig"; sourceTree = "<group>"; };
+		A702F2151EBB06DA003B390C /* LocationLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationLabelView.xib; sourceTree = "<group>"; };
+		A702F2171EBB07E6003B390C /* LocationLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLabelView.swift; sourceTree = "<group>"; };
+		A702F21D1EBB273F003B390C /* SetLocationMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SetLocationMapView.storyboard; sourceTree = "<group>"; };
+		A702F21F1EBB2750003B390C /* SetLocationMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLocationMapViewController.swift; sourceTree = "<group>"; };
 		A723B6641EAF3FBF00469FE4 /* MachumCafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachumCafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A723B6671EAF3FBF00469FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +139,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A702F2191EBB1C23003B390C /* XibView */ = {
+			isa = PBXGroup;
+			children = (
+				A702F2171EBB07E6003B390C /* LocationLabelView.swift */,
+				A702F2151EBB06DA003B390C /* LocationLabelView.xib */,
+			);
+			name = XibView;
+			sourceTree = "<group>";
+		};
+		A702F21A1EBB270A003B390C /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				A702F21F1EBB2750003B390C /* SetLocationMapViewController.swift */,
+				A702F21D1EBB273F003B390C /* SetLocationMapView.storyboard */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
 		A723B65B1EAF3FBF00469FE4 = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +188,9 @@
 				B58AAFD71EB6CC82002313CC /* Bookmark */,
 				A723B67D1EAF42F200469FE4 /* ListContainerView */,
 				A7B73A511EB2595E00EB24C6 /* FilterView */,
+				A702F21A1EBB270A003B390C /* MapView */,
 				A7C0F2F41EB7909A0086ADAA /* SettingView */,
+				A702F2191EBB1C23003B390C /* XibView */,
 				A7B73A491EAF4E2A00EB24C6 /* Extension */,
 				A7B73A4A1EAF4F4E00EB24C6 /* Resource */,
 			);
@@ -362,12 +390,14 @@
 				A723B67C1EAF42E600469FE4 /* ListView.storyboard in Resources */,
 				A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */,
 				A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */,
+				A702F21E1EBB273F003B390C /* SetLocationMapView.storyboard in Resources */,
 				A7B73A551EB2597700EB24C6 /* FilterView.storyboard in Resources */,
 				A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */,
 				B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
 				B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */,
 				B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */,
+				A702F2161EBB06DA003B390C /* LocationLabelView.xib in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,8 +479,10 @@
 				A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */,
 				B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */,
 				A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */,
+				A702F2201EBB2750003B390C /* SetLocationMapViewController.swift in Sources */,
 				B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
+				A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */,
 				B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */,
 				A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */,
 				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
