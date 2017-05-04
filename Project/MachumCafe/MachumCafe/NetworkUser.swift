@@ -10,9 +10,11 @@ import Foundation
 import Alamofire
 
 class NetworkUser {
+    
+    private static let url = URLpath.getURL()
+
     // MARK: 회원가입
     static func register(email: String, password: String, nickname: String, callback: @escaping (_ message: Bool) -> Void) {
-        let url = URLpath.getURL()
         var message = Bool()
         
         let parameters : Parameters = [
@@ -33,7 +35,6 @@ class NetworkUser {
     
     // MARK: 로그인
     static func logIn(email: String, password: String, callback: @escaping (_ message: Bool, _ user: ModelUser) -> Void) {
-        let url = URLpath.getURL()
         var message = Bool()
         var user = ModelUser()
         
@@ -63,7 +64,6 @@ class NetworkUser {
     
     // MARK: 세션정보 있을 경우 유저모델 저장
     static func getUser(callback: @escaping (_ message: Bool, _ user: ModelUser) -> Void) {
-        let url = URLpath.getURL()
         var message = Bool()
         var user = ModelUser()
         

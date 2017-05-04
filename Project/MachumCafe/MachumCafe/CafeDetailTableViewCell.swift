@@ -11,11 +11,7 @@ import UIKit
 class CafeDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
-
     @IBOutlet weak var detailLabel: UILabel!
-    
-    
-
     
     override func awakeFromNib() {
         super.awakeFromNib()

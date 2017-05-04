@@ -10,7 +10,7 @@ import UIKit
 
 class CafeDetailViewController: UIViewController {
     
-    var index = Int()
+    var cafeData = [String:Any]()
     var getUserID = String()
     var getUserBookmarkArray = [String]()
     var indexCafeID = String()
@@ -23,14 +23,13 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
+    @IBOutlet weak var cafeImageView: UIImageView!
     
  //  @IBOutlet weak var reviewMoreButton: UIButton!
     
-    let cafeName = ["02-512-2395", "서울특별시 강남구 도산대로67길 13-12(청담동)","평일 AM 11:00 ~ AM 01:00","주차 가능","매장 내 위치","주차 가능","매장 내 위치"]
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
     
     let reviewer = ["구제이", "한나", "메이플"]
-    
     
     
     override func viewDidLoad() {
@@ -41,9 +40,6 @@ class CafeDetailViewController: UIViewController {
         reviewTableView.isScrollEnabled = false
         cafeNameLabel.sizeToFit()
         
-        //dump(Cafe.sharedInstance.cafeList[1].getCafe())
-
-        
         // Do any additional setup after loading the view.
     }
     
@@ -52,10 +48,10 @@ class CafeDetailViewController: UIViewController {
         // UserBookmark 정보 불러오기
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        indexCafeID = Cafe.sharedInstance.cafeList[index].getCafe()["id"] as! String
+        indexCafeID = cafeData["id"] as! String
         bookmarkButton.isSelected = getUserBookmarkArray.contains(indexCafeID) ? true : false
         
-        //테이블뷰
+        //테이블뷰 높이 오토레이아웃 설정
         let cell = detailTableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
         tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight) + Double(cell.frame.height))
         reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
@@ -63,10 +59,14 @@ class CafeDetailViewController: UIViewController {
     }
     
     func viewInit() {
+        let imagesData = cafeData["imagesData"] as! [Data]
+        
+        navigationItem.title = cafeData["name"] as? String
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
-        cafeNameLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["name"] as? String
+        cafeNameLabel.text = cafeData["name"] as? String
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
+        cafeImageView.image = UIImage(data: imagesData[0])
     }
     
     func bookmarkToggleButton() {
@@ -124,15 +124,19 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
             cell.detailLabel.sizeToFit()
+            
             if indexPath.row == 0 {
-                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["phoneNumber"] as? String
+                cell.detailLabel.text = cafeData["phoneNumber"] as? String
             }
+            
             if indexPath.row == 1 {
-                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["address"] as? String
+                cell.detailLabel.text = cafeData["address"] as? String
             }
+            
             if indexPath.row == 2 {
-                cell.detailLabel.text = Cafe.sharedInstance.cafeList[index].getCafe()["hours"] as? String
+                cell.detailLabel.text = cafeData["hours"] as? String
             }
+            
             if indexPath.row == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
                 cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
@@ -140,11 +144,10 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
                 return cell
             }
-
             cell.iconImage.image = cafeIcon[indexPath.row]
             return cell
-            }
-        else {
+            
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
             cell.reviewerNickName.text = reviewer[indexPath.row]
             return cell
