@@ -40,7 +40,6 @@
 		B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */; };
 		B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */; };
 		B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */; };
-		B5E9A8C31EBAD62A0016F2BE /* FilterButtonUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E9A8C21EBAD62A0016F2BE /* FilterButtonUIView.swift */; };
 		B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */; };
 		B7E57DA61EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */; };
 		B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */; };
@@ -83,7 +82,6 @@
 		B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
 		B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewCell.swift; sourceTree = "<group>"; };
-		B5E9A8C21EBAD62A0016F2BE /* FilterButtonUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterButtonUIView.swift; sourceTree = "<group>"; };
 		B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CafeDetailView.storyboard; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				A7B73A521EB2597000EB24C6 /* FilterViewController.swift */,
-				B5E9A8C21EBAD62A0016F2BE /* FilterButtonUIView.swift */,
 				A7B73A541EB2597700EB24C6 /* FilterView.storyboard */,
 			);
 			name = FilterView;
@@ -429,7 +426,6 @@
 				B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */,
 				A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */,
 				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
-				B5E9A8C31EBAD62A0016F2BE /* FilterButtonUIView.swift in Sources */,
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
 				A7B73A5D1EB32E1300EB24C6 /* NetworkCafe.swift in Sources */,
 				A7B73A5F1EB32E1300EB24C6 /* URLpath.swift in Sources */,
