@@ -28,16 +28,9 @@ class LogInViewController: UIViewController {
             if message {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
-                
-                let alert = UIAlertController(title: "Alert", message: "로그인!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (_) in
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "Alert", message: "로그인 실패", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                UIAlertController().oneButtonAlert(target: self, title: "로그인 실패!", message: "아이디 또는 비밀번호를 다시 확인하세요.", isHandler: false)
             }
         }
     }
