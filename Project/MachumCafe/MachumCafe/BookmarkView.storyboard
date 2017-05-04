@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7Ib-IV-uQs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,80 +22,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bJ9-4f-J9z">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gTu-O8-AeG">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gTu-O8-AeG">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.93717105263157896" green="0.93717105263157896" blue="0.93717105263157896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="gax-cz-VkI">
+                                    <size key="itemSize" width="183" height="211"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="3" minY="3" maxX="3" maxY="3"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="gn4-QF-wOi" customClass="BookmarkViewCell" customModule="MachumCafe" customModuleProvider="target">
+                                        <rect key="frame" x="3" y="3" width="183" height="211"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gax-cz-VkI">
-                                            <size key="itemSize" width="182" height="246"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="gn4-QF-wOi" customClass="BookmarkViewCell" customModule="MachumCafe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="182" height="246"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="246"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fB9-st-8am">
-                                                            <rect key="frame" x="0.0" y="0.0" width="182" height="159"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-dB-R0k">
-                                                            <rect key="frame" x="3" y="162" width="179" height="37"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-0F-Ofj">
-                                                            <rect key="frame" x="2" y="205" width="179" height="37"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <color key="textColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </view>
-                                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <outlet property="bookmarkCafeAddress" destination="SHb-0F-Ofj" id="4v0-3x-NQp"/>
-                                                    <outlet property="bookmarkCafeImage" destination="fB9-st-8am" id="aR5-It-bM0"/>
-                                                    <outlet property="bookmarkCafeName" destination="IBP-dB-R0k" id="LKG-p0-iPY"/>
-                                                    <segue destination="y1E-Ce-4lH" kind="show" identifier="DetailView" id="rlK-ou-dZr"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                    </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaR-Xd-HVr">
-                                        <rect key="frame" x="348" y="8" width="19" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="cancelButton"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="183" height="211"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="fB9-st-8am">
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="147"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스타벅스 역삼점" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-dB-R0k">
+                                                    <rect key="frame" x="5" y="155" width="176" height="20"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="서울시 강남구 역삼동 ㄴㄴㄴ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-0F-Ofj">
+                                                    <rect key="frame" x="5" y="175" width="176" height="29"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="10"/>
+                                                    <color key="textColor" red="0.81350740131578947" green="0.81350740131578947" blue="0.81350740131578947" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="fB9-st-8am" secondAttribute="trailing" id="9uR-f3-olR"/>
+                                            <constraint firstAttribute="bottom" secondItem="fB9-st-8am" secondAttribute="bottom" constant="64" id="Fba-Cm-adG"/>
+                                            <constraint firstItem="IBP-dB-R0k" firstAttribute="top" secondItem="fB9-st-8am" secondAttribute="bottom" constant="8" id="emL-ua-6fx"/>
+                                            <constraint firstAttribute="trailing" secondItem="IBP-dB-R0k" secondAttribute="trailing" constant="2" id="g4E-5h-RZU"/>
+                                            <constraint firstItem="fB9-st-8am" firstAttribute="leading" secondItem="gn4-QF-wOi" secondAttribute="leading" id="ggH-Ko-LBY"/>
+                                            <constraint firstItem="SHb-0F-Ofj" firstAttribute="leading" secondItem="gn4-QF-wOi" secondAttribute="leading" constant="5" id="jCH-bT-ku2"/>
+                                            <constraint firstAttribute="trailing" secondItem="SHb-0F-Ofj" secondAttribute="trailing" constant="2" id="jFL-cZ-PFF"/>
+                                            <constraint firstItem="IBP-dB-R0k" firstAttribute="leading" secondItem="gn4-QF-wOi" secondAttribute="leading" constant="5" id="jWA-ea-Dna"/>
+                                            <constraint firstItem="fB9-st-8am" firstAttribute="top" secondItem="gn4-QF-wOi" secondAttribute="top" id="tDf-X1-WjP"/>
+                                            <constraint firstItem="SHb-0F-Ofj" firstAttribute="top" secondItem="IBP-dB-R0k" secondAttribute="bottom" id="uYB-fI-Xwo"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="SHb-0F-Ofj" secondAttribute="bottom" constant="-1" id="vtf-oc-Igh"/>
+                                        </constraints>
                                         <connections>
-                                            <action selector="closeButtonAction:" destination="nLY-XD-UA8" eventType="touchUpInside" id="x7i-EG-s9X"/>
+                                            <outlet property="bookmarkCafeAddress" destination="SHb-0F-Ofj" id="4v0-3x-NQp"/>
+                                            <outlet property="bookmarkCafeImage" destination="fB9-st-8am" id="aR5-It-bM0"/>
+                                            <outlet property="bookmarkCafeName" destination="IBP-dB-R0k" id="LKG-p0-iPY"/>
+                                            <segue destination="y1E-Ce-4lH" kind="show" identifier="DetailView" id="rlK-ou-dZr"/>
                                         </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gTu-O8-AeG" secondAttribute="trailing" id="4m6-wn-hu7"/>
+                            <constraint firstItem="gTu-O8-AeG" firstAttribute="leading" secondItem="AHt-vu-W26" secondAttribute="leading" id="KPk-JB-LAl"/>
+                            <constraint firstItem="9hH-TG-i4f" firstAttribute="top" secondItem="gTu-O8-AeG" secondAttribute="bottom" id="ZWp-nF-RjK"/>
+                            <constraint firstItem="gTu-O8-AeG" firstAttribute="top" secondItem="mih-u8-iPg" secondAttribute="bottom" id="wHm-JY-x0Z"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4ty-f7-AeN"/>
+                    <navigationItem key="navigationItem" id="4ty-f7-AeN">
+                        <barButtonItem key="rightBarButtonItem" image="cancelButton" id="p6g-5E-nqP">
+                            <connections>
+                                <action selector="closeButtonAction:" destination="nLY-XD-UA8" id="6rh-f9-qoW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="gTu-O8-AeG" id="L08-pN-67u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBr-VE-xKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754.39999999999998" y="-808.24587706146929"/>
+            <point key="canvasLocation" x="2264.8000000000002" y="-803.74812593703155"/>
         </scene>
         <!--CafeDetail-->
         <scene sceneID="Zl8-gb-lld">
@@ -102,28 +109,29 @@
                 <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="CafeDetail" id="y1E-Ce-4lH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cbH-XG-D7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="-855"/>
+            <point key="canvasLocation" x="3115" y="-818"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="MLL-ok-0as">
+        <scene sceneID="2w7-tY-5G6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Ib-IV-uQs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gVh-GS-tpg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UMK-CM-SiJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DiN-nV-BLd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="nLY-XD-UA8" kind="relationship" relationship="rootViewController" id="0xN-S6-4Cb"/>
+                        <segue destination="nLY-XD-UA8" kind="relationship" relationship="rootViewController" id="lPz-Y3-ILZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cgQ-i0-TDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AFt-ni-L4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184.80000000000001" y="-808.24587706146929"/>
+            <point key="canvasLocation" x="1532" y="-808.24587706146929"/>
         </scene>
     </scenes>
     <resources>
+        <image name="1" width="800" height="533"/>
         <image name="cancelButton" width="19" height="20"/>
     </resources>
 </document>
