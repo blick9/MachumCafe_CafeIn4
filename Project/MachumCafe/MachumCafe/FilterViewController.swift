@@ -40,19 +40,30 @@ class FilterViewController: UIViewController {
     }
     func pickFilter(_ button: UIButton) {
         button.isSelected = !button.isSelected
-        
-//        if button.isSelected == false {
-//            filterArray
-//        }
-        filterArray.append(button.currentTitle!)
+
+        if button.isSelected == true {
+            for i in 0..<filterArray.count {
+                if button.currentTitle == filterArray[i] {
+                    filterArray.remove(at: i)
+                }
+            }
+            filterArray.append(button.currentTitle!)
+        }
+        else {
+            for i in 0..<filterArray.count {
+                if button.currentTitle == filterArray[i] {
+                    filterArray.remove(at: i)
+                    break
+                }
+            }
+        }
         print(filterArray)
-        
-        
     }
 
     @IBAction func resetFilterArray(_ sender: Any) {
         filterArray.removeAll()
         buttonArray.map(){if $0.isSelected == true {$0.isSelected = false}}
+        print(filterArray)
     }
     @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)

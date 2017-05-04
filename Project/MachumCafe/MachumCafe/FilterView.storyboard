@@ -122,7 +122,7 @@
             <objects>
                 <navigationController storyboardIdentifier="FilterView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aJu-HI-y5m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9SF-Me-Z1C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SF-Me-Z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
