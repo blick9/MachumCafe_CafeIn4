@@ -48,7 +48,7 @@ class ListViewController: UIViewController {
                 })
                 buttonTag.isSelected = !buttonTag.isSelected
             } else {
-                UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기 오류", message: "로그인 후 이용해주세요")
+                UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요")
             }
         }
     }
@@ -69,7 +69,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
         let cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
-        var imagesData = cafeData["imagesData"] as! [Data]
+        let imagesData = cafeData["imagesData"] as! [Data]
         
         cell.backgroundImageView.image = UIImage(data: imagesData[0])
         cell.cafeNameLabel.text = cafeData["name"] as? String
