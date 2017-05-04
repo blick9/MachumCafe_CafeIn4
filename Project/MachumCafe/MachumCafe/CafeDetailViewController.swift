@@ -145,8 +145,9 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             }
             cell.iconImage.image = cafeIcon[indexPath.row]
             return cell
+            }
             
-        } else {
+        else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
             cell.reviewerNickName.text = reviewer[indexPath.row]
             return cell

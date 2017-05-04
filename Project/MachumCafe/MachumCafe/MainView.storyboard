@@ -190,7 +190,6 @@
                                         <rect key="frame" x="95" y="593" width="30" height="30"/>
                                         <state key="normal" title="설정"/>
                                         <connections>
-                                            <action selector="reportButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="DZI-GT-BDk"/>
                                             <action selector="settingButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="T3L-JM-a67"/>
                                         </connections>
                                     </button>
@@ -198,7 +197,7 @@
                                         <rect key="frame" x="11" y="318" width="198" height="30"/>
                                         <state key="normal" title="등록제안"/>
                                         <connections>
-                                            <action selector="reportButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="av7-7y-rVg"/>
+                                            <action selector="suggestionButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="xCI-et-4xr"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grh-pV-gvX">
