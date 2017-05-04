@@ -9,22 +9,67 @@
 import UIKit
 
 class FilterViewController: UIViewController {
-
+    
+    @IBOutlet weak var allnight: UIButton!
+    @IBOutlet weak var dessert: UIButton!
+    @IBOutlet weak var smoking: UIButton!
+    @IBOutlet weak var parkinglot: UIButton!
+    @IBOutlet weak var bathroom: UIButton!
+    @IBOutlet weak var meetingroom: UIButton!
+    var buttonArray = [UIButton]()
+    var filterArray = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "필터검색"
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        buttonArray = [allnight, dessert,smoking,parkinglot,bathroom,meetingroom]
+        designButtonColor(buttonArray: buttonArray)
     }
     
+    func designButtonColor(buttonArray : [UIButton]) {
+        for button in buttonArray {
+            button.layer.cornerRadius = 10
+            button.layer.borderWidth = 2
+            button.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
+            button.tintColor = UIColor.clear
+            button.setTitleColor(UIColor.init(red: 51, green: 51, blue: 51), for: .normal)
+            button.setTitleColor(UIColor.init(red: 51, green: 51, blue: 51), for: .selected)
+            button.setBackgroundImage(#imageLiteral(resourceName: "backgrondColor"), for: .selected)
+            button.addTarget(self, action: #selector(pickFilter(_:)) , for: .touchUpInside)
+        }
+    }
+    func pickFilter(_ button: UIButton) {
+        button.isSelected = !button.isSelected
+
+        if button.isSelected == true {
+            for i in 0..<filterArray.count {
+                if button.currentTitle == filterArray[i] {
+                    filterArray.remove(at: i)
+                }
+            }
+            filterArray.append(button.currentTitle!)
+        }
+        else {
+            for i in 0..<filterArray.count {
+                if button.currentTitle == filterArray[i] {
+                    filterArray.remove(at: i)
+                    break
+                }
+            }
+        }
+        print(filterArray)
+    }
+
+    @IBAction func resetFilterArray(_ sender: Any) {
+        filterArray.removeAll()
+        buttonArray.map(){if $0.isSelected == true {$0.isSelected = false}}
+        print(filterArray)
+    }
     @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    //TODO:- close버튼 바꾸기
+    @IBAction func confirmFilter(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }
+
