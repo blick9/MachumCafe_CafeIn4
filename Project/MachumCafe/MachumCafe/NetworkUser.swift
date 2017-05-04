@@ -16,7 +16,6 @@ class NetworkUser {
 
     // MARK: 회원가입
     static func register(email: String, password: String, nickname: String, callback: @escaping (_ message: Bool) -> Void) {
-        
         let parameters : Parameters = [
             "email" : email,
             "password" : password,
@@ -32,16 +31,13 @@ class NetworkUser {
     
     // MARK: 로그인
     static func logIn(email: String, password: String, callback: @escaping (_ message: Bool, _ user: ModelUser) -> Void) {
-        
         let parameters : Parameters = [
             "email" : email,
             "password" : password
         ]
         
         Alamofire.request("\(url)/api/v1/user/login", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-            
             var modelUser = ModelUser()
-
             let res = JSON(data: response.data!)
             let message = res["message"].boolValue
             if let user = res["user"].dictionary {
@@ -58,7 +54,6 @@ class NetworkUser {
     
     // MARK: 세션정보 있을 경우 유저모델 저장
     static func getUser(callback: @escaping (_ message: Bool, _ user: ModelUser) -> Void) {
-        
         Alamofire.request("\(url)/api/v1/user/login").responseJSON { (response) in
 
             var modelUser = ModelUser()

@@ -21,6 +21,12 @@ class BookmarkViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        NetworkBookmark.getMyBookmark(userId: User.sharedInstance.user.getUser()["id"] as! String) { (message, modelcafe, str) in
+            print(modelcafe, "modelCafe")
+            print(str, "userbookmark")
+            
+        }
     }
     
     func getBookmarkList() {

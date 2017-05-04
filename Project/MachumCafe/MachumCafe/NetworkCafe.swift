@@ -20,8 +20,10 @@ class NetworkCafe {
 
         Alamofire.request("\(url)/api/v1/cafe").responseJSON { (response) in
             let cafes = JSON(data: response.data!).arrayValue
+            
             let _ = cafes.map {
                 let cafe = $0.dictionaryValue
+                
                 if let id = cafe["_id"]?.stringValue,
                 let name = cafe["name"]?.stringValue,
                 let phoneNumber = cafe["phoneNumber"]?.stringValue,
@@ -42,12 +44,11 @@ class NetworkCafe {
     }
     
     // MARK: 카페 이미지 데이터모델에 저장
-    // TODO: 사진 콜백으로 빼기
-    static func getImagesData(imagesName: [String], cafe: ModelCafe) {
+    static func getImagesData(imagesName: [String], cafe: ModelCafe, callback: @escaping (_ imageData: Data) -> Void) {
         
         for imageName in imagesName {
             Alamofire.request("\(url)/api/v1/cafe/\(imageName)").responseData(completionHandler: { (response) in
-                cafe.setImagesData(imageData: response.result.value!)
+                callback(response.result.value!)
             })
         }
     }

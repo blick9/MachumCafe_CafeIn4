@@ -30,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkCafe.getAllCafeList { (cafeList) in
             Cafe.sharedInstance.cafeList = cafeList
             for cafe in cafeList {
-                NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe)
+                NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe, callback: { (imageData) in
+                    cafe.setImagesData(imageData: imageData)
+                })
             }
         }
         
