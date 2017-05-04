@@ -91,11 +91,30 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rSe-2v-h04"/>
                     <connections>
                         <outlet property="suggestiontableView" destination="hlh-vm-DEL" id="ogk-Zl-vYn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5s-l9-0NV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4421.6000000000004" y="852.3238380809596"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="InU-yR-fiZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tl9-lI-Cp7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Tqo-KX-Etm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RGy-aV-rfK" kind="relationship" relationship="rootViewController" id="VgK-dz-wUK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gv1-sL-Vkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3482.4000000000001" y="852.3238380809596"/>
         </scene>
