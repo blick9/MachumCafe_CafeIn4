@@ -8,46 +8,41 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class NetworkCafe {
     
     private static let url = URLpath.getURL()
     
     // MARK: 카페 목록 데이터모델에 저장
-    static func getAllCafeList(callback: @escaping (_ cafeList: [ModelCafe]) -> Void) {
-        var cafeList = [ModelCafe]()
+    static func getAllCafeList(callback: @escaping (_ modelCafe: [ModelCafe]) -> Void) {
+        var modelCafe = [ModelCafe]()
 
         Alamofire.request("\(url)/api/v1/cafe").responseJSON { (response) in
-            if let cafes = response.result.value as? [[String : Any]] {
-                for cafe in cafes {
-                    var summary : String?
-                    var mainMenu : [String]?
-                    
-                    if let isSummary = cafe["summary"] as? String {
-                        summary = isSummary
-                    }
-                    if let isMainMenu = cafe["mainMenu"] as? [String] {
-                        mainMenu = isMainMenu
-                    }
-                    if let id = cafe["_id"] as? String,
-                    let name = cafe["name"] as? String,
-                    let phoneNumber = cafe["phoneNumber"] as? String,
-                    let address = cafe["address"] as? String,
-                    let hours = cafe["hours"] as? String,
-                    let latitude = cafe["latitude"] as? String,
-                    let longitude = cafe["longitude"] as? String,
-                    let category = cafe["category"] as? [String],
-                    let imagesName = cafe["imagesName"] as? [String] {
-                        let modelCafe = ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu, imagesName: imagesName)
-                        cafeList.append(modelCafe)
-                    }
+            let cafes = JSON(data: response.data!).arrayValue
+            let _ = cafes.map {
+                let cafe = $0.dictionaryValue
+                if let id = cafe["_id"]?.stringValue,
+                let name = cafe["name"]?.stringValue,
+                let phoneNumber = cafe["phoneNumber"]?.stringValue,
+                let address = cafe["address"]?.stringValue,
+                let hours = cafe["hours"]?.stringValue,
+                let latitude = cafe["latitude"]?.stringValue,
+                let longitude = cafe["longitude"]?.stringValue,
+                let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                let imagesName = cafe["imagesName"]?.arrayValue.map({ $0.stringValue }) {
+                    let summary = cafe["summary"]?.stringValue
+                    let mainMenu = cafe["mainMenu"]?.arrayValue.map({ $0.stringValue })
+
+                    modelCafe.append(ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu, imagesName: imagesName))
                 }
             }
-            callback(cafeList)
+            callback(modelCafe)
         }
     }
     
     // MARK: 카페 이미지 데이터모델에 저장
+    // TODO: 사진 콜백으로 빼기
     static func getImagesData(imagesName: [String], cafe: ModelCafe) {
         
         for imageName in imagesName {
