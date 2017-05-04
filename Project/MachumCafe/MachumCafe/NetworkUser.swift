@@ -55,7 +55,6 @@ class NetworkUser {
     // MARK: 세션정보 있을 경우 유저모델 저장
     static func getUser(callback: @escaping (_ message: Bool, _ modelUser: ModelUser) -> Void) {
         Alamofire.request("\(url)/api/v1/user/login").responseJSON { (response) in
-
             var modelUser = ModelUser()
 
             let res = JSON(data: response.data!)
@@ -69,6 +68,14 @@ class NetworkUser {
                 }
             }
             callback(message, modelUser)
+        }
+    }
+    
+    // MARK: 로그아웃(세션 삭제)
+    static func logout(callback: @escaping (_ description: String) -> Void) {
+        Alamofire.request("\(url)/api/v1/user/logout").responseJSON { (response) in
+            let res = JSON(data: response.data!)
+            callback(res["description"].stringValue)
         }
     }
     

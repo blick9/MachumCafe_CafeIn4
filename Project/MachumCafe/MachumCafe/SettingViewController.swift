@@ -21,6 +21,11 @@ class SettingViewController: UIViewController {
     
     
     @IBAction func logOutButtonAction(_ sender: Any) {
+        NetworkUser.logout { (des) in
+            User.sharedInstance.user = ModelUser()
+            User.sharedInstance.isUser = false
+            print(des)
+        }
         print("로그아웃!")
     }
     

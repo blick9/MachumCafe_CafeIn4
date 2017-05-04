@@ -36,6 +36,7 @@ class ModelUser {
     func setBookmark(bookmarks : [String]) {
         bookmark = bookmarks
     }
+    
 }
 
 class User {
