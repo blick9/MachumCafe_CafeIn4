@@ -20,13 +20,22 @@ class FilterButtonUIView: UIView {
         let bathroom = UIButton(frame: CGRect(x: 20, y: 120, width: 80, height: 30))
         let meetingroom = UIButton(frame: CGRect(x: 110, y: 120, width: 80, height: 30))
         
-        allnight.backgroundColor = UIColor.red
+        //Buttons BorderColor
+        let borderColor = UIColor(red: 255, green: 232, blue: 129)
+        allnight.layer.borderColor =
         dessert.backgroundColor = UIColor.blue
         smoking.backgroundColor = UIColor.red
         parkinglot.backgroundColor = UIColor.blue
         bathroom.backgroundColor = UIColor.red
         meetingroom.backgroundColor = UIColor.blue
         
+        allnight.setTitle("24시 영업", for: .normal)
+        dessert.setTitle("디저트", for: .normal)
+        smoking.setTitle("흡연구역", for: .normal)
+        parkinglot.setTitle("주차장", for: .normal)
+        bathroom.setTitle("화장실", for: .normal)
+        meetingroom.setTitle("미팅룸", for: .normal)
+
         
         allnight.addTarget(self, action: #selector(ratingButtonTapped(button:)), for: .touchDown)
         

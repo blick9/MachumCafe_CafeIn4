@@ -217,8 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				A7B73A521EB2597000EB24C6 /* FilterViewController.swift */,
-				A7B73A541EB2597700EB24C6 /* FilterView.storyboard */,
 				B5E9A8C21EBAD62A0016F2BE /* FilterButtonUIView.swift */,
+				A7B73A541EB2597700EB24C6 /* FilterView.storyboard */,
 			);
 			name = FilterView;
 			sourceTree = "<group>";
