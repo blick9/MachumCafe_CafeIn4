@@ -113,10 +113,13 @@ class MainSideBarViewController: UIViewController {
         }
     }
     
-    @IBAction func reportButtonAction(_ sender: Any) {
-        
-    
+    @IBAction func suggestionButtonAction(_ sender: Any) {
+        let suggestionStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
+        let suggestionViewController = suggestionStoryboard.instantiateViewController(withIdentifier: "Suggestion")
+        present(suggestionViewController, animated: true, completion: nil)
     }
+    
+   
     
     @IBAction func settingButtonAction(_ sender: Any) {
         let settingStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
