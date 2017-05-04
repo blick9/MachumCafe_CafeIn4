@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0D5F55AB47AB6A2919F41773 /* Pods_MachumCafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */; };
+		A702F2161EBB06DA003B390C /* LocationLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A702F2151EBB06DA003B390C /* LocationLabelView.xib */; };
+		A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702F2171EBB07E6003B390C /* LocationLabelView.swift */; };
+		A702F21E1EBB273F003B390C /* SetLocationMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A702F21D1EBB273F003B390C /* SetLocationMapView.storyboard */; };
+		A702F2201EBB2750003B390C /* SetLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A702F21F1EBB2750003B390C /* SetLocationMapViewController.swift */; };
 		A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723B6671EAF3FBF00469FE4 /* AppDelegate.swift */; };
 		A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */; };
 		A723B6721EAF3FBF00469FE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A723B6701EAF3FBF00469FE4 /* LaunchScreen.storyboard */; };
@@ -41,6 +45,11 @@
 		B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */; };
 		B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */; };
 		B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */; };
+		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
+		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
+		B78D2A251EBAF8240069E2E9 /* SuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A241EBAF8240069E2E9 /* SuggestionTableViewCell.swift */; };
+		B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */; };
+		B78D2A291EBB15A50069E2E9 /* SuggestionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */; };
 		B7E57DA61EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */; };
 		B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */; };
 		B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA51EB59F2200A6D9A7 /* CafeDetailViewController.swift */; };
@@ -49,6 +58,10 @@
 
 /* Begin PBXFileReference section */
 		1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachumCafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-MachumCafe/Pods-MachumCafe.release.xcconfig"; sourceTree = "<group>"; };
+		A702F2151EBB06DA003B390C /* LocationLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationLabelView.xib; sourceTree = "<group>"; };
+		A702F2171EBB07E6003B390C /* LocationLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLabelView.swift; sourceTree = "<group>"; };
+		A702F21D1EBB273F003B390C /* SetLocationMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SetLocationMapView.storyboard; sourceTree = "<group>"; };
+		A702F21F1EBB2750003B390C /* SetLocationMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLocationMapViewController.swift; sourceTree = "<group>"; };
 		A723B6641EAF3FBF00469FE4 /* MachumCafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MachumCafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A723B6671EAF3FBF00469FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +96,11 @@
 		B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewCell.swift; sourceTree = "<group>"; };
 		B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
+		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
+		B78D2A241EBAF8240069E2E9 /* SuggestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionTableViewCell.swift; sourceTree = "<group>"; };
+		B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategory.swift; sourceTree = "<group>"; };
 		B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CafeDetailView.storyboard; sourceTree = "<group>"; };
 		B7E57DA51EB59F2200A6D9A7 /* CafeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +139,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A702F2191EBB1C23003B390C /* XibView */ = {
+			isa = PBXGroup;
+			children = (
+				A702F2171EBB07E6003B390C /* LocationLabelView.swift */,
+				A702F2151EBB06DA003B390C /* LocationLabelView.xib */,
+			);
+			name = XibView;
+			sourceTree = "<group>";
+		};
+		A702F21A1EBB270A003B390C /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				A702F21F1EBB2750003B390C /* SetLocationMapViewController.swift */,
+				A702F21D1EBB273F003B390C /* SetLocationMapView.storyboard */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
 		A723B65B1EAF3FBF00469FE4 = {
 			isa = PBXGroup;
 			children = (
@@ -148,10 +184,13 @@
 				A723B6841EAF435800469FE4 /* LogIn & SignUp */,
 				A7B73A421EAF4A4000EB24C6 /* MainView */,
 				B7E57DA21EB59F0700A6D9A7 /* CafeDetailView */,
+				B78D2A211EBAE9B20069E2E9 /* SuggestionView */,
 				B58AAFD71EB6CC82002313CC /* Bookmark */,
 				A723B67D1EAF42F200469FE4 /* ListContainerView */,
 				A7B73A511EB2595E00EB24C6 /* FilterView */,
+				A702F21A1EBB270A003B390C /* MapView */,
 				A7C0F2F41EB7909A0086ADAA /* SettingView */,
+				A702F2191EBB1C23003B390C /* XibView */,
 				A7B73A491EAF4E2A00EB24C6 /* Extension */,
 				A7B73A4A1EAF4F4E00EB24C6 /* Resource */,
 			);
@@ -260,6 +299,18 @@
 			name = Bookmark;
 			sourceTree = "<group>";
 		};
+		B78D2A211EBAE9B20069E2E9 /* SuggestionView */ = {
+			isa = PBXGroup;
+			children = (
+				B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */,
+				B78D2A241EBAF8240069E2E9 /* SuggestionTableViewCell.swift */,
+				B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */,
+				B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */,
+				B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */,
+			);
+			name = SuggestionView;
+			sourceTree = "<group>";
+		};
 		B7E57DA21EB59F0700A6D9A7 /* CafeDetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,11 +390,14 @@
 				A723B67C1EAF42E600469FE4 /* ListView.storyboard in Resources */,
 				A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */,
 				A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */,
+				A702F21E1EBB273F003B390C /* SetLocationMapView.storyboard in Resources */,
 				A7B73A551EB2597700EB24C6 /* FilterView.storyboard in Resources */,
 				A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */,
+				B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
 				B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */,
 				B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */,
+				A702F2161EBB06DA003B390C /* LocationLabelView.xib in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,11 +460,14 @@
 				B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */,
 				A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */,
 				A7B73A5E1EB32E1300EB24C6 /* NetworkUser.swift in Sources */,
+				B78D2A251EBAF8240069E2E9 /* SuggestionTableViewCell.swift in Sources */,
 				A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */,
 				A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */,
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
+				B78D2A291EBB15A50069E2E9 /* SuggestionCategory.swift in Sources */,
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
 				B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */,
+				B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */,
 				A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */,
 				A723B67F1EAF431700469FE4 /* ListContainerViewController.swift in Sources */,
 				B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */,
@@ -422,7 +479,10 @@
 				A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */,
 				B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */,
 				A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */,
+				A702F2201EBB2750003B390C /* SetLocationMapViewController.swift in Sources */,
+				B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
+				A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */,
 				B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */,
 				A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */,
 				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
