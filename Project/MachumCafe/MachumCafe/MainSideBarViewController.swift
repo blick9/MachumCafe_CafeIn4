@@ -22,7 +22,6 @@ class MainSideBarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        checkIsUser()
-        UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar + 1)
         sideBarLeadingConstraint.constant = -(self.sideBarView.frame.width+10)
         sideBarView.layer.shadowOpacity = 0.5
         sideBarView.layer.shadowColor = UIColor.black.cgColor
@@ -36,6 +35,7 @@ class MainSideBarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar + 1)
         checkIsUser()
     }
     
@@ -88,6 +88,11 @@ class MainSideBarViewController: UIViewController {
         })
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar - 1)
+    }
+    
     @IBAction func logInButtonAction(_ sender: Any) {
         let logInStoryboard = UIStoryboard(name: "LogIn&SignUpView", bundle: nil)
         let logInViewController = logInStoryboard.instantiateViewController(withIdentifier: "LogIn")
@@ -98,8 +103,14 @@ class MainSideBarViewController: UIViewController {
         let bookmarkStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
         let bookmarkViewController = bookmarkStoryboard.instantiateViewController(withIdentifier: "Bookmark")
         //        let navigationVC = UINavigationController(rootViewController: bookmarkViewController)
-        //        self.navigationController?.pushViewController(bookmarkViewController, animated: true)
-        present(bookmarkViewController, animated: true, completion: nil)
+        
+        if User.sharedInstance.user.getUser()["id"] as! String == "" {
+            UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
+        } else {
+            let VC = UINavigationController(rootViewController: bookmarkViewController)
+//            navigationController?.pushViewController(VC, animated: true)
+            present(VC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func reportButtonAction(_ sender: Any) {
@@ -118,7 +129,6 @@ class MainSideBarViewController: UIViewController {
             self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
             self.view.layoutIfNeeded()
         }) { (bool) in
-            UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar - 1)
             self.dismiss(animated: false, completion: nil)
         }
     }
