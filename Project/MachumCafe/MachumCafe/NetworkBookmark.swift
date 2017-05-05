@@ -51,11 +51,16 @@ class NetworkBookmark {
         let parameters : Parameters = ["cafeId" : cafeId]
         
         Alamofire.request("\(url)/api/v1/bookmark/\(userId)", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-            let res = JSON(data: response.data!).dictionaryValue
-            let message = res["message"]?.boolValue
-            let description = res["description"]?.stringValue
+            var message = Bool()
+            var description = String()
             
-            callback(message!, description!)
+            let res = JSON(data: response.data!).dictionary
+            if let resMessage = res?["message"]?.boolValue,
+            let resDescription = res?["description"]?.stringValue {
+                message = resMessage
+                description = resDescription
+            }
+            callback(message, description)
         }
     }
     
