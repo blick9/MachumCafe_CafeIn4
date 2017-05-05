@@ -32,8 +32,15 @@ class MainViewController: UIViewController {
         
         if let xib = Bundle.main.loadNibNamed("LocationLabelView", owner: self, options: nil)?.first as? LocationLabelView {
             self.view.addSubview(xib)
-            xib.setLocationButton.addTarget(xib, action: #selector(xib.presentSetLocationView(target:)), for: .touchUpInside)
+            xib.setLocationButton.addTarget(self, action: #selector(presentSetLocationMapView), for: .touchUpInside)
         }
+    }
+    
+    func presentSetLocationMapView() {
+        let setLocationStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
+        let setLocationViewController = setLocationStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
+        let setLocationViewNavigationController = UINavigationController(rootViewController: setLocationViewController)
+        self.present(setLocationViewNavigationController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
