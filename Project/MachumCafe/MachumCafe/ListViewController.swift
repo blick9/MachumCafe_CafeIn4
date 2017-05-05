@@ -35,13 +35,11 @@ class ListViewController: UIViewController {
     
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
-        print(buttonTag, buttonTag.tag)
         let cafeID = Cafe.sharedInstance.cafeList[buttonTag.tag].getCafe()["id"] as! String
         NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (message, des) in
             print(des)
             if message {
                 NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe, userBookmark) in
-                    Cafe.sharedInstance.bookmarkList = cafe
                     User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
                     self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
                     print(User.sharedInstance.user.getUser()["bookmark"]!)
