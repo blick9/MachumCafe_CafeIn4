@@ -53,4 +53,10 @@ class MainViewController: UIViewController {
         navigationController?.pushViewController(listContainerViewController, animated: true)
     }
     
+    @IBAction func findMyCafe(_ sender: Any) {
+        let filterViewStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
+        let filterViewController = filterViewStoryboard.instantiateViewController(withIdentifier: "FilterView")
+        present(filterViewController, animated: true, completion: nil)
+    }
+    
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,51 +21,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z05-fS-31m" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z05-fS-31m" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e2J-dp-Y0E">
-                                <rect key="frame" x="0.0" y="533" width="375" height="134"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2J-dp-Y0E">
+                                <rect key="frame" x="10" y="537" width="355" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카페 이름:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUD-tn-f7H">
-                                        <rect key="frame" x="42" y="25" width="68" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zzY-oa-H4R">
+                                        <rect key="frame" x="123" y="16" width="224" height="27"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzY-oa-H4R">
-                                        <rect key="frame" x="133" y="25" width="227" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g28-wS-mJN">
+                                        <rect key="frame" x="8" y="8" width="107" height="104"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="카페 주소" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Z4-6a-Pfd">
+                                        <rect key="frame" x="123" y="43" width="224" height="34"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="13"/>
+                                        <color key="textColor" red="0.37798108552631582" green="0.37798108552631582" blue="0.37798108552631582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Z4-6a-Pfd">
-                                        <rect key="frame" x="133" y="68" width="213" height="21"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xl-65-Wdm">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카페 장소:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADE-mT-8qN">
-                                        <rect key="frame" x="42" y="69" width="68" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <connections>
+                                            <segue destination="0cH-Ca-SGK" kind="show" identifier="DetailView" id="lep-JQ-Z09"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.937519828680203" green="0.937519828680203" blue="0.937519828680203" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.95402960526315794" green="0.95402960526315794" blue="0.95402960526315794" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5Z4-6a-Pfd" secondAttribute="bottom" constant="43" id="61x-46-CCL"/>
+                                    <constraint firstItem="zzY-oa-H4R" firstAttribute="leading" secondItem="g28-wS-mJN" secondAttribute="trailing" constant="8" id="83V-IP-DHV"/>
+                                    <constraint firstItem="5Z4-6a-Pfd" firstAttribute="leading" secondItem="g28-wS-mJN" secondAttribute="trailing" constant="8" id="Jr8-T0-Tvd"/>
+                                    <constraint firstAttribute="bottom" secondItem="g28-wS-mJN" secondAttribute="bottom" constant="8" id="Mzr-FQ-GvA"/>
+                                    <constraint firstItem="g28-wS-mJN" firstAttribute="leading" secondItem="e2J-dp-Y0E" secondAttribute="leading" constant="8" id="Na3-Gk-oeD"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Z4-6a-Pfd" secondAttribute="trailing" constant="8" id="Rj5-gi-34K"/>
+                                    <constraint firstAttribute="height" constant="120" id="Z13-uq-ap3"/>
+                                    <constraint firstItem="g28-wS-mJN" firstAttribute="top" secondItem="e2J-dp-Y0E" secondAttribute="top" constant="8" id="b6p-Ts-52C"/>
+                                    <constraint firstAttribute="trailing" secondItem="g28-wS-mJN" secondAttribute="trailing" constant="240" id="eTP-ap-tiM"/>
+                                    <constraint firstAttribute="trailing" secondItem="zzY-oa-H4R" secondAttribute="trailing" constant="8" id="qlw-gp-TkY"/>
+                                    <constraint firstItem="5Z4-6a-Pfd" firstAttribute="top" secondItem="zzY-oa-H4R" secondAttribute="bottom" id="tCM-c1-z17"/>
+                                    <constraint firstItem="zzY-oa-H4R" firstAttribute="top" secondItem="e2J-dp-Y0E" secondAttribute="top" constant="16" id="uiU-fB-s7h"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e2J-dp-Y0E" firstAttribute="top" secondItem="1i1-jB-5Ew" secondAttribute="bottom" priority="750" constant="530" id="1FS-aF-LWo"/>
+                            <constraint firstItem="Z05-fS-31m" firstAttribute="top" secondItem="DWO-1Y-1h9" secondAttribute="top" id="4AZ-XK-bXN"/>
+                            <constraint firstItem="Z05-fS-31m" firstAttribute="top" secondItem="DWO-1Y-1h9" secondAttribute="top" id="AOG-T9-epc"/>
+                            <constraint firstItem="2ZI-wb-AtR" firstAttribute="top" secondItem="Z05-fS-31m" secondAttribute="bottom" id="GW6-Pu-9Cf"/>
+                            <constraint firstItem="2ZI-wb-AtR" firstAttribute="top" secondItem="e2J-dp-Y0E" secondAttribute="bottom" constant="10" id="QD6-ch-mtH"/>
+                            <constraint firstAttribute="trailing" secondItem="e2J-dp-Y0E" secondAttribute="trailing" constant="10" id="SvS-iV-uy7"/>
+                            <constraint firstAttribute="trailing" secondItem="Z05-fS-31m" secondAttribute="trailing" id="ml9-E7-JLI"/>
+                            <constraint firstItem="e2J-dp-Y0E" firstAttribute="leading" secondItem="DWO-1Y-1h9" secondAttribute="leading" constant="10" id="nZB-K4-r1Q"/>
+                            <constraint firstItem="Z05-fS-31m" firstAttribute="leading" secondItem="DWO-1Y-1h9" secondAttribute="leading" id="pS7-Lq-2vC"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cafeAddress" destination="5Z4-6a-Pfd" id="kZM-nd-9me"/>
+                        <outlet property="cafeImageView" destination="g28-wS-mJN" id="0EJ-1a-mNe"/>
+                        <outlet property="cafeInfoView" destination="e2J-dp-Y0E" id="3js-Ll-W0V"/>
                         <outlet property="cafeName" destination="zzY-oa-H4R" id="3Fg-jb-FVq"/>
                         <outlet property="googleMap" destination="Z05-fS-31m" id="Bu9-L7-CgG"/>
                     </connections>
@@ -73,6 +92,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UgW-ZI-K6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="176.80000000000001" y="98.50074962518741"/>
+        </scene>
+        <!--CafeDetail-->
+        <scene sceneID="RL9-mg-ZhA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="CafeDetail" id="0cH-Ca-SGK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pIK-8B-aA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="791" y="337"/>
         </scene>
     </scenes>
 </document>
