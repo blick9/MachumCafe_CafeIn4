@@ -21,7 +21,6 @@ class MainSideBarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        checkIsUser()
         sideBarLeadingConstraint.constant = -(self.sideBarView.frame.width+10)
         sideBarView.layer.shadowOpacity = 0.5
         sideBarView.layer.shadowColor = UIColor.black.cgColor
@@ -100,31 +99,29 @@ class MainSideBarViewController: UIViewController {
     }
     
     @IBAction func bookmarkButtonAction(_ sender: Any) {
-        let bookmarkStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
-        let bookmarkViewController = bookmarkStoryboard.instantiateViewController(withIdentifier: "Bookmark")
-        //        let navigationVC = UINavigationController(rootViewController: bookmarkViewController)
-        
         if User.sharedInstance.user.getUser()["id"] as! String == "" {
             UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
         } else {
-            let VC = UINavigationController(rootViewController: bookmarkViewController)
-//            navigationController?.pushViewController(VC, animated: true)
-            present(VC, animated: true, completion: nil)
+            let bookmarkStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
+            let bookmarkViewController = bookmarkStoryboard.instantiateViewController(withIdentifier: "Bookmark")
+            let bookmarkViewNavigationController = UINavigationController(rootViewController: bookmarkViewController)
+            present(bookmarkViewNavigationController, animated: true, completion: nil)
         }
     }
     
     @IBAction func suggestionButtonAction(_ sender: Any) {
         let suggestionStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
         let suggestionViewController = suggestionStoryboard.instantiateViewController(withIdentifier: "Suggestion")
-        present(suggestionViewController, animated: true, completion: nil)
+        let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
+        present(suggestionViewNavigationController, animated: true, completion: nil)
     }
     
-   
-    
+
     @IBAction func settingButtonAction(_ sender: Any) {
         let settingStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
         let settingViewController = settingStoryboard.instantiateViewController(withIdentifier: "SettingView")
-        present(settingViewController, animated: true, completion: nil)
+        let settingViewNavtigationController = UINavigationController(rootViewController: settingViewController)
+        present(settingViewNavtigationController, animated: true, completion: nil)
     }
     
     @IBAction func closeViewButtonAction(_ sender: Any) {

@@ -17,5 +17,7 @@ class BookmarkViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         
         self.layer.cornerRadius = 3
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 0.5
     }
 }
