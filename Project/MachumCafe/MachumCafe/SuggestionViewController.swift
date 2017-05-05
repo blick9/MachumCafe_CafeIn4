@@ -26,6 +26,9 @@ class SuggestionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func closeButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
 }
 extension SuggestionViewController : UITableViewDelegate, UITableViewDataSource {
