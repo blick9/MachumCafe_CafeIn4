@@ -13,9 +13,11 @@ class BookmarkViewController: UIViewController {
     var userBookmark = [String]()
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var isEmptyLabel: UILabel!
 
     override func viewWillAppear(_ animated: Bool) {
         userBookmark = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        isEmptyLabel.text = userBookmark.isEmpty ? "즐겨찾는 카페가 없습니다." : ""
         self.collectionView.reloadData()
     }
     override func viewDidLoad() {
@@ -29,20 +31,18 @@ class BookmarkViewController: UIViewController {
     
     func getBookmarkList() {
         let activityIndicator = UIActivityIndicatorView()
-        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.collectionView)
+        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
         NetworkBookmark.getMyBookmark(userId: userId) { (message, cafeList, bookmarkID) in
             Cafe.sharedInstance.bookmarkList = cafeList
             for cafe in cafeList {
                 NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe, callback: { (imageData) in
                     cafe.setImagesData(imageData: imageData)
+                    self.collectionView.reloadData()
                 })
             }
-            self.collectionView.reloadData()
-            activityIndicator.stopActivityIndicator(view: self.collectionView, currentIndicator: startedIndicator)
+            activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
         }
     }
-    
-    
     
     @IBAction func closeButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -62,12 +62,10 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! BookmarkViewCell
         let bookmarkCafeData = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()
-        let imagesData = bookmarkCafeData["imagesData"] as? [Data]
-        print(imagesData)
-//        if let test = imagesData?[0] {
-//            print(test)
-//            cell.bookmarkCafeImage.image = UIImage(data: test)
-//        }
+        let imagesData = bookmarkCafeData["imagesData"] as! [Data]
+        if !imagesData.isEmpty {
+            cell.bookmarkCafeImage.image = UIImage(data: imagesData[0])
+        }
         cell.bookmarkCafeName.text = bookmarkCafeData["name"] as? String
         cell.bookmarkCafeAddress.text = bookmarkCafeData["address"] as? String
              return cell
@@ -78,7 +76,7 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
         if segue.identifier == "DetailView" {
             if let indexPaths = self.collectionView.indexPathsForSelectedItems{
                 let controller = segue.destination as! CafeDetailViewController
-                controller.cafeData = Cafe.sharedInstance.bookmarkList[indexPaths[0].row].getCafe()
+                controller.cafeModel = Cafe.sharedInstance.bookmarkList[indexPaths[0].row]
             }
         }
     }
