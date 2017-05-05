@@ -18,7 +18,7 @@ class SuggestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         suggestiontableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-        suggestiontableView.separatorColor = UIColor.lightGray
+        navigationItem.rightBarButtonItem?.image = #imageLiteral(resourceName: "cancelButton")
         // Do any additional setup after loading the view.
     }
 
