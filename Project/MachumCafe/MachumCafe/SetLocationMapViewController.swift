@@ -28,6 +28,7 @@ class SetLocationMapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
         
+        let mapInsets = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 0)
         googleMap.camera = GMSCameraPosition.camera(withLatitude: 37.506139582014775, longitude: 127.03659117221832, zoom: 13.0)
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
@@ -35,18 +36,27 @@ class SetLocationMapViewController: UIViewController {
         googleMap.settings.zoomGestures = true
         googleMap.settings.rotateGestures = false
         googleMap.settings.tiltGestures = false
+        googleMap.padding = mapInsets
         
-        let markerImage = UIImageView(frame: CGRect(x: googleMap.center.x-14, y: googleMap.center.y-30-40, width: 0, height: 0))
+        // x : -14 = markerImage Width / 2
+        // y : -40 = markerImage Height
+        let markerImage = UIImageView(frame: CGRect(x: googleMap.center.x-14, y: googleMap.center.y-(mapInsets.bottom-10)-40, width: 0, height: 0))
         markerImage.image = #imageLiteral(resourceName: "MapMarker")
         markerImage.sizeToFit()
         view.addSubview(markerImage)
+        
+//        let adjustCenterPointView = UIView(frame: CGRect(x: googleMap.center.x, y: googleMap.center.y-(mapInsets.bottom-10), width: 3, height: 3))
+//        adjustCenterPointView.backgroundColor = UIColor.red
+//        view.addSubview(adjustCenterPointView)
+        
         applyButton.tintColor = UIColor(red: 255, green: 232, blue: 129)
         addressView.layer.cornerRadius = 3
     }
 
     
     @IBAction func applyButtonAction(_ sender: Any) {
-        // 저장시 모델에 좌표값, 주소 저장.
+        let locationValue = ModelLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude, address: currentAddress.text!)
+        Location.sharedInstance.currentLocation = locationValue
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setLocation"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
@@ -68,5 +78,11 @@ extension SetLocationMapViewController : GMSMapViewDelegate, CLLocationManagerDe
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         googleMap.animate(toLocation: coordinate)
+        
+        /* Center 조정용 Marker
+        let adjustCenterPointMarker = GMSMarker(position: coordinate)
+        adjustCenterPointMarker.icon = GMSMarker.markerImage(with: .black)
+        adjustCenterPointMarker.map = googleMap
+ */
     }
 }
