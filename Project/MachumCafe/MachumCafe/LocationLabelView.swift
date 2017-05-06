@@ -30,6 +30,10 @@ class LocationLabelView: UIView {
     }
 
     override func layoutSubviews() {
-        print("layoutSubView")
+        if let address = Location.sharedInstance.currentLocation.getLocation()["address"] as? String {
+            addressLabel.text = address
+        } else {
+            addressLabel.text = "위치 정보가 없습니다."
+        }
     }
 }
