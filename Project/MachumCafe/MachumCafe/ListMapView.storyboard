@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,6 +37,9 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g28-wS-mJN">
                                         <rect key="frame" x="8" y="8" width="107" height="104"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="g28-wS-mJN" secondAttribute="height" multiplier="107:104" id="bXT-ac-duT"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="카페 주소" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Z4-6a-Pfd">
                                         <rect key="frame" x="123" y="43" width="224" height="34"/>
@@ -43,9 +47,8 @@
                                         <color key="textColor" red="0.37798108552631582" green="0.37798108552631582" blue="0.37798108552631582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xl-65-Wdm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xl-65-Wdm">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="120"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <segue destination="0cH-Ca-SGK" kind="show" identifier="DetailView" id="lep-JQ-Z09"/>
                                         </connections>
@@ -56,11 +59,15 @@
                                     <constraint firstAttribute="bottom" secondItem="5Z4-6a-Pfd" secondAttribute="bottom" constant="43" id="61x-46-CCL"/>
                                     <constraint firstItem="zzY-oa-H4R" firstAttribute="leading" secondItem="g28-wS-mJN" secondAttribute="trailing" constant="8" id="83V-IP-DHV"/>
                                     <constraint firstItem="5Z4-6a-Pfd" firstAttribute="leading" secondItem="g28-wS-mJN" secondAttribute="trailing" constant="8" id="Jr8-T0-Tvd"/>
+                                    <constraint firstItem="6Xl-65-Wdm" firstAttribute="leading" secondItem="e2J-dp-Y0E" secondAttribute="leading" id="K9L-Ju-qfP"/>
                                     <constraint firstAttribute="bottom" secondItem="g28-wS-mJN" secondAttribute="bottom" constant="8" id="Mzr-FQ-GvA"/>
+                                    <constraint firstItem="6Xl-65-Wdm" firstAttribute="top" secondItem="e2J-dp-Y0E" secondAttribute="top" id="N6Q-Tz-qKN"/>
                                     <constraint firstItem="g28-wS-mJN" firstAttribute="leading" secondItem="e2J-dp-Y0E" secondAttribute="leading" constant="8" id="Na3-Gk-oeD"/>
                                     <constraint firstAttribute="trailing" secondItem="5Z4-6a-Pfd" secondAttribute="trailing" constant="8" id="Rj5-gi-34K"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Xl-65-Wdm" secondAttribute="bottom" id="Tcb-bZ-xfC"/>
                                     <constraint firstAttribute="height" constant="120" id="Z13-uq-ap3"/>
                                     <constraint firstItem="g28-wS-mJN" firstAttribute="top" secondItem="e2J-dp-Y0E" secondAttribute="top" constant="8" id="b6p-Ts-52C"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Xl-65-Wdm" secondAttribute="trailing" id="dbR-I8-rnb"/>
                                     <constraint firstAttribute="trailing" secondItem="g28-wS-mJN" secondAttribute="trailing" constant="240" id="eTP-ap-tiM"/>
                                     <constraint firstAttribute="trailing" secondItem="zzY-oa-H4R" secondAttribute="trailing" constant="8" id="qlw-gp-TkY"/>
                                     <constraint firstItem="5Z4-6a-Pfd" firstAttribute="top" secondItem="zzY-oa-H4R" secondAttribute="bottom" id="tCM-c1-z17"/>
@@ -85,6 +92,7 @@
                         <outlet property="cafeAddress" destination="5Z4-6a-Pfd" id="kZM-nd-9me"/>
                         <outlet property="cafeImageView" destination="g28-wS-mJN" id="0EJ-1a-mNe"/>
                         <outlet property="cafeInfoView" destination="e2J-dp-Y0E" id="3js-Ll-W0V"/>
+                        <outlet property="cafeInfoViewBottomConstraint" destination="QD6-ch-mtH" id="HSp-8e-w5l"/>
                         <outlet property="cafeName" destination="zzY-oa-H4R" id="3Fg-jb-FVq"/>
                         <outlet property="googleMap" destination="Z05-fS-31m" id="Bu9-L7-CgG"/>
                     </connections>
