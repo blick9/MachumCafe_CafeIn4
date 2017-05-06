@@ -16,7 +16,8 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "맞춤카페"
+        navigationItem.title = "맞춤카페"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         bannerArray = [#imageLiteral(resourceName: "mainBanner1"),#imageLiteral(resourceName: "mainBanner2"),#imageLiteral(resourceName: "mainBanner3")]
         
         for i in 0..<bannerArray.count {
@@ -31,8 +32,15 @@ class MainViewController: UIViewController {
         
         if let xib = Bundle.main.loadNibNamed("LocationLabelView", owner: self, options: nil)?.first as? LocationLabelView {
             self.view.addSubview(xib)
-            xib.setLocationButton.addTarget(xib, action: #selector(xib.presentSetLocationView(target:)), for: .touchUpInside)
+            xib.setLocationButton.addTarget(self, action: #selector(presentSetLocationMapView), for: .touchUpInside)
         }
+    }
+    
+    func presentSetLocationMapView() {
+        let setLocationStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
+        let setLocationViewController = setLocationStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
+        let setLocationViewNavigationController = UINavigationController(rootViewController: setLocationViewController)
+        self.present(setLocationViewNavigationController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

@@ -274,8 +274,8 @@
 				A7B73A581EB32E1300EB24C6 /* NetworkBookmark.swift */,
 				A7B73A591EB32E1300EB24C6 /* NetworkCafe.swift */,
 				A7B73A5A1EB32E1300EB24C6 /* NetworkUser.swift */,
-				A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */,
 				B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */,
+				A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
