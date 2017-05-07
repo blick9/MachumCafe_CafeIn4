@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Suggestion View Controller-->
         <scene sceneID="n7f-hI-0Su">
             <objects>
-                <viewController storyboardIdentifier="Suggestion" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RGy-aV-rfK" customClass="SuggestionViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RGy-aV-rfK" customClass="SuggestionViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ile-OY-DbF"/>
                         <viewControllerLayoutGuide type="bottom" id="Sgd-V8-tGX"/>
@@ -91,13 +91,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vj9-kD-cjJ">
-                        <barButtonItem key="rightBarButtonItem" image="cancelButton" id="nDi-0O-Wy1">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="rSe-2v-h04">
+                        <barButtonItem key="rightBarButtonItem" image="cancelButton" id="ruq-yN-POY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="closeButtonAction:" destination="RGy-aV-rfK" id="Hd5-7F-Y5M"/>
+                                <action selector="closedAction:" destination="RGy-aV-rfK" id="lVk-fR-IY5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="suggestiontableView" destination="hlh-vm-DEL" id="ogk-Zl-vYn"/>
                     </connections>
@@ -109,9 +112,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Ssw-2v-frl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ryi-lE-3Uv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Suggestion" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tl9-lI-Cp7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iqy-6a-iRd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iqy-6a-iRd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

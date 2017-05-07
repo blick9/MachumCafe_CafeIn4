@@ -18,7 +18,7 @@ class SuggestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         suggestiontableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-        navigationItem.rightBarButtonItem?.image = #imageLiteral(resourceName: "cancelButton")
+        
         // Do any additional setup after loading the view.
     }
 
@@ -26,7 +26,7 @@ class SuggestionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func closeButtonAction(_ sender: Any) {
+    @IBAction func closedAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 
