@@ -50,6 +50,7 @@
                                     <constraint firstItem="GNW-mr-axs" firstAttribute="leading" secondItem="xpz-vh-Mqb" secondAttribute="leading" constant="8" id="MYw-fE-Ytq"/>
                                     <constraint firstAttribute="trailing" secondItem="Hqh-4c-zio" secondAttribute="trailing" constant="100" id="ak7-wK-8ID"/>
                                     <constraint firstAttribute="trailing" secondItem="GNW-mr-axs" secondAttribute="trailing" constant="8" id="jO6-VJ-EyE"/>
+                                    <constraint firstAttribute="height" constant="83" id="ngJ-cj-CXn"/>
                                     <constraint firstAttribute="bottom" secondItem="Hqh-4c-zio" secondAttribute="bottom" constant="7" id="yQs-WH-SZs"/>
                                 </constraints>
                             </view>
@@ -61,7 +62,7 @@
                             <constraint firstAttribute="trailing" secondItem="xpz-vh-Mqb" secondAttribute="trailing" constant="10" id="8fC-oG-beW"/>
                             <constraint firstItem="dEf-6H-Eig" firstAttribute="leading" secondItem="yz9-Z6-PTN" secondAttribute="leading" id="BQa-Fy-pyR"/>
                             <constraint firstItem="GnW-gH-YVs" firstAttribute="top" secondItem="dEf-6H-Eig" secondAttribute="bottom" id="L3m-9T-VHW"/>
-                            <constraint firstItem="xpz-vh-Mqb" firstAttribute="top" secondItem="WBl-on-NJ9" secondAttribute="bottom" constant="510" id="PaP-ht-18w"/>
+                            <constraint firstItem="xpz-vh-Mqb" firstAttribute="top" secondItem="WBl-on-NJ9" secondAttribute="bottom" priority="750" constant="510" id="PaP-ht-18w"/>
                             <constraint firstItem="GnW-gH-YVs" firstAttribute="top" secondItem="xpz-vh-Mqb" secondAttribute="bottom" constant="10" id="V22-C7-fqL"/>
                             <constraint firstItem="xpz-vh-Mqb" firstAttribute="leading" secondItem="yz9-Z6-PTN" secondAttribute="leading" constant="10" id="new-cy-YyC"/>
                         </constraints>
@@ -87,7 +88,6 @@
         <!--Navigation Controller-->
         <scene sceneID="smJ-50-PyN">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dXt-LS-Upb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dtc-aZ-igN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="zyY-p5-25r">
@@ -99,6 +99,7 @@
                         <segue destination="F1y-k1-U44" kind="relationship" relationship="rootViewController" id="jpl-qp-IjN"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXt-LS-Upb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1328.8" y="185.75712143928038"/>
         </scene>
