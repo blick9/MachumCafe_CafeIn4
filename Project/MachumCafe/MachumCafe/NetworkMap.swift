@@ -63,12 +63,13 @@ class NetworkMap {
         Alamofire.request(addressURL).responseJSON { (response) in
             let json = JSON(data: response.data!)
             let result = json["results"].arrayValue
-            
-            //예외 처리 해야함. 바다로 나갈 경우(formatted_address가 없을 경우) 런타임 에러
-            let normalAddress = result[0]["formatted_address"].stringValue
-            let roadNameAddress = result[1]["formatted_address"].stringValue
-            callBack([normalAddress, roadNameAddress])
+
+            if let value = response.response?.statusCode {
+                //예외 처리 해야함. 바다로 나갈 경우(formatted_address가 없을 경우) 런타임 에러
+                let normalAddress = result[0]["formatted_address"].stringValue
+                let roadNameAddress = result[1]["formatted_address"].stringValue
+                callBack([normalAddress, roadNameAddress])
+            }
         }
     }
-    
 }
