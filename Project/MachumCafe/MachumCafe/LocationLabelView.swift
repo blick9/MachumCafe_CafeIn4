@@ -9,16 +9,10 @@
 import UIKit
 
 class LocationLabelView: UIView {
+    weak var delegate: UIViewController?
+    
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var setLocationButton: UIButton!
-    
-    func presentSetLocationView(target: UIButton) {
-        
-        let setLocationStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
-        let setLocationViewController = setLocationStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
-        let setLocationViewNavigationController = UINavigationController(rootViewController: setLocationViewController)
-//        self.present(setLocationViewNavigationController, animated: true, completion: nil)
-    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -27,6 +21,14 @@ class LocationLabelView: UIView {
     
     func refreshAddress() {
         layoutSubviews()
+    }
+    
+    @IBAction func presentSetLocationMapViewButtonAction(_ sender: Any) {
+        let setLocationStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
+        let setLocationViewController = setLocationStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
+        let setLocationViewNavigationController = UINavigationController(rootViewController: setLocationViewController)
+//        (self.delegate as! UIViewController)?.present(setLocationViewNavigationController, animated: true, completion: nil)
+        self.delegate?.present(setLocationViewNavigationController, animated: true, completion: nil)
     }
 
     override func layoutSubviews() {
