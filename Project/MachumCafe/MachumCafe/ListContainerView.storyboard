@@ -22,21 +22,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ktj-mb-iTF" userLabel="ListMapView">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktj-mb-iTF" userLabel="ListMapView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="fHl-Sh-Is7" kind="embed" id="dVv-ws-Vxe"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-u8-9Wq" userLabel="ListView">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-u8-9Wq" userLabel="ListView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Hrr-hb-S2h" kind="embed" id="rYR-W9-fg8"/>
                                 </connections>
                             </containerView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Tac-u8-9Wq" firstAttribute="leading" secondItem="Bva-Oe-efw" secondAttribute="leading" id="3mQ-aG-ysu"/>
+                            <constraint firstItem="dwo-LK-Bsc" firstAttribute="top" secondItem="Tac-u8-9Wq" secondAttribute="bottom" id="Q5R-aP-B5V"/>
+                            <constraint firstAttribute="trailing" secondItem="ktj-mb-iTF" secondAttribute="trailing" id="V8W-rb-mHc"/>
+                            <constraint firstAttribute="trailing" secondItem="Tac-u8-9Wq" secondAttribute="trailing" id="W0b-BC-uJv"/>
+                            <constraint firstItem="ktj-mb-iTF" firstAttribute="top" secondItem="0Wk-kH-mIc" secondAttribute="bottom" id="eDC-gX-NKC"/>
+                            <constraint firstItem="dwo-LK-Bsc" firstAttribute="top" secondItem="ktj-mb-iTF" secondAttribute="bottom" id="jdy-uU-hGE"/>
+                            <constraint firstItem="Tac-u8-9Wq" firstAttribute="top" secondItem="0Wk-kH-mIc" secondAttribute="bottom" id="q91-JU-cWl"/>
+                            <constraint firstItem="ktj-mb-iTF" firstAttribute="leading" secondItem="Bva-Oe-efw" secondAttribute="leading" id="wdQ-Kq-7Ct"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zlF-jy-VmJ">
                         <rightBarButtonItems>
@@ -83,7 +91,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FsF-yt-tfK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGW-IK-2fB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JGW-IK-2fB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

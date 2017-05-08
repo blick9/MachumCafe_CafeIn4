@@ -9,15 +9,22 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    let listContainerViewController = UIStoryboard(name: "ListContainerView", bundle: nil).instantiateViewController(withIdentifier: "ListContainer")
+    var bannerArray = [UIImage]()
     
     @IBOutlet weak var mainBannerScrollView: UIScrollView!
-    var bannerArray = [UIImage]()
-    let listContainerViewController = UIStoryboard(name: "ListContainerView", bundle: nil).instantiateViewController(withIdentifier: "ListContainer")
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "맞춤카페"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        makeBannerScrollView()
+        if let locationLabelxib = Bundle.main.loadNibNamed("LocationLabelView", owner: self, options: nil)?.first as? LocationLabelView {
+            locationLabelxib.delegate = self
+            self.view.addSubview(locationLabelxib)
+        }
+    }
+    
+    func makeBannerScrollView() {
         bannerArray = [#imageLiteral(resourceName: "mainBanner1"),#imageLiteral(resourceName: "mainBanner2"),#imageLiteral(resourceName: "mainBanner3")]
         
         for i in 0..<bannerArray.count {
@@ -29,38 +36,19 @@ class MainViewController: UIViewController {
             mainBannerScrollView.contentSize.width = mainBannerScrollView.frame.width * CGFloat(i + 1)
             mainBannerScrollView.addSubview(bannerView)
         }
-        
-        if let xib = Bundle.main.loadNibNamed("LocationLabelView", owner: self, options: nil)?.first as? LocationLabelView {
-            self.view.addSubview(xib)
-            xib.setLocationButton.addTarget(self, action: #selector(presentSetLocationMapView), for: .touchUpInside)
-        }
     }
     
-    func presentSetLocationMapView() {
-        let setLocationStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
-        let setLocationViewController = setLocationStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
-        let setLocationViewNavigationController = UINavigationController(rootViewController: setLocationViewController)
-        self.present(setLocationViewNavigationController, animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func sideBarShowButtonAction(_ sender: Any) {
         let mainViewStoryboard = UIStoryboard(name: "MainView", bundle: nil)
         let sideBarViewController = mainViewStoryboard.instantiateViewController(withIdentifier: "SideBar")
-        
         present(sideBarViewController, animated: false, completion: nil)
     }
-    
     
     @IBAction func categoryButtons(_ sender: UIButton) {
         navigationController?.pushViewController(listContainerViewController, animated: true)
     }
     
-    @IBAction func findMyCafe(_ sender: Any) {
+    @IBAction func presentFilterViewButtonAction(_ sender: Any) {
         let filterViewStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
         let filterViewController = filterViewStoryboard.instantiateViewController(withIdentifier: "FilterView")
         present(filterViewController, animated: true, completion: nil)

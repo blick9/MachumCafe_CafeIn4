@@ -21,9 +21,15 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adressD" translatesAutoresizingMaskIntoConstraints="NO" id="Tlv-m9-Szm">
                             <rect key="frame" x="10" y="7" width="11" height="17"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="11" id="jsP-RM-FxY"/>
+                            </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S4i-Yw-cb9">
-                            <rect key="frame" x="28" y="7.5" width="48.5" height="16"/>
+                            <rect key="frame" x="28" y="7" width="284.5" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" priority="750" constant="284.5" id="b8u-nK-1SJ"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="13"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -38,11 +44,17 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chP-Ls-mp9">
-                    <rect key="frame" x="79" y="1.5" width="290" height="28"/>
+                    <rect key="frame" x="315.5" y="1" width="53.5" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="53.5" id="Bnt-tj-0UA"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
                     <state key="normal" title="위치 설정">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="presentSetLocationMapViewButtonAction:" destination="WQE-0b-zhu" eventType="touchUpInside" id="CBm-Uu-XdE"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
