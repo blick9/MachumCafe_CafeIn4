@@ -57,7 +57,6 @@ class SetLocationMapViewController: UIViewController {
     @IBAction func applyButtonAction(_ sender: Any) {
         let locationValue = ModelLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude, address: currentAddress.text!)
         Location.sharedInstance.currentLocation = locationValue
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setLocation"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
