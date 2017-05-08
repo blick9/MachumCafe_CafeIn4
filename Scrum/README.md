@@ -1,12 +1,25 @@
 # Scrum
 ## 일일 Scrum
+  * ### 05.08(월)
+    * #### 전체
+      * [ ] DB Model 재정의
+    * #### 전한나
+      * [ ] 크롤링 및 DB 자동화 로직
+    * #### 구찬우
+      * [ ] 크롤링 및 DB 자동화 로직
+    * #### 이단비
+      * [ ] ImagePicker 추가 (다중 선택)
+    * #### 조민재
+      * [ ] 크롤링 및 DB 자동화 로직
+      * [ ] Background 위치 추적
+
   * ### 05.04(목)
     * #### 전체 코드 리팩토링
     * #### 전한나
       * [x] SwiftyJSON 모듈을 이용한 Network 코드 리팩토링
       * [x] LogIn & SignUp View 코드 리팩토링
     * #### 구찬우
-      * [ ] 현재 사용자 위치 보여주기
+      * [x] 현재 사용자 위치 보여주기
       * [x] BookmarkView Code 보완(CafeImage 비동기 방식 해결)
       * [x] 코드 리팩토링
     * #### 이단비
@@ -20,7 +33,7 @@
       * [x] CafeDefault Image HTTP 통신으로 ModelCafe에 Image 적용
     * #### 구찬우
       * [x] CafeDetailView 데이터 보여주는 방식 수정
-      * [ ] 현재 사용자 위치 보여주기
+      * [x] 현재 사용자 위치 보여주기
       * [x] BookmarkView Code 보완(비로그인시 로그인권장, 데이터 불러와서 보여주기)
     * #### 이단비
       * [x] FilterView Design Support
@@ -38,7 +51,7 @@
       * [x] CafeDefault Image 서버와 연동
     * #### 구찬우
       * [x] ListView Bookmark 상태 적용하기
-      * [ ] ModelCafe Data MapView에 보여주기
+      * [x] ModelCafe Data MapView에 보여주기
     * #### 이단비
       * [x] DetailTableView Category 셀 추가 구현
       * [x] DetailView Category Icon 디자인
@@ -59,6 +72,28 @@
       * [x] BookmarkView 구현
 
 ## 주차별 계획
+* ### 4주차 (5.8 ~ 5.14)
+  * #### View 구현 계획
+    * ##### 전체
+      * [ ] Back-Log 재정리
+      * [ ] 코드 리뷰 & 리팩토링
+    * ##### SuggestionView
+      * [ ] 서버 API
+      * [ ] 네트워크 클래스 생성
+      * [ ] ImagePicker 추가 (다중 선택)
+    * ##### FilterView
+      * [ ] 카테고리 확정 후 모델 리팩토링
+    * ##### CafeDetailView
+      * [ ] 별점 기능 추가
+    * ##### MapView
+      * [ ] 서버로 부터 일정 반경 내 위치한 데이터만 불러오기
+      * [ ] Background 위치 추적
+      * [ ] 현위치와 카페간 직선 거리 표시
+  * #### Model
+    * ##### DB
+      * [ ] 크롤링 및 DB 자동화 로직
+      * [ ] DB Model 재정의
+
   * ### 3주차 (5.1 ~ 5.7)
     * #### View 구현 계획
       * ##### LogIn & SignUp View
@@ -76,9 +111,6 @@
         * [x] CafeList Data에 저장된 ModelCafe 보여주기
         * [x] 즐겨찾기 추가 & 삭제 정상 구동 (BookmarkView와 동기 시킬 수 있어야 함)
         * [x] 카테고리 보여주는 방식 정하기
-      * ##### DataModel
-        * [x] Getter / Setter 메서드 구현
-        * [x] CafeData Default 이미지 만들기
       * ##### FilterView
         * [x] View 그리기
         * [x] 카테고리 종류 만큼 버튼 만들기
@@ -87,5 +119,10 @@
         * [x] 카테고리 선택 버튼 추가(6개)
         * [x] '내게 맞는 카페찾기' 버튼 추가 -> FilterView 연결
         * [x] 상단 배너 추가(스크롤)
-      * ##### Network
+    * #### Model
+      * ##### DataModel
+        * [x] Getter / Setter 메서드 구현
+        * [x] CafeData Default 이미지 만들기
+    * #### Network
+      * ##### SwiftyJSON
         * [x] SwiftyJSON 모듈을 이용한 코드 리팩토링
