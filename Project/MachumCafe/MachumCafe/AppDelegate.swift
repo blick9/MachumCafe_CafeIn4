@@ -33,14 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         UINavigationBar.appearance().isTranslucent = false
         
         NetworkCafe.getAllCafeList { (cafeList) in
-//            dump(cafeList)
             Cafe.sharedInstance.cafeList = cafeList
-            dump(Cafe.sharedInstance.cafeList)
-//            for cafe in cafeList {
-//                NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe, callback: { (imageData) in
-//                    cafe.setImagesData(imageData: imageData)
-//                })
-//            }
+            for cafe in cafeList {
+                NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String], callback: { (imageData) in
+                    cafe.setImagesData(imageData: imageData)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+                })
+            }
         }
         
         NetworkUser.getUser { (message, user) in
