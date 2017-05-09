@@ -69,7 +69,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         let cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
         let imagesData = cafeData["imagesData"] as! [Data]
         
-        cell.backgroundImageView.image = UIImage(data: imagesData[0])
+//        cell.backgroundImageView.image = UIImage(data: imagesData[0])
         cell.cafeNameLabel.text = cafeData["name"] as? String
         cell.cafeAddressLabel.text = cafeData["address"] as? String
         cell.distanceLabel.text = "1.2km"
