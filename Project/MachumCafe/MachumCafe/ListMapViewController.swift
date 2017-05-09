@@ -61,13 +61,32 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     }
     
     func insertCafeMarkers() {
-        modelCafe.forEach { (cafeData) in
-            let cafe = cafeData.getCafe()
-            let latitude = cafe["latitude"] as! String
-            let longitude = cafe["longitude"] as! String
-            let cafeImage = cafe["imagesData"] as! [Data]
+//        modelCafe.forEach { (cafeData) in
+//            let cafe = cafeData.getCafe()
+//            let latitude = cafe["latitude"] as! String
+//            let longitude = cafe["longitude"] as! String
+//            let cafeImage = cafe["imagesData"] as! [Data]
+//            
+//            createMarker(titleMarker: cafe["name"] as! String, snippetMarker: cafe["address"] as! String, image: #imageLiteral(resourceName: "1"), targetData: cafeData, latitude: Double(latitude)!, longitude: Double(longitude)!)
+//        }
+        
+        var dynamicDouble : Double = 0.001
+        for item in 0..<20 {
+            var latitude = 37.50
+            var longitude = 127.00
             
-            createMarker(titleMarker: cafe["name"] as! String, snippetMarker: cafe["address"] as! String, image: #imageLiteral(resourceName: "1"), targetData: cafeData, latitude: Double(latitude)!, longitude: Double(longitude)!)
+            createMarker(titleMarker: "\(latitude+dynamicDouble)", snippetMarker: "\(longitude)", image: nil, targetData: nil, latitude: latitude+dynamicDouble, longitude: longitude)
+            createMarker(titleMarker: "\(latitude+dynamicDouble)", snippetMarker: "\(longitude+dynamicDouble)", image: nil, targetData: nil, latitude: latitude+dynamicDouble, longitude: longitude+dynamicDouble)
+            createMarker(titleMarker: "\(latitude)", snippetMarker: "\(longitude+dynamicDouble)", image: nil, targetData: nil, latitude: latitude, longitude: longitude+dynamicDouble)
+            createMarker(titleMarker: "\(latitude-dynamicDouble)", snippetMarker: "\(longitude+dynamicDouble)", image: nil, targetData: nil, latitude: latitude-dynamicDouble, longitude: longitude+dynamicDouble)
+            
+            createMarker(titleMarker: "\(latitude-dynamicDouble)", snippetMarker: "\(longitude)", image: nil, targetData: nil, latitude: latitude-dynamicDouble, longitude: longitude)
+            createMarker(titleMarker: "\(latitude-dynamicDouble)", snippetMarker: "\(longitude-dynamicDouble)", image: nil, targetData: nil, latitude: latitude-dynamicDouble, longitude: longitude-dynamicDouble)
+            createMarker(titleMarker: "\(latitude)", snippetMarker: "\(longitude-dynamicDouble)", image: nil, targetData: nil, latitude: latitude, longitude: longitude-dynamicDouble)
+            createMarker(titleMarker: "\(latitude+dynamicDouble)", snippetMarker: "\(longitude-dynamicDouble)", image: nil, targetData: nil, latitude: latitude+dynamicDouble, longitude: longitude-dynamicDouble)
+
+            print(latitude+dynamicDouble, longitude+dynamicDouble)
+            dynamicDouble += 0.001
         }
     }
     
@@ -85,6 +104,7 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         isTapMarker = false
         infoViewAnimate()
+        print(coordinate)
 
         // MARK: GooglePlace를 통한 정보 가져오기. (다시 사용시 googlePlaces 모듈 import 할 것)
 //        NetworkMap.searchCafeAroundMe(latitude: coordinate.latitude, longitude: coordinate.longitude) { (cafeInfoArray) in
@@ -106,7 +126,7 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
         cafeName.text = marker.title
         cafeAddress.text = marker.snippet
         cafeImageView.image = userData[0] as? UIImage
-        currentSelectedCafe = userData[1] as! ModelCafe
+//        currentSelectedCafe = userData[1] as! ModelCafe
         return true
     }
     
@@ -129,12 +149,13 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     }
     
     // Part - Method : 맵에 마커 생성하는 함수
-    func createMarker(titleMarker : String, snippetMarker : String, image: UIImage, targetData: Any, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
+    func createMarker(titleMarker : String, snippetMarker : String, image: UIImage?, targetData: Any?, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
         let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
         marker.title = titleMarker
         marker.snippet = snippetMarker
         marker.userData = [image, targetData]
-        marker.icon = GMSMarker.markerImage(with: .black)
+//        marker.icon = GMSMarker.markerImage(with: .black)
+        marker.icon = #imageLiteral(resourceName: "locationIcon")
         marker.map = googleMap
     }
     
