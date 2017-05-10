@@ -58,7 +58,7 @@ class NetworkMap {
     }
     
     static func getAddressFromCoordinate(latitude: CLLocationDegrees, longitude: CLLocationDegrees, callBack: @escaping ([String]) -> Void) {
-                let addressURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&language=ko&key=\(mapKey)"
+        let addressURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(latitude),\(longitude)&language=ko&key=\(mapKey)"
         
         Alamofire.request(addressURL).responseJSON { (response) in
             let json = JSON(data: response.data!)
