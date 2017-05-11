@@ -57,6 +57,14 @@ class ModelCafe {
         cafeDic["imagesData"] = imagesData
         return cafeDic
     }
+    
+    func getLatitude() -> Double {
+        return latitude
+    }
+    
+    func getLongitude() -> Double {
+        return longitude
+    }
 }
 
 class Cafe {

@@ -72,3 +72,9 @@ extension UIActivityIndicatorView {
         }
     }
 }
+
+extension UIBarButtonItem {
+    static var isSelected: Bool {
+        return false
+    }
+}

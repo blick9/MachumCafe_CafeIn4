@@ -16,6 +16,7 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     var currentSelectedCafe = ModelCafe()
     var isTapMarker = false
     var mapPaddingInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    var currentLocation = [String : Any]()
 
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var cafeName: UILabel!
@@ -27,21 +28,36 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-        loadModelCafeData()
-        
-        //locationManager - 좌표 알려주는 매니져
+
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingHeading()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
         
-        googleMap.camera = GMSCameraPosition.camera(withLatitude: 37.506139582014775, longitude: 127.03659117221832, zoom: 13.0)
+        googleMap.camera = GMSCameraPosition.camera(withLatitude: 36.609145122457349, longitude: 127.81414780765772, zoom: 7.0)
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
         googleMap.settings.zoomGestures = true
         googleMap.padding = mapPaddingInsets
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshCafeMarkers()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if currentLocation["latitude"] as! Double != 0 {
+            googleMap.animate(toLocation: CLLocationCoordinate2D(latitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double))
+            googleMap.animate(toZoom: 14)
+        }
+    }
+    
+    func refreshCafeMarkers() {
+        googleMap.clear()
+        loadModelCafeData()
         insertCafeMarkers()
     }
     
@@ -57,42 +73,44 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     }
     
     func loadModelCafeData() {
-        modelCafe = Cafe.sharedInstance.cafeList
+        currentLocation = Location.sharedInstance.currentLocation.getLocation()
+        let distance = Location.sharedInstance.getCoordinateDistance(meter: 1000)
+        
+        modelCafe = Cafe.sharedInstance.cafeList.filter {
+            (currentLocation["latitude"] as! Double) - distance <= $0.getLatitude() && $0.getLatitude() <= (currentLocation["latitude"] as! Double) + distance && (currentLocation["longitude"] as! Double) - distance <= $0.getLongitude() && $0.getLongitude() <= (currentLocation["longitude"] as! Double) + distance
+        }
     }
     
     func insertCafeMarkers() {
         modelCafe.forEach { (cafeData) in
             let cafe = cafeData.getCafe()
-            let latitude = cafe["latitude"]
-            let longitude = cafe["longitude"]
+            let latitude = cafe["latitude"] as! Double
+            let longitude = cafe["longitude"] as! Double
             let cafeImage = cafe["imagesData"] as! [Data]
-            
-            createMarker(titleMarker: cafe["name"] as! String, snippetMarker: cafe["address"] as! String, image: #imageLiteral(resourceName: "1"), targetData: cafeData, latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
+            createMarker(titleMarker: cafe["name"] as! String, snippetMarker: cafe["address"] as! String, image: #imageLiteral(resourceName: "1"), targetData: cafeData, latitude: latitude, longitude: longitude)
         }
     }
     
-    func refreshCafeMarkers() {
-        googleMap.clear()
-        insertCafeMarkers()
+    func tempMakeCircle() {
+        let circleCenter = CLLocationCoordinate2D(latitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double)
+        let circ = GMSCircle(position: circleCenter, radius: 1000)
+        
+        circ.fillColor = UIColor(red: 0.35, green: 0, blue: 0, alpha: 0.03)
+        circ.strokeColor = .red
+        circ.strokeWidth = 1
+        circ.map = googleMap
     }
+    
     
     
     // Part - Delegate : GMSMapViewDelegate
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         isTapMarker = false
         infoViewAnimate()
-
-        // MARK: GooglePlace를 통한 정보 가져오기. (다시 사용시 googlePlaces 모듈 import 할 것)
-//        NetworkMap.searchCafeAroundMe(latitude: coordinate.latitude, longitude: coordinate.longitude) { (cafeInfoArray) in
-//            NetworkMap.spreadMarker(cafeInfoArray: cafeInfoArray, callback: { (cafeInfo, name, address) in
-//                self.createMarker(titleMarker: name, snippetMarker: address, iconMarker: #imageLiteral(resourceName: "marker") , latitude: cafeInfo["cafeLatitude"]! as!CLLocationDegrees, longitude: cafeInfo["cafeLongitude"]! as! CLLocationDegrees)
-//            })
-//        }
-//        createMarker(titleMarker: "", snippetMarker: "", iconMarker: #imageLiteral(resourceName: "locationIcon"), latitude: coordinate.latitude, longitude: coordinate.longitude)
+        print(coordinate)
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
@@ -128,13 +146,13 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
         }
     }
     
-    // Part - Method : 맵에 마커 생성하는 함수
-    func createMarker(titleMarker : String, snippetMarker : String, image: UIImage, targetData: Any, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
+    func createMarker(titleMarker : String, snippetMarker : String, image: UIImage?, targetData: Any?, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
         let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
         marker.title = titleMarker
         marker.snippet = snippetMarker
         marker.userData = [image, targetData]
         marker.icon = GMSMarker.markerImage(with: .black)
+//        marker.icon = #imageLiteral(resourceName: "locationIcon")
         marker.map = googleMap
     }
     
