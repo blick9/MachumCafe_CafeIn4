@@ -20,6 +20,8 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
 
         print(#function, "Table")
         // Do any additional setup after loading the view.
@@ -51,6 +53,10 @@ class ListViewController: UIViewController {
         }
     }
     
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+    
 }
 
 extension ListViewController : UITableViewDelegate, UITableViewDataSource {
@@ -68,8 +74,9 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
         let cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
         let imagesData = cafeData["imagesData"] as! [Data]
-        
-//        cell.backgroundImageView.image = UIImage(data: imagesData[0])
+        if !imagesData.isEmpty {
+            cell.backgroundImageView.image = UIImage(data: imagesData[0])
+        }
         cell.cafeNameLabel.text = cafeData["name"] as? String
         cell.cafeAddressLabel.text = cafeData["address"] as? String
         cell.distanceLabel.text = "1.2km"

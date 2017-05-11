@@ -41,13 +41,18 @@ class NetworkCafe {
     }
     
     // MARK: 카페 이미지 데이터모델에 저장
-    static func getImagesData(imagesName: [String], cafe: ModelCafe, callback: @escaping (_ imageData: Data) -> Void) {
-        for imageName in imagesName {
-            Alamofire.request("\(url)/api/v1/cafe/\(imageName)").responseData(completionHandler: { (response) in
-                callback(response.result.value!)
-            })
+    static func getImagesData(imagesURL: [String], callback: @escaping (_ imageData: Data) -> Void) {
+        if !imagesURL.isEmpty {
+            for imageURL in imagesURL {
+                Alamofire.request("\(imageURL)").responseData(completionHandler: { (response) in
+                    if let imageData = response.result.value {
+                        callback(imageData)
+                    }
+                })
+            }
         }
     }
+    
     
     
 }
