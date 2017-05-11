@@ -8,49 +8,42 @@
 
 import UIKit
 
+
 class ListContainerViewController: UIViewController {
+    let listViewStoryboard = UIStoryboard(name: "ListView", bundle: nil)
+    let listMapViewStoryboard = UIStoryboard(name: "ListMapView", bundle: nil)
+    var listTableViewController = UIViewController()
+    var listMapViewController = UIViewController()
+    var isMapView = false
+
     @IBOutlet weak var listMapView: UIView!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
     
-    var isMapView = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "맞춤카페 목록"
-        //TODO:- 초기화될 때 Map View 없애기. 동시에 생겨 불필요함
-//        listMapView.removeFromSuperview()
-        
-        //TODO:- < 버튼 옆 Text 없애기
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        print(#function, "Container")
-    }
+        listMapView.isHidden = true
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-
+        listTableViewController = listViewStoryboard.instantiateViewController(withIdentifier: "ListView")
+        listMapViewController = listMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
-        if isMapView {
-            listMapView.removeFromSuperview()
-            view.addSubview(listView)
-            viewSwitchButtonItem.image = #imageLiteral(resourceName: "map_Bt")
-        } else {
-            listView.removeFromSuperview()
-            view.addSubview(listMapView)
-            viewSwitchButtonItem.image = #imageLiteral(resourceName: "list_Bt")
+        viewSwitchButtonItem.image = isMapView ? #imageLiteral(resourceName: "map_Bt") : #imageLiteral(resourceName: "list_Bt")
+        
+        let newController = isMapView ? listTableViewController : listMapViewController
+        let oldController = childViewControllers.last
+        
+        oldController?.willMove(toParentViewController: nil)
+        addChildViewController(newController)
+        newController.view.frame = (oldController?.view.frame)!
+        transition(from: oldController!, to: newController, duration: 0.3, options: isMapView ? .transitionFlipFromLeft : .transitionFlipFromRight, animations: {
+        }) { _ in
+            oldController?.removeFromParentViewController()
+            newController.didMove(toParentViewController: self)
         }
         isMapView = !isMapView
     }
@@ -60,14 +53,4 @@ class ListContainerViewController: UIViewController {
         let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterView")
         present(filterViewController, animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
