@@ -11,7 +11,7 @@ import GoogleMaps
 
 class SetLocationMapViewController: UIViewController {
     var locationManager = CLLocationManager()
-    var currentLocation = CLLocationCoordinate2D()
+    var currentLocation = ModelLocation()
 
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var currentAddress: UILabel!
@@ -57,8 +57,7 @@ class SetLocationMapViewController: UIViewController {
 
     
     @IBAction func applyButtonAction(_ sender: Any) {
-        let locationValue = ModelLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude, address: currentAddress.text!)
-        Location.sharedInstance.currentLocation = locationValue
+        Location.sharedInstance.currentLocation = currentLocation
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -71,26 +70,21 @@ class SetLocationMapViewController: UIViewController {
 extension SetLocationMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!)
-        NetworkMap.getAddressFromCoordinate(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!) { (address) in
-            Location.sharedInstance.currentLocation.setLocation(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, address: address[0])
-        self.currentAddress.text = address[0]
+//        currentLocation = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!)
+//        print(locations.last?.coordinate.latitude, locations.last?.coordinate.longitude)
 
-        }
-        print(currentLocation)
     }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        currentLocation = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
-        
         NetworkMap.getAddressFromCoordinate(latitude: position.target.latitude, longitude: position.target.longitude) { (address) in
+            self.currentLocation.setLocation(latitude: position.target.latitude, longitude: position.target.longitude, address: address[0])
             self.currentAddress.text = address[0]
         }
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         googleMap.animate(toLocation: coordinate)
-        
+        print(coordinate)
         /* Center 조정용 Marker
         let adjustCenterPointMarker = GMSMarker(position: coordinate)
         adjustCenterPointMarker.icon = GMSMarker.markerImage(with: .black)
