@@ -39,5 +39,9 @@ class ModelLocation {
 
 class Location {
     static let sharedInstance = Location()
-    var currentLocation = ModelLocation()
+    var currentLocation = ModelLocation() {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setLocation"), object: nil)
+        }
+    }
 }

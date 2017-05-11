@@ -35,7 +35,7 @@ class BookmarkViewController: UIViewController {
         NetworkBookmark.getMyBookmark(userId: userId) { (message, cafeList, bookmarkID) in
             Cafe.sharedInstance.bookmarkList = cafeList
             for cafe in cafeList {
-                NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe, callback: { (imageData) in
+                NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String], callback: { (imageData) in
                     cafe.setImagesData(imageData: imageData)
                     self.collectionView.reloadData()
                 })

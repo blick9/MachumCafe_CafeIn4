@@ -39,7 +39,7 @@ class CafeDetailViewController: UIViewController {
 
         navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
-        cafeImageView.image = UIImage(data: (imagesData?[0])!)
+//        cafeImageView.image = UIImage(data: (imagesData?[0])!)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
     }
@@ -125,7 +125,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             cell.detailLabel.sizeToFit()
             
             if indexPath.row == 0 {
-                cell.detailLabel.text = cafeData["phoneNumber"] as? String
+                cell.detailLabel.text = cafeData["tel"] as? String
             }
             
             if indexPath.row == 1 {

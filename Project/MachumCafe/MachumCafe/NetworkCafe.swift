@@ -20,23 +20,20 @@ class NetworkCafe {
 
         Alamofire.request("\(url)/api/v1/cafe").responseJSON { (response) in
             let cafes = JSON(data: response.data!).arrayValue
-            
             let _ = cafes.map {
                 let cafe = $0.dictionaryValue
                 
                 if let id = cafe["_id"]?.stringValue,
                 let name = cafe["name"]?.stringValue,
-                let phoneNumber = cafe["phoneNumber"]?.stringValue,
                 let address = cafe["address"]?.stringValue,
-                let hours = cafe["hours"]?.stringValue,
-                let latitude = cafe["latitude"]?.stringValue,
-                let longitude = cafe["longitude"]?.stringValue,
+                let latitude = cafe["latitude"]?.doubleValue,
+                let longitude = cafe["longitude"]?.doubleValue,
                 let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
-                let imagesName = cafe["imagesName"]?.arrayValue.map({ $0.stringValue }) {
-                    let summary = cafe["summary"]?.stringValue
-                    let mainMenu = cafe["mainMenu"]?.arrayValue.map({ $0.stringValue })
-
-                    modelCafe.append(ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu, imagesName: imagesName))
+                let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
+                    let tel = cafe["tel"]?.stringValue
+                    let hours = cafe["hours"]?.stringValue
+                    let menu = cafe["menu"]?.stringValue
+                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL))
                 }
             }
             callback(modelCafe)
@@ -44,13 +41,18 @@ class NetworkCafe {
     }
     
     // MARK: 카페 이미지 데이터모델에 저장
-    static func getImagesData(imagesName: [String], cafe: ModelCafe, callback: @escaping (_ imageData: Data) -> Void) {
-        for imageName in imagesName {
-            Alamofire.request("\(url)/api/v1/cafe/\(imageName)").responseData(completionHandler: { (response) in
-                callback(response.result.value!)
-            })
+    static func getImagesData(imagesURL: [String], callback: @escaping (_ imageData: Data) -> Void) {
+        if !imagesURL.isEmpty {
+            for imageURL in imagesURL {
+                Alamofire.request("\(imageURL)").responseData(completionHandler: { (response) in
+                    if let imageData = response.result.value {
+                        callback(imageData)
+                    }
+                })
+            }
         }
     }
+    
     
     
 }

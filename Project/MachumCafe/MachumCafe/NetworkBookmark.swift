@@ -28,17 +28,15 @@ class NetworkBookmark {
                 
                 if let id = cafe["_id"]?.stringValue,
                 let name = cafe["name"]?.stringValue,
-                let phoneNumber = cafe["phoneNumber"]?.stringValue,
                 let address = cafe["address"]?.stringValue,
-                let hours = cafe["hours"]?.stringValue,
-                let latitude = cafe["latitude"]?.stringValue,
-                let longitude = cafe["longitude"]?.stringValue,
+                let latitude = cafe["latitude"]?.doubleValue,
+                let longitude = cafe["longitude"]?.doubleValue,
                 let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
-                let imagesName = cafe["imagesName"]?.arrayValue.map({ $0.stringValue }) {
-                    let summary = cafe["summary"]?.stringValue
-                    let mainMenu = cafe["mainMenu"]?.arrayValue.map{ $0.stringValue }
-                    
-                    modelCafe.append(ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu, imagesName: imagesName))
+                let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
+                    let tel = cafe["tel"]?.stringValue
+                    let hours = cafe["hours"]?.stringValue
+                    let menu = cafe["menu"]?.stringValue
+                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL))
                 }
             }
             let userBookmark = res["userBookmark"].arrayValue.map{ $0.stringValue }

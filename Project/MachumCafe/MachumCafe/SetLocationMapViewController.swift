@@ -26,7 +26,9 @@ class SetLocationMapViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingHeading()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.startMonitoringSignificantLocationChanges() 
+        locationManager.startUpdatingLocation()
+        locationManager.distanceFilter = 10.0
         
         let mapInsets = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 0)
         googleMap.camera = GMSCameraPosition.camera(withLatitude: 37.506139582014775, longitude: 127.03659117221832, zoom: 13.0)
@@ -57,7 +59,6 @@ class SetLocationMapViewController: UIViewController {
     @IBAction func applyButtonAction(_ sender: Any) {
         let locationValue = ModelLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude, address: currentAddress.text!)
         Location.sharedInstance.currentLocation = locationValue
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setLocation"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -68,6 +69,17 @@ class SetLocationMapViewController: UIViewController {
 }
 
 extension SetLocationMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!)
+        NetworkMap.getAddressFromCoordinate(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!) { (address) in
+            Location.sharedInstance.currentLocation.setLocation(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, address: address[0])
+        self.currentAddress.text = address[0]
+
+        }
+        print(currentLocation)
+    }
+    
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         currentLocation = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
         
