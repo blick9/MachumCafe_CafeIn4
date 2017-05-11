@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tl9-lI-Cp7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Suggestion View Controller-->
         <scene sceneID="n7f-hI-0Su">
             <objects>
-                <viewController id="RGy-aV-rfK" customClass="SuggestionViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Suggestion" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RGy-aV-rfK" customClass="SuggestionViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ile-OY-DbF"/>
                         <viewControllerLayoutGuide type="bottom" id="Sgd-V8-tGX"/>
@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="we6-jp-L3j" id="9ug-iI-7Wn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="telephoneD" translatesAutoresizingMaskIntoConstraints="NO" id="rzw-Fw-wWG">
@@ -56,7 +56,7 @@
                                         <rect key="frame" x="0.0" y="81" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0q6-om-gEb" id="57o-Ye-R3b">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" alpha="0.5" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaX-0O-12F" userLabel="parkingButton">
@@ -112,9 +112,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Ssw-2v-frl">
             <objects>
-                <navigationController storyboardIdentifier="Suggestion" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tl9-lI-Cp7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tl9-lI-Cp7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iqy-6a-iRd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iqy-6a-iRd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -127,9 +127,75 @@
             </objects>
             <point key="canvasLocation" x="3482.4000000000001" y="852.3238380809596"/>
         </scene>
+        <!--Suggestion Image Picker View Collection View Controller-->
+        <scene sceneID="Nxa-kW-33j">
+            <objects>
+                <collectionViewController id="pMD-oU-DIC" customClass="SuggestionImagePickerViewCollectionViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="vA5-Dc-Sp3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2tR-yv-G8h">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="UIb-b9-JTS" customClass="SuggestionImagePickerViewCollectionViewCell" customModule="MachumCafe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdC-tR-VfE" userLabel="I">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        </imageView>
+                                        <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFt-aG-AUR">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ToR-FY-48H">
+                                            <rect key="frame" x="28" y="29" width="23" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="hdC-tR-VfE" firstAttribute="centerX" secondItem="UIb-b9-JTS" secondAttribute="centerX" id="5SB-Ru-Kse"/>
+                                    <constraint firstItem="hdC-tR-VfE" firstAttribute="height" secondItem="UIb-b9-JTS" secondAttribute="height" id="8OQ-sC-n1d"/>
+                                    <constraint firstItem="hdC-tR-VfE" firstAttribute="width" secondItem="UIb-b9-JTS" secondAttribute="width" id="fh8-tD-DFc"/>
+                                    <constraint firstItem="hdC-tR-VfE" firstAttribute="centerY" secondItem="UIb-b9-JTS" secondAttribute="centerY" id="oc6-1W-fGC"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="hdC-tR-VfE" id="7DH-mU-zco"/>
+                                    <outlet property="selectedImage" destination="ToR-FY-48H" id="4O0-je-iar"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="pMD-oU-DIC" id="7Jd-cF-Pma"/>
+                            <outlet property="delegate" destination="pMD-oU-DIC" id="1bz-Dn-6v4"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="qVw-6R-GEm">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="yR6-aU-7le">
+                            <connections>
+                                <action selector="selectDoneActionButton:" destination="pMD-oU-DIC" id="Qea-gU-qTs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fS7-Hq-50y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4982" y="852"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cancelButton" width="19" height="20"/>
+        <image name="checkIcon" width="29" height="30"/>
         <image name="parkingCategoryIcon" width="80" height="27"/>
         <image name="restroomCategoryIcon" width="80" height="27"/>
         <image name="smokingCategoryIcon" width="80" height="27"/>
