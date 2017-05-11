@@ -35,8 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         NetworkCafe.getAllCafeList { (cafeList) in
             Cafe.sharedInstance.cafeList = cafeList
             for cafe in cafeList {
-                NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe, callback: { (imageData) in
+                NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String], callback: { (imageData) in
                     cafe.setImagesData(imageData: imageData)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
                 })
             }
         }
