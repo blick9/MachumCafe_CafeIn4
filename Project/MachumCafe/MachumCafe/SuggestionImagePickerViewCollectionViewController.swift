@@ -11,13 +11,19 @@ import Photos
 
 private let reuseIdentifier = "Cell"
 
+protocol savedImageDelegate {
+    func savedImage (SaveedImage pickedImage: [UIImage])
+}
+
 class SuggestionImagePickerViewCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var delegate : savedImageDelegate?
+
     var imageArray = [UIImage]()
     var selectedImageArray = [UIImage]()
     
     var multiple = true
-    
+
     func grabPhtos() {
         let imageManager = PHImageManager.default()
         let requestOptions = PHImageRequestOptions()
@@ -49,10 +55,13 @@ class SuggestionImagePickerViewCollectionViewController: UICollectionViewControl
     
     @IBAction func doneActionButton(_ sender: Any) {
 
-        let suggestionStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
-        let suggestionController = suggestionStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
-        suggestionController.test = selectedImageArray
+//        if let theDelegate = self.delegate {
+//            theDelegate.savedImage(SaveedImage: selectedImageArray)
+//        }
+        delegate?.savedImage(SaveedImage: selectedImageArray)
+        
         self.dismiss(animated: true, completion: nil)
+
     }
     
     
@@ -60,10 +69,6 @@ class SuggestionImagePickerViewCollectionViewController: UICollectionViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let backButton = UIBarButtonItem(customView: UIImageView(image: UIImage(named: "back_Bt")))
-//        navigationItem.leftBarButtonItems = [backButton]
-//        backButton.target = self
-//        backButton.action = #selector(SuggestionImagePickerViewCollectionViewController.dissmiss)
         navigationItem.title = "imagePicker"
         grabPhtos()
         collectionView?.allowsMultipleSelection = multiple

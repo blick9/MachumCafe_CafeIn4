@@ -37,9 +37,6 @@ class SuggestionCategoryTableViewCell: UITableViewCell {
     
     
     override func layoutSubviews() {
-//        parkingButton.addTarget(self, action: #selector(selected(_:)), for: .touchUpInside)
-//        smokingButton.addTarget(self, action: #selector(selected(_:)), for: .touchUpInside)
-//        restroomButton.addTarget(self, action: #selector(selected(_:)), for: .touchUpInside)
         
     }
    
