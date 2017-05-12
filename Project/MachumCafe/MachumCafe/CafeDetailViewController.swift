@@ -10,6 +10,7 @@ import UIKit
 
 class CafeDetailViewController: UIViewController {
     
+    var cafeModel = ModelCafe()
     var cafeData = [String:Any]()
     var getUserID = String()
     var getUserBookmarkArray = [String]()
@@ -24,7 +25,6 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var cafeImageView: UIImageView!
-    
  //  @IBOutlet weak var reviewMoreButton: UIButton!
     
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
@@ -33,13 +33,15 @@ class CafeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cafeData = cafeModel.getCafe()
+        let imagesData = cafeData["imagesData"] as? [Data]
+        print(imagesData)
+
+        navigationItem.title = cafeData["name"] as? String
+        cafeNameLabel.text = cafeData["name"] as? String
+//        cafeImageView.image = UIImage(data: (imagesData?[0])!)
+        bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
-        detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-        detailTableView.isScrollEnabled = false
-        reviewTableView.isScrollEnabled = false
-        cafeNameLabel.sizeToFit()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,14 +60,12 @@ class CafeDetailViewController: UIViewController {
     }
     
     func viewInit() {
-        let imagesData = cafeData["imagesData"] as! [Data]
-        
-        navigationItem.title = cafeData["name"] as? String
+        detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
+        detailTableView.isScrollEnabled = false
+        reviewTableView.isScrollEnabled = false
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
-        cafeNameLabel.text = cafeData["name"] as? String
-        bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
-        cafeImageView.image = UIImage(data: imagesData[0])
+        cafeNameLabel.sizeToFit()
     }
     
     func bookmarkToggleButton() {
@@ -125,7 +125,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             cell.detailLabel.sizeToFit()
             
             if indexPath.row == 0 {
-                cell.detailLabel.text = cafeData["phoneNumber"] as? String
+                cell.detailLabel.text = cafeData["tel"] as? String
             }
             
             if indexPath.row == 1 {

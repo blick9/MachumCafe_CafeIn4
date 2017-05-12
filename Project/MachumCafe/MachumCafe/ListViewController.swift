@@ -20,6 +20,8 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
 
         print(#function, "Table")
         // Do any additional setup after loading the view.
@@ -35,13 +37,11 @@ class ListViewController: UIViewController {
     
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
-        print(buttonTag, buttonTag.tag)
         let cafeID = Cafe.sharedInstance.cafeList[buttonTag.tag].getCafe()["id"] as! String
         NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (message, des) in
             print(des)
             if message {
                 NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe, userBookmark) in
-                    Cafe.sharedInstance.bookmarkList = cafe
                     User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
                     self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
                     print(User.sharedInstance.user.getUser()["bookmark"]!)
@@ -51,6 +51,10 @@ class ListViewController: UIViewController {
                 UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요")
             }
         }
+    }
+    
+    func reloadTableView() {
+        tableView.reloadData()
     }
     
 }
@@ -70,8 +74,9 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
         let cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
         let imagesData = cafeData["imagesData"] as! [Data]
-        
-        cell.backgroundImageView.image = UIImage(data: imagesData[0])
+        if !imagesData.isEmpty {
+            cell.backgroundImageView.image = UIImage(data: imagesData[0])
+        }
         cell.cafeNameLabel.text = cafeData["name"] as? String
         cell.cafeAddressLabel.text = cafeData["address"] as? String
         cell.distanceLabel.text = "1.2km"
@@ -87,7 +92,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "DetailView" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! CafeDetailViewController
-                controller.cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
+                controller.cafeModel = Cafe.sharedInstance.cafeList[indexPath.row]
             }
         }
     }

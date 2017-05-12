@@ -24,6 +24,7 @@
 		A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723B6881EAF437A00469FE4 /* SignUpViewController.swift */; };
 		A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A723B68A1EAF439300469FE4 /* LogIn&SignUpView.storyboard */; };
 		A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723B68C1EAF483F00469FE4 /* ExtentionUIColorClass.swift */; };
+		A76197B61EBD84A7008E50D5 /* ModelLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76197B51EBD84A7008E50D5 /* ModelLocation.swift */; };
 		A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A431EAF4A5700EB24C6 /* MainViewController.swift */; };
 		A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A451EAF4A7600EB24C6 /* MainSideBarViewController.swift */; };
 		A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */; };
@@ -75,6 +76,7 @@
 		A723B6881EAF437A00469FE4 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A723B68A1EAF439300469FE4 /* LogIn&SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "LogIn&SignUpView.storyboard"; sourceTree = "<group>"; };
 		A723B68C1EAF483F00469FE4 /* ExtentionUIColorClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtentionUIColorClass.swift; sourceTree = "<group>"; };
+		A76197B51EBD84A7008E50D5 /* ModelLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelLocation.swift; sourceTree = "<group>"; };
 		A7B73A431EAF4A5700EB24C6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A7B73A451EAF4A7600EB24C6 /* MainSideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSideBarViewController.swift; sourceTree = "<group>"; };
 		A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			children = (
 				A7B73A601EB32E2200EB24C6 /* ModelCafe.swift */,
 				A7B73A611EB32E2200EB24C6 /* ModelUser.swift */,
+				A76197B51EBD84A7008E50D5 /* ModelLocation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -274,8 +277,8 @@
 				A7B73A581EB32E1300EB24C6 /* NetworkBookmark.swift */,
 				A7B73A591EB32E1300EB24C6 /* NetworkCafe.swift */,
 				A7B73A5A1EB32E1300EB24C6 /* NetworkUser.swift */,
-				A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */,
 				B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */,
+				A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
 				B78D2A291EBB15A50069E2E9 /* SuggestionCategory.swift in Sources */,
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
+				A76197B61EBD84A7008E50D5 /* ModelLocation.swift in Sources */,
 				B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */,
 				B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */,
 				A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */,
@@ -602,6 +606,7 @@
 			baseConfigurationReference = D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MachumCafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -616,6 +621,7 @@
 			baseConfigurationReference = 1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MachumCafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -11,10 +11,15 @@ import GoogleMaps
 import GooglePlaces
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
     var googleAPIKey = "AIzaSyBJK14xRWA8NkVirhJxmpuO9FvKvARRmfY"
+    var locationManager = CLLocationManager()
+    var seenError : Bool = false
+    var locationFixAchieved : Bool = false
+    var locationStatus : NSString = "Not Started"
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -30,8 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkCafe.getAllCafeList { (cafeList) in
             Cafe.sharedInstance.cafeList = cafeList
             for cafe in cafeList {
-                NetworkCafe.getImagesData(imagesName: cafe.getCafe()["imagesName"] as! [String], cafe: cafe, callback: { (imageData) in
+                NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String], callback: { (imageData) in
                     cafe.setImagesData(imageData: imageData)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
                 })
             }
         }
@@ -42,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 User.sharedInstance.isUser = true
             }
         }
+        
+        initLocationManager()
         
         return true
     }
@@ -57,17 +65,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        initLocationManager()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        initLocationManager()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func initLocationManager() {
 
+        seenError = false
+        locationFixAchieved = false
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.distanceFilter = 10.0
+    }
+    
+    // Checking error in locationManager
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        if (seenError == false) {
+            seenError = true
+            print(error)
+        }
+    }
+    // When location Updated
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var currentLocation = CLLocationCoordinate2D()
+        if (locationFixAchieved == false) {
+            locationFixAchieved = true
+            currentLocation = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!)
 
+            NetworkMap.getAddressFromCoordinate(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!) { (address) in
+                Location.sharedInstance.currentLocation = ModelLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude, address: address[0])
+            }
+            
+        }
+    }
+    // locationAuthorization
+    private func locationManager(manager: CLLocationManager!,
+                         didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        var shouldIAllow = false
+        
+        switch status {
+        case CLAuthorizationStatus.restricted:
+            locationStatus = "Restricted Access to location"
+        case CLAuthorizationStatus.denied:
+            locationStatus = "User denied access to location"
+        case CLAuthorizationStatus.notDetermined:
+            locationStatus = "Status not determined"
+        default:
+            locationStatus = "Allowed to location Access"
+            shouldIAllow = true
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LabelHasbeenUpdated"), object: nil)
+        if (shouldIAllow == true) {
+            NSLog("Location to Allowed")
+            // Start location services
+            locationManager.startUpdatingLocation()
+        } else {
+            NSLog("Denied access: \(locationStatus)")
+        }
+    }
 }
-

@@ -62,7 +62,7 @@ class FilterViewController: UIViewController {
 
     @IBAction func resetFilterArray(_ sender: Any) {
         filterArray.removeAll()
-        buttonArray.map(){if $0.isSelected == true {$0.isSelected = false}}
+        let _ = buttonArray.map { if $0.isSelected == true { $0.isSelected = false } }
         print(filterArray)
     }
     @IBAction func closeButtonAction(_ sender: Any) {

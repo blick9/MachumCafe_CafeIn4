@@ -9,22 +9,33 @@
 import UIKit
 
 class LocationLabelView: UIView {
-
+    weak var delegate: UIViewController?
+    
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var setLocationButton: UIButton!
     
-    func presentSetLocationView(target: UIButton) {
-        let setLocationStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
-        let setLocationViewController = setLocationStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
-        let embedNavigationControllerSetLocationView = UINavigationController(rootViewController: setLocationViewController)
-        
-        target.inputViewController?.present(embedNavigationControllerSetLocationView, animated: true, completion: nil)
-        
-        print("test")
-        
-//        let logInStoryboard = UIStoryboard(name: "LogIn&SignUpView", bundle: nil)
-//        let logInViewController = logInStoryboard.instantiateViewController(withIdentifier: "LogIn")
-//        target.present(logInViewController, animated: true, completion: nil)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshAddress), name: NSNotification.Name(rawValue: "setLocation"), object: nil)
     }
     
+    func refreshAddress() {
+        layoutSubviews()
+    }
+    
+    @IBAction func presentSetLocationMapViewButtonAction(_ sender: Any) {
+        let setLocationStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
+        let setLocationViewController = setLocationStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
+        let setLocationViewNavigationController = UINavigationController(rootViewController: setLocationViewController)
+//        (self.delegate as! UIViewController)?.present(setLocationViewNavigationController, animated: true, completion: nil)
+        self.delegate?.present(setLocationViewNavigationController, animated: true, completion: nil)
+    }
+
+    override func layoutSubviews() {
+        if let address = Location.sharedInstance.currentLocation.getLocation()["address"] as? String {
+            addressLabel.text = address
+        } else {
+            addressLabel.text = "위치 정보가 없습니다."
+        }
+    }
 }

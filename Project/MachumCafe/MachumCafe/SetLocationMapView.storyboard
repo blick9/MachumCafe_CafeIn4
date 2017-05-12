@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="F1y-k1-U44">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dtc-aZ-igN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,20 +21,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SetMyLocationMapView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncS-gD-JUY">
-                                <rect key="frame" x="57" y="73" width="260" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-6H-Eig" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpz-vh-Mqb">
+                                <rect key="frame" x="10" y="574" width="355" height="83"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 중.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GNW-mr-axs">
+                                        <rect key="frame" x="8" y="16" width="339" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqh-4c-zio">
+                                        <rect key="frame" x="100" y="44" width="155" height="32"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <state key="normal" title="현재 위치로 설정하기"/>
+                                        <connections>
+                                            <action selector="applyButtonAction:" destination="F1y-k1-U44" eventType="touchUpInside" id="IAg-h4-BUy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="GNW-mr-axs" firstAttribute="top" secondItem="xpz-vh-Mqb" secondAttribute="top" constant="16" id="7PW-N4-Opw"/>
+                                    <constraint firstItem="Hqh-4c-zio" firstAttribute="leading" secondItem="xpz-vh-Mqb" secondAttribute="leading" constant="100" id="GqL-tL-ass"/>
+                                    <constraint firstItem="GNW-mr-axs" firstAttribute="leading" secondItem="xpz-vh-Mqb" secondAttribute="leading" constant="8" id="MYw-fE-Ytq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hqh-4c-zio" secondAttribute="trailing" constant="100" id="ak7-wK-8ID"/>
+                                    <constraint firstAttribute="trailing" secondItem="GNW-mr-axs" secondAttribute="trailing" constant="8" id="jO6-VJ-EyE"/>
+                                    <constraint firstAttribute="height" constant="83" id="ngJ-cj-CXn"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hqh-4c-zio" secondAttribute="bottom" constant="7" id="yQs-WH-SZs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dEf-6H-Eig" secondAttribute="trailing" id="4AA-zq-atS"/>
+                            <constraint firstItem="dEf-6H-Eig" firstAttribute="top" secondItem="yz9-Z6-PTN" secondAttribute="top" id="5CE-Fv-ZdR"/>
+                            <constraint firstAttribute="trailing" secondItem="xpz-vh-Mqb" secondAttribute="trailing" constant="10" id="8fC-oG-beW"/>
+                            <constraint firstItem="dEf-6H-Eig" firstAttribute="leading" secondItem="yz9-Z6-PTN" secondAttribute="leading" id="BQa-Fy-pyR"/>
+                            <constraint firstItem="GnW-gH-YVs" firstAttribute="top" secondItem="dEf-6H-Eig" secondAttribute="bottom" id="L3m-9T-VHW"/>
+                            <constraint firstItem="xpz-vh-Mqb" firstAttribute="top" secondItem="WBl-on-NJ9" secondAttribute="bottom" priority="750" constant="510" id="PaP-ht-18w"/>
+                            <constraint firstItem="GnW-gH-YVs" firstAttribute="top" secondItem="xpz-vh-Mqb" secondAttribute="bottom" constant="10" id="V22-C7-fqL"/>
+                            <constraint firstItem="xpz-vh-Mqb" firstAttribute="leading" secondItem="yz9-Z6-PTN" secondAttribute="leading" constant="10" id="new-cy-YyC"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="SpU-tA-As8">
+                        <barButtonItem key="rightBarButtonItem" image="cancelButton" id="rN3-zJ-9hr">
+                            <connections>
+                                <action selector="closeButtonAction:" destination="F1y-k1-U44" id="se4-M8-d4d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addressView" destination="xpz-vh-Mqb" id="PwG-h6-MIR"/>
+                        <outlet property="applyButton" destination="Hqh-4c-zio" id="wzA-7l-116"/>
+                        <outlet property="currentAddress" destination="GNW-mr-axs" id="bcg-nN-kFW"/>
+                        <outlet property="googleMap" destination="dEf-6H-Eig" id="qb2-UH-KOm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0M-Rx-C8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2072.8000000000002" y="185.75712143928038"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="smJ-50-PyN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dtc-aZ-igN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zyY-p5-25r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="F1y-k1-U44" kind="relationship" relationship="rootViewController" id="jpl-qp-IjN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXt-LS-Upb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1328.8" y="185.75712143928038"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cancelButton" width="19" height="20"/>
+    </resources>
 </document>

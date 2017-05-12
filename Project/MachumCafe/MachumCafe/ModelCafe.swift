@@ -12,31 +12,29 @@ class ModelCafe {
     
     fileprivate var id = String()
     fileprivate var name = String()
-    fileprivate var phoneNumber = String()
+    fileprivate var tel : String?
     fileprivate var address = String()
-    fileprivate var hours = String()
-    fileprivate var latitude = String()
-    fileprivate var longitude = String()
+    fileprivate var hours : String?
+    fileprivate var latitude = Double()
+    fileprivate var longitude = Double()
     fileprivate var category = [String]()
-    fileprivate var summary : String?
-    fileprivate var mainMenu : [String]?
-    fileprivate var imagesName = [String]()
+    fileprivate var menu : String?
+    fileprivate var imagesURL = [String]()
     fileprivate var imagesData : [Data]?
     
     init() {}
         
-    init(id: String, name: String, phoneNumber: String, address: String, hours: String, latitude: String, longitude: String, category: [String], summary: String?, mainMenu: [String]?, imagesName: [String]) {
+    init(id: String, name: String, tel: String?, address: String, hours: String?, latitude: Double, longitude: Double, category: [String],  menu: String?, imagesURL: [String]) {
         self.id = id
         self.name = name
-        self.phoneNumber = phoneNumber
+        self.tel = tel
         self.address = address
         self.hours = hours
         self.latitude = latitude
         self.longitude = longitude
         self.category = category
-        self.summary = summary
-        self.mainMenu = mainMenu
-        self.imagesName = imagesName
+        self.menu = menu
+        self.imagesURL = imagesURL
         self.imagesData = [Data]()
     }
     
@@ -48,17 +46,24 @@ class ModelCafe {
         var cafeDic = [String : Any]()
         cafeDic["id"] = id
         cafeDic["name"] = name
-        cafeDic["phoneNumber"] = phoneNumber
+        cafeDic["tel"] = tel
         cafeDic["address"] = address
         cafeDic["hours"] = hours
         cafeDic["latitude"] = latitude
         cafeDic["longitude"] = longitude
         cafeDic["category"] = category
-        cafeDic["summary"] = summary
-        cafeDic["mainMenu"] = mainMenu
-        cafeDic["imagesName"] = imagesName
+        cafeDic["menu"] = menu
+        cafeDic["imagesURL"] = imagesURL
         cafeDic["imagesData"] = imagesData
         return cafeDic
+    }
+    
+    func getLatitude() -> Double {
+        return latitude
+    }
+    
+    func getLongitude() -> Double {
+        return longitude
     }
 }
 

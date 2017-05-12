@@ -34,6 +34,7 @@ extension UIAlertController {
         }
         target.present(alertController, animated: true, completion: nil)
     }
+    
 }
 
 extension UIActivityIndicatorView {
@@ -69,5 +70,11 @@ extension UIActivityIndicatorView {
         }) { _ in
             currentIndicator.removeFromSuperview()
         }
+    }
+}
+
+extension UIBarButtonItem {
+    static var isSelected: Bool {
+        return false
     }
 }
