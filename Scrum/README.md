@@ -1,14 +1,27 @@
 # Scrum
 ## 일일 Scrum
+  * ### 05.10(수)
+    * #### 전한나
+      * [ ] DB 백업
+      * [ ] SuggestionView Server Api 구현
+    * #### 구찬우
+      * [ ] ListContainerView Bug 수정
+      * [ ] NodeJS 공부
+    * #### 이단비
+      * [ ] ImagePicker 다중 선택 CollectionView 만들기
+      * [ ] SuggestionView request Api 구현
+    * #### 조민재
+      * [ ] FilterView 카테고리 수정
+
   * ### 05.09(화)
     * #### 전한나
-      * [ ] DB구조 변경으로 NetworkCafe 코드 수정
+      * [x] DB구조 변경으로 NetworkCafe 코드 수정
     * #### 구찬우
-      * [ ] 일정 거리내 데이터 불러오는 기능 구현
+      * [x] 일정 거리내 데이터 불러오는 기능 구현
     * #### 이단비
-      * [ ] imagePicker 다중 선택 CoCoaPod 적용
+      * [x] imagePicker 다중 선택 CocoaPod 적용
     * #### 조민재
-      * [ ] Background 위치 추적
+      * [x] Background 위치 추적
 
   * ### 05.08(월)
     * #### 전체
@@ -91,12 +104,12 @@
       * [ ] 네트워크 클래스 생성
       * [ ] ImagePicker 추가 (다중 선택)
     * ##### FilterView
-      * [ ] 카테고리 확정 후 모델 리팩토링
+      * [x] 카테고리 확정 후 모델 리팩토링
     * ##### CafeDetailView
       * [ ] 별점 기능 추가
     * ##### MapView
       * [ ] 서버로 부터 일정 반경 내 위치한 데이터만 불러오기
-      * [ ] Background 위치 추적
+      * [x] Background 위치 추적
       * [ ] 현위치와 카페간 직선 거리 표시
   * #### Model
     * ##### DB
