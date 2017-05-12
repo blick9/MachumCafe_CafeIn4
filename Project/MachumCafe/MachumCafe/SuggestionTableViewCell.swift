@@ -12,6 +12,9 @@ class SuggestionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var suggestionTextField: UITextField!
+//    @IBOutlet weak var suggestionTextField2: UITextField!
+//    @IBOutlet weak var suggestionTextField3: UITextField!
+//    @IBOutlet weak var suggestionTextField4: UITextField!
     
 
     

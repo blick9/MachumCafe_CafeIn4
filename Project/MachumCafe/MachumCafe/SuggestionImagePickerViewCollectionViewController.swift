@@ -11,10 +11,64 @@ import Photos
 
 private let reuseIdentifier = "Cell"
 
-class SuggestionImagePickerViewCollectionViewController: UICollectionViewController {
+class SuggestionImagePickerViewCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var imageArray = [UIImage]()
+    var selectedImageArray = [UIImage]()
+    
+    var multiple = true
+    
+    func grabPhtos() {
+        let imageManager = PHImageManager.default()
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.isSynchronous = true
+        requestOptions.deliveryMode = .opportunistic
+        
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        if let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions) {
+            if fetchResult.count > 0 {
+                for i in 0..<fetchResult.count {
+                    imageManager.requestImage(for: fetchResult.object(at: i) as! PHAsset, targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: requestOptions, resultHandler: {
+                        (image, error) in
+                        self.imageArray.append(image!)
+                    })
+                }
+            }
+            else {
+                print("You got no photos!")
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func doneActionButton(_ sender: Any) {
 
+        let suggestionStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
+        let suggestionController = suggestionStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
+        suggestionController.test = selectedImageArray
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let backButton = UIBarButtonItem(customView: UIImageView(image: UIImage(named: "back_Bt")))
+//        navigationItem.leftBarButtonItems = [backButton]
+//        backButton.target = self
+//        backButton.action = #selector(SuggestionImagePickerViewCollectionViewController.dissmiss)
+        navigationItem.title = "imagePicker"
+        grabPhtos()
+        collectionView?.allowsMultipleSelection = multiple
+        collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
+        selectedImageArray.removeAll(keepingCapacity: false)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -44,21 +98,53 @@ class SuggestionImagePickerViewCollectionViewController: UICollectionViewControl
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return imageArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        imageView.image = imageArray[indexPath.row]
     
         // Configure the cell
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        guard multiple else {
+            return
+        }
+        cell.isSelected = !cell.isSelected
+        selectedImageArray.append(imageArray[indexPath.row])
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let photoindex = imageArray[indexPath.row]
+        if let index = selectedImageArray.index(of: photoindex) {
+            selectedImageArray.remove(at: index)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 4 - 1
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
     }
 
     // MARK: UICollectionViewDelegate
