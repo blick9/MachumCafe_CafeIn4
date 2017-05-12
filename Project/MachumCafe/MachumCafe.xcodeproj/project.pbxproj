@@ -51,7 +51,7 @@
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
 		B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */; };
 		B78D2A291EBB15A50069E2E9 /* SuggestionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */; };
-		B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift */; };
+		B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift */; };
 		B7DFA2721EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */; };
 		B7E57DA61EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */; };
 		B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */; };
@@ -105,7 +105,7 @@
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategory.swift; sourceTree = "<group>"; };
-		B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionImagePickerViewCollectionViewController.swift; sourceTree = "<group>"; };
+		B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionImagePickerViewController.swift; sourceTree = "<group>"; };
 		B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionImagePickerViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CafeDetailView.storyboard; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 				B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */,
 				B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */,
 				B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */,
-				B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift */,
+				B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift */,
 				B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */,
 				B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */,
 			);
@@ -477,7 +477,7 @@
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
 				A76197B61EBD84A7008E50D5 /* ModelLocation.swift in Sources */,
 				B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */,
-				B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift in Sources */,
+				B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift in Sources */,
 				B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */,
 				A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */,
 				A723B67F1EAF431700469FE4 /* ListContainerViewController.swift in Sources */,
