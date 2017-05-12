@@ -41,6 +41,7 @@
 		A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */; };
 		A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */; };
 		A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */; };
+		B56FD1361EC465D9002BDA2B /* NetworkAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */; };
 		B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */; };
 		B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */; };
 		B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */; };
@@ -48,9 +49,10 @@
 		B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */; };
 		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
-		B78D2A251EBAF8240069E2E9 /* SuggestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A241EBAF8240069E2E9 /* SuggestionTableViewCell.swift */; };
 		B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */; };
 		B78D2A291EBB15A50069E2E9 /* SuggestionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */; };
+		B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift */; };
+		B7DFA2721EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */; };
 		B7E57DA61EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */; };
 		B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */; };
 		B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E57DA51EB59F2200A6D9A7 /* CafeDetailViewController.swift */; };
@@ -93,6 +95,7 @@
 		A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingView.storyboard; sourceTree = "<group>"; };
 		A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticFunction.swift; sourceTree = "<group>"; };
+		B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdmin.swift; sourceTree = "<group>"; };
 		B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMap.swift; sourceTree = "<group>"; };
 		B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
 		B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -100,9 +103,10 @@
 		B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
-		B78D2A241EBAF8240069E2E9 /* SuggestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategory.swift; sourceTree = "<group>"; };
+		B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionImagePickerViewCollectionViewController.swift; sourceTree = "<group>"; };
+		B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionImagePickerViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailTableViewCell.swift; sourceTree = "<group>"; };
 		B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CafeDetailView.storyboard; sourceTree = "<group>"; };
 		B7E57DA51EB59F2200A6D9A7 /* CafeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 				A7B73A5A1EB32E1300EB24C6 /* NetworkUser.swift */,
 				B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */,
 				A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */,
+				B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -306,9 +311,10 @@
 			isa = PBXGroup;
 			children = (
 				B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */,
-				B78D2A241EBAF8240069E2E9 /* SuggestionTableViewCell.swift */,
-				B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */,
 				B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */,
+				B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */,
+				B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift */,
+				B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */,
 				B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */,
 			);
 			name = SuggestionView;
@@ -460,10 +466,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56FD1361EC465D9002BDA2B /* NetworkAdmin.swift in Sources */,
 				B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */,
 				A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */,
 				A7B73A5E1EB32E1300EB24C6 /* NetworkUser.swift in Sources */,
-				B78D2A251EBAF8240069E2E9 /* SuggestionTableViewCell.swift in Sources */,
 				A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */,
 				A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */,
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
@@ -471,12 +477,14 @@
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
 				A76197B61EBD84A7008E50D5 /* ModelLocation.swift in Sources */,
 				B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */,
+				B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewCollectionViewController.swift in Sources */,
 				B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */,
 				A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */,
 				A723B67F1EAF431700469FE4 /* ListContainerViewController.swift in Sources */,
 				B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */,
 				B7E57DA61EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift in Sources */,
 				A7B73A631EB32E2200EB24C6 /* ModelUser.swift in Sources */,
+				B7DFA2721EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift in Sources */,
 				B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */,
 				A7B73A531EB2597000EB24C6 /* FilterViewController.swift in Sources */,
 				A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */,
