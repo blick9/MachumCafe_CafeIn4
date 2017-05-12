@@ -36,14 +36,25 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpButton(_ sender: Any) {
         if passwordTextField.text! != cofirmPasswordTextField.text! {
             UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "비밀번호가 일치하지 않습니다.", isHandler: false)
-        }
-        NetworkUser.register(email: emailTextField.text!, password: passwordTextField.text!, nickname: nicknameTextField.text!) { (message) in
-            if message {
-                UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "회원가입 완료 :)", isHandler: true)
-            } else {
-                UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "이미 가입된 사용자입니다.", isHandler: false)
+        } else if(!(emailTextField.text?.isEmail)!) {
+            UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "올바른 이메일을 입력해주세요", isHandler: false)
+        } else {
+            NetworkUser.register(email: emailTextField.text!, password: passwordTextField.text!, nickname: nicknameTextField.text!) { (message) in
+                if message {
+                    UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "회원가입 완료 :)", isHandler: true)
+                } else {
+                    UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "이미 가입된 사용자입니다.", isHandler: false)
+                }
             }
         }
+    }
+    
+}
+
+extension String {
+    var isEmail: Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegEx).evaluate(with: self)
     }
 }
 
