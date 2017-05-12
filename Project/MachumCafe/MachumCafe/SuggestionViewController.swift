@@ -11,9 +11,9 @@ import UIKit
 class SuggestionViewController: UIViewController, savedImageDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var adderessTextField: UITextField!
-    @IBOutlet weak var hourTextField: UITextField!
+    @IBOutlet weak var telTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var hoursTextField: UITextField!
     
     @IBOutlet weak var pickedImage1: UIImageView!
     @IBOutlet weak var pickedImage2: UIImageView!
@@ -30,20 +30,22 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
     }
     
     @IBAction func doneActionButton(_ sender: Any) {
-        print(nameTextField.text)
-        print(phoneNumberTextField.text)
-        print(adderessTextField.text)
-        print(hourTextField.text)
-        print(imageArray)
-       // test = imagePickerController.selectedImageArray
-       // print("test:", test)
         
-
+        
+        NetworkAdmin.uploadsImage(images: imageArray) { (imagesURL) in
+            let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: self.addressTextField.text!, hours: self.hoursTextField.text!, category: ["임시", "카테고리"], menu: "메뉴", imagesURL: imagesURL)
+            NetworkAdmin.suggestionNewCafe(cafe: cafe)
+        }
+        
+        print(nameTextField.text)
+        print(telTextField.text)
+        print(addressTextField.text)
+        print(hoursTextField.text)
+        print(imageArray)
     }
     
     func savedImage(SaveedImage pickedImage: [UIImage]) {
         self.imageArray = pickedImage
-        print(pickedImage)
     }
     
     override func viewDidLoad() {

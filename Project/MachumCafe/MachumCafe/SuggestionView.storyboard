@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tl9-lI-Cp7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tl9-lI-Cp7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -163,13 +163,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="adderessTextField" destination="zzF-pG-7ua" id="wgK-3w-vVi"/>
-                        <outlet property="hourTextField" destination="yka-TR-mvc" id="HLU-NS-FnH"/>
+                        <outlet property="addressTextField" destination="zzF-pG-7ua" id="ZSX-zi-q7G"/>
+                        <outlet property="hoursTextField" destination="yka-TR-mvc" id="rw7-vD-gcm"/>
                         <outlet property="nameTextField" destination="mMe-mj-qV5" id="hY4-cE-dPJ"/>
-                        <outlet property="phoneNumberTextField" destination="67V-bc-sXv" id="FeS-Wo-lYw"/>
                         <outlet property="pickedImage1" destination="kBi-Vw-kRb" id="ify-77-IZx"/>
                         <outlet property="pickedImage2" destination="12H-Z7-WoC" id="SQd-YR-eqj"/>
                         <outlet property="pickedImage3" destination="xGY-AN-tku" id="XjV-Iq-1Ns"/>
+                        <outlet property="telTextField" destination="67V-bc-sXv" id="Csv-dT-OA4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5s-l9-0NV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,7 +181,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tl9-lI-Cp7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iqy-6a-iRd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iqy-6a-iRd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -198,7 +198,7 @@
         <scene sceneID="Nxa-kW-33j">
             <objects>
                 <collectionViewController storyboardIdentifier="imagePicker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pMD-oU-DIC" customClass="SuggestionImagePickerViewCollectionViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vA5-Dc-Sp3">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="vA5-Dc-Sp3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
