@@ -23,7 +23,7 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
     
     @IBAction func imagePickerActionButton(_ sender: Any) {
         let imagePickerViewStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
-        let imagePickerViewController = imagePickerViewStoryboard.instantiateViewController(withIdentifier: "imagePicker") as! SuggestionImagePickerViewCollectionViewController
+        let imagePickerViewController = imagePickerViewStoryboard.instantiateViewController(withIdentifier: "imagePicker") as! SuggestionImagePickerViewColler
         let navigationVC = UINavigationController(rootViewController: imagePickerViewController)
         imagePickerViewController.delegate = self
         present(navigationVC, animated: false, completion: nil)
@@ -42,9 +42,15 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
         print(addressTextField.text)
         print(hoursTextField.text)
         print(imageArray)
+
     }
     
     func savedImage(SaveedImage pickedImage: [UIImage]) {
+        
+        pickedImage1.image = pickedImage[0]
+        pickedImage2.image = pickedImage[1]
+        pickedImage3.image = pickedImage[2]
+        
         self.imageArray = pickedImage
     }
     
