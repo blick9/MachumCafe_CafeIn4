@@ -58,6 +58,16 @@ class SetLocationMapViewController: UIViewController {
     
     @IBAction func applyButtonAction(_ sender: Any) {
         Location.sharedInstance.currentLocation = currentLocation
+        
+        NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (cafeList) in
+            Cafe.sharedInstance.cafeList = cafeList
+            for cafe in cafeList {
+                NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String], callback: { (imageData) in
+                    cafe.setImagesData(imageData: imageData)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+                })
+            }
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

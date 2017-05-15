@@ -29,8 +29,8 @@ class NetworkBookmark {
                 if let id = cafe["_id"]?.stringValue,
                 let name = cafe["name"]?.stringValue,
                 let address = cafe["address"]?.stringValue,
-                let latitude = cafe["latitude"]?.doubleValue,
-                let longitude = cafe["longitude"]?.doubleValue,
+                let longitude = cafe["location"]?.arrayValue[0].doubleValue,
+                let latitude = cafe["location"]?.arrayValue[1].doubleValue,
                 let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
                 let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
                     let tel = cafe["tel"]?.stringValue
