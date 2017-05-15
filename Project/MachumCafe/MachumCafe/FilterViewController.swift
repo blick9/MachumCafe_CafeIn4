@@ -45,10 +45,16 @@ class FilterViewController: UIViewController {
     }
 
     @IBAction func resetFilterArray(_ sender: Any) {
-        filterArray.removeAll()
-        collectionView.indexPath(for: )
-        print(filterArray)
-    }
+        
+        let selectedItem = collectionView.indexPathsForSelectedItems
+        print(selectedItem)
+        for item in selectedItem! {
+            collectionView.deselectItem(at: item, animated: false)
+        }
+        //cell.category.isSelected == false
+        //filterArray.removeAll()
+            }
+    
     @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -63,21 +69,34 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
         return 1
     }
     
+
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
-        cell.category.layer.cornerRadius = 10
-        cell.category.layer.borderWidth = 2
-        cell.category.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
-        cell.category.setTitle(categoryArray[indexPath.row], for: .normal)
-        cell.category.setTitleColor(UIColor.init(red: 51, green: 51, blue: 51), for: .normal)
-        cell.category.setTitleColor(UIColor.init(red: 51, green: 51, blue: 51), for: .selected)
-        cell.category.setBackgroundImage(#imageLiteral(resourceName: "backgrondColor"), for: .selected)
-        cell.category.addTarget(self, action: #selector(pickFilter(_:)) , for: .touchUpInside)
+        
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
+        cell.category.text = categoryArray[indexPath.row]
+        cell.category.textColor = UIColor.init(red: 51, green: 51, blue: 51)
+       // cell.category.setBackgroundImage(#imageLiteral(resourceName: "backgrondColor"), for: .selected)
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
+        
+       // print(indexPath.row)
+        if cell.isSelected == true {
+            cell.backgroundColor = UIColor.init(red: 255, green: 232, blue: 129)
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
+        print(cell.isSelected)
     }
 }
 

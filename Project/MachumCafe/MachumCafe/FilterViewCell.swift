@@ -9,5 +9,6 @@
 import UIKit
 
 class FilterViewCell: UICollectionViewCell {
-    @IBOutlet weak var category: UIButton!
+    @IBOutlet weak var category: UILabel!
+    
 }

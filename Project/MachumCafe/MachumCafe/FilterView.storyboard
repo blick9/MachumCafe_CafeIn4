@@ -64,20 +64,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mw-KZ-qKe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udj-Us-Qxn">
+                                                    <rect key="frame" x="0.0" y="10" width="100" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="5Mw-KZ-qKe" firstAttribute="top" secondItem="QpA-KM-kmD" secondAttribute="top" id="4RP-4E-pbv"/>
-                                            <constraint firstAttribute="bottom" secondItem="5Mw-KZ-qKe" secondAttribute="bottom" id="IGf-Rf-ftE"/>
-                                            <constraint firstAttribute="trailing" secondItem="5Mw-KZ-qKe" secondAttribute="trailing" id="LNG-mo-hfF"/>
-                                            <constraint firstItem="5Mw-KZ-qKe" firstAttribute="leading" secondItem="QpA-KM-kmD" secondAttribute="leading" id="UL1-P4-ATJ"/>
-                                        </constraints>
                                         <connections>
-                                            <outlet property="category" destination="5Mw-KZ-qKe" id="yj1-eJ-Cee"/>
+                                            <outlet property="category" destination="udj-Us-Qxn" id="owF-8x-o33"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
