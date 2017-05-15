@@ -30,7 +30,7 @@ class LogInViewController: UIViewController {
                 User.sharedInstance.isUser = true
                 self.dismiss(animated: true, completion: nil)
             } else {
-                UIAlertController().oneButtonAlert(target: self, title: "로그인 실패!", message: "아이디 또는 비밀번호를 다시 확인하세요.", isHandler: false)
+                UIAlertController().oneButtonAlert(target: self, title: "로그인", message: "아이디 또는 비밀번호를 다시 확인하세요.", isHandler: false)
             }
         }
     }
