@@ -41,6 +41,7 @@
 		A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */; };
 		A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */; };
 		A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */; };
+		B5749C9D1EC83FD6002F7C57 /* FilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5749C9C1EC83FD6002F7C57 /* FilterViewCell.swift */; };
 		B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */; };
 		B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */; };
 		B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */; };
@@ -93,6 +94,7 @@
 		A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingView.storyboard; sourceTree = "<group>"; };
 		A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticFunction.swift; sourceTree = "<group>"; };
+		B5749C9C1EC83FD6002F7C57 /* FilterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewCell.swift; sourceTree = "<group>"; };
 		B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMap.swift; sourceTree = "<group>"; };
 		B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
 		B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				A7B73A521EB2597000EB24C6 /* FilterViewController.swift */,
 				A7B73A541EB2597700EB24C6 /* FilterView.storyboard */,
+				B5749C9C1EC83FD6002F7C57 /* FilterViewCell.swift */,
 			);
 			name = FilterView;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */,
 				A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */,
 				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
+				B5749C9D1EC83FD6002F7C57 /* FilterViewCell.swift in Sources */,
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
 				A7B73A5D1EB32E1300EB24C6 /* NetworkCafe.swift in Sources */,
 				A7B73A5F1EB32E1300EB24C6 /* URLpath.swift in Sources */,

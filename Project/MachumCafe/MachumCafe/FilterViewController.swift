@@ -10,34 +10,18 @@ import UIKit
 
 class FilterViewController: UIViewController {
     
-    @IBOutlet weak var allnight: UIButton!
-    @IBOutlet weak var dessert: UIButton!
-    @IBOutlet weak var smoking: UIButton!
-    @IBOutlet weak var parkinglot: UIButton!
-    @IBOutlet weak var bathroom: UIButton!
-    @IBOutlet weak var meetingroom: UIButton!
-    var buttonArray = [UIButton]()
+    @IBOutlet weak var collectionView: UICollectionView!
+
+    var categoryArray = ["24시","연중무휴","주차","편한의자","좌식","모임","미팅룸","스터디","넓은공간","아이와함께","디저트","베이커리","로스팅","산책로","모닥불","드라이브","북카페","이색카페","야경","조용한","고급스러운","여유로운","힐링"]
     var filterArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "필터검색"
-        buttonArray = [allnight, dessert,smoking,parkinglot,bathroom,meetingroom]
-        designButtonColor(buttonArray: buttonArray)
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
-    func designButtonColor(buttonArray : [UIButton]) {
-        for button in buttonArray {
-            button.layer.cornerRadius = 10
-            button.layer.borderWidth = 2
-            button.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
-            button.tintColor = UIColor.clear
-            button.setTitleColor(UIColor.init(red: 51, green: 51, blue: 51), for: .normal)
-            button.setTitleColor(UIColor.init(red: 51, green: 51, blue: 51), for: .selected)
-            button.setBackgroundImage(#imageLiteral(resourceName: "backgrondColor"), for: .selected)
-            button.addTarget(self, action: #selector(pickFilter(_:)) , for: .touchUpInside)
-        }
-    }
     func pickFilter(_ button: UIButton) {
         button.isSelected = !button.isSelected
 
@@ -62,7 +46,7 @@ class FilterViewController: UIViewController {
 
     @IBAction func resetFilterArray(_ sender: Any) {
         filterArray.removeAll()
-        let _ = buttonArray.map { if $0.isSelected == true { $0.isSelected = false } }
+        collectionView.indexPath(for: )
         print(filterArray)
     }
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -70,6 +54,30 @@ class FilterViewController: UIViewController {
     }
     @IBAction func confirmFilter(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoryArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
+        cell.category.layer.cornerRadius = 10
+        cell.category.layer.borderWidth = 2
+        cell.category.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
+        cell.category.setTitle(categoryArray[indexPath.row], for: .normal)
+        cell.category.setTitleColor(UIColor.init(red: 51, green: 51, blue: 51), for: .normal)
+        cell.category.setTitleColor(UIColor.init(red: 51, green: 51, blue: 51), for: .selected)
+        cell.category.setBackgroundImage(#imageLiteral(resourceName: "backgrondColor"), for: .selected)
+        cell.category.addTarget(self, action: #selector(pickFilter(_:)) , for: .touchUpInside)
+        return cell
     }
 }
 
