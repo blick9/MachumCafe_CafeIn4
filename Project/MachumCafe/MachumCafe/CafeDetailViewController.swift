@@ -69,13 +69,10 @@ class CafeDetailViewController: UIViewController {
     }
     
     func bookmarkToggleButton() {
-        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: indexCafeID) { (message, des) in
+        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: indexCafeID) { (message, des, userBookmark) in
             print(des)
             if message {
-                NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe, userBookmark) in
-                    Cafe.sharedInstance.bookmarkList = cafe
-                    User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
-                })
+                User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
                 self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
             } else {
                 UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")

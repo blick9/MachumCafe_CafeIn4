@@ -32,14 +32,10 @@ class BookmarkViewController: UIViewController {
     func getBookmarkList() {
         let activityIndicator = UIActivityIndicatorView()
         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
-        NetworkBookmark.getMyBookmark(userId: userId) { (message, cafeList, bookmarkID) in
+        NetworkBookmark.getMyBookmark(userId: userId) { (message, cafeList) in
             Cafe.sharedInstance.bookmarkList = cafeList
-            for cafe in cafeList {
-                NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String], callback: { (imageData) in
-                    cafe.setImagesData(imageData: imageData)
-                    self.collectionView.reloadData()
-                })
-            }
+            
+            self.collectionView.reloadData()
             activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
         }
     }
@@ -61,13 +57,20 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! BookmarkViewCell
-        let bookmarkCafeData = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()
-        let imagesData = bookmarkCafeData["imagesData"] as! [Data]
-        if !imagesData.isEmpty {
-            cell.bookmarkCafeImage.image = UIImage(data: imagesData[0])
+        var modelBookmark = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()
+
+        if (modelBookmark["imagesData"] as! [Data]).isEmpty {
+            NetworkCafe.getImagesData(imagesURL: modelBookmark["imagesURL"] as! [String]) { (data) in
+                Cafe.sharedInstance.bookmarkList[indexPath.row].setImagesData(imageData: data)
+                modelBookmark = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()
+                cell.bookmarkCafeImage.image = UIImage(data: (modelBookmark["imagesData"] as! [Data])[0])
+            }
+        } else {
+            cell.bookmarkCafeImage.image = UIImage(data: (modelBookmark["imagesData"] as! [Data])[0])
         }
-        cell.bookmarkCafeName.text = bookmarkCafeData["name"] as? String
-        cell.bookmarkCafeAddress.text = bookmarkCafeData["address"] as? String
+        
+        cell.bookmarkCafeName.text = modelBookmark["name"] as? String
+        cell.bookmarkCafeAddress.text = modelBookmark["address"] as? String
              return cell
     }
     
