@@ -15,11 +15,15 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var hoursTextField: UITextField!
     
-    @IBOutlet weak var pickedImage1: UIImageView?
-    @IBOutlet weak var pickedImage2: UIImageView?
-    @IBOutlet weak var pickedImage3: UIImageView?
+    @IBOutlet weak var previewImage1: PreviewImageButton!
+    @IBOutlet weak var previewImage2: PreviewImageButton!
+    @IBOutlet weak var previewImage3: PreviewImageButton!
+    @IBOutlet weak var previewImage4: PreviewImageButton!
+    @IBOutlet weak var previewImage5: PreviewImageButton!
     
-    var imageArray = [UIImage]()
+    var previewImage =  [PreviewImageButton]()
+
+    var imageArray = [UIImage?]()
     
     @IBAction func imagePickerActionButton(_ sender: Any) {
         let imagePickerViewStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
@@ -31,24 +35,61 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
     
     @IBAction func doneActionButton(_ sender: Any) {
         
-        NetworkAdmin.uploadsImage(images: imageArray) { (imagesURL) in
+        NetworkAdmin.uploadsImage(images: imageArray as! [UIImage]) { (imagesURL) in
             let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: self.addressTextField.text!, hours: self.hoursTextField.text!, category: ["임시", "카테고리"], menu: "메뉴", imagesURL: imagesURL)
             NetworkAdmin.suggestionNewCafe(cafe: cafe)
         }
         self.dismiss(animated: true, completion: nil)
+
     }
     
-    func savedImage(SaveedImage pickedImage: [UIImage]) {
-        pickedImage1?.image = pickedImage[0]
-        pickedImage2?.image = pickedImage[1]
-        pickedImage3?.image = pickedImage[2]
+//    let photoindex = imageArray[indexPath.row]
+//    if let index = selectedImageArray.index(of: photoindex) {
+//        selectedImageArray.remove(at: index)
+//        
+//    }
+    
+    func draw() {
+        imageArray = imageArray.filter { $0 != nil }.flatMap { return $0 }
         
+        if imageArray.count < 5 {
+            while imageArray.count < 5 {
+                imageArray.append(nil)
+            }
+        }
+        
+        for i in 0..<imageArray.count {
+            if imageArray[i] == nil {
+                previewImage[i].setBackgroundImage(nil, for: .normal)
+            } else {
+                previewImage[i].setBackgroundImage(imageArray[i], for: .normal)
+            }
+        }
+        print(imageArray, imageArray.count)
+    }
+    
+    func savedImage(SavedImage pickedImage: [UIImage?]) {
         self.imageArray = pickedImage
+        draw()
+    }
+    
+    func buttonTapped(sender : PreviewImageButton) {
+        for index in 0..<imageArray.count {
+            if sender.tag == index {
+                sender.isSelected = !sender.isSelected
+                imageArray[index] = nil
+            }
+        }
+        draw()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        previewImage = [previewImage1,previewImage2,previewImage3,previewImage4,previewImage5]
+        for item in previewImage {
+            item.addTarget(self, action: #selector(SuggestionViewController.buttonTapped), for: UIControlEvents.touchUpInside)
+        }
+        
         // Do any additional setup after loading the view.
     }
 
