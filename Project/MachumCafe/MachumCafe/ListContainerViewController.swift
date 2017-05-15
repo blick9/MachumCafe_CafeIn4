@@ -29,6 +29,10 @@ class ListContainerViewController: UIViewController {
 
         listTableViewController = listViewStoryboard.instantiateViewController(withIdentifier: "ListView")
         listMapViewController = listMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
+        
+        NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (cafeList) in
+            Cafe.sharedInstance.cafeList = cafeList
+        }
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
