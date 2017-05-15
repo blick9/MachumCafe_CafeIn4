@@ -9,7 +9,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    let listContainerViewController = UIStoryboard(name: "ListContainerView", bundle: nil).instantiateViewController(withIdentifier: "ListContainer")
     var bannerArray = [UIImage]()
     
     @IBOutlet weak var mainBannerScrollView: UIScrollView!
@@ -45,6 +44,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func categoryButtons(_ sender: UIButton) {
+        let listContainerViewController = UIStoryboard(name: "ListContainerView", bundle: nil).instantiateViewController(withIdentifier: "ListContainer")
         navigationController?.pushViewController(listContainerViewController, animated: true)
     }
     

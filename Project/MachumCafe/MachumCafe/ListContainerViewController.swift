@@ -29,6 +29,18 @@ class ListContainerViewController: UIViewController {
 
         listTableViewController = listViewStoryboard.instantiateViewController(withIdentifier: "ListView")
         listMapViewController = listMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
+        
+        NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (modelCafe) in
+            for cafe in modelCafe {
+                let isCafe = Cafe.sharedInstance.cafeList.filter({ (cafeList) -> Bool in
+                    return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
+                })
+                if isCafe.isEmpty {
+                    Cafe.sharedInstance.cafeList.append(cafe)
+                }
+            }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+        }
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {

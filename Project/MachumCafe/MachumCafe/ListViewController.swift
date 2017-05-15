@@ -30,6 +30,13 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        getUserID = User.sharedInstance.user.getUser()["id"] as! String
+        getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        tableView.reloadData()
+    }
+    
+    func checkModel() {
         if Cafe.sharedInstance.cafeList.isEmpty {
             isEmptyLabel.text = "카페 정보 없음"
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -37,10 +44,6 @@ class ListViewController: UIViewController {
             isEmptyLabel.text = ""
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         }
-        
-        getUserID = User.sharedInstance.user.getUser()["id"] as! String
-        getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        tableView.reloadData()
     }
     
     
@@ -63,6 +66,8 @@ class ListViewController: UIViewController {
     
     func reloadTableView() {
         tableView.reloadData()
+        checkModel()
+        print("asdfasdfasdfdfa")
     }
     
 }
@@ -80,16 +85,23 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
-        let cafeData = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
-        let imagesData = cafeData["imagesData"] as! [Data]
-        if !imagesData.isEmpty {
-            cell.backgroundImageView.image = UIImage(data: imagesData[0])
+        var cafe = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
+        
+        if (cafe["imagesData"] as! [Data]).isEmpty {
+            NetworkCafe.getImagesData(imagesURL: cafe["imagesURL"] as! [String]) { (data) in
+                Cafe.sharedInstance.cafeList[indexPath.row].setImagesData(imageData: data)
+                cafe = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
+                cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
+            }
+        } else {
+            cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
         }
-        cell.cafeNameLabel.text = cafeData["name"] as? String
-        cell.cafeAddressLabel.text = cafeData["address"] as? String
+
+        cell.cafeNameLabel.text = cafe["name"] as? String
+        cell.cafeAddressLabel.text = cafe["address"] as? String
         cell.distanceLabel.text = "1.2km"
         
-        cell.bookmarkButton.isSelected = getUserBookmarkArray.contains(cafeData["id"] as! String) ? true : false
+        cell.bookmarkButton.isSelected = getUserBookmarkArray.contains(cafe["id"] as! String) ? true : false
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton(_:)), for: .touchUpInside)
         
