@@ -15,7 +15,7 @@ class NetworkBookmark {
     private static let url = URLpath.getURL()
     
     // MARK: 즐겨찾기 목록 데이터모델에 저장
-    static func getMyBookmark(userId: String, callback: @escaping (_ message: Bool, _ modelCafe: [ModelCafe], _ userBookmark: [String]) -> Void) {
+    static func getMyBookmark(userId: String, callback: @escaping (_ message: Bool, _ modelCafe: [ModelCafe]) -> Void) {
         var modelCafe = [ModelCafe]()
         
         Alamofire.request("\(url)/api/v1/bookmark/\(userId)").responseJSON { (response) in
@@ -39,26 +39,28 @@ class NetworkBookmark {
                     modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL))
                 }
             }
-            let userBookmark = res["userBookmark"].arrayValue.map{ $0.stringValue }
-            callback(message, modelCafe, userBookmark)
+            callback(message, modelCafe)
         }
     }
 
     // MARK: 즐겨찾기 추가 & 삭제
-    static func setMyBookmark(userId: String, cafeId: String, callback: @escaping (_ message: Bool, _ description: String) -> Void) {
+    static func setMyBookmark(userId: String, cafeId: String, callback: @escaping (_ message: Bool, _ description: String, _ userBookmark: [String]) -> Void) {
         let parameters : Parameters = ["cafeId" : cafeId]
         
         Alamofire.request("\(url)/api/v1/bookmark/\(userId)", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             var message = Bool()
             var description = String()
+            var userBookmark = [String]()
             
             let res = JSON(data: response.data!).dictionary
             if let resMessage = res?["message"]?.boolValue,
-            let resDescription = res?["description"]?.stringValue {
+            let resDescription = res?["description"]?.stringValue,
+            let resUserBookmark = res?["userBookmark"]?.arrayValue.map({ $0.stringValue }) {
                 message = resMessage
                 description = resDescription
+                userBookmark = resUserBookmark
             }
-            callback(message, description)
+            callback(message, description, userBookmark)
         }
     }
     

@@ -34,6 +34,7 @@ class ListViewController: UIViewController {
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         tableView.reloadData()
+        checkModel()
     }
     
     func checkModel() {
@@ -49,14 +50,12 @@ class ListViewController: UIViewController {
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
         let cafeID = Cafe.sharedInstance.cafeList[buttonTag.tag].getCafe()["id"] as! String
-        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (message, des) in
+        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (message, des, userBookmark) in
             print(des)
             if message {
-                NetworkBookmark.getMyBookmark(userId: self.getUserID, callback: { (message, cafe, userBookmark) in
-                    User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
-                    self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-                    print(User.sharedInstance.user.getUser()["bookmark"]!)
-                })
+                User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
+                self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+                print(User.sharedInstance.user.getUser()["bookmark"]!)
                 buttonTag.isSelected = !buttonTag.isSelected
             } else {
                 UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요")
@@ -67,7 +66,6 @@ class ListViewController: UIViewController {
     func reloadTableView() {
         tableView.reloadData()
         checkModel()
-        print("asdfasdfasdfdfa")
     }
     
 }
