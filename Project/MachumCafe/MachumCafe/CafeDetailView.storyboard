@@ -234,7 +234,6 @@
                                         <rect key="frame" x="38" y="645" width="299" height="52"/>
                                         <state key="normal" image="reviewMoreButton"/>
                                         <connections>
-                                            <action selector="loadReview:" destination="ejC-8o-OCk" eventType="touchUpInside" id="2oo-zj-6fr"/>
                                             <segue destination="490-OX-HcS" kind="show" identifier="ReviewView" id="zWM-yi-73l"/>
                                         </connections>
                                     </button>

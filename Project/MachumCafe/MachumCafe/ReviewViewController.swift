@@ -41,7 +41,7 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReviewTableViewCell
 
-        cell.reviewText.text = array[indexPath.row]
+        cell.reviewContent.text = array[indexPath.row]
 
         return cell
     }
