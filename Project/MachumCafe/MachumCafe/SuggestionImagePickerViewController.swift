@@ -15,8 +15,7 @@ protocol savedImageDelegate {
     func savedImage (SaveedImage pickedImage: [UIImage])
 }
 
-class SuggestionImagePickerViewCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
+class SuggestionImagePickerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var delegate : savedImageDelegate?
 
     var imageArray = [UIImage]()
@@ -54,22 +53,20 @@ class SuggestionImagePickerViewCollectionViewController: UICollectionViewControl
     }
     
     @IBAction func doneActionButton(_ sender: Any) {
-
 //        if let theDelegate = self.delegate {
 //            theDelegate.savedImage(SaveedImage: selectedImageArray)
 //        }
+        
         delegate?.savedImage(SaveedImage: selectedImageArray)
         
         self.dismiss(animated: true, completion: nil)
 
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "imagePicker"
+        navigationItem.title = "사진선택"
         grabPhtos()
         collectionView?.allowsMultipleSelection = multiple
         collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
@@ -136,6 +133,7 @@ class SuggestionImagePickerViewCollectionViewController: UICollectionViewControl
         let photoindex = imageArray[indexPath.row]
         if let index = selectedImageArray.index(of: photoindex) {
             selectedImageArray.remove(at: index)
+            
         }
     }
     

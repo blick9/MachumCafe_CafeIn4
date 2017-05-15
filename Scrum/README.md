@@ -1,17 +1,30 @@
 # Scrum
 ## 일일 Scrum
+* ### 05.15(월)
+  * #### 전한나
+    * [ ] SuggestionView Client Api 구현
+    * [ ] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
+  * #### 구찬우
+    * [ ] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
+    * [ ] Keyboard Response
+  * #### 이단비
+    * [ ] SuggestionView Client Api 구현
+    * [ ] FilterView 디자인 Support
+  * #### 조민재
+    * [ ] FilterView 초기화 기능 구현
+    * [ ] CollectionView 동적 Cell Size 구현
+
   * ### 05.10(수)
     * #### 전한나
-      * [ ] DB 백업
-      * [ ] SuggestionView Server Api 구현
+      * [x] DB 백업
+      * [x] SuggestionView Server Api 구현
     * #### 구찬우
-      * [ ] ListContainerView Bug 수정
-      * [ ] NodeJS 공부
+      * [x] ListContainerView Bug 수정
     * #### 이단비
-      * [ ] ImagePicker 다중 선택 CollectionView 만들기
-      * [ ] SuggestionView request Api 구현
+      * [x] ImagePicker 다중 선택 CollectionView 만들기
+      * [x] SuggestionView request Api 구현
     * #### 조민재
-      * [ ] FilterView 카테고리 수정
+      * [x] FilterView 카테고리 수정
 
   * ### 05.09(화)
     * #### 전한나
@@ -103,7 +116,7 @@
       * [ ] 선택한 이미지 삭제 기능 추가
       * [ ] 카테고리 버튼 추가
     * ##### FilterView
-      * [ ] 카테고리 버튼 구현 (CollectionView)
+      * [x] 카테고리 버튼 구현 (CollectionView)
       * [ ] 카테고리 필터 표시
       * [ ] 필터 검색 기능 구현
     * ##### CafeDetailView
@@ -115,10 +128,10 @@
       * [ ] TextField 선택 시 View 올리기
       * [ ] 키보드 없애기
     * ##### Status Bar
-      * [ ] View 배경에 따라 Status Bar Style 변경
+      * [x] View 배경에 따라 Status Bar Style 변경
   * #### Model
     * ##### DB
-      * [ ] 주기적 데이터 크롤링
+      * [x] 주기적 데이터 크롤링 (서울시 5,700여개 완료)
 
 * ### 4주차 (5.8 ~ 5.14)
   * #### View 구현 계획
