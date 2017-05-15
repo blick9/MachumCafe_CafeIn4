@@ -24,7 +24,7 @@ class FilterViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    
+    /*
     func pickFilter(_ button: UIButton) {
         button.isSelected = !button.isSelected
 
@@ -46,6 +46,7 @@ class FilterViewController: UIViewController {
         }
         print(filterArray)
     }
+ */
 
     @IBAction func resetFilterArray(_ sender: Any) {
         
@@ -62,19 +63,17 @@ class FilterViewController: UIViewController {
     
     @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
+        }
     @IBAction func confirmFilter(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+        }
     }
-}
 
 extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
-
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryArray.count
@@ -101,17 +100,6 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
         filterArray.append(categoryArray[indexPath.row])
         print(filterArray)
 
-        
-        // print(cell.isSelected)
-       // print(indexPath.row)
-//        if cell.isSelected == true {
-//            cell.isSelected = !cell.isSelected
-//            cell.backgroundColor = UIColor.gray // init(red: 255, green: 232, blue: 129)
-//        }
-//        print(categoryArray[indexPath.row])
-//        
-//        filterArray.append(categoryArray[indexPath.row])
-//        print(filterArray)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -121,12 +109,6 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
             filterArray.remove(at: index)
         }
         print(filterArray)
-//        for i in 0..<filterArray.count {
-//            if cell.category.text == filterArray[i] {
-//                self.filterArray.remove(at: i)
-//                break
-//            }
-//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
