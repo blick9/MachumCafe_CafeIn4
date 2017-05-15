@@ -5,7 +5,7 @@
 //  Created by Febrix on 2017. 4. 25..
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
-// TODO: logout시 서버 세션 삭제 및 User.sharedInstance.isUser = false로 변경
+
 import UIKit
 import GoogleMaps
 import GooglePlaces
@@ -32,15 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         UINavigationBar.appearance().isTranslucent = false
         
-        NetworkCafe.getAllCafeList { (cafeList) in
-            Cafe.sharedInstance.cafeList = cafeList
-            for cafe in cafeList {
-                NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String], callback: { (imageData) in
-                    cafe.setImagesData(imageData: imageData)
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
-                })
-            }
-        }
+        // MARK: 팀원 전체 test 후 지울 예정
+//        NetworkCafe.getAllCafeList { (cafeList) in
+//            Cafe.sharedInstance.cafeList = cafeList
+//            for cafe in cafeList {
+//                NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String], callback: { (imageData) in
+//                    cafe.setImagesData(imageData: imageData)
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+//                })
+//            }
+//        }
         
         NetworkUser.getUser { (message, user) in
             if message {
