@@ -13,6 +13,7 @@ class ListViewController: UIViewController {
     var getUserBookmarkArray = [String]()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var isEmptyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,13 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if Cafe.sharedInstance.cafeList.isEmpty {
+            isEmptyLabel.text = "카페 정보 없음"
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        } else {
+            isEmptyLabel.text = ""
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+        }
         
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
