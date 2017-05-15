@@ -46,6 +46,8 @@
 		B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */; };
 		B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */; };
 		B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */; };
+		B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */; };
+		B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */; };
 		B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */; };
 		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
@@ -100,6 +102,8 @@
 		B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
 		B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewCell.swift; sourceTree = "<group>"; };
+		B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReviewView.storyboard; sourceTree = "<group>"; };
 		B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				B58AAFD71EB6CC82002313CC /* Bookmark */,
 				A723B67D1EAF42F200469FE4 /* ListContainerView */,
 				A7B73A511EB2595E00EB24C6 /* FilterView */,
+				B5BA81E31EC983B800E5BBC9 /* ReviewView */,
 				A702F21A1EBB270A003B390C /* MapView */,
 				A7C0F2F41EB7909A0086ADAA /* SettingView */,
 				A702F2191EBB1C23003B390C /* XibView */,
@@ -307,6 +312,15 @@
 			name = Bookmark;
 			sourceTree = "<group>";
 		};
+		B5BA81E31EC983B800E5BBC9 /* ReviewView */ = {
+			isa = PBXGroup;
+			children = (
+				B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */,
+				B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */,
+			);
+			name = ReviewView;
+			sourceTree = "<group>";
+		};
 		B78D2A211EBAE9B20069E2E9 /* SuggestionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +422,7 @@
 				B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */,
 				A702F2161EBB06DA003B390C /* LocationLabelView.xib in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
+				B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +507,7 @@
 				B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */,
 				A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */,
 				A702F2201EBB2750003B390C /* SetLocationMapViewController.swift in Sources */,
+				B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */,
 				B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
 				A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */,
