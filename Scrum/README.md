@@ -94,28 +94,54 @@
       * [x] BookmarkView 구현
 
 ## 주차별 계획
-* ### 4주차 (5.8 ~ 5.14)
+* ### 5주차 (5.15 ~ 5.21)
   * #### View 구현 계획
     * ##### 전체
       * [ ] Back-Log 재정리
       * [ ] 코드 리뷰 & 리팩토링
     * ##### SuggestionView
-      * [ ] 서버 API
-      * [ ] 네트워크 클래스 생성
-      * [ ] ImagePicker 추가 (다중 선택)
+      * [ ] 선택한 이미지 삭제 기능 추가
+      * [ ] 카테고리 버튼 추가
+    * ##### FilterView
+      * [ ] 카테고리 버튼 구현 (CollectionView)
+      * [ ] 카테고리 필터 표시
+      * [ ] 필터 검색 기능 구현
+    * ##### CafeDetailView
+      * [ ] 별점 기능 추가
+    * ##### MapView
+      * [ ] 현위치와 카페간 직선 거리 표시
+      * [ ] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
+    * ##### Keyboard Response
+      * [ ] TextField 선택 시 View 올리기
+      * [ ] 키보드 없애기
+    * ##### Status Bar
+      * [ ] View 배경에 따라 Status Bar Style 변경
+  * #### Model
+    * ##### DB
+      * [ ] 주기적 데이터 크롤링
+
+* ### 4주차 (5.8 ~ 5.14)
+  * #### View 구현 계획
+    * ##### 전체
+      * [ ] Back-Log 재정리
+      * [x] 코드 리뷰 & 리팩토링
+    * ##### SuggestionView
+      * [x] 서버 API
+      * [x] 네트워크 클래스 생성
+      * [x] ImagePicker 추가 (다중 선택)
     * ##### FilterView
       * [x] 카테고리 확정 후 모델 리팩토링
     * ##### CafeDetailView
       * [ ] 별점 기능 추가
     * ##### MapView
-      * [ ] 서버로 부터 일정 반경 내 위치한 데이터만 불러오기
+      * [x] 서버로 부터 일정 반경 내 위치한 데이터만 불러오기
       * [x] Background 위치 추적
       * [ ] 현위치와 카페간 직선 거리 표시
   * #### Model
     * ##### DB
       * [x] 크롤링 및 DB 자동화 로직
       * [x] DB Model 재정의
-      * [ ] List 카테고리 HTML 크롤링
+      * [x] List 카테고리 HTML 크롤링
 
   * ### 3주차 (5.1 ~ 5.7)
     * #### View 구현 계획

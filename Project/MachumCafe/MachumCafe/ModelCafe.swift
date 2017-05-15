@@ -10,13 +10,13 @@ import Foundation
 
 class ModelCafe {
     
-    fileprivate var id = String()
+    fileprivate var id : String?
     fileprivate var name = String()
     fileprivate var tel : String?
     fileprivate var address = String()
     fileprivate var hours : String?
-    fileprivate var latitude = Double()
-    fileprivate var longitude = Double()
+    fileprivate var latitude : Double?
+    fileprivate var longitude : Double?
     fileprivate var category = [String]()
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
@@ -24,7 +24,7 @@ class ModelCafe {
     
     init() {}
         
-    init(id: String, name: String, tel: String?, address: String, hours: String?, latitude: Double, longitude: Double, category: [String],  menu: String?, imagesURL: [String]) {
+    init(id: String? = nil, name: String, tel: String?, address: String, hours: String?, latitude: Double? = nil, longitude: Double? = nil, category: [String],  menu: String?, imagesURL: [String]) {
         self.id = id
         self.name = name
         self.tel = tel
@@ -59,11 +59,11 @@ class ModelCafe {
     }
     
     func getLatitude() -> Double {
-        return latitude
+        return latitude!
     }
     
     func getLongitude() -> Double {
-        return longitude
+        return longitude!
     }
 }
 
