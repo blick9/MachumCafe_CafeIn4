@@ -34,6 +34,7 @@ class ListViewController: UIViewController {
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         tableView.reloadData()
+        checkModel()
     }
     
     func checkModel() {
@@ -67,7 +68,6 @@ class ListViewController: UIViewController {
     func reloadTableView() {
         tableView.reloadData()
         checkModel()
-        print("asdfasdfasdfdfa")
     }
     
 }
