@@ -48,6 +48,7 @@
 		B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */; };
 		B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */; };
 		B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */; };
+		B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */; };
 		B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */; };
 		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
@@ -104,6 +105,7 @@
 		B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewCell.swift; sourceTree = "<group>"; };
 		B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReviewView.storyboard; sourceTree = "<group>"; };
+		B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
@@ -194,11 +196,11 @@
 				A723B6841EAF435800469FE4 /* LogIn & SignUp */,
 				A7B73A421EAF4A4000EB24C6 /* MainView */,
 				B7E57DA21EB59F0700A6D9A7 /* CafeDetailView */,
-				B78D2A211EBAE9B20069E2E9 /* SuggestionView */,
+				B5BA81E31EC983B800E5BBC9 /* ReviewView */,
 				B58AAFD71EB6CC82002313CC /* Bookmark */,
+				B78D2A211EBAE9B20069E2E9 /* SuggestionView */,
 				A723B67D1EAF42F200469FE4 /* ListContainerView */,
 				A7B73A511EB2595E00EB24C6 /* FilterView */,
-				B5BA81E31EC983B800E5BBC9 /* ReviewView */,
 				A702F21A1EBB270A003B390C /* MapView */,
 				A7C0F2F41EB7909A0086ADAA /* SettingView */,
 				A702F2191EBB1C23003B390C /* XibView */,
@@ -317,6 +319,7 @@
 			children = (
 				B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */,
 				B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */,
+				B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */,
 			);
 			name = ReviewView;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */,
 				A723B67F1EAF431700469FE4 /* ListContainerViewController.swift in Sources */,
 				B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */,
+				B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */,
 				B7E57DA61EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift in Sources */,
 				A7B73A631EB32E2200EB24C6 /* ModelUser.swift in Sources */,
 				B7DFA2721EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift in Sources */,

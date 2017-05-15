@@ -89,6 +89,10 @@ class CafeDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loadReview(_ sender: Any) {
+        print("이게 리뷰댜")
+    }
+    
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
