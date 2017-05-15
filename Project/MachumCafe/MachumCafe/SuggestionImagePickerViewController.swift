@@ -15,6 +15,7 @@ protocol savedImageDelegate {
     func savedImage (SaveedImage pickedImage: [UIImage])
 }
 
+
 class SuggestionImagePickerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var delegate : savedImageDelegate?
@@ -134,6 +135,7 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
         let photoindex = imageArray[indexPath.row]
         if let index = selectedImageArray.index(of: photoindex) {
             selectedImageArray.remove(at: index)
+            
         }
     }
     

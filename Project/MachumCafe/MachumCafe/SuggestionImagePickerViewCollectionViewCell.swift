@@ -27,5 +27,4 @@ class SuggestionImagePickerViewCollectionViewCell: UICollectionViewCell {
         checkIcon.image = #imageLiteral(resourceName: "checkIcon")
         isSelected = false
     }
-    
 }
