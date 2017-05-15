@@ -30,6 +30,13 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        getUserID = User.sharedInstance.user.getUser()["id"] as! String
+        getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        tableView.reloadData()
+    }
+    
+    func checkModel() {
         if Cafe.sharedInstance.cafeList.isEmpty {
             isEmptyLabel.text = "카페 정보 없음"
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -37,10 +44,6 @@ class ListViewController: UIViewController {
             isEmptyLabel.text = ""
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         }
-        
-        getUserID = User.sharedInstance.user.getUser()["id"] as! String
-        getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        tableView.reloadData()
     }
     
     
@@ -63,6 +66,8 @@ class ListViewController: UIViewController {
     
     func reloadTableView() {
         tableView.reloadData()
+        checkModel()
+        print("asdfasdfasdfdfa")
     }
     
 }
@@ -87,11 +92,9 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
                 Cafe.sharedInstance.cafeList[indexPath.row].setImagesData(imageData: data)
                 cafe = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
                 cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
-                print(123)
             }
         } else {
             cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
-            print(456)
         }
 
         cell.cafeNameLabel.text = cafe["name"] as? String
