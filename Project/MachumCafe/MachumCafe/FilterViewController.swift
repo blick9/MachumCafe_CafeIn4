@@ -47,9 +47,8 @@ class FilterViewController: UIViewController {
     @IBAction func resetFilterArray(_ sender: Any) {
         
         let selectedItem = collectionView.indexPathsForSelectedItems
-        print(selectedItem)
         for item in selectedItem! {
-            collectionView.deselectItem(at: item, animated: false)
+            collectionView.deselectItem(at: item , animated: false)
         }
         //cell.category.isSelected == false
         //filterArray.removeAll()
@@ -88,15 +87,33 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
+        cell.isSelected = !cell.isSelected
         
-       // print(indexPath.row)
-        if cell.isSelected == true {
-            cell.backgroundColor = UIColor.init(red: 255, green: 232, blue: 129)
-        }
-    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         print(cell.isSelected)
+       // print(indexPath.row)
+//        if cell.isSelected == true {
+//            cell.isSelected = !cell.isSelected
+//            cell.backgroundColor = UIColor.gray // init(red: 255, green: 232, blue: 129)
+//        }
+//        print(categoryArray[indexPath.row])
+//        
+//        filterArray.append(categoryArray[indexPath.row])
+//        print(filterArray)
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
+//        let categoryIndex = categoryArray[indexPath.row]
+//        if let index = filterArray.index(of: categoryIndex) {
+//            filterArray.remove(at: index)
+//        }
+//        for i in 0..<filterArray.count {
+//            if cell.category.text == filterArray[i] {
+//                self.filterArray.remove(at: i)
+//                break
+//            }
+//        }
+//        print(filterArray)
+//    }
 }
 
