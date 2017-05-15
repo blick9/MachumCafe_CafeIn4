@@ -15,9 +15,7 @@ protocol savedImageDelegate {
     func savedImage (SaveedImage pickedImage: [UIImage])
 }
 
-
 class SuggestionImagePickerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
     var delegate : savedImageDelegate?
 
     var imageArray = [UIImage]()

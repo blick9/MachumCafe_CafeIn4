@@ -39,7 +39,6 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
     }
     
     func savedImage(SaveedImage pickedImage: [UIImage]) {
-        
         pickedImage1?.image = pickedImage[0]
         pickedImage2?.image = pickedImage[1]
         pickedImage3?.image = pickedImage[2]
