@@ -86,7 +86,7 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
             let cafe = cafeData.getCafe()
             let latitude = cafe["latitude"] as! Double
             let longitude = cafe["longitude"] as! Double
-            let cafeImage = cafe["imagesData"] as! [Data]
+//            let cafeImage = cafe["imagesData"] as! [Data]
             createMarker(titleMarker: cafe["name"] as! String, snippetMarker: cafe["address"] as! String, image: #imageLiteral(resourceName: "1"), targetData: cafeData, latitude: latitude, longitude: longitude)
         }
     }
