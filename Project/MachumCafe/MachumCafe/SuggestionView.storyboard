@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tl9-lI-Cp7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tl9-lI-Cp7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -181,7 +181,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tl9-lI-Cp7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iqy-6a-iRd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iqy-6a-iRd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -194,11 +194,11 @@
             </objects>
             <point key="canvasLocation" x="3482.4000000000001" y="852.3238380809596"/>
         </scene>
-        <!--Suggestion Image Picker View Collection View Controller-->
+        <!--Suggestion Image Picker View Controller-->
         <scene sceneID="Nxa-kW-33j">
             <objects>
-                <collectionViewController storyboardIdentifier="imagePicker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pMD-oU-DIC" customClass="SuggestionImagePickerViewCollectionViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="vA5-Dc-Sp3">
+                <collectionViewController storyboardIdentifier="imagePicker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pMD-oU-DIC" customClass="SuggestionImagePickerViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vA5-Dc-Sp3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -258,7 +258,7 @@
                                 <action selector="backButton:" destination="pMD-oU-DIC" id="isL-1M-hFW"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="done" id="8kT-kk-P9A">
+                        <barButtonItem key="rightBarButtonItem" title="done" style="done" id="8kT-kk-P9A">
                             <connections>
                                 <action selector="doneActionButton:" destination="pMD-oU-DIC" id="aT3-O7-3sU"/>
                             </connections>
@@ -266,6 +266,10 @@
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fS7-Hq-50y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <containerView opaque="NO" contentMode="scaleToFill" id="9rp-zm-D6h">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                </containerView>
             </objects>
             <point key="canvasLocation" x="5007" y="852"/>
         </scene>
