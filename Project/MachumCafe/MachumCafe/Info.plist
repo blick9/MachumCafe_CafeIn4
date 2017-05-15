@@ -63,7 +63,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
 	<key>URL</key>
 	<string>http://localhost:3000</string>
 </dict>
