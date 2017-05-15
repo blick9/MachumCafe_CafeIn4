@@ -16,7 +16,12 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        UIApplication.shared.statusBarStyle = .default
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +29,10 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
      @IBAction func logInButton(_ sender: Any) {
+        let activityIndicator = UIActivityIndicatorView()
+        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
         NetworkUser.logIn(email: emailTextField.text!, password: passwordTextField.text!) { (message, user) in
+            activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
             if message {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
