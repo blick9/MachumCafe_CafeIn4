@@ -11,8 +11,8 @@
   * #### 이단비
     * [ ] SuggestionView 카테고리 CollectionView 가져와 적용하기
   * #### 조민재
-    * [ ] Review 작성
-
+    * [ ] WriteReviewView 뷰 구성
+    * [ ] WriteReviewView starRaking 적용
 * ### 05.15(월)
   * #### 전한나
     * [ ] SuggestionView Client Api 구현
@@ -26,10 +26,12 @@
     * [ ] 장소 검색 Api 적용
   * #### 이단비
     * [ ] SuggestionView Client Api 구현
-    * [ ] FilterView 디자인 Support
+    * [x] FilterView 디자인 Support
+      [x] FilterView 초기화 기능 구현
+      [x] CollectionView 동적 Cell Size 구현
   * #### 조민재
-    * [ ] FilterView 초기화 기능 구현
-    * [ ] CollectionView 동적 Cell Size 구현
+    * [x] ReviewView 뷰 구성
+    * [x] ReviewView tableView 
 
   * ### 05.10(수)
     * #### 전한나
