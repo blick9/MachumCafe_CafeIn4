@@ -53,9 +53,6 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
     }
     
     @IBAction func doneActionButton(_ sender: Any) {
-//        if let theDelegate = self.delegate {
-//            theDelegate.savedImage(SaveedImage: selectedImageArray)
-//        }
         
         delegate?.savedImage(SavedImage: selectedImageArray)
         self.dismiss(animated: true, completion: nil)
