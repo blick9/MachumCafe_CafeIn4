@@ -1,12 +1,29 @@
 # Scrum
 ## 일일 Scrum
+* ### 05.16(화)
+  * #### 전한나
+    * [ ] 경기도 DB 크롤링
+    * [ ] Filter 기능 구현
+  * #### 구찬우
+    * [ ] Filter 기능 구현
+    * [ ] SetLocationView 주소 검색 기능 추가
+    * [ ] SuggestionView내 주소 검색 기능 추가
+  * #### 이단비
+    * [ ] SuggestionView 카테고리 CollectionView 가져와 적용하기
+  * #### 조민재
+    * [ ] Review 작성
+
 * ### 05.15(월)
   * #### 전한나
     * [ ] SuggestionView Client Api 구현
-    * [ ] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
+    * [x] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
+    * [x] Image Networking 이슈 해결
+    * [x] BookmarkView 코드 리팩토링
   * #### 구찬우
-    * [ ] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
+    * [x] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
     * [ ] Keyboard Response
+    * [x] Image Networking 이슈 해결
+    * [ ] 장소 검색 Api 적용
   * #### 이단비
     * [ ] SuggestionView Client Api 구현
     * [ ] FilterView 디자인 Support
@@ -131,7 +148,8 @@
       * [x] View 배경에 따라 Status Bar Style 변경
   * #### Model
     * ##### DB
-      * [x] 주기적 데이터 크롤링 (서울시 5,700여개 완료)
+      * [x] 서울시 데이터 크롤링 (서울시 5,700여개 완료)
+      * [ ] 경기도 데이터 크롤링
 
 * ### 4주차 (5.8 ~ 5.14)
   * #### View 구현 계획
