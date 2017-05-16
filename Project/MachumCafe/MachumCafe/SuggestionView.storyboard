@@ -23,23 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.5" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaX-0O-12F" userLabel="parkingButton">
-                                <rect key="frame" x="57" y="486" width="80" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="parkingCategoryIcon"/>
-                            </button>
-                            <button opaque="NO" alpha="0.5" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beY-od-McG" userLabel="parkingButton">
-                                <rect key="frame" x="147" y="486" width="80" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="smokingCategoryIcon"/>
-                            </button>
-                            <button autoresizesSubviews="NO" opaque="NO" alpha="0.5" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-ft-mwx" userLabel="parkingButton">
-                                <rect key="frame" x="238" y="486" width="80" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="restroomCategoryIcon"/>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVD-jn-eNF">
-                                <rect key="frame" x="0.0" y="83" width="343" height="51"/>
+                                <rect key="frame" x="16" y="72" width="343" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cafeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rzw-Fw-wWG">
@@ -47,7 +32,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="카페 이름" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mMe-mj-qV5">
-                                        <rect key="frame" x="102" y="16" width="81" height="17"/>
+                                        <rect key="frame" x="102" y="16" width="214" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -57,7 +42,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NBC-GS-edh">
-                                <rect key="frame" x="0.0" y="142" width="343" height="51"/>
+                                <rect key="frame" x="16" y="131" width="343" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="telephoneD" translatesAutoresizingMaskIntoConstraints="NO" id="Rvw-ox-FAZ">
@@ -65,7 +50,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="전화번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="67V-bc-sXv">
-                                        <rect key="frame" x="102" y="16" width="81" height="17"/>
+                                        <rect key="frame" x="102" y="16" width="226" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -75,7 +60,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nHj-XC-BoN">
-                                <rect key="frame" x="0.0" y="201" width="343" height="51"/>
+                                <rect key="frame" x="16" y="190" width="343" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="adressD" translatesAutoresizingMaskIntoConstraints="NO" id="omk-Lx-R0F">
@@ -83,7 +68,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="주소" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zzF-pG-7ua">
-                                        <rect key="frame" x="102" y="16" width="81" height="17"/>
+                                        <rect key="frame" x="102" y="16" width="222" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -93,7 +78,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Bd-Cx-Kta">
-                                <rect key="frame" x="0.0" y="260" width="343" height="51"/>
+                                <rect key="frame" x="16" y="249" width="343" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hourD" translatesAutoresizingMaskIntoConstraints="NO" id="El6-ot-Wnk">
@@ -101,7 +86,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="영업 시간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yka-TR-mvc">
-                                        <rect key="frame" x="102" y="16" width="81" height="17"/>
+                                        <rect key="frame" x="102" y="16" width="218" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -111,11 +96,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yRl-0E-yOS">
-                                <rect key="frame" x="0.0" y="339" width="343" height="51"/>
+                                <rect key="frame" x="16" y="310" width="343" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAh-FV-gjU">
-                                        <rect key="frame" x="88" y="-3" width="52" height="52"/>
+                                        <rect key="frame" x="57" y="5" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="imagePickerButton"/>
                                         <connections>
@@ -123,33 +108,63 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imageD" translatesAutoresizingMaskIntoConstraints="NO" id="aJG-Pi-hXS">
-                                        <rect key="frame" x="44" y="16" width="20" height="14"/>
+                                        <rect key="frame" x="13" y="16" width="20" height="14"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kBi-Vw-kRb">
-                                        <rect key="frame" x="151" y="-3" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.9988970160484314" green="0.9146685004234314" blue="0.50731867551803589" alpha="0.4961205051369863" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12H-Z7-WoC">
-                                        <rect key="frame" x="211" y="-3" width="52" height="52"/>
+                                    <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGa-WD-Zmh" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
+                                        <rect key="frame" x="105" y="5" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.9988970160484314" green="0.9146685004234314" blue="0.50731867551803589" alpha="0.4961205051369863" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGY-AN-tku">
-                                        <rect key="frame" x="271" y="-3" width="52" height="52"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCS-6c-GPo" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
+                                        <rect key="frame" x="153" y="5" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.9988970160484314" green="0.9146685004234314" blue="0.50731867551803589" alpha="0.4961205051369863" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </imageView>
+                                        <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R9-SH-r1v" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
+                                        <rect key="frame" x="201" y="5" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpQ-lm-DlV" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
+                                        <rect key="frame" x="249" y="5" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4F-WT-IHa" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
+                                        <rect key="frame" x="297" y="4" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" alpha="0.5" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaX-0O-12F" userLabel="parkingButton">
+                                <rect key="frame" x="57" y="417" width="80" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="parkingCategoryIcon"/>
+                            </button>
+                            <button opaque="NO" alpha="0.5" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beY-od-McG" userLabel="parkingButton">
+                                <rect key="frame" x="147" y="417" width="80" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="smokingCategoryIcon"/>
+                            </button>
+                            <button autoresizesSubviews="NO" opaque="NO" alpha="0.5" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eqw-ft-mwx" userLabel="parkingButton">
+                                <rect key="frame" x="238" y="417" width="80" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="restroomCategoryIcon"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="rSe-2v-h04">
-                        <barButtonItem key="leftBarButtonItem" title="done" id="GtW-5K-uXy">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="GtW-5K-uXy">
                             <connections>
                                 <action selector="doneActionButton:" destination="RGy-aV-rfK" id="Twy-Qj-c52"/>
                             </connections>
@@ -166,9 +181,11 @@
                         <outlet property="addressTextField" destination="zzF-pG-7ua" id="ZSX-zi-q7G"/>
                         <outlet property="hoursTextField" destination="yka-TR-mvc" id="rw7-vD-gcm"/>
                         <outlet property="nameTextField" destination="mMe-mj-qV5" id="hY4-cE-dPJ"/>
-                        <outlet property="pickedImage1" destination="kBi-Vw-kRb" id="ify-77-IZx"/>
-                        <outlet property="pickedImage2" destination="12H-Z7-WoC" id="SQd-YR-eqj"/>
-                        <outlet property="pickedImage3" destination="xGY-AN-tku" id="XjV-Iq-1Ns"/>
+                        <outlet property="previewImage1" destination="hGa-WD-Zmh" id="CHv-d9-ecm"/>
+                        <outlet property="previewImage2" destination="MCS-6c-GPo" id="NzT-F4-qx2"/>
+                        <outlet property="previewImage3" destination="8R9-SH-r1v" id="2FM-TU-yEV"/>
+                        <outlet property="previewImage4" destination="FpQ-lm-DlV" id="j7Z-1T-kVS"/>
+                        <outlet property="previewImage5" destination="i4F-WT-IHa" id="QEK-ja-cuT"/>
                         <outlet property="telTextField" destination="67V-bc-sXv" id="Csv-dT-OA4"/>
                     </connections>
                 </viewController>
@@ -181,7 +198,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tl9-lI-Cp7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iqy-6a-iRd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iqy-6a-iRd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -198,7 +215,7 @@
         <scene sceneID="Nxa-kW-33j">
             <objects>
                 <collectionViewController storyboardIdentifier="imagePicker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pMD-oU-DIC" customClass="SuggestionImagePickerViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vA5-Dc-Sp3">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="vA5-Dc-Sp3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

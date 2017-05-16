@@ -12,7 +12,7 @@ import Photos
 private let reuseIdentifier = "Cell"
 
 protocol savedImageDelegate {
-    func savedImage (SaveedImage pickedImage: [UIImage])
+    func savedImage (SavedImage pickedImage: [UIImage?])
 }
 
 class SuggestionImagePickerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -57,8 +57,7 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
 //            theDelegate.savedImage(SaveedImage: selectedImageArray)
 //        }
         
-        delegate?.savedImage(SaveedImage: selectedImageArray)
-        
+        delegate?.savedImage(SavedImage: selectedImageArray)
         self.dismiss(animated: true, completion: nil)
 
     }
