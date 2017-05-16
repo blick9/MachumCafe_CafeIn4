@@ -38,15 +38,10 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-<<<<<<< Updated upstream
     func savedImage(SaveedImage pickedImage: [UIImage]) {
         pickedImage1?.image = pickedImage[0]
         pickedImage2?.image = pickedImage[1]
         pickedImage3?.image = pickedImage[2]
-=======
-    func draw() {
-        imageArray = imageArray.filter { $0 != nil }.flatMap { return $0 }
->>>>>>> Stashed changes
         
         self.imageArray = pickedImage
     }
