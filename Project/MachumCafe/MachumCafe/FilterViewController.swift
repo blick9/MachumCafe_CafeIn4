@@ -24,41 +24,15 @@ class FilterViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-    /*
-    func pickFilter(_ button: UIButton) {
-        button.isSelected = !button.isSelected
-
-        if button.isSelected == true {
-            for i in 0..<filterArray.count {
-                if button.currentTitle == filterArray[i] {
-                    filterArray.remove(at: i)
-                }
-            }
-            filterArray.append(button.currentTitle!)
-        }
-        else {
-            for i in 0..<filterArray.count {
-                if button.currentTitle == filterArray[i] {
-                    filterArray.remove(at: i)
-                    break
-                }
-            }
-        }
-        print(filterArray)
-    }
- */
 
     @IBAction func resetFilterArray(_ sender: Any) {
         
         let selectedItem = collectionView.indexPathsForSelectedItems
         for item in selectedItem! {
             collectionView.deselectItem(at: item , animated: false)
-            filterArray.removeAll()
         }
-        //cell.category.isSelected == false
-        //filterArray.removeAll()
+        filterArray.removeAll()
         print(filterArray)
-
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -88,7 +62,6 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
         cell.category.text = categoryArray[indexPath.row]
         cell.category.textColor = UIColor.init(red: 51, green: 51, blue: 51)
         cell.category.sizeToFit()
-       // cell.category.setBackgroundImage(#imageLiteral(resourceName: "backgrondColor"), for: .selected)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
