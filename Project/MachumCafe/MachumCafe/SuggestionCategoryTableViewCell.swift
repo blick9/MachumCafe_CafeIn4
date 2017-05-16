@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class SuggestionCategoryTableViewCell: UITableViewCell {
-    var selectedButton : category.categoryButton = .parking
+//    var selectedButton : category.categoryButton = .parking
     
     @IBOutlet weak var pickedImage1: UIImageView!
     @IBOutlet weak var pickedImage2: UIImageView!
@@ -36,20 +36,20 @@ class SuggestionCategoryTableViewCell: UITableViewCell {
         
     }
    
-    func selected(_ button:UIButton) {
-        button.isSelected = !button.isSelected
-        button.alpha = button.isSelected ? 1 : 0.5
-        switch button.tag {
-        case 1:
-            selectedButton = .parking
-        case 2:
-            selectedButton = .smoking
-        case 3:
-            selectedButton = .restroom
-        default:
-            break
-        }
-    }
+//    func selected(_ button:UIButton) {
+//        button.isSelected = !button.isSelected
+//        button.alpha = button.isSelected ? 1 : 0.5
+//        switch button.tag {
+//        case 1:
+//            selectedButton = .parking
+//        case 2:
+//            selectedButton = .smoking
+//        case 3:
+//            selectedButton = .restroom
+//        default:
+//            break
+//        }
+//    }
 }
 
 
