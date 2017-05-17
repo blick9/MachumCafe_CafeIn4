@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SuggestionViewController: UIViewController, savedImageDelegate {
+class SuggestionViewController: UIViewController, SavedImageDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var telTextField: UITextField!
@@ -42,13 +42,7 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
         self.dismiss(animated: true, completion: nil)
 
     }
-    
-//    let photoindex = imageArray[indexPath.row]
-//    if let index = selectedImageArray.index(of: photoindex) {
-//        selectedImageArray.remove(at: index)
-//        
-//    }
-    
+
     func draw() {
         imageArray = imageArray.filter { $0 != nil }.flatMap { return $0 }
         
@@ -97,6 +91,7 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func closedAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

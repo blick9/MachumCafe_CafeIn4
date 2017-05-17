@@ -16,6 +16,11 @@ class FilterViewCell: UICollectionViewCell {
         isSelected = false
     }
     
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        category.sizeThatFits(CGSize(width: <#T##Double#>, height: <#T##Double#>)
+//    }
+    
     override var isSelected: Bool {
         didSet {
             self.backgroundColor = isSelected ? UIColor(red: 255, green: 232, blue: 129) : UIColor.clear
