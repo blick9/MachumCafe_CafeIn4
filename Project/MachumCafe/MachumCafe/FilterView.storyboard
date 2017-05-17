@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Filter View Controller-->
         <scene sceneID="Sf5-QG-eWK">
             <objects>
-                <viewController id="uKK-o8-uwZ" customClass="FilterViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FilterView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uKK-o8-uwZ" customClass="FilterViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="te9-Zj-WRq"/>
                         <viewControllerLayoutGuide type="bottom" id="Dcx-sR-0pW"/>
@@ -31,6 +31,7 @@
                                 </state>
                                 <connections>
                                     <action selector="confirmFilter:" destination="uKK-o8-uwZ" eventType="touchUpInside" id="iGd-oT-JfQ"/>
+                                    <segue destination="7ye-ip-hpX" kind="show" identifier="listView" id="3Qp-hq-8wk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-B4-bvh">
@@ -109,12 +110,20 @@
             </objects>
             <point key="canvasLocation" x="877.60000000000002" y="34.632683658170919"/>
         </scene>
+        <!--ListView-->
+        <scene sceneID="OSC-3f-Jfh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ListView" id="7ye-ip-hpX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MT8-Gq-5oy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1606" y="-20"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WeZ-a9-7K8">
             <objects>
-                <navigationController storyboardIdentifier="FilterView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aJu-HI-y5m" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aJu-HI-y5m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9SF-Me-Z1C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SF-Me-Z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

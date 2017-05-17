@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol SavedFilterDelegate {
+    func savedFilter (SavedFilter pickedFilter: [String?])
+}
+
 class FilterViewController: UIViewController {
+    
+    var delegate: SavedFilterDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -37,11 +43,12 @@ class FilterViewController: UIViewController {
     
     @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        }
-    @IBAction func confirmFilter(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-        }
     }
+    @IBAction func confirmFilter(_ sender: UIButton) {
+        delegate?.savedFilter(SavedFilter: filterArray)
+        dismiss(animated: true, completion: nil)
+    }
+}
 
 extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -96,6 +103,14 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1.0
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "listView" {
+//            let controller = segue.destination as! ListViewController
+//            controller.filterArray = filterArray
+//            print("controller.filterArray: ", controller.filterArray)
+//        }
+//    }
 
 }
 

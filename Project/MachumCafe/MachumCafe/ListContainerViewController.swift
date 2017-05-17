@@ -9,17 +9,21 @@
 import UIKit
 
 
-class ListContainerViewController: UIViewController {
+class ListContainerViewController: UIViewController, SavedFilterDelegate {
     let listViewStoryboard = UIStoryboard(name: "ListView", bundle: nil)
     let listMapViewStoryboard = UIStoryboard(name: "ListMapView", bundle: nil)
     var listTableViewController = UIViewController()
     var listMapViewController = UIViewController()
     var isMapView = false
+    var filterArray = [String]()
 
     @IBOutlet weak var listMapView: UIView!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
     
+    func savedFilter(SavedFilter pickedFilter: [String?]) {
+        self.filterArray = pickedFilter as! [String]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +45,11 @@ class ListContainerViewController: UIViewController {
             }
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
         }
+        print("filterArray, container", filterArray)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("filterArray, container", filterArray)
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
@@ -62,7 +71,9 @@ class ListContainerViewController: UIViewController {
 
     @IBAction func showFilterViewButtonItem(_ sender: Any) {
         let filterStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
-        let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterView")
-        present(filterViewController, animated: true, completion: nil)
+        let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterView") as! FilterViewController
+        let navigationVC = UINavigationController(rootViewController: filterViewController)
+        filterViewController.delegate = self
+        present(navigationVC, animated: false, completion: nil)
     }
 }
