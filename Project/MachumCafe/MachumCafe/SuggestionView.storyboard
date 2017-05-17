@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tl9-lI-Cp7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tl9-lI-Cp7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -65,7 +65,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <connections>
-                                            <action selector="addressSerchActionButton:" destination="RGy-aV-rfK" eventType="touchUpInside" id="BXr-LK-4rE"/>
+                                            <action selector="addressSerchButtonAction:" destination="RGy-aV-rfK" eventType="touchUpInside" id="3Yw-LF-t2j"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="상세주소" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="idG-Vc-h0W">
@@ -199,6 +199,7 @@
                     <connections>
                         <outlet property="addressTextField" destination="zzF-pG-7ua" id="ZSX-zi-q7G"/>
                         <outlet property="categoryCollectionView" destination="fKg-ak-Nh3" id="pKe-5G-0bR"/>
+                        <outlet property="detailAddressTextField" destination="idG-Vc-h0W" id="Gh4-Ve-lBj"/>
                         <outlet property="hoursTextField" destination="yka-TR-mvc" id="rw7-vD-gcm"/>
                         <outlet property="nameTextField" destination="mMe-mj-qV5" id="hY4-cE-dPJ"/>
                         <outlet property="previewImage1" destination="hGa-WD-Zmh" id="CHv-d9-ecm"/>
@@ -216,7 +217,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Ssw-2v-frl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="skh-J5-Uvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tl9-lI-Cp7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iqy-6a-iRd">
@@ -228,6 +228,7 @@
                         <segue destination="RGy-aV-rfK" kind="relationship" relationship="rootViewController" id="ZzU-I9-lhG"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="skh-J5-Uvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3482.4000000000001" y="852.3238380809596"/>
         </scene>

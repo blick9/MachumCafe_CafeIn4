@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class SuggestionViewController: UIViewController, savedImageDelegate {
-    
-    @IBOutlet weak var categoryCollectionView: UICollectionView!
     var multiple = true
-    
     var categoryArray = ["24시","연중무휴","주차","편한의자","좌식","모임","미팅룸","스터디","넓은공간","아이와함께","디저트","베이커리","로스팅","산책로","모닥불","드라이브","북카페","이색카페","야경","조용한","고급스러운","여유로운","힐링"]
     var filterArray = [String]()
+    var selectedLocation = CLLocationCoordinate2D()
+    
+    @IBOutlet weak var categoryCollectionView: UICollectionView!
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var telTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var hoursTextField: UITextField!
     @IBOutlet weak var detailAddressTextField: UITextField!
+    @IBOutlet weak var hoursTextField: UITextField!
     
     @IBOutlet weak var previewImage1: PreviewImageButton!
     @IBOutlet weak var previewImage2: PreviewImageButton!
@@ -29,14 +30,21 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
     @IBOutlet weak var previewImage5: PreviewImageButton!
     
     var previewImage =  [PreviewImageButton]()
-
     var imageArray = [UIImage?]()
     
-    @IBAction func addressSerchActionButton(_ sender: Any) {
-        print("SSSSSSSSSS")
-        addressTextField.text = "ㅇㄱㄷㅈㅇㄹㄱㅎ슈"
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        previewImage = [previewImage1,previewImage2,previewImage3,previewImage4,previewImage5]
+        for item in previewImage {
+            item.addTarget(self, action: #selector(SuggestionViewController.buttonTapped), for: UIControlEvents.touchUpInside)
+        }
+        // addressTextField.sizeToFit()
+        categoryCollectionView?.allowsMultipleSelection = multiple
+        self.navigationItem.title = "필터검색"
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
+        // Do any additional setup after loading the view.
     }
-    
     
     @IBAction func imagePickerActionButton(_ sender: Any) {
         let imagePickerViewStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
@@ -44,6 +52,17 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
         let navigationVC = UINavigationController(rootViewController: imagePickerViewController)
         imagePickerViewController.delegate = self
         present(navigationVC, animated: false, completion: nil)
+    }
+    
+    @IBAction func addressSerchButtonAction(_ sender: Any) {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        let addressFilter = GMSAutocompleteFilter()
+        addressFilter.type = .noFilter
+        addressFilter.country = "KR"
+        autocompleteController.autocompleteFilter = addressFilter
+        
+        present(autocompleteController, animated: true, completion: nil)
     }
     
     @IBAction func doneActionButton(_ sender: Any) {
@@ -90,31 +109,9 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
         draw()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        previewImage = [previewImage1,previewImage2,previewImage3,previewImage4,previewImage5]
-        for item in previewImage {
-            item.addTarget(self, action: #selector(SuggestionViewController.buttonTapped), for: UIControlEvents.touchUpInside)
-        }
-       // addressTextField.sizeToFit()
-        categoryCollectionView?.allowsMultipleSelection = multiple
-        self.navigationItem.title = "필터검색"
-        categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
-        
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     @IBAction func closedAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-
-
-    
 }
 
 extension SuggestionViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -159,7 +156,6 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        collectionView.viewWithTag(0)?.sizeToFit()
         let width = collectionView.frame.width / 5 - 1
         return CGSize(width: width, height: 30.0)
     }
@@ -169,6 +165,40 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
+    }
+    
+}
+
+extension SuggestionViewController: GMSAutocompleteViewControllerDelegate {
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        print("Place name: \(place.name)")
+        print("Place address: \(place.formattedAddress)")
+        
+        addressTextField.text = place.formattedAddress
+        selectedLocation = place.coordinate
+        
+        print(selectedLocation)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
 }
