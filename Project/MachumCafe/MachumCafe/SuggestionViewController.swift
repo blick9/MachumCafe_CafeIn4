@@ -61,6 +61,7 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
         addressFilter.type = .noFilter
         addressFilter.country = "KR"
         autocompleteController.autocompleteFilter = addressFilter
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         present(autocompleteController, animated: true, completion: nil)
     }
@@ -172,13 +173,10 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
 extension SuggestionViewController: GMSAutocompleteViewControllerDelegate {
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name)")
-        print("Place address: \(place.formattedAddress)")
-        
-        addressTextField.text = place.formattedAddress
         selectedLocation = place.coordinate
-        
-        print(selectedLocation)
+        NetworkMap.getAddressFromCoordinate(latitude: selectedLocation.latitude, longitude: selectedLocation.longitude) { address in
+            self.addressTextField.text = address[0]
+        }
         dismiss(animated: true, completion: nil)
     }
     
