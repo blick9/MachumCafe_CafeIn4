@@ -128,7 +128,7 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         cell.sizeToFit()
         cell.layer.cornerRadius = cell.frame.height/2
-        cell.layer.borderWidth = 2
+        cell.layer.borderWidth = 1.5
         cell.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
         cell.categoryName.text = categoryArray[indexPath.row]
         cell.categoryName.textColor = UIColor.init(red: 51, green: 51, blue: 51)
@@ -156,7 +156,7 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 5 - 1
+        let width = Double((categoryArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
         return CGSize(width: width, height: 30.0)
     }
     
@@ -164,7 +164,7 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
         return 10.0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        return 3.0
     }
     
 }
