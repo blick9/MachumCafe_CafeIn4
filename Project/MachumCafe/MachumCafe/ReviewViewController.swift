@@ -10,7 +10,7 @@ import UIKit
 
 class ReviewViewController: UIViewController {
     var reviews = [[String: Any]]()
-    
+    var reviewArray = [[String: Any]]()
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -40,8 +40,11 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
         
         let item = reviews[indexPath.row]
         cell.reviewContent.text = item["review"] as! String
-        cell.reviewStarRating.rating = item["starRating"] as! Double
+        cell.reviewStarRating.rating = item["rating"] as! Double
+        cell.reviewDate.text = item["date"] as! String
+        cell.reviewer.text = item["userId"] as! String
         
         return cell
     }
 }
+
