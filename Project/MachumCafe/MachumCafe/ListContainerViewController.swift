@@ -10,8 +10,6 @@ import UIKit
 
 
 class ListContainerViewController: UIViewController {
-    let listViewStoryboard = UIStoryboard(name: "ListView", bundle: nil)
-    let listMapViewStoryboard = UIStoryboard(name: "ListMapView", bundle: nil)
     var listTableViewController = UIViewController()
     var listMapViewController = UIViewController()
     var isMapView = false
@@ -27,8 +25,8 @@ class ListContainerViewController: UIViewController {
         listMapView.isHidden = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
 
-        listTableViewController = listViewStoryboard.instantiateViewController(withIdentifier: "ListView")
-        listMapViewController = listMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
+        listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView")
+        listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (modelCafe) in
             for cafe in modelCafe {
@@ -61,8 +59,7 @@ class ListContainerViewController: UIViewController {
     }
 
     @IBAction func showFilterViewButtonItem(_ sender: Any) {
-        let filterStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
-        let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterView")
+        let filterViewController = UIStoryboard.FilterViewStoryboard.instantiateViewController(withIdentifier: "FilterView")
         present(filterViewController, animated: true, completion: nil)
     }
 }
