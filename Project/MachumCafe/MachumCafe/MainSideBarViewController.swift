@@ -93,8 +93,7 @@ class MainSideBarViewController: UIViewController {
     }
     
     @IBAction func logInButtonAction(_ sender: Any) {
-        let logInStoryboard = UIStoryboard(name: "LogIn&SignUpView", bundle: nil)
-        let logInViewController = logInStoryboard.instantiateViewController(withIdentifier: "LogIn")
+        let logInViewController = UIStoryboard.LogInSignUpViewStoryboard.instantiateViewController(withIdentifier: "LogIn")
         present(logInViewController, animated: true, completion: nil)
     }
     
@@ -102,24 +101,21 @@ class MainSideBarViewController: UIViewController {
         if User.sharedInstance.user.getUser()["id"] as! String == "" {
             UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
         } else {
-            let bookmarkStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
-            let bookmarkViewController = bookmarkStoryboard.instantiateViewController(withIdentifier: "Bookmark")
+            let bookmarkViewController = UIStoryboard.BookmarkViewStoryboard.instantiateViewController(withIdentifier: "Bookmark")
             let bookmarkViewNavigationController = UINavigationController(rootViewController: bookmarkViewController)
             present(bookmarkViewNavigationController, animated: true, completion: nil)
         }
     }
     
     @IBAction func suggestionButtonAction(_ sender: Any) {
-        let suggestionStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
-        let suggestionViewController = suggestionStoryboard.instantiateViewController(withIdentifier: "Suggestion")
+        let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion")
         let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
         present(suggestionViewNavigationController, animated: true, completion: nil)
     }
     
 
     @IBAction func settingButtonAction(_ sender: Any) {
-        let settingStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
-        let settingViewController = settingStoryboard.instantiateViewController(withIdentifier: "SettingView")
+        let settingViewController = UIStoryboard.SettingViewStoryboard.instantiateViewController(withIdentifier: "SettingView")
         let settingViewNavtigationController = UINavigationController(rootViewController: settingViewController)
         present(settingViewNavtigationController, animated: true, completion: nil)
     }

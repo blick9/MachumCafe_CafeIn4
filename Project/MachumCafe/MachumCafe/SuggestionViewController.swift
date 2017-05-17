@@ -47,8 +47,7 @@ class SuggestionViewController: UIViewController, savedImageDelegate {
     }
     
     @IBAction func imagePickerActionButton(_ sender: Any) {
-        let imagePickerViewStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
-        let imagePickerViewController = imagePickerViewStoryboard.instantiateViewController(withIdentifier: "imagePicker") as! SuggestionImagePickerViewController
+        let imagePickerViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "imagePicker") as! SuggestionImagePickerViewController
         let navigationVC = UINavigationController(rootViewController: imagePickerViewController)
         imagePickerViewController.delegate = self
         present(navigationVC, animated: false, completion: nil)
