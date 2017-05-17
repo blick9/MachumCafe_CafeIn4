@@ -9,7 +9,8 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
-    var array = ["1","2","3","4","5","6"]
+    var reviews = [[String: Any]]()
+    
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -18,13 +19,10 @@ class ReviewViewController: UIViewController {
         tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let writeReview : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
+        writeReview.reviewView = self
     }
-    
-
 
 }
 extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
@@ -34,15 +32,16 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return reviews.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReviewTableViewCell
-
-        cell.reviewContent.text = array[indexPath.row]
-
+        
+        let item = reviews[indexPath.row]
+        cell.reviewContent.text = item["review"] as! String
+        cell.reviewStarRating.rating = item["starRating"] as! Double
+        
         return cell
     }
 }

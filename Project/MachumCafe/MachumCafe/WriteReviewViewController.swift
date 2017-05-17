@@ -12,17 +12,30 @@ import Cosmos
 class WriteReviewViewController: UIViewController {
 
     @IBOutlet weak var writeReview: UITextView!
+    @IBOutlet weak var starRating: CosmosView!
+    
+    var reviewDictionary = [String : Any]()
+    var reviewView = ReviewViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        reviewDictionary["review"] = writeReview.text
+        reviewDictionary["starRating"] = starRating.rating
+        
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     @IBAction func registReview(_ sender: Any) {
+        print(starRating.rating)
+        
+        if let review = writeReview.text { reviewDictionary["review"] = review }
+        reviewDictionary["starRating"] = starRating.rating
+        reviewView.reviews.insert(reviewDictionary, at: 0)
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        reviewView.tableView.insertRows(at: [indexPath], with: .automatic)
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -30,15 +43,5 @@ class WriteReviewViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
