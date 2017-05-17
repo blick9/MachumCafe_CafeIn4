@@ -10,14 +10,13 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class SetLocationMapViewController: UIViewController {
+class SetLocationMapViewController: UIViewController, UISearchControllerDelegate {
     var locationManager = CLLocationManager()
     var currentLocation = ModelLocation()
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
-
 
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var currentAddress: UILabel!
@@ -68,8 +67,8 @@ class SetLocationMapViewController: UIViewController {
         resultsViewController?.delegate = self
         
         searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController?.delegate = self
         searchController?.searchResultsUpdater = resultsViewController
-        searchController?.searchBar.showsCancelButton = false
     
         searchController?.searchBar.sizeToFit()
         navigationItem.titleView = searchController?.searchBar
@@ -80,6 +79,12 @@ class SetLocationMapViewController: UIViewController {
         
         // Prevent the navigation bar from being hidden when searching.
         searchController?.hidesNavigationBarDuringPresentation = false
+    }
+    
+    func didPresentSearchController(_ searchController: UISearchController) {
+        // Glitter Cancel Button
+//        searchController.searchBar.showsCancelButton = false
+        print(#function)
     }
     
     @IBAction func applyButtonAction(_ sender: Any) {
@@ -119,8 +124,6 @@ extension SetLocationMapViewController : GMSMapViewDelegate, CLLocationManagerDe
  */
     }
 }
-
-
 
 // Handle the user's selection.
 extension SetLocationMapViewController: GMSAutocompleteResultsViewControllerDelegate {
