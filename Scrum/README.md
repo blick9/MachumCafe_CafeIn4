@@ -1,18 +1,34 @@
 # Scrum
 ## 일일 Scrum
+* ### 05.17(수)
+  * #### 전한나
+    * [ ] Filter 기능 구현
+  * #### 구찬우
+    * [ ] View Present 코드 개선
+    * [ ] Search Bar Cancel 버튼 Hide
+    * [ ] GMSAutoCompleteViewController 내 SearchBar 색상 변경
+    * [ ] 현위치와 카페간 직선 거리 표시
+  * #### 이단비
+    * [ ] cafeDetailView 코드 리팩토링 & Share 기능 구현
+    * [ ] ListView 코드 리팩토링
+  * #### 조민재
+    * [ ] WriteReviewView Cell 추가 적용
+
 * ### 05.16(화)
   * #### 전한나
-    * [ ] 경기도 DB 크롤링
+    * [x] 경기도 DB 크롤링
     * [ ] Filter 기능 구현
   * #### 구찬우
     * [ ] Filter 기능 구현
-    * [ ] SetLocationView 주소 검색 기능 추가
-    * [ ] SuggestionView내 주소 검색 기능 추가
+    * [x] SetLocationView 주소 검색 기능 추가
+    * [x] SuggestionView내 주소 검색 기능 추가
   * #### 이단비
-    * [ ] SuggestionView 카테고리 CollectionView 가져와 적용하기
+    * [x] SuggestionView 카테고리 CollectionView 가져와 적용하기
   * #### 조민재
-    * [ ] WriteReviewView 뷰 구성
-    * [ ] WriteReviewView starRaking 적용
+    * [ ] Review 작성
+    * [x] WriteReviewView 뷰 구성
+    * [x] WriteReviewView starRaking 적용
+
 * ### 05.15(월)
   * #### 전한나
     * [ ] SuggestionView Client Api 구현
@@ -30,8 +46,10 @@
       [x] FilterView 초기화 기능 구현
       [x] CollectionView 동적 Cell Size 구현
   * #### 조민재
+    * [ ] FilterView 초기화 기능 구현
+    * [ ] CollectionView 동적 Cell Size 구현
     * [x] ReviewView 뷰 구성
-    * [x] ReviewView tableView 
+    * [x] ReviewView tableView
 
   * ### 05.10(수)
     * #### 전한나
@@ -132,14 +150,15 @@
       * [ ] Back-Log 재정리
       * [ ] 코드 리뷰 & 리팩토링
     * ##### SuggestionView
-      * [ ] 선택한 이미지 삭제 기능 추가
-      * [ ] 카테고리 버튼 추가
+      * [x] 선택한 이미지 삭제 기능 추가
+      * [x] 카테고리 버튼 추가
     * ##### FilterView
       * [x] 카테고리 버튼 구현 (CollectionView)
       * [ ] 카테고리 필터 표시
       * [ ] 필터 검색 기능 구현
     * ##### CafeDetailView
-      * [ ] 별점 기능 추가
+      * [x] 별점 기능 추가
+      * [ ] 값이 없는 경우 Cell 보이지 않기
     * ##### MapView
       * [ ] 현위치와 카페간 직선 거리 표시
       * [ ] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
@@ -151,7 +170,7 @@
   * #### Model
     * ##### DB
       * [x] 서울시 데이터 크롤링 (서울시 5,700여개 완료)
-      * [ ] 경기도 데이터 크롤링
+      * [x] 경기도 데이터 크롤링
 
 * ### 4주차 (5.8 ~ 5.14)
   * #### View 구현 계획

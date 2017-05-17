@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Cosmos
 
 class ReviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var reviewer: UILabel!
     @IBOutlet weak var reviewDate: UILabel!
+    @IBOutlet weak var reviewStarRating: CosmosView!
     @IBOutlet weak var reviewContent: UILabel!
     @IBOutlet weak var reviewerPicture: UIImageView!
     
