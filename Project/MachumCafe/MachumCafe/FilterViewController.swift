@@ -60,9 +60,9 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
         return categoryArray.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
-        cell.sizeToFit()
         cell.layer.cornerRadius = cell.frame.height/2
         cell.layer.borderWidth = 2
         cell.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
@@ -79,7 +79,6 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
         cell.isSelected = !cell.isSelected
         filterArray.append(categoryArray[indexPath.row])
         print(filterArray)
-
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -92,8 +91,7 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        collectionView.viewWithTag(0)?.sizeToFit()
-        let width = collectionView.frame.width / 4 - 1
+        let width = Double((categoryArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 20
         return CGSize(width: width, height: 35.0)
     }
     
@@ -101,7 +99,7 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
         return 20.0
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
+        return 5.0
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
