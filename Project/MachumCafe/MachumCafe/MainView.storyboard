@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="595-Ii-jiZ">
-
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="595-Ii-jiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,17 +30,17 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pO-HB-Avo" userLabel="24hButton">
-                                <rect key="frame" x="29" y="215" width="90" height="90"/>
+                                <rect key="frame" x="29" y="212" width="92" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3pO-HB-Avo" secondAttribute="height" multiplier="1:1" id="gKp-zi-ToU"/>
                                 </constraints>
-                                <state key="normal" image="24h"/>
+                                <state key="normal" title="24시" image="24h"/>
                                 <connections>
                                     <action selector="categoryButtons:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="GgM-Tt-8uN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpX-9X-2Up" userLabel="smokingButton">
-                                <rect key="frame" x="142" y="215" width="90" height="90"/>
+                                <rect key="frame" x="144" y="215" width="86" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YpX-9X-2Up" secondAttribute="height" multiplier="1:1" id="VYa-Jl-z4s"/>
                                 </constraints>
@@ -51,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ny-IF-Ozu" userLabel="parkingButton">
-                                <rect key="frame" x="255" y="215" width="90" height="90"/>
+                                <rect key="frame" x="253" y="212" width="92" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6Ny-IF-Ozu" secondAttribute="height" multiplier="1:1" id="DyU-Ok-5mf"/>
                                 </constraints>
@@ -61,7 +60,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-Y1-uB5" userLabel="dessertButton">
-                                <rect key="frame" x="31" y="328" width="90" height="90"/>
+                                <rect key="frame" x="31" y="327" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CHo-Y1-uB5" secondAttribute="height" multiplier="1:1" id="sIS-yv-SNB"/>
                                 </constraints>
@@ -71,7 +70,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeg-gc-XNu" userLabel="meetingButton">
-                                <rect key="frame" x="255" y="328" width="90" height="90"/>
+                                <rect key="frame" x="253" y="327" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xeg-gc-XNu" secondAttribute="height" multiplier="1:1" id="D2t-7p-dLD"/>
                                 </constraints>
@@ -92,7 +91,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH3-Gk-CzM" userLabel="restRoomButton">
-                                <rect key="frame" x="142" y="328" width="90" height="90"/>
+                                <rect key="frame" x="141" y="326" width="92" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rH3-Gk-CzM" secondAttribute="height" multiplier="1:1" id="OVK-Xo-1K4"/>
                                 </constraints>
@@ -279,7 +278,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="595-Ii-jiZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iiz-BR-TRk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iiz-BR-TRk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

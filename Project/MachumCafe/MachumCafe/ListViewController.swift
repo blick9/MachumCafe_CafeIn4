@@ -11,14 +11,9 @@ import UIKit
 class ListViewController: UIViewController {
     var getUserID = String()
     var getUserBookmarkArray = [String]()
-    var filterArray = [String?]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var isEmptyLabel: UILabel!
-    
-//    func savedFilter(SavedFilter pickedFilter: [String?]) {
-//        self.filterArray = pickedFilter
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +37,6 @@ class ListViewController: UIViewController {
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         tableView.reloadData()
         checkModel()
-        print("filterArray", filterArray)
     }
     
     func checkModel() {
@@ -113,14 +107,5 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "DetailView" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                let controller = segue.destination as! CafeDetailViewController
-//                controller.cafeModel = Cafe.sharedInstance.cafeList[indexPath.row]
-//            }
-//        }
-//    }
     
 }

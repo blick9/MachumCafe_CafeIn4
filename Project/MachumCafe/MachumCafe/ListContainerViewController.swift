@@ -22,7 +22,10 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
     
     func savedFilter(SavedFilter pickedFilter: [String?]) {
-        self.filterArray = pickedFilter as! [String]
+        filterArray = [String]()
+        let _ = pickedFilter.map { (filter) in
+            filterArray.append(filter!)
+        }
     }
     
     override func viewDidLoad() {
@@ -45,11 +48,15 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
             }
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
         }
-        print("filterArray, container", filterArray)
+        print("filterArray 1 : ", filterArray)
+//        dump(Cafe.sharedInstance.filterCafeList)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("filterArray, container", filterArray)
+        print("filterArray 2 : ", filterArray)
+        cafeFilter(filterArray: filterArray)
+        //dump(Cafe.sharedInstance.filterCafeList)
+        print(Cafe.sharedInstance.filterCafeList.count)
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
@@ -75,5 +82,26 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         let navigationVC = UINavigationController(rootViewController: filterViewController)
         filterViewController.delegate = self
         present(navigationVC, animated: false, completion: nil)
+    }
+    
+    func cafeFilter(filterArray: [String]) {
+        Cafe.sharedInstance.filterCafeList = [ModelCafe]()
+        let cafeList = Cafe.sharedInstance.cafeList
+        let _ = cafeList.map { (cafe) in
+            var result = [String]()
+            for category in cafe.getCafe()["category"] as! [String] {
+//                print("IN category", category)
+                for filter in filterArray {
+//                    print("INNE filter", filter)
+                    if category == filter {
+                        result.append(filter)
+//                        print("INNER result", result)
+                    }
+                }
+            }
+            if result.sorted() == filterArray.sorted() {
+                Cafe.sharedInstance.filterCafeList.append(cafe)
+            }
+        }
     }
 }

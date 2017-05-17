@@ -101,14 +101,6 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "listView" {
-//            let controller = segue.destination as! ListViewController
-//            controller.filterArray = filterArray
-//            print("controller.filterArray: ", controller.filterArray)
-//        }
-//    }
 
 }
 
