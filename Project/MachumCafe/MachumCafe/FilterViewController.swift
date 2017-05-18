@@ -80,33 +80,21 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         guard multiple else {
             return
         }
-        let categoryIndex = categoryArray[indexPath.row]
 
         let filter = filterArray.filter { $0 == categoryArray[indexPath.row] }
         if filter.isEmpty {
             filterArray.append(categoryArray[indexPath.row])
-        } else {
-            if let index = filterArray.index(of: categoryIndex) {
-                filterArray.remove(at: index)
-            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         let categoryIndex = categoryArray[indexPath.row]
    
-        let filter = filterArray.filter { $0 == categoryArray[indexPath.row] }
-        if filter.isEmpty {
-            filterArray.append(categoryArray[indexPath.row])
-        } else {
-            if let index = filterArray.index(of: categoryIndex) {
-                filterArray.remove(at: index)
-            }
+        if let index = filterArray.index(of: categoryIndex) {
+            filterArray.remove(at: index)
         }
     }
     
