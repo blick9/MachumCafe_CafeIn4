@@ -23,7 +23,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     
     func savedFilter(SavedFilter pickedFilter: [String?]) {
         filterArray = [String]()
-        let _ = pickedFilter.map { (filter) in
+        for filter in pickedFilter {
             filterArray.append(filter!)
         }
     }
@@ -46,6 +46,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
                     Cafe.sharedInstance.allCafeList.append(cafe)
                 }
             }
+            self.cafeFilter(filterArray: self.filterArray)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
         }
         print("filterArray 1 : ", filterArray)
@@ -56,7 +57,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         print("filterArray 2 : ", filterArray)
         cafeFilter(filterArray: filterArray)
         //dump(Cafe.sharedInstance.filterCafeList)
-        print(Cafe.sharedInstance.filterCafeList.count)
+        print(Cafe.sharedInstance.filterCafeList.count, "------------------")
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
@@ -87,9 +88,9 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     
     func cafeFilter(filterArray: [String]) {
         Cafe.sharedInstance.filterCafeList = [ModelCafe]()
-        var filterCafe = [ModelCafe]()
-        let cafeList = Cafe.sharedInstance.allCafeList
-        let _ = cafeList.map { (cafe) in
+        
+        let allCafeList = Cafe.sharedInstance.allCafeList
+        let _ = allCafeList.map { (cafe) in
             var result = [String]()
             for category in cafe.getCafe()["category"] as! [String] {
 //                print("IN category", category)
@@ -102,9 +103,10 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
                 }
             }
             if result.sorted() == filterArray.sorted() {
-                filterCafe.append(cafe)
+                Cafe.sharedInstance.filterCafeList.append(cafe)
             }
         }
-        Cafe.sharedInstance.filterCafeList = filterCafe
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil
+        )
     }
 }

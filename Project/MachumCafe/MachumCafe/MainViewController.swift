@@ -48,7 +48,28 @@ class MainViewController: UIViewController {
     @IBAction func categoryButtons(_ sender: UIButton) {
         let listContainerViewController = UIStoryboard(name: "ListContainerView", bundle: nil).instantiateViewController(withIdentifier: "ListContainer") as! ListContainerViewController
         navigationController?.pushViewController(listContainerViewController, animated: true)
-        listContainerViewController.filterArray.append((sender.titleLabel?.text)!)
+        
+        var element : String?
+        switch sender.tag {
+        case 0:
+            element = nil
+        case 1:
+            element = "24시"
+        case 2:
+            element = "주차"
+        case 3:
+            element = "디저트"
+        case 4:
+            element = "로스팅"
+        case 5:
+            element = "미팅룸"
+        default:
+            break
+        }
+        
+        if let value = element {
+            listContainerViewController.filterArray.append(value)
+        }
     }
     
     @IBAction func presentFilterViewButtonAction(_ sender: Any) {

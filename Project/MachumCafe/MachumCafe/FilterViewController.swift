@@ -33,8 +33,8 @@ class FilterViewController: UIViewController {
     }
     
     func checkSelected() {
-        for i in filterArray {
-            collectionView.selectItem(at: [0, categoryArray.index(of: i)!], animated: false, scrollPosition: .top)
+        for filter in filterArray {
+            collectionView.selectItem(at: [0, categoryArray.index(of: filter)!], animated: false, scrollPosition: .top)
         }
     }
     
@@ -85,8 +85,7 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
             return
         }
         let categoryIndex = categoryArray[indexPath.row]
-        
-        print(cell.isSelected, 1)
+
         let filter = filterArray.filter { $0 == categoryArray[indexPath.row] }
         if filter.isEmpty {
             filterArray.append(categoryArray[indexPath.row])
@@ -95,14 +94,12 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
                 filterArray.remove(at: index)
             }
         }
-        print(filterArray, 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         let categoryIndex = categoryArray[indexPath.row]
    
-        print(cell.isSelected, 2)
         let filter = filterArray.filter { $0 == categoryArray[indexPath.row] }
         if filter.isEmpty {
             filterArray.append(categoryArray[indexPath.row])
@@ -111,7 +108,6 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
                 filterArray.remove(at: index)
             }
         }
-        print(filterArray, 2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
