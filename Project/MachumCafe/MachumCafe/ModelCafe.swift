@@ -69,6 +69,7 @@ class ModelCafe {
 
 class Cafe {
     static let sharedInstance = Cafe()
-    var cafeList = [ModelCafe]()
+    var allCafeList = [ModelCafe]()
+    var filterCafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
 }

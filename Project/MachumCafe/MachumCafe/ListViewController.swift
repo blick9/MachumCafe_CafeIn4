@@ -18,6 +18,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -26,6 +27,7 @@ class ListViewController: UIViewController {
 
         print(#function, "Table")
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +40,7 @@ class ListViewController: UIViewController {
     }
     
     func checkModel() {
-        if Cafe.sharedInstance.cafeList.isEmpty {
+        if Cafe.sharedInstance.filterCafeList.isEmpty {
             isEmptyLabel.text = "카페 정보 없음"
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         } else {
@@ -49,7 +51,7 @@ class ListViewController: UIViewController {
     
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
-        let cafeID = Cafe.sharedInstance.cafeList[buttonTag.tag].getCafe()["id"] as! String
+        let cafeID = Cafe.sharedInstance.filterCafeList[buttonTag.tag].getCafe()["id"] as! String
         NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (message, des, userBookmark) in
             print(des)
             if message {
@@ -77,18 +79,18 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Cafe.sharedInstance.cafeList.count
+        return Cafe.sharedInstance.filterCafeList.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
-        var cafe = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
+        var cafe = Cafe.sharedInstance.filterCafeList[indexPath.row].getCafe()
         
         if (cafe["imagesData"] as! [Data]).isEmpty {
             NetworkCafe.getImagesData(imagesURL: cafe["imagesURL"] as! [String]) { (data) in
-                Cafe.sharedInstance.cafeList[indexPath.row].setImagesData(imageData: data)
-                cafe = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
+                Cafe.sharedInstance.filterCafeList[indexPath.row].setImagesData(imageData: data)
+                cafe = Cafe.sharedInstance.filterCafeList[indexPath.row].getCafe()
                 cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
             }
         } else {
@@ -110,7 +112,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "DetailView" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! CafeDetailViewController
-                controller.cafeModel = Cafe.sharedInstance.cafeList[indexPath.row]
+                controller.cafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
             }
         }
     }
