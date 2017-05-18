@@ -66,8 +66,9 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
     }
     
     @IBAction func doneActionButton(_ sender: Any) {
+        let uploadImage = imageArray.flatMap { $0 }
         
-        NetworkAdmin.uploadsImage(images: imageArray as! [UIImage]) { (imagesURL) in
+        NetworkAdmin.uploadsImage(images: uploadImage) { (imagesURL) in
             let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: self.addressTextField.text!, hours: self.hoursTextField.text!, category: ["임시", "카테고리"], menu: "메뉴", imagesURL: imagesURL)
             NetworkAdmin.suggestionNewCafe(cafe: cafe)
         }
