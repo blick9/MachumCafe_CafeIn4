@@ -38,19 +38,17 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func sideBarShowButtonAction(_ sender: Any) {
-        let mainViewStoryboard = UIStoryboard(name: "MainView", bundle: nil)
-        let sideBarViewController = mainViewStoryboard.instantiateViewController(withIdentifier: "SideBar")
+        let sideBarViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "SideBar")
         present(sideBarViewController, animated: false, completion: nil)
     }
     
     @IBAction func categoryButtons(_ sender: UIButton) {
-        let listContainerViewController = UIStoryboard(name: "ListContainerView", bundle: nil).instantiateViewController(withIdentifier: "ListContainer")
+        let listContainerViewController = UIStoryboard.ListContainerViewStoryboard.instantiateViewController(withIdentifier: "ListContainer")
         navigationController?.pushViewController(listContainerViewController, animated: true)
     }
     
     @IBAction func presentFilterViewButtonAction(_ sender: Any) {
-        let filterViewStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
-        let filterViewController = filterViewStoryboard.instantiateViewController(withIdentifier: "FilterView")
+        let filterViewController = UIStoryboard.FilterViewStoryboard.instantiateViewController(withIdentifier: "FilterView")
         present(filterViewController, animated: true, completion: nil)
     }
     
