@@ -14,13 +14,7 @@ class PreviewImageButton : UIButton {
     var tempImage = UIImage()
     override func layoutSubviews() {
         super.layoutSubviews()
-       // self.setBackgroundImage(tempImage, for: .normal)
     }
-    
-//    func setBackground(image: UIImage) {
-//        self.setBackgroundImage(tempImage, for: .normal)
-//        print ("aaaaaaaaaaa")
-//    }
 
     override var isSelected: Bool {
         didSet {
@@ -34,12 +28,10 @@ class PreviewImageButton : UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        fatalError("init(coder:) has not been implemented")
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-      //  isSelected = false
         
     }
     

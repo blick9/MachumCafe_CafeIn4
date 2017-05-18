@@ -24,8 +24,7 @@ class LocationLabelView: UIView {
     }
     
     @IBAction func presentSetLocationMapViewButtonAction(_ sender: Any) {
-        let setLocationStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
-        let setLocationViewController = setLocationStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
+        let setLocationViewController = UIStoryboard.SetLocationMapViewStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
         let setLocationViewNavigationController = UINavigationController(rootViewController: setLocationViewController)
 //        (self.delegate as! UIViewController)?.present(setLocationViewNavigationController, animated: true, completion: nil)
         self.delegate?.present(setLocationViewNavigationController, animated: true, completion: nil)

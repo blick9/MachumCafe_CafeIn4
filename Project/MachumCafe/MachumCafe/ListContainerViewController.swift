@@ -8,10 +8,7 @@
 
 import UIKit
 
-
 class ListContainerViewController: UIViewController, SavedFilterDelegate {
-    let listViewStoryboard = UIStoryboard(name: "ListView", bundle: nil)
-    let listMapViewStoryboard = UIStoryboard(name: "ListMapView", bundle: nil)
     var listTableViewController = UIViewController()
     var listMapViewController = UIViewController()
     var isMapView = false
@@ -34,8 +31,8 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         listMapView.isHidden = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
 
-        listTableViewController = listViewStoryboard.instantiateViewController(withIdentifier: "ListView")
-        listMapViewController = listMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
+        listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView")
+        listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (modelCafe) in
             for cafe in modelCafe {
@@ -76,12 +73,11 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     }
 
     @IBAction func showFilterViewButtonItem(_ sender: Any) {
-        let filterStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
-        let filterViewController = filterStoryboard.instantiateViewController(withIdentifier: "FilterView") as! FilterViewController
-        let navigationVC = UINavigationController(rootViewController: filterViewController)
+        let filterViewController = UIStoryboard.FilterViewStoryboard.instantiateViewController(withIdentifier: "FilterView") as! FilterViewController
+        let filterViewNavigationController = UINavigationController(rootViewController: filterViewController)
         filterViewController.delegate = self
-        present(navigationVC, animated: false, completion: nil)
         filterViewController.filterArray = self.filterArray
+        present(filterViewNavigationController, animated: true, completion: nil)
     }
     
     func cafeFilter(filterArray: [String]) {

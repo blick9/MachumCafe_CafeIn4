@@ -78,3 +78,18 @@ extension UIBarButtonItem {
         return false
     }
 }
+
+extension UIStoryboard {
+    static let MainViewStoryboard = UIStoryboard(name: "MainView", bundle: nil)
+    static let ListContainerViewStoryboard = UIStoryboard(name: "ListContainerView", bundle: nil)
+    static let ListViewStoryboard = UIStoryboard(name: "ListView", bundle: nil)
+    static let ListMapViewStoryboard = UIStoryboard(name: "ListMapView", bundle: nil)
+    static let FilterViewStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
+    static let LogInSignUpViewStoryboard = UIStoryboard(name: "LogIn&SignUpView", bundle: nil)
+    static let BookmarkViewStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
+    static let SuggestionViewStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
+    static let SettingViewStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
+    static let SetLocationMapViewStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
+}
+
+

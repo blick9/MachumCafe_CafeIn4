@@ -10,6 +10,7 @@ import UIKit
 
 class FilterViewCell: UICollectionViewCell {
     @IBOutlet weak var category: UILabel!
+    @IBOutlet weak var categoryName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
