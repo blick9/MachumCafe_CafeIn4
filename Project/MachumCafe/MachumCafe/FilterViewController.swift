@@ -30,7 +30,7 @@ class FilterViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    
     @IBAction func resetFilterArray(_ sender: Any) {
         
         let selectedItem = collectionView.indexPathsForSelectedItems
@@ -48,6 +48,7 @@ class FilterViewController: UIViewController {
         delegate?.savedFilter(SavedFilter: filterArray)
         dismiss(animated: true, completion: nil)
     }
+    
 }
 
 extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -60,7 +61,6 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
         return categoryArray.count
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         cell.layer.cornerRadius = cell.frame.height/2
@@ -71,23 +71,40 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
         cell.category.sizeToFit()
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         guard multiple else {
             return
         }
-        cell.isSelected = !cell.isSelected
-        filterArray.append(categoryArray[indexPath.row])
-        print(filterArray)
+        let categoryIndex = categoryArray[indexPath.row]
+        
+        print(cell.isSelected, 1)
+        let filter = filterArray.filter { $0 == categoryArray[indexPath.row] }
+        if filter.isEmpty {
+            filterArray.append(categoryArray[indexPath.row])
+        } else {
+            if let index = filterArray.index(of: categoryIndex) {
+                filterArray.remove(at: index)
+            }
+        }
+        print(filterArray, 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         let categoryIndex = categoryArray[indexPath.row]
-        if let index = filterArray.index(of: categoryIndex) {
-            filterArray.remove(at: index)
+   
+        print(cell.isSelected, 2)
+        let filter = filterArray.filter { $0 == categoryArray[indexPath.row] }
+        if filter.isEmpty {
+            filterArray.append(categoryArray[indexPath.row])
+        } else {
+            if let index = filterArray.index(of: categoryIndex) {
+                filterArray.remove(at: index)
+            }
         }
-        print(filterArray)
+        print(filterArray, 2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

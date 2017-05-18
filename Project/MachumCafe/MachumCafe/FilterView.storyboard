@@ -31,7 +31,6 @@
                                 </state>
                                 <connections>
                                     <action selector="confirmFilter:" destination="uKK-o8-uwZ" eventType="touchUpInside" id="iGd-oT-JfQ"/>
-                                    <segue destination="7ye-ip-hpX" kind="show" identifier="listView" id="3Qp-hq-8wk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-B4-bvh">
@@ -109,14 +108,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5n-fE-4YP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="877.60000000000002" y="34.632683658170919"/>
-        </scene>
-        <!--ListView-->
-        <scene sceneID="OSC-3f-Jfh">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ListView" id="7ye-ip-hpX" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MT8-Gq-5oy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1606" y="-20"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WeZ-a9-7K8">

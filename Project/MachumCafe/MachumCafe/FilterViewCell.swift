@@ -13,9 +13,7 @@ class FilterViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        isSelected = false
     }
-    
 //    override func layoutSubviews() {
 //        super.layoutSubviews()
 //        category.sizeThatFits(CGSize(width: <#T##Double#>, height: <#T##Double#>)

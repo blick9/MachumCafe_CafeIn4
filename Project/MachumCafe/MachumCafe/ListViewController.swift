@@ -40,7 +40,7 @@ class ListViewController: UIViewController {
     }
     
     func checkModel() {
-        if Cafe.sharedInstance.cafeList.isEmpty {
+        if Cafe.sharedInstance.allCafeList.isEmpty {
             isEmptyLabel.text = "카페 정보 없음"
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         } else {
@@ -51,7 +51,7 @@ class ListViewController: UIViewController {
     
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
-        let cafeID = Cafe.sharedInstance.cafeList[buttonTag.tag].getCafe()["id"] as! String
+        let cafeID = Cafe.sharedInstance.allCafeList[buttonTag.tag].getCafe()["id"] as! String
         NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (message, des, userBookmark) in
             print(des)
             if message {
@@ -79,18 +79,18 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Cafe.sharedInstance.cafeList.count
+        return Cafe.sharedInstance.allCafeList.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
-        var cafe = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
+        var cafe = Cafe.sharedInstance.allCafeList[indexPath.row].getCafe()
         
         if (cafe["imagesData"] as! [Data]).isEmpty {
             NetworkCafe.getImagesData(imagesURL: cafe["imagesURL"] as! [String]) { (data) in
-                Cafe.sharedInstance.cafeList[indexPath.row].setImagesData(imageData: data)
-                cafe = Cafe.sharedInstance.cafeList[indexPath.row].getCafe()
+                Cafe.sharedInstance.allCafeList[indexPath.row].setImagesData(imageData: data)
+                cafe = Cafe.sharedInstance.allCafeList[indexPath.row].getCafe()
                 cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
             }
         } else {
@@ -106,6 +106,15 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton(_:)), for: .touchUpInside)
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailView" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! CafeDetailViewController
+                controller.cafeModel = Cafe.sharedInstance.allCafeList[indexPath.row]
+            }
+        }
     }
     
 }

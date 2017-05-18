@@ -39,11 +39,11 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         
         NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (modelCafe) in
             for cafe in modelCafe {
-                let isCafe = Cafe.sharedInstance.cafeList.filter({ (cafeList) -> Bool in
+                let isCafe = Cafe.sharedInstance.allCafeList.filter({ (cafeList) -> Bool in
                     return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
                 })
                 if isCafe.isEmpty {
-                    Cafe.sharedInstance.cafeList.append(cafe)
+                    Cafe.sharedInstance.allCafeList.append(cafe)
                 }
             }
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
@@ -82,11 +82,13 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         let navigationVC = UINavigationController(rootViewController: filterViewController)
         filterViewController.delegate = self
         present(navigationVC, animated: false, completion: nil)
+        filterViewController.filterArray = self.filterArray
     }
     
     func cafeFilter(filterArray: [String]) {
         Cafe.sharedInstance.filterCafeList = [ModelCafe]()
-        let cafeList = Cafe.sharedInstance.cafeList
+        var filterCafe = [ModelCafe]()
+        let cafeList = Cafe.sharedInstance.allCafeList
         let _ = cafeList.map { (cafe) in
             var result = [String]()
             for category in cafe.getCafe()["category"] as! [String] {
@@ -100,8 +102,9 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
                 }
             }
             if result.sorted() == filterArray.sorted() {
-                Cafe.sharedInstance.filterCafeList.append(cafe)
+                filterCafe.append(cafe)
             }
         }
+        Cafe.sharedInstance.filterCafeList = filterCafe
     }
 }

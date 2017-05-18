@@ -76,7 +76,7 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
         currentLocation = Location.sharedInstance.currentLocation.getLocation()
         let distance = Location.sharedInstance.getCoordinateDistance(meter: 1000)
         
-        modelCafe = Cafe.sharedInstance.cafeList.filter {
+        modelCafe = Cafe.sharedInstance.allCafeList.filter {
             (currentLocation["latitude"] as! Double) - distance <= $0.getLatitude() && $0.getLatitude() <= (currentLocation["latitude"] as! Double) + distance && (currentLocation["longitude"] as! Double) - distance <= $0.getLongitude() && $0.getLongitude() <= (currentLocation["longitude"] as! Double) + distance
         }
     }

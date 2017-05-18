@@ -21,7 +21,7 @@ class ModelCafe {
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
     fileprivate var imagesData : [Data]?
-    fileprivate var filterArray : [String]?
+    fileprivate var filterArray = [String]()
     
     init() {}
         
@@ -37,7 +37,10 @@ class ModelCafe {
         self.menu = menu
         self.imagesURL = imagesURL
         self.imagesData = [Data]()
-        self.filterArray = [String]()
+    }
+    
+    init(filterArray: [String]) {
+        self.filterArray = filterArray
     }
     
     func setImagesData(imageData: Data) {
@@ -46,6 +49,9 @@ class ModelCafe {
     
     func setFilterArray(filter: String) {
         self.filterArray.append(filter)
+    }
+    func getFilterArray() -> [String] {
+        return self.filterArray
     }
     
     func getCafe() -> [String : Any] {
@@ -75,7 +81,7 @@ class ModelCafe {
 
 class Cafe {
     static let sharedInstance = Cafe()
-    var cafeList = [ModelCafe]()
-    var filterArray = [String]()
+    var allCafeList = [ModelCafe]()
+    var filterCafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
 }

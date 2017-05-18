@@ -10,10 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var delegate: SavedFilterDelegate?
-    
-    var filterArray = [String]()
     var bannerArray = [UIImage]()
+    var filterArray = [String]()
     
     @IBOutlet weak var mainBannerScrollView: UIScrollView!
     override func viewDidLoad() {
@@ -48,9 +46,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func categoryButtons(_ sender: UIButton) {
-        filterArray.append((sender.titleLabel?.text)!)
-        delegate?.savedFilter(SavedFilter: filterArray)
-        
         let listContainerViewController = UIStoryboard(name: "ListContainerView", bundle: nil).instantiateViewController(withIdentifier: "ListContainer") as! ListContainerViewController
         navigationController?.pushViewController(listContainerViewController, animated: true)
         listContainerViewController.filterArray.append((sender.titleLabel?.text)!)
