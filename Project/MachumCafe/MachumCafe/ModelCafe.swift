@@ -21,7 +21,6 @@ class ModelCafe {
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
     fileprivate var imagesData : [Data]?
-    fileprivate var filterArray = [String]()
     
     init() {}
         
@@ -39,19 +38,8 @@ class ModelCafe {
         self.imagesData = [Data]()
     }
     
-    init(filterArray: [String]) {
-        self.filterArray = filterArray
-    }
-    
     func setImagesData(imageData: Data) {
         self.imagesData?.append(imageData)
-    }
-    
-    func setFilterArray(filter: String) {
-        self.filterArray.append(filter)
-    }
-    func getFilterArray() -> [String] {
-        return self.filterArray
     }
     
     func getCafe() -> [String : Any] {

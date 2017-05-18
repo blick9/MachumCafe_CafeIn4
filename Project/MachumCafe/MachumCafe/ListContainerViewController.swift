@@ -50,13 +50,11 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
         }
         print("filterArray 1 : ", filterArray)
-//        dump(Cafe.sharedInstance.filterCafeList)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("filterArray 2 : ", filterArray)
         cafeFilter(filterArray: filterArray)
-        //dump(Cafe.sharedInstance.filterCafeList)
         print(Cafe.sharedInstance.filterCafeList.count, "------------------")
     }
     
@@ -93,12 +91,9 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         let _ = allCafeList.map { (cafe) in
             var result = [String]()
             for category in cafe.getCafe()["category"] as! [String] {
-//                print("IN category", category)
                 for filter in filterArray {
-//                    print("INNE filter", filter)
                     if category == filter {
                         result.append(filter)
-//                        print("INNER result", result)
                     }
                 }
             }
@@ -106,7 +101,6 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
                 Cafe.sharedInstance.filterCafeList.append(cafe)
             }
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil
-        )
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
 }
