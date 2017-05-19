@@ -35,8 +35,8 @@
       * `View단위브랜치`에서 특정 기능 개발이 완료되었을 경우 커밋시 issue에 등록된 해당 기능을 `close` 한다.
 
     * #### Merge & Pull Request
-      * `develop`와 `기능단위브랜치`의 Merge는 Pull Request를 통해 팀원들의 리뷰를 거친 후 실행한다.  
-        (Base : `develop` / Compare : `기능단위브랜치`)
+      * `develop`와 `View단위브랜치`의 Merge는 Pull Request를 통해 팀원들의 리뷰를 거친 후 실행한다.  
+        (Base : `develop` / Compare : `View단위브랜치`)
       * `develop`와 `master`는 3주에 한번 Merge한다.
 
 
