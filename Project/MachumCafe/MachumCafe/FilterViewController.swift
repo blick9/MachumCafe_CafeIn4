@@ -69,12 +69,7 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
-        cell.layer.cornerRadius = cell.frame.height/2
-        cell.layer.borderWidth = 2
-        cell.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
         cell.category.text = categoryArray[indexPath.row]
-        cell.category.textColor = UIColor.init(red: 51, green: 51, blue: 51)
-        cell.category.sizeToFit()
         return cell
     }
     

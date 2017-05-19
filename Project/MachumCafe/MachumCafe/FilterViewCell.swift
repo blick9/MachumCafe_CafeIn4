@@ -26,4 +26,13 @@ class FilterViewCell: UICollectionViewCell {
         }
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = self.frame.height/2
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
+        category.textColor = UIColor.init(red: 51, green: 51, blue: 51)
+        category.sizeToFit()
+    }
+    
 }
