@@ -14,23 +14,27 @@ class WriteReviewViewController: UIViewController {
     @IBOutlet weak var writeReview: UITextView!
     @IBOutlet weak var starRating: CosmosView!
     
-    var reviewDictionary = [String : Any]()
     var reviewView = ReviewViewController()
     
+    var reviewDictionary = Review.sharedInstance.review.getReview()
+    var user = User.sharedInstance.user.getUser()
+    var cafe = Cafe.sharedInstance.cafeList[1].getCafe() // 변경 필요
+    var writtenDate = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-        reviewDictionary["review"] = writeReview.text
-        reviewDictionary["starRating"] = starRating.rating
-        
-
-        // Do any additional setup after loading the view.
+        let year = NSCalendar.current.component(.year, from: Date())
+        let month = NSCalendar.current.component(.month, from: Date())
+        let day = NSCalendar.current.component(.day, from: Date())
+        writtenDate = "\(year).\(month).\(day)"
     }
 
     @IBAction func registReview(_ sender: Any) {
-        print(starRating.rating)
-        
         if let review = writeReview.text { reviewDictionary["review"] = review }
-        reviewDictionary["starRating"] = starRating.rating
+        reviewDictionary["rating"] = starRating.rating
+        reviewDictionary["date"] = writtenDate
+        reviewDictionary["userId"] = user["id"]
+        reviewDictionary["cafeId"] = cafe["id"]
+        
         reviewView.reviews.insert(reviewDictionary, at: 0)
         
         let indexPath = IndexPath(row: 0, section: 0)

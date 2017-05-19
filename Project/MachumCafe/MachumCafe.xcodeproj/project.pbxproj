@@ -51,6 +51,7 @@
 		B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */; };
 		B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */; };
 		B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */; };
+		B5C9D2AB1ECC1F8500662C27 /* ModelReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */; };
 		B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */; };
 		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
@@ -110,6 +111,7 @@
 		B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReviewView.storyboard; sourceTree = "<group>"; };
 		B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelReview.swift; sourceTree = "<group>"; };
 		B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				A7B73A601EB32E2200EB24C6 /* ModelCafe.swift */,
+				B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */,
 				A7B73A611EB32E2200EB24C6 /* ModelUser.swift */,
 				A76197B51EBD84A7008E50D5 /* ModelLocation.swift */,
 			);
@@ -513,6 +516,7 @@
 				A7B73A631EB32E2200EB24C6 /* ModelUser.swift in Sources */,
 				B7DFA2721EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift in Sources */,
 				B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */,
+				B5C9D2AB1ECC1F8500662C27 /* ModelReview.swift in Sources */,
 				A7B73A531EB2597000EB24C6 /* FilterViewController.swift in Sources */,
 				A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */,
 				A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */,
