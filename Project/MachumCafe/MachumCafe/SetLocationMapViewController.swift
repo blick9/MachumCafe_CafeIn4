@@ -89,7 +89,7 @@ class SetLocationMapViewController: UIViewController, UISearchControllerDelegate
     
     @IBAction func applyButtonAction(_ sender: Any) {
         Location.sharedInstance.currentLocation = currentLocation
-        
+        getCafeListFromCurrentLocation()
         self.dismiss(animated: true, completion: nil)
     }
     
