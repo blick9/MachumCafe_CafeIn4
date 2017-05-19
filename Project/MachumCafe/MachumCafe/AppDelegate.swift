@@ -38,9 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 User.sharedInstance.isUser = true
             }
         }
-        
         initLocationManager()
-        
         return true
     }
 
@@ -55,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        initLocationManager()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -94,8 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
             NetworkMap.getAddressFromCoordinate(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!) { (address) in
                 Location.sharedInstance.currentLocation = ModelLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude, address: address[0])
+                getCafeListFromCurrentLocation()
             }
-            
         }
     }
     // locationAuthorization

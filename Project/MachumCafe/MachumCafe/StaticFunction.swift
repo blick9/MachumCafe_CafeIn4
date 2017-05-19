@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CoreLocation
 
 extension UIAlertController {
     func presentSuggestionLogInAlert(target : UIViewController, title : String, message : String) {
@@ -90,6 +91,20 @@ extension UIStoryboard {
     static let SuggestionViewStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
     static let SettingViewStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
     static let SetLocationMapViewStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
+}
+
+public func getCafeListFromCurrentLocation() {
+    NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (modelCafe) in
+        for cafe in modelCafe {
+            let isCafe = Cafe.sharedInstance.allCafeList.filter({ (cafeList) -> Bool in
+                return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
+            })
+            if isCafe.isEmpty {
+                Cafe.sharedInstance.allCafeList.append(cafe)
+            }
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+    }
 }
 
 
