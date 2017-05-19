@@ -42,6 +42,7 @@ class CafeDetailViewController: UIViewController {
 //        cafeImageView.image = UIImage(data: (imagesData?[0])!)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,8 +147,13 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
+
             cell.reviewerNickName.text = reviewer[indexPath.row]
             return cell
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
+        reviewView.cafeDetailView = self
     }
 }
