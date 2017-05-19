@@ -69,7 +69,15 @@ class ModelCafe {
 
 class Cafe {
     static let sharedInstance = Cafe()
-    var allCafeList = [ModelCafe]()
+    var allCafeList = [ModelCafe]() {
+        didSet {
+            if self.allCafeList.count >= 300 {
+                self.allCafeList.removeFirst(100)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
+            }
+        }
+    }
     var filterCafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
+    
 }
