@@ -19,8 +19,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var multiple = true
-
-    var categoryArray = ["24시", "연중무휴", "주차","편한의자","좌식","모임","미팅룸","스터디","넓은공간","아이와함께","디저트","베이커리","로스팅","산책로","모닥불","드라이브","북카페","이색카페","야경","조용한","고급스러운","여유로운","힐링"]
+    var categoryArray = ["24시", "연중무휴", "주차", "편한의자", "좌식", "모임", "미팅룸", "스터디", "넓은공간", "아이와함께", "디저트", "베이커리", "로스팅", "산책로", "모닥불", "드라이브", "북카페", "이색카페", "야경", "조용한", "고급스러운", "여유로운", "힐링"]
     var filterArray = [String]()
     
     override func viewDidLoad() {
