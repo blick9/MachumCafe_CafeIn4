@@ -28,6 +28,8 @@ class FilterViewController: UIViewController {
         self.navigationItem.title = "필터검색"
         collectionView.delegate = self
         collectionView.dataSource = self
+        let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         checkSelected()
     }
     
@@ -68,7 +70,7 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
         cell.category.text = categoryArray[indexPath.row]
         return cell
     }
