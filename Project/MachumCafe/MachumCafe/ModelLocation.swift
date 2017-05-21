@@ -43,9 +43,4 @@ class Location {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setLocation"), object: nil)
         }
     }
-    
-    func getCoordinateDistance(meter: Double) -> Double {
-        let aMeter = 0.000011111
-        return meter * aMeter
-    }
 }

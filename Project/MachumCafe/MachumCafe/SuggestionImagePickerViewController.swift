@@ -11,12 +11,12 @@ import Photos
 
 private let reuseIdentifier = "Cell"
 
-protocol savedImageDelegate {
+protocol SavedImageDelegate {
     func savedImage (SavedImage pickedImage: [UIImage?])
 }
 
 class SuggestionImagePickerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    var delegate : savedImageDelegate?
+    var delegate : SavedImageDelegate?
 
     var imageArray = [UIImage]()
     var selectedImageArray = [UIImage]()

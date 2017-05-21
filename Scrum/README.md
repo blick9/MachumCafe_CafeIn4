@@ -4,9 +4,9 @@
   * #### 전한나
     * [ ] Filter 기능 구현
   * #### 구찬우
-    * [ ] View Present 코드 개선
+    * [x] View Present 코드 개선
     * [ ] Search Bar Cancel 버튼 Hide
-    * [ ] GMSAutoCompleteViewController 내 SearchBar 색상 변경
+    * [x] GMSAutoCompleteViewController 내 SearchBar 색상 변경
     * [ ] 현위치와 카페간 직선 거리 표시
   * #### 이단비
     * [ ] cafeDetailView 코드 리팩토링 & Share 기능 구현

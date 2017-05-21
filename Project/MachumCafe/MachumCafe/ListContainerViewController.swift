@@ -8,16 +8,22 @@
 
 import UIKit
 
-
-class ListContainerViewController: UIViewController {
+class ListContainerViewController: UIViewController, SavedFilterDelegate {
     var listTableViewController = UIViewController()
     var listMapViewController = UIViewController()
     var isMapView = false
+    var filterArray = [String]()
 
     @IBOutlet weak var listMapView: UIView!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
     
+    func savedFilter(SavedFilter pickedFilter: [String?]) {
+        filterArray = [String]()
+        for filter in pickedFilter {
+            filterArray.append(filter!)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,17 +34,18 @@ class ListContainerViewController: UIViewController {
         listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView")
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
-        NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (modelCafe) in
-            for cafe in modelCafe {
-                let isCafe = Cafe.sharedInstance.cafeList.filter({ (cafeList) -> Bool in
-                    return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
-                })
-                if isCafe.isEmpty {
-                    Cafe.sharedInstance.cafeList.append(cafe)
-                }
-            }
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
+        print("filterArray 1 : ", filterArray)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("filterArray 2 : ", filterArray)
+        applyFilter()
+        print(Cafe.sharedInstance.filterCafeList.count, "------------------")
+    }
+    
+    func applyFilter() {
+        cafeFilter(filterArray: filterArray)
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
@@ -59,7 +66,30 @@ class ListContainerViewController: UIViewController {
     }
 
     @IBAction func showFilterViewButtonItem(_ sender: Any) {
-        let filterViewController = UIStoryboard.FilterViewStoryboard.instantiateViewController(withIdentifier: "FilterView")
-        present(filterViewController, animated: true, completion: nil)
+        let filterViewController = UIStoryboard.FilterViewStoryboard.instantiateViewController(withIdentifier: "FilterView") as! FilterViewController
+        let filterViewNavigationController = UINavigationController(rootViewController: filterViewController)
+        filterViewController.delegate = self
+        filterViewController.filterArray = self.filterArray
+        present(filterViewNavigationController, animated: true, completion: nil)
+    }
+    
+    func cafeFilter(filterArray: [String]) {
+        Cafe.sharedInstance.filterCafeList = [ModelCafe]()
+        
+        let allCafeList = Cafe.sharedInstance.allCafeList
+        let _ = allCafeList.map { (cafe) in
+            var result = [String]()
+            for category in cafe.getCafe()["category"] as! [String] {
+                for filter in filterArray {
+                    if category == filter {
+                        result.append(filter)
+                    }
+                }
+            }
+            if result.sorted() == filterArray.sorted() {
+                Cafe.sharedInstance.filterCafeList.append(cafe)
+            }
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
 }

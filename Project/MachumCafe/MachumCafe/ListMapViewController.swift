@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class ListMapViewController: UIViewController{
     
     var locationManager = CLLocationManager()
     var modelCafe = [ModelCafe]()
@@ -17,6 +17,7 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     var isTapMarker = false
     var mapPaddingInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     var currentLocation = [String : Any]()
+    var markerIDArray = [String]()
 
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var cafeName: UILabel!
@@ -28,6 +29,7 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+        loadModelCafeData()
 
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -35,28 +37,23 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
         
-        googleMap.camera = GMSCameraPosition.camera(withLatitude: 36.609145122457349, longitude: 127.81414780765772, zoom: 7.0)
+        googleMap.camera = GMSCameraPosition.camera(withLatitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double, zoom: 14)
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
         googleMap.settings.zoomGestures = true
         googleMap.padding = mapPaddingInsets
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshMapMarkers), name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refreshCafeMarkers()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if currentLocation["latitude"] as! Double != 0 {
-            googleMap.animate(toLocation: CLLocationCoordinate2D(latitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double))
-            googleMap.animate(toZoom: 14)
-        }
+        refreshMapMarkers()
     }
     
-    func refreshCafeMarkers() {
+    func refreshMapMarkers() {
         googleMap.clear()
+        markerIDArray = [String]()
         loadModelCafeData()
         insertCafeMarkers()
     }
@@ -73,22 +70,36 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     }
     
     func loadModelCafeData() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
         currentLocation = Location.sharedInstance.currentLocation.getLocation()
-        let distance = Location.sharedInstance.getCoordinateDistance(meter: 1000)
-        
-        modelCafe = Cafe.sharedInstance.cafeList.filter {
-            (currentLocation["latitude"] as! Double) - distance <= $0.getLatitude() && $0.getLatitude() <= (currentLocation["latitude"] as! Double) + distance && (currentLocation["longitude"] as! Double) - distance <= $0.getLongitude() && $0.getLongitude() <= (currentLocation["longitude"] as! Double) + distance
-        }
+        modelCafe = Cafe.sharedInstance.filterCafeList
     }
     
     func insertCafeMarkers() {
         modelCafe.forEach { (cafeData) in
             let cafe = cafeData.getCafe()
+            let cafeID = cafe["id"] as! String
+            let cafeName = cafe["name"] as! String
+            let cafeAddress = cafe["address"] as! String
             let latitude = cafe["latitude"] as! Double
             let longitude = cafe["longitude"] as! Double
-//            let cafeImage = cafe["imagesData"] as! [Data]
-            createMarker(titleMarker: cafe["name"] as! String, snippetMarker: cafe["address"] as! String, image: #imageLiteral(resourceName: "1"), targetData: cafeData, latitude: latitude, longitude: longitude)
+            let cafeImage = cafe["imagesData"] as! [Data]
+            if !markerIDArray.contains(cafeID) {
+                createMarker(titleMarker: cafeName, snippetMarker: cafeAddress, image: #imageLiteral(resourceName: "1"), targetData: cafeData, latitude: latitude, longitude: longitude)
+                markerIDArray.append(cafeID)
+            }
         }
+    }
+    
+    func createMarker(titleMarker : String, snippetMarker : String, image: UIImage?, targetData: Any?, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+        marker.title = titleMarker
+        marker.snippet = snippetMarker
+        marker.userData = [image, targetData]
+        marker.icon = GMSMarker.markerImage(with: .black)
+        //        marker.icon = #imageLiteral(resourceName: "locationIcon")
+        marker.appearAnimation = GMSMarkerAnimation.pop
+        marker.map = googleMap
     }
     
     func tempMakeCircle() {
@@ -102,30 +113,20 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
     }
     
     
-    
-    // Part - Delegate : GMSMapViewDelegate
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-    }
-    
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        isTapMarker = false
-        infoViewAnimate()
-        print(coordinate)
-    }
-    
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        isTapMarker = true
-        infoViewAnimate()
-        
-        let userData = marker.userData as! [Any]
-        //MARK: Zoom이 12Lv 이하일 경우 Camera Move와 동시에 14Lv로 확대
-        googleMap.animate(toLocation: marker.position)
-        if googleMap.camera.zoom <= 12 { googleMap.animate(toZoom: 14) }
-        cafeName.text = marker.title
-        cafeAddress.text = marker.snippet
-        cafeImageView.image = userData[0] as? UIImage
-        currentSelectedCafe = userData[1] as! ModelCafe
-        return true
+    func getCafeListWhenMovedLocation(coordinate: CLLocationCoordinate2D) {
+        NetworkCafe.getCafeList(coordinate: ModelLocation(latitude: coordinate.latitude, longitude: coordinate.longitude, address: "")) { (modelCafe) in
+            for cafe in modelCafe {
+                let isCafe = Cafe.sharedInstance.allCafeList.filter({ (cafeList) -> Bool in
+                    return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
+                })
+                if isCafe.isEmpty {
+                    Cafe.sharedInstance.allCafeList.append(cafe)
+                }
+            }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+            self.loadModelCafeData()
+            self.insertCafeMarkers()
+        }
     }
     
     func infoViewAnimate() {
@@ -146,16 +147,6 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
         }
     }
     
-    func createMarker(titleMarker : String, snippetMarker : String, image: UIImage?, targetData: Any?, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
-        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-        marker.title = titleMarker
-        marker.snippet = snippetMarker
-        marker.userData = [image, targetData]
-        marker.icon = GMSMarker.markerImage(with: .black)
-//        marker.icon = #imageLiteral(resourceName: "locationIcon")
-        marker.map = googleMap
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailView" {
             let controller = segue.destination as! CafeDetailViewController
@@ -163,4 +154,30 @@ class ListMapViewController: UIViewController, GMSMapViewDelegate, CLLocationMan
         }
     }
     
+}
+
+extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate {
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        getCafeListWhenMovedLocation(coordinate: position.target)
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        isTapMarker = false
+        infoViewAnimate()
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        isTapMarker = true
+        infoViewAnimate()
+        
+        let userData = marker.userData as! [Any]
+        //MARK: Zoom이 12Lv 이하일 경우 Camera Move와 동시에 14Lv로 확대
+        googleMap.animate(toLocation: marker.position)
+        if googleMap.camera.zoom <= 12 { googleMap.animate(toZoom: 14) }
+        cafeName.text = marker.title
+        cafeAddress.text = marker.snippet
+        cafeImageView.image = userData[0] as? UIImage
+        currentSelectedCafe = userData[1] as! ModelCafe
+        return true
+    }
 }
