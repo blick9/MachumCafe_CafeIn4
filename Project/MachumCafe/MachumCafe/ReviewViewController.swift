@@ -19,7 +19,14 @@ class ReviewViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        reviews = currentCafeModel.getReviews()
+        reviews = currentCafeModel.getReviews().reversed()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
+    }
+    
+    func reloadReviewTable() {
+        reviews = currentCafeModel.getReviews().reversed()
+        tableView.reloadData()
+        print("Change!reload!")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -53,4 +53,13 @@ class NetworkCafe {
         }
     }
     
+    static func putCafeReview(review: ModelReview) {
+        let cafeId = review.getReview()["cafeId"] as! String
+        let param : Parameters = review.getReview()
+        print("cafeId")
+        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).response { (response) in
+            print(response.request)
+            
+        }
+    }
 }

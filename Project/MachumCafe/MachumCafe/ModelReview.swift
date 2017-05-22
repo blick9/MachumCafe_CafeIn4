@@ -11,14 +11,14 @@ import UIKit
 class ModelReview {
     fileprivate var cafeId = String()
     fileprivate var userId = String()
-    fileprivate var date = Date()
+    fileprivate var date = String()
     fileprivate var reviewContent = String()
     fileprivate var rating = Double()
     //fileprivate var reviewImage = UIImage()
     
     init() {}
     
-    init(cafeId : String, userId: String, date: Date, reviewContent: String, rating: Double) {
+    init(cafeId : String, userId: String, date: String, reviewContent: String, rating: Double) {
         self.cafeId = cafeId
         self.userId = userId
         self.date = date

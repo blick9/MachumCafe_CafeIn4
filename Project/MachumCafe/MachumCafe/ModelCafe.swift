@@ -21,7 +21,12 @@ class ModelCafe {
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
     fileprivate var imagesData : [Data]?
-    fileprivate var reviews = [ModelReview]()
+    fileprivate var reviews = [ModelReview]() {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
+            print("Change!Review")
+        }
+    }
     
     init() {}
         
