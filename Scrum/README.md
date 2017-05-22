@@ -1,5 +1,17 @@
 # Scrum
 ## 일일 Scrum
+* ### 05.22(월)
+  * #### 전한나
+    * [ ] 카카오톡 로그인 연동
+  * #### 구찬우
+    * [ ] Review Client 구현
+    * [ ] Review Server Api 구현
+  * #### 이단비
+    * [ ] Share 기능 구현
+  * #### 조민재
+    * [ ] Review Client 구현
+    * [ ] Review Server Api 구현
+
 * ### 05.17(수)
   * #### 전한나
     * [ ] Filter 기능 구현
