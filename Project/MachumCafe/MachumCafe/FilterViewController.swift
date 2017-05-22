@@ -52,11 +52,11 @@ class FilterViewController: UIViewController {
     @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func confirmFilter(_ sender: UIButton) {
         delegate?.savedFilter(SavedFilter: filterArray)
         dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
