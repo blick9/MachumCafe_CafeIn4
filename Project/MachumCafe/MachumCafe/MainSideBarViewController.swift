@@ -42,10 +42,11 @@ class MainSideBarViewController: UIViewController {
         switch User.sharedInstance.isUser {
         case false :
             userProfileImageView.image = #imageLiteral(resourceName: "profil_side")
-            userInfoLabel.text = "로그인 후 이용하세요."
+            userInfoLabel.isHidden = true
             logInButton.isHidden = false
         case true :
             userProfileImageView.image = #imageLiteral(resourceName: "profil_side")
+            userInfoLabel.isHidden = false
             userInfoLabel.text = ("\(User.sharedInstance.user.getUser()["nickname"] as! String)님")
             logInButton.isHidden = true
         }

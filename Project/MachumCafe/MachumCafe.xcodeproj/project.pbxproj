@@ -41,13 +41,14 @@
 		A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */; };
 		A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */; };
 		A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */; };
+		B518D1921ED04A5E00A9C623 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */; };
+		B518D1931ED04A5E00A9C623 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */; };
 		B56FD1361EC465D9002BDA2B /* NetworkAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */; };
 		B57407251ECAD8D3002B0ECE /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57407241ECAD8D3002B0ECE /* WriteReviewViewController.swift */; };
 		B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */; };
 		B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */; };
 		B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */; };
 		B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */; };
-		B5BA81E21EC9806400E5BBC9 /* FilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E11EC9806400E5BBC9 /* FilterViewCell.swift */; };
 		B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */; };
 		B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */; };
 		B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */; };
@@ -100,13 +101,14 @@
 		A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A7C0F2F71EB790C00086ADAA /* SettingView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingView.storyboard; sourceTree = "<group>"; };
 		A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticFunction.swift; sourceTree = "<group>"; };
+		B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdmin.swift; sourceTree = "<group>"; };
 		B57407241ECAD8D3002B0ECE /* WriteReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMap.swift; sourceTree = "<group>"; };
 		B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
 		B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewCell.swift; sourceTree = "<group>"; };
-		B5BA81E11EC9806400E5BBC9 /* FilterViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewCell.swift; sourceTree = "<group>"; };
 		B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReviewView.storyboard; sourceTree = "<group>"; };
 		B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,6 +162,8 @@
 			children = (
 				A702F2171EBB07E6003B390C /* LocationLabelView.swift */,
 				A702F2151EBB06DA003B390C /* LocationLabelView.xib */,
+				B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */,
+				B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */,
 			);
 			name = XibView;
 			sourceTree = "<group>";
@@ -271,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				A7B73A521EB2597000EB24C6 /* FilterViewController.swift */,
-				B5BA81E11EC9806400E5BBC9 /* FilterViewCell.swift */,
 				A7B73A541EB2597700EB24C6 /* FilterView.storyboard */,
 			);
 			name = FilterView;
@@ -427,6 +430,7 @@
 				A7C0F2F81EB790C00086ADAA /* SettingView.storyboard in Resources */,
 				B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */,
 				A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */,
+				B518D1931ED04A5E00A9C623 /* FilterCollectionViewCell.xib in Resources */,
 				B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */,
 				B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */,
 				A702F2161EBB06DA003B390C /* LocationLabelView.xib in Resources */,
@@ -502,7 +506,6 @@
 				A76197B61EBD84A7008E50D5 /* ModelLocation.swift in Sources */,
 				B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */,
 				B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift in Sources */,
-				B5BA81E21EC9806400E5BBC9 /* FilterViewCell.swift in Sources */,
 				B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */,
 				B57407251ECAD8D3002B0ECE /* WriteReviewViewController.swift in Sources */,
 				A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */,
@@ -520,6 +523,7 @@
 				A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */,
 				A702F2201EBB2750003B390C /* SetLocationMapViewController.swift in Sources */,
 				B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */,
+				B518D1921ED04A5E00A9C623 /* FilterCollectionViewCell.swift in Sources */,
 				B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
 				A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */,
