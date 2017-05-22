@@ -12,11 +12,10 @@ class CafeDetailViewController: UIViewController {
     
     var cafeModel = ModelCafe()
     var cafeData = [String:Any]()
-    var getUserID = String()
-    var getUserBookmarkArray = [String]()
+    var userID = String()
+    var userBookmarkIDs = [String]()
     var indexCafeID = String()
     
-
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
@@ -35,7 +34,6 @@ class CafeDetailViewController: UIViewController {
         super.viewDidLoad()
         cafeData = cafeModel.getCafe()
         let imagesData = cafeData["imagesData"] as? [Data]
-        print(imagesData)
 
         navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
@@ -43,14 +41,16 @@ class CafeDetailViewController: UIViewController {
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
     }
+
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // UserBookmark 정보 불러오기
-        getUserID = User.sharedInstance.user.getUser()["id"] as! String
-        getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        userID = User.sharedInstance.user.getUser()["id"] as! String
+        userBookmarkIDs = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         indexCafeID = cafeData["id"] as! String
-        bookmarkButton.isSelected = getUserBookmarkArray.contains(indexCafeID) ? true : false
+        bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
         
         //테이블뷰 높이 오토레이아웃 설정
         let cell = detailTableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
@@ -69,11 +69,12 @@ class CafeDetailViewController: UIViewController {
     }
     
     func bookmarkToggleButton() {
-        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: indexCafeID) { (message, des, userBookmark) in
+        NetworkBookmark.setMyBookmark(userId: userID, cafeId: indexCafeID) { (message, des, userBookmark) in
             print(des)
             if message {
                 User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
                 self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadBookmark"), object: nil)
             } else {
                 UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
             }
@@ -122,14 +123,17 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             cell.detailLabel.sizeToFit()
             
             if indexPath.row == 0 {
+                cell.iconImage.image = cafeIcon[0]
                 cell.detailLabel.text = cafeData["tel"] as? String
             }
             
             if indexPath.row == 1 {
+                cell.iconImage.image = cafeIcon[1]
                 cell.detailLabel.text = cafeData["address"] as? String
             }
             
             if indexPath.row == 2 {
+                cell.iconImage.image = cafeIcon[2]
                 cell.detailLabel.text = cafeData["hours"] as? String
             }
             
@@ -140,7 +144,6 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
                 return cell
             }
-            cell.iconImage.image = cafeIcon[indexPath.row]
             return cell
             }
             

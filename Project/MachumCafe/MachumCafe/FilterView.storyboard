@@ -53,31 +53,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="QpA-KM-kmD" customClass="FilterViewCell" customModule="MachumCafe" customModuleProvider="target">
-                                        <rect key="frame" x="2" y="0.0" width="150" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udj-Us-Qxn">
-                                                    <rect key="frame" x="61.5" y="10" width="27" height="15"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="udj-Us-Qxn" firstAttribute="centerX" secondItem="QpA-KM-kmD" secondAttribute="centerX" id="R3Y-Qn-ybE"/>
-                                            <constraint firstItem="udj-Us-Qxn" firstAttribute="centerY" secondItem="QpA-KM-kmD" secondAttribute="centerY" id="agQ-fU-qA8"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="category" destination="udj-Us-Qxn" id="owF-8x-o33"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,7 +90,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aJu-HI-y5m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SF-Me-Z1C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9SF-Me-Z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

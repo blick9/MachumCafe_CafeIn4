@@ -12,16 +12,16 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     var listTableViewController = UIViewController()
     var listMapViewController = UIViewController()
     var isMapView = false
-    var filterArray = [String]()
+    var selectedFilterArray = [String]()
 
     @IBOutlet weak var listMapView: UIView!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
     
     func savedFilter(SavedFilter pickedFilter: [String?]) {
-        filterArray = [String]()
+        selectedFilterArray = [String]()
         for filter in pickedFilter {
-            filterArray.append(filter!)
+            selectedFilterArray.append(filter!)
         }
     }
     
@@ -35,17 +35,17 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
-        print("filterArray 1 : ", filterArray)
+        print("filterArray 1 : ", selectedFilterArray)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("filterArray 2 : ", filterArray)
+        print("filterArray 2 : ", selectedFilterArray)
         applyFilter()
         print(Cafe.sharedInstance.filterCafeList.count, "------------------")
     }
     
     func applyFilter() {
-        cafeFilter(filterArray: filterArray)
+        cafeFilter(filterArray: selectedFilterArray)
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
@@ -66,10 +66,14 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     }
 
     @IBAction func showFilterViewButtonItem(_ sender: Any) {
+        showFilterView()
+    }
+    
+    func showFilterView() {
         let filterViewController = UIStoryboard.FilterViewStoryboard.instantiateViewController(withIdentifier: "FilterView") as! FilterViewController
         let filterViewNavigationController = UINavigationController(rootViewController: filterViewController)
         filterViewController.delegate = self
-        filterViewController.filterArray = self.filterArray
+        filterViewController.filterArray = self.selectedFilterArray
         present(filterViewNavigationController, animated: true, completion: nil)
     }
     

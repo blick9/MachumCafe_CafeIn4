@@ -24,7 +24,7 @@ class ModelCafe {
     
     init() {}
         
-    init(id: String? = nil, name: String, tel: String?, address: String, hours: String?, latitude: Double? = nil, longitude: Double? = nil, category: [String],  menu: String?, imagesURL: [String]) {
+    init(id: String? = nil, name: String, tel: String?, address: String, hours: String?, latitude: Double? = nil, longitude: Double? = nil, category: [String],  menu: String? = nil, imagesURL: [String]) {
         self.id = id
         self.name = name
         self.tel = tel
@@ -57,19 +57,19 @@ class ModelCafe {
         cafeDic["imagesData"] = imagesData
         return cafeDic
     }
-    
-    func getLatitude() -> Double {
-        return latitude!
-    }
-    
-    func getLongitude() -> Double {
-        return longitude!
-    }
 }
 
 class Cafe {
     static let sharedInstance = Cafe()
     var allCafeList = [ModelCafe]() {
+        didSet {
+            if self.allCafeList.count >= 1000 {
+                self.allCafeList.removeFirst(300)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
+            }
+        }
+    }
+    var filterCafeList = [ModelCafe]() {
         didSet {
             if self.allCafeList.count >= 300 {
                 self.allCafeList.removeFirst(100)
@@ -77,7 +77,5 @@ class Cafe {
             }
         }
     }
-    var filterCafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
-    
 }

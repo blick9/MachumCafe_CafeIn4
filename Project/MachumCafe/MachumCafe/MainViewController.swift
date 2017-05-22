@@ -67,13 +67,15 @@ class MainViewController: UIViewController {
         }
         
         if let value = element {
-            listContainerViewController.filterArray.append(value)
+            listContainerViewController.selectedFilterArray.append(value)
         }
     }
     
     @IBAction func presentFilterViewButtonAction(_ sender: Any) {
-        let filterViewController = UIStoryboard.FilterViewStoryboard.instantiateViewController(withIdentifier: "FilterView")
-        present(filterViewController, animated: true, completion: nil)
+
+        let listContainerViewController = UIStoryboard.ListContainerViewStoryboard.instantiateViewController(withIdentifier: "ListContainer") as! ListContainerViewController
+        navigationController?.pushViewController(listContainerViewController, animated: false)
+        listContainerViewController.showFilterView()
     }
     
 }

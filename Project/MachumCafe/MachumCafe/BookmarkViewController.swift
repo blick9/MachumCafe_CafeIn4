@@ -10,23 +10,17 @@ import UIKit
 
 class BookmarkViewController: UIViewController {
     var userId = User.sharedInstance.user.getUser()["id"] as! String
-    var userBookmark = [String]()
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var isEmptyLabel: UILabel!
 
-    override func viewWillAppear(_ animated: Bool) {
-        userBookmark = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        isEmptyLabel.text = userBookmark.isEmpty ? "즐겨찾는 카페가 없습니다." : ""
-        self.collectionView.reloadData()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "즐겨찾기"
         collectionView.delegate = self
         collectionView.dataSource = self
-
-        getBookmarkList()
+        reloadBookmarkData()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadBookmarkData), name: NSNotification.Name(rawValue: "reloadBookmark"), object: nil)
     }
     
     func getBookmarkList() {
@@ -34,10 +28,14 @@ class BookmarkViewController: UIViewController {
         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
         NetworkBookmark.getMyBookmark(userId: userId) { (message, cafeList) in
             Cafe.sharedInstance.bookmarkList = cafeList
-            
             self.collectionView.reloadData()
             activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
         }
+    }
+    
+    func reloadBookmarkData() {
+        getBookmarkList()
+        isEmptyLabel.text = (User.sharedInstance.user.getUser()["bookmark"] as! [String]).isEmpty ? "즐겨찾는 카페가 없습니다." : ""
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -71,7 +69,7 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
         
         cell.bookmarkCafeName.text = modelBookmark["name"] as? String
         cell.bookmarkCafeAddress.text = modelBookmark["address"] as? String
-             return cell
+        return cell
     }
     
     
