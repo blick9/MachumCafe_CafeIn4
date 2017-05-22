@@ -167,13 +167,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-Hb-thG">
-                                        <rect key="frame" x="88" y="182" width="45" height="30"/>
-                                        <state key="normal" title="Log-In"/>
-                                        <connections>
-                                            <action selector="logInButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="cyE-2c-BvS"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxC-0C-tcW">
                                         <rect key="frame" x="11" y="270" width="198" height="30"/>
                                         <state key="normal" title="즐겨찾기"/>
@@ -209,6 +202,13 @@
                                             <constraint firstAttribute="width" constant="45" id="Ddc-At-zb0"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQR-Hb-thG">
+                                        <rect key="frame" x="88" y="142" width="45" height="30"/>
+                                        <state key="normal" title="Log-In"/>
+                                        <connections>
+                                            <action selector="logInButtonAction:" destination="22f-Sh-Inb" eventType="touchUpInside" id="cyE-2c-BvS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98852796052631575" green="0.98852796052631575" blue="0.98852796052631575" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -217,7 +217,7 @@
                                     <constraint firstItem="AjF-21-hLR" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="BFc-10-FL2"/>
                                     <constraint firstItem="IFo-uT-Eph" firstAttribute="top" secondItem="AeL-HH-pjk" secondAttribute="bottom" constant="27" id="Cqt-Fz-iDy"/>
                                     <constraint firstItem="IFo-uT-Eph" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="GPQ-yC-iaK"/>
-                                    <constraint firstItem="wxC-0C-tcW" firstAttribute="top" secondItem="PQR-Hb-thG" secondAttribute="bottom" constant="58" id="HYG-5e-k8M"/>
+                                    <constraint firstItem="wxC-0C-tcW" firstAttribute="top" secondItem="PQR-Hb-thG" secondAttribute="bottom" constant="98" id="HYG-5e-k8M"/>
                                     <constraint firstAttribute="bottom" secondItem="c4l-oQ-46D" secondAttribute="bottom" constant="44" id="HhL-0S-BTk"/>
                                     <constraint firstItem="AjF-21-hLR" firstAttribute="top" secondItem="Grh-pV-gvX" secondAttribute="bottom" constant="8" symbolic="YES" id="KzX-Ja-cxh"/>
                                     <constraint firstItem="c4l-oQ-46D" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="Mlh-Dv-1Wi"/>
@@ -226,7 +226,7 @@
                                     <constraint firstItem="Grh-pV-gvX" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="e6L-y1-MmU"/>
                                     <constraint firstAttribute="trailing" secondItem="AjF-21-hLR" secondAttribute="trailing" constant="11" id="hyA-X2-PVe"/>
                                     <constraint firstAttribute="width" constant="220" id="lvK-Py-XNn"/>
-                                    <constraint firstItem="PQR-Hb-thG" firstAttribute="top" secondItem="IFo-uT-Eph" secondAttribute="bottom" constant="14" id="qQH-Mv-f8M"/>
+                                    <constraint firstItem="PQR-Hb-thG" firstAttribute="top" secondItem="IFo-uT-Eph" secondAttribute="bottom" constant="-26" id="qQH-Mv-f8M"/>
                                     <constraint firstItem="PQR-Hb-thG" firstAttribute="centerX" secondItem="sgE-kN-FVW" secondAttribute="centerX" id="qxw-V3-4XR"/>
                                     <constraint firstItem="AjF-21-hLR" firstAttribute="leading" secondItem="sgE-kN-FVW" secondAttribute="leading" constant="11" id="tec-NA-IVJ"/>
                                     <constraint firstItem="AeL-HH-pjk" firstAttribute="top" secondItem="sgE-kN-FVW" secondAttribute="top" constant="40" id="uWn-Or-OJd"/>
