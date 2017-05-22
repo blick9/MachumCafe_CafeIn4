@@ -150,7 +150,7 @@ class ListMapViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailView" {
             let controller = segue.destination as! CafeDetailViewController
-            controller.cafeModel = currentSelectedCafe
+            controller.currentCafeModel = currentSelectedCafe
         }
     }
     

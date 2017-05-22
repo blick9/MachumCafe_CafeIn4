@@ -21,6 +21,7 @@ class ModelCafe {
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
     fileprivate var imagesData : [Data]?
+    fileprivate var reviews = [ModelReview]()
     
     init() {}
         
@@ -42,6 +43,10 @@ class ModelCafe {
         self.imagesData?.append(imageData)
     }
     
+    func setReview(review: ModelReview) {
+        reviews.append(review)
+    }
+    
     func getCafe() -> [String : Any] {
         var cafeDic = [String : Any]()
         cafeDic["id"] = id
@@ -56,6 +61,10 @@ class ModelCafe {
         cafeDic["imagesURL"] = imagesURL
         cafeDic["imagesData"] = imagesData
         return cafeDic
+    }
+
+    func getReviews() -> [ModelReview] {
+        return reviews
     }
 }
 

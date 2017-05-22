@@ -9,35 +9,32 @@
 import UIKit
 
 class ModelReview {
-    
     fileprivate var cafeId = String()
     fileprivate var userId = String()
-    fileprivate var review = String()
     fileprivate var date = Date()
+    fileprivate var reviewContent = String()
     fileprivate var rating = Double()
     //fileprivate var reviewImage = UIImage()
     
-    
     init() {}
     
-    init(cafeId : String, userId: String, review: String, date: Date, rating: Double) {
+    init(cafeId : String, userId: String, date: Date, reviewContent: String, rating: Double) {
         self.cafeId = cafeId
         self.userId = userId
-        self.review = review
         self.date = date
+        self.reviewContent = reviewContent
         self.rating = rating
     }
     
     func getReview() -> [String : Any] {
-        var reviewDic = [String:Any]()
+        var reviewDic = [String : Any]()
         reviewDic["cafeId"] = cafeId
         reviewDic["userId"] = userId
-        reviewDic["review"] = review
         reviewDic["date"] = date
+        reviewDic["reviewContent"] = reviewContent
         reviewDic["rating"] = rating
         return reviewDic
     }
-    
 }
 
 class Review {

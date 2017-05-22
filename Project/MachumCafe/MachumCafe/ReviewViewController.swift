@@ -9,24 +9,26 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
-    var reviews = [[String: Any]]()
+    
+    var currentCafeModel = ModelCafe()
+    var reviews = [ModelReview]()
     
     @IBOutlet weak var tableView: UITableView!
-    var cafeDetailView = CafeDetailViewController()
-    var cafeId = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        cafeId = cafeDetailView.cafeData["id"] as! String
+        reviews = currentCafeModel.getReviews()
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let writeReview : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
-        writeReview.reviewView = self
+        let writeReviewView : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
+        writeReviewView.reviewView = self
+        writeReviewView.currentCafeModel = currentCafeModel
     }
-
 }
+
 extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,11 +42,12 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReviewTableViewCell
         
-        let item = reviews[indexPath.row]
-        cell.reviewContent.text = item["review"] as! String
+        let item = reviews[indexPath.row].getReview()
+        cell.reviewer.text = item["userId"] as? String
+        cell.reviewDate.text = item["date"] as? String
+        cell.reviewContent.text = item["reviewContent"] as? String
         cell.reviewStarRating.rating = item["rating"] as! Double
-        cell.reviewDate.text = item["date"] as! String
-        cell.reviewer.text = item["userId"] as! String
+
         return cell
     }
 }

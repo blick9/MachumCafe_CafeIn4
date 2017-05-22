@@ -10,11 +10,11 @@ import UIKit
 
 class CafeDetailViewController: UIViewController {
     
-    var cafeModel = ModelCafe()
+    var currentCafeModel = ModelCafe()
     var cafeData = [String:Any]()
+    var indexCafeID = String()
     var userID = String()
     var userBookmarkIDs = [String]()
-    var indexCafeID = String()
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -32,7 +32,7 @@ class CafeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cafeData = cafeModel.getCafe()
+        cafeData = currentCafeModel.getCafe()
         let imagesData = cafeData["imagesData"] as? [Data]
 
         navigationItem.title = cafeData["name"] as? String
@@ -157,6 +157,6 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
-        reviewView.cafeDetailView = self
+        reviewView.currentCafeModel = currentCafeModel
     }
 }
