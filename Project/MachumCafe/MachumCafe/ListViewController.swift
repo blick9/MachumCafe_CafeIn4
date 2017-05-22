@@ -35,11 +35,10 @@ class ListViewController: UIViewController {
         
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        tableView.reloadData()
-        checkModel()
+        reloadTableView()
     }
     
-    func checkModel() {
+    func displayEmptyLabel() {
         if Cafe.sharedInstance.filterCafeList.isEmpty {
             isEmptyLabel.text = "카페 정보 없음"
             tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -67,7 +66,7 @@ class ListViewController: UIViewController {
     
     func reloadTableView() {
         tableView.reloadData()
-        checkModel()
+        displayEmptyLabel()
     }
     
 }
