@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ListViewController: UIViewController {
     var getUserID = String()
@@ -87,6 +88,12 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
         var cafe = Cafe.sharedInstance.filterCafeList[indexPath.row].getCafe()
         
+        let currentLocation = CLLocation(latitude: Location.sharedInstance.currentLocation.getLocation()["latitude"] as! Double , longitude: Location.sharedInstance.currentLocation.getLocation()["longitude"] as! Double)
+        
+        let cafeLocation = CLLocation(latitude: cafe["latitude"] as! CLLocationDegrees, longitude: cafe["longitude"] as! CLLocationDegrees)
+        
+        let distanceInMeters = currentLocation.distance(from: cafeLocation) 
+        
         if (cafe["imagesData"] as! [Data]).isEmpty {
             NetworkCafe.getImagesData(imagesURL: cafe["imagesURL"] as! [String]) { (data) in
                 Cafe.sharedInstance.filterCafeList[indexPath.row].setImagesData(imageData: data)
@@ -99,7 +106,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
 
         cell.cafeNameLabel.text = cafe["name"] as? String
         cell.cafeAddressLabel.text = cafe["address"] as? String
-        cell.distanceLabel.text = "1.2km"
+        cell.distanceLabel.text = "\(Int(distanceInMeters))M"
         
         cell.bookmarkButton.isSelected = getUserBookmarkArray.contains(cafe["id"] as! String) ? true : false
         cell.bookmarkButton.tag = indexPath.row
