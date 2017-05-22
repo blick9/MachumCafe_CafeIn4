@@ -43,6 +43,9 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
         self.navigationItem.title = "필터검색"
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        
+        let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
+        categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         // Do any additional setup after loading the view.
     }
     
@@ -67,9 +70,10 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
     
     @IBAction func doneActionButton(_ sender: Any) {
         let uploadImage = imageArray.flatMap { $0 }
+        let address = "\(addressTextField.text!) " + "\(detailAddressTextField.text!)"
         
         NetworkAdmin.uploadsImage(images: uploadImage) { (imagesURL) in
-            let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: self.addressTextField.text!, hours: self.hoursTextField.text!, category: ["임시", "카테고리"], menu: "메뉴", imagesURL: imagesURL)
+            let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: address, hours: self.hoursTextField.text!, category: self.filterArray, imagesURL: imagesURL)
             NetworkAdmin.suggestionNewCafe(cafe: cafe)
         }
         self.dismiss(animated: true, completion: nil)
@@ -125,18 +129,12 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
-        cell.sizeToFit()
-        cell.layer.cornerRadius = cell.frame.height/2
-        cell.layer.borderWidth = 1.5
-        cell.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
-        cell.categoryName.text = categoryArray[indexPath.row]
-        cell.categoryName.textColor = UIColor.init(red: 51, green: 51, blue: 51)
-        cell.categoryName.sizeToFit()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
+        cell.category.text = categoryArray[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
         guard multiple else {
             return
         }
@@ -147,7 +145,6 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterViewCell
         let categoryIndex = categoryArray[indexPath.row]
         if let index = filterArray.index(of: categoryIndex) {
             filterArray.remove(at: index)
