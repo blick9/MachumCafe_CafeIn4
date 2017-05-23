@@ -14,7 +14,7 @@ class WriteReviewViewController: UIViewController {
     var cafeData = [String:Any]()
     var reviewView = ReviewViewController()
     var userData = User.sharedInstance.user.getUser()
-    var writtenDate = NSDate()
+    var writtenDate = Date()
 
     @IBOutlet weak var writeReview: UITextView!
     @IBOutlet weak var starRating: CosmosView!
@@ -27,12 +27,13 @@ class WriteReviewViewController: UIViewController {
     }
 
     @IBAction func registReview(_ sender: Any) {
-        //TODO: 리뷰 작성 Put Api 
-        let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, date: "te", reviewContent: writeReview.text, rating: starRating.rating)
-        NetworkCafe.putCafeReview(review: review)
-        currentCafeModel.setReview(review: review)
+        //TODO: 작성일 추가
+        let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
+        NetworkCafe.postCafeReview(review: review) { (bool, modelReviews) in
+            self.currentCafeModel.setReviews(reviews: modelReviews)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
+        }
 
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
 
 //        let indexPath = IndexPath(row: 0, section: 0)
 //        reviewView.tableView.insertRows(at: [indexPath], with: .automatic)

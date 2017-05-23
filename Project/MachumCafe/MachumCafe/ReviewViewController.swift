@@ -19,12 +19,12 @@ class ReviewViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        reviews = currentCafeModel.getReviews().reversed()
+        reviews = currentCafeModel.getReviews()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
     
     func reloadReviewTable() {
-        reviews = currentCafeModel.getReviews().reversed()
+        reviews = currentCafeModel.getReviews()
         tableView.reloadData()
         print("Change!reload!")
     }
@@ -50,7 +50,7 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReviewTableViewCell
         
         let item = reviews[indexPath.row].getReview()
-        cell.reviewer.text = item["userId"] as? String
+        cell.reviewer.text = item["nickname"] as? String
         cell.reviewDate.text = item["date"] as? String
         cell.reviewContent.text = item["reviewContent"] as? String
         cell.reviewStarRating.rating = item["rating"] as! Double
