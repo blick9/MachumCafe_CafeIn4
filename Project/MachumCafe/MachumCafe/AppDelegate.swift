@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         GMSServices.provideAPIKey(googleAPIKey)
         GMSPlacesClient.provideAPIKey(googleAPIKey)
-        
+        let backButtonImage = #imageLiteral(resourceName: "back_Bt").stretchableImage(withLeftCapWidth: 13, topCapHeight: 22)
+        UIBarButtonItem.appearance().setBackButtonBackgroundImage(backButtonImage, for: .normal, barMetrics: .default)
+
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor(red: 51, green: 51, blue: 51)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 255, green: 232, blue: 129)]
@@ -38,9 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 User.sharedInstance.isUser = true
             }
         }
-        
         initLocationManager()
-        
         return true
     }
 
@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        initLocationManager()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -67,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func initLocationManager() {
-
         seenError = false
         locationFixAchieved = false
         locationManager.delegate = self
@@ -94,8 +92,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
             NetworkMap.getAddressFromCoordinate(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!) { (address) in
                 Location.sharedInstance.currentLocation = ModelLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude, address: address[0])
+                getCafeListFromCurrentLocation()
             }
-            
         }
     }
     // locationAuthorization
