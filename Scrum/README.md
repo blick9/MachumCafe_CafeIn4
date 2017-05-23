@@ -7,6 +7,7 @@
     * [x] 서버 message 변수 result로 변경
     * [x] review 등록 시 날짜 생성
     * [x] suggestionNewCafe시 좌표 전송, 서버에서 request 대응
+    * [x] SpecificCafe GET api 생성
   * #### 구찬우
     * [ ] DetailView 리팩토링(정보 없는 cell정리)
     * [ ] DetailView 카테고리 표시 (FilterCollectionViewCell 이용)
