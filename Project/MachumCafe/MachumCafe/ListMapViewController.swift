@@ -116,14 +116,16 @@ class ListMapViewController: UIViewController{
     
     func getCafeListWhenMovedLocation(coordinate: CLLocationCoordinate2D) {
         NetworkCafe.getCafeList(coordinate: ModelLocation(latitude: coordinate.latitude, longitude: coordinate.longitude, address: "")) { (modelCafe) in
+            var newCafeList = [ModelCafe]()
             for cafe in modelCafe {
                 let isCafe = Cafe.sharedInstance.allCafeList.filter({ (cafeList) -> Bool in
                     return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
                 })
                 if isCafe.isEmpty {
-                    Cafe.sharedInstance.allCafeList.append(cafe)
+                    newCafeList.append(cafe)
                 }
             }
+            Cafe.sharedInstance.allCafeList = newCafeList + Cafe.sharedInstance.allCafeList
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
             self.loadModelCafeData()
             self.insertCafeMarkers()

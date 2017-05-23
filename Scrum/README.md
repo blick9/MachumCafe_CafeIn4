@@ -2,8 +2,9 @@
 ## 일일 Scrum
 * ### 05.23(화)
   * #### 전한나
-    * [ ] NetworkBookmark, 변수 이름 등 리팩토링
-    * [ ] 할일 찾아서 적어놓겠음
+    * [x] NetworkBookmark, 변수 이름 등 리팩토링
+    * [x] 서버 bookmark api 경로 수정
+    * [x] 서버 message 변수 result로 변경
   * #### 구찬우
     * [ ] DetailView 리팩토링(정보 없는 cell정리)
     * [ ] DetailView 카테고리 표시 (FilterCollectionViewCell 이용)
@@ -12,7 +13,7 @@
     * [ ] Share 기능 구현 (Link)
   * #### 조민재
     * [ ] ListView cell간 간격 조정
-    * [ ] 할일 찾아서 적어놓겠음
+    * [ ] ListView cell 각 카페별 tag 표시
 
 * ### 05.22(월)
   * #### 전한나

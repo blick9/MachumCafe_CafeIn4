@@ -26,7 +26,7 @@ class BookmarkViewController: UIViewController {
     func getBookmarkList() {
         let activityIndicator = UIActivityIndicatorView()
         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
-        NetworkBookmark.getMyBookmark(userId: userId) { (message, cafeList) in
+        NetworkBookmark.getMyBookmark(userId: userId) { (result, cafeList) in
             Cafe.sharedInstance.bookmarkList = cafeList
             self.collectionView.reloadData()
             activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
