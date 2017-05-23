@@ -31,7 +31,6 @@ class WriteReviewViewController: UIViewController {
         let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
         NetworkCafe.postCafeReview(review: review) { (bool, modelReviews) in
             self.currentCafeModel.setReviews(reviews: modelReviews)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
         }
 
 

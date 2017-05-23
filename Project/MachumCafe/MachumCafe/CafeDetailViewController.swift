@@ -41,11 +41,6 @@ class CafeDetailViewController: UIViewController {
         
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) { (bool) in
-            print("first Count", self.reviews.count)
-            
-            //TODO: Cell에 적용
-            self.reloadReviewTable()
-            print("seconds Count", self.reviews.count)
         }
         
         let imagesData = cafeData["imagesData"] as? [Data]
@@ -169,9 +164,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
-            print("cell", reviews)
             if !reviews.isEmpty {
-                print(indexPath.row)
                 let review = reviews[indexPath.row].getReview()
                 cell.reviewerNickName.text = review["nickname"] as? String
                 cell.reviewDescribe.text = review["reviewContent"] as? String

@@ -24,7 +24,6 @@ class ModelCafe {
     fileprivate var reviews = [ModelReview]() {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
-            print("Change!Review")
         }
     }
     

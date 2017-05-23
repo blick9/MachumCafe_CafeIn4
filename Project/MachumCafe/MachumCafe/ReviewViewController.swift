@@ -26,7 +26,6 @@ class ReviewViewController: UIViewController {
     func reloadReviewTable() {
         reviews = currentCafeModel.getReviews()
         tableView.reloadData()
-        print("Change!reload!")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
