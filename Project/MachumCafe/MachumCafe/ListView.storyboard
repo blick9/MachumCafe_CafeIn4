@@ -53,13 +53,6 @@
                                                     <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0Y-uU-oTA">
-                                                    <rect key="frame" x="344" y="149" width="23" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="23" id="A3h-3H-A3C"/>
-                                                    </constraints>
-                                                    <state key="normal" image="Bookmark_Bt"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="거리" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8J-TL-mI0">
                                                     <rect key="frame" x="315" y="7" width="52" height="21"/>
                                                     <constraints>
@@ -69,6 +62,20 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kE-k0-FqC">
+                                                    <rect key="frame" x="11" y="147" width="289" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0Y-uU-oTA">
+                                                    <rect key="frame" x="336" y="146" width="23" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="23" id="A3h-3H-A3C"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Bookmark_Bt"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Qci-mE-oGf" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="topMargin" constant="82" id="1Su-eh-ovd"/>
@@ -81,16 +88,16 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="62y-l0-bhi" secondAttribute="bottom" constant="32.5" id="Eod-tL-wEF"/>
                                                 <constraint firstItem="Yua-Zm-33X" firstAttribute="centerY" secondItem="Bva-Mx-vSx" secondAttribute="centerY" id="G4n-3g-AUj"/>
                                                 <constraint firstItem="Yua-Zm-33X" firstAttribute="centerX" secondItem="Bva-Mx-vSx" secondAttribute="centerX" id="HYl-Im-MY7"/>
-                                                <constraint firstItem="v0Y-uU-oTA" firstAttribute="trailing" secondItem="62y-l0-bhi" secondAttribute="trailing" id="J8l-hW-q6p"/>
+                                                <constraint firstItem="v0Y-uU-oTA" firstAttribute="trailing" secondItem="62y-l0-bhi" secondAttribute="trailing" constant="-8" id="J8l-hW-q6p"/>
                                                 <constraint firstItem="Qci-mE-oGf" firstAttribute="top" secondItem="C8J-TL-mI0" secondAttribute="bottom" constant="62" id="JK2-4g-2EU"/>
                                                 <constraint firstItem="Yua-Zm-33X" firstAttribute="width" secondItem="Bva-Mx-vSx" secondAttribute="width" constant="2" id="Mqs-xC-rBP"/>
-                                                <constraint firstItem="v0Y-uU-oTA" firstAttribute="top" secondItem="62y-l0-bhi" secondAttribute="bottom" constant="10" id="PfR-By-dwq"/>
+                                                <constraint firstItem="v0Y-uU-oTA" firstAttribute="top" secondItem="62y-l0-bhi" secondAttribute="bottom" constant="7" id="PfR-By-dwq"/>
                                                 <constraint firstItem="Bva-Mx-vSx" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="top" id="WE0-En-yhK"/>
                                                 <constraint firstItem="C8J-TL-mI0" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="topMargin" constant="-1" id="bSx-YY-K7e"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bva-Mx-vSx" secondAttribute="trailing" id="dNc-64-9nE"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="leading" secondItem="uEH-gx-lLS" secondAttribute="leadingMargin" constant="3" id="eA9-nk-nK2"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="top" secondItem="Qci-mE-oGf" secondAttribute="bottom" constant="-7" id="emK-OW-nW8"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="v0Y-uU-oTA" secondAttribute="bottom" constant="0.5" id="jk2-cz-shT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="v0Y-uU-oTA" secondAttribute="bottom" constant="3.5" id="jk2-cz-shT"/>
                                                 <constraint firstItem="C8J-TL-mI0" firstAttribute="trailing" secondItem="Qci-mE-oGf" secondAttribute="trailing" id="qke-wi-QQU"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="trailing" secondItem="uEH-gx-lLS" secondAttribute="trailingMargin" id="r25-xa-kov"/>
                                             </constraints>
@@ -100,6 +107,7 @@
                                             <outlet property="bookmarkButton" destination="v0Y-uU-oTA" id="V8w-Nf-0fM"/>
                                             <outlet property="cafeAddressLabel" destination="62y-l0-bhi" id="a70-bc-Oae"/>
                                             <outlet property="cafeNameLabel" destination="Qci-mE-oGf" id="BFB-kB-axo"/>
+                                            <outlet property="category" destination="1kE-k0-FqC" id="amw-6L-gKN"/>
                                             <outlet property="distanceLabel" destination="C8J-TL-mI0" id="u5B-fJ-ZeI"/>
                                             <segue destination="fWC-di-gae" kind="show" identifier="DetailView" id="JB9-6v-gDu"/>
                                         </connections>
