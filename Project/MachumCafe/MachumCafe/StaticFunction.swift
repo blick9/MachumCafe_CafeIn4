@@ -101,10 +101,9 @@ public func getCafeListFromCurrentLocation() {
             })
             if isCafe.isEmpty {
                 Cafe.sharedInstance.allCafeList.append(cafe)
-            }
+            }            
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
 }
-
 

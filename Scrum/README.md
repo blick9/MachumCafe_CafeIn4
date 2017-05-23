@@ -1,30 +1,42 @@
 # Scrum
 ## 일일 Scrum
+* ### 05.23(화)
+  * #### 전한나
+    * [ ] NetworkBookmark, 변수 이름 등 리팩토링
+    * [ ] 할일 찾아서 적어놓겠음
+  * #### 구찬우
+    * [ ] DetailView 리팩토링(정보 없는 cell정리)
+    * [ ] DetailView 카테고리 표시 (FilterCollectionViewCell 이용)
+  * #### 이단비
+    * [ ] DetailView 리팩토링
+    * [ ] Share 기능 구현 (Link)
+  * #### 조민재
+    * [ ] ListView cell간 간격 조정
+    * [ ] 할일 찾아서 적어놓겠음
+
 * ### 05.22(월)
   * #### 전한나
     * [ ] 카카오톡 로그인 연동
   * #### 구찬우
-    * [ ] Review Client 구현
-    * [ ] Review Server Api 구현
+    * [x] Review Client 구현
+    * [x] Review Server Api 구현
   * #### 이단비
-    * [ ] Share 기능 구현
+    * [x] Share 기능 구현 (Deep Link 구현)
   * #### 조민재
-    * [ ] Review Client 구현
-    * [ ] Review Server Api 구현
+    * [x] 현위치와 카페간 직선 거리 표시
 
 * ### 05.17(수)
   * #### 전한나
-    * [ ] Filter 기능 구현
+    * [x] Filter 기능 구현
   * #### 구찬우
     * [x] View Present 코드 개선
     * [ ] Search Bar Cancel 버튼 Hide
     * [x] GMSAutoCompleteViewController 내 SearchBar 색상 변경
-    * [ ] 현위치와 카페간 직선 거리 표시
   * #### 이단비
     * [ ] cafeDetailView 코드 리팩토링 & Share 기능 구현
     * [ ] ListView 코드 리팩토링
   * #### 조민재
-    * [ ] WriteReviewView Cell 추가 적용
+    * [x] WriteReviewView Cell 추가 적용
 
 * ### 05.16(화)
   * #### 전한나
