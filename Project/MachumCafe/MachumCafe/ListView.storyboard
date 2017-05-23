@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="183" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Sj-Fu-oxb">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.80277861906163994" blue="0.75350839430826333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -133,7 +133,7 @@
                             <constraint firstItem="PGg-AW-aAY" firstAttribute="top" secondItem="1Sj-Fu-oxb" secondAttribute="bottom" id="cHa-FA-2BA"/>
                             <constraint firstItem="MdT-oI-FYS" firstAttribute="centerX" secondItem="NLY-qU-YuO" secondAttribute="centerX" id="ckc-qn-EwN"/>
                             <constraint firstAttribute="trailing" secondItem="1Sj-Fu-oxb" secondAttribute="trailing" id="dpf-Oa-AYI"/>
-                            <constraint firstItem="1Sj-Fu-oxb" firstAttribute="top" secondItem="O0U-QT-c3A" secondAttribute="bottom" id="vEZ-zz-GpQ"/>
+                            <constraint firstItem="1Sj-Fu-oxb" firstAttribute="top" secondItem="O0U-QT-c3A" secondAttribute="bottom" constant="40" id="vEZ-zz-GpQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MQR-sG-4AI"/>

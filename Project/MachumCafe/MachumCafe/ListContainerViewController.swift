@@ -42,6 +42,16 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         print("filterArray 2 : ", selectedFilterArray)
         applyFilter()
         print(Cafe.sharedInstance.filterCafeList.count, "------------------")
+        if selectedFilterArray.count != 0 {
+            if let categoryXib = Bundle.main.loadNibNamed("ShowCategoryView", owner: self, options: nil)?.first as? ShowCategoryView {
+                var isFilter = ""
+                for filter in selectedFilterArray {
+                    isFilter += "#\(filter) "
+                }
+                categoryXib.category.text = isFilter
+                self.view.addSubview(categoryXib)
+            }
+        }
     }
     
     func applyFilter() {

@@ -52,6 +52,8 @@
 		B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */; };
 		B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */; };
 		B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */; };
+		B5D522701ED41A4A00852796 /* ShowCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5226F1ED41A4A00852796 /* ShowCategoryView.swift */; };
+		B5D522741ED41EA200852796 /* ShowCategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D522731ED41EA200852796 /* ShowCategoryView.xib */; };
 		B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */; };
 		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
@@ -112,6 +114,8 @@
 		B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReviewView.storyboard; sourceTree = "<group>"; };
 		B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		B5D5226F1ED41A4A00852796 /* ShowCategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCategoryView.swift; sourceTree = "<group>"; };
+		B5D522731ED41EA200852796 /* ShowCategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowCategoryView.xib; sourceTree = "<group>"; };
 		B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				A702F2151EBB06DA003B390C /* LocationLabelView.xib */,
 				B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */,
 				B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */,
+				B5D5226F1ED41A4A00852796 /* ShowCategoryView.swift */,
+				B5D522731ED41EA200852796 /* ShowCategoryView.xib */,
 			);
 			name = XibView;
 			sourceTree = "<group>";
@@ -421,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A723B6721EAF3FBF00469FE4 /* LaunchScreen.storyboard in Resources */,
+				B5D522741ED41EA200852796 /* ShowCategoryView.xib in Resources */,
 				A723B67A1EAF42D700469FE4 /* ListContainerView.storyboard in Resources */,
 				A723B67C1EAF42E600469FE4 /* ListView.storyboard in Resources */,
 				A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */,
@@ -529,6 +536,7 @@
 				A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */,
 				B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */,
 				A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */,
+				B5D522701ED41A4A00852796 /* ShowCategoryView.swift in Sources */,
 				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
 				A7B73A5D1EB32E1300EB24C6 /* NetworkCafe.swift in Sources */,
