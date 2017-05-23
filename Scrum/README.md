@@ -5,6 +5,7 @@
     * [x] NetworkBookmark, 변수 이름 등 리팩토링
     * [x] 서버 bookmark api 경로 수정
     * [x] 서버 message 변수 result로 변경
+    * [x] review 등록 시 날짜 생성
   * #### 구찬우
     * [ ] DetailView 리팩토링(정보 없는 cell정리)
     * [ ] DetailView 카테고리 표시 (FilterCollectionViewCell 이용)
