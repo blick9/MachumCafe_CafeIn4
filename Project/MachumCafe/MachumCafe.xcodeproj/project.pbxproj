@@ -24,6 +24,7 @@
 		A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723B6881EAF437A00469FE4 /* SignUpViewController.swift */; };
 		A723B68B1EAF439300469FE4 /* LogIn&SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A723B68A1EAF439300469FE4 /* LogIn&SignUpView.storyboard */; };
 		A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A723B68C1EAF483F00469FE4 /* ExtentionUIColorClass.swift */; };
+		A750C9301ED42581007B1DD1 /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A750C92F1ED42581007B1DD1 /* ReviewTableViewCell.xib */; };
 		A76197B61EBD84A7008E50D5 /* ModelLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76197B51EBD84A7008E50D5 /* ModelLocation.swift */; };
 		A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A431EAF4A5700EB24C6 /* MainViewController.swift */; };
 		A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A451EAF4A7600EB24C6 /* MainSideBarViewController.swift */; };
@@ -85,6 +86,7 @@
 		A723B6881EAF437A00469FE4 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A723B68A1EAF439300469FE4 /* LogIn&SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "LogIn&SignUpView.storyboard"; sourceTree = "<group>"; };
 		A723B68C1EAF483F00469FE4 /* ExtentionUIColorClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtentionUIColorClass.swift; sourceTree = "<group>"; };
+		A750C92F1ED42581007B1DD1 /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		A76197B51EBD84A7008E50D5 /* ModelLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelLocation.swift; sourceTree = "<group>"; };
 		A7B73A431EAF4A5700EB24C6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A7B73A451EAF4A7600EB24C6 /* MainSideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSideBarViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,8 @@
 				A702F2151EBB06DA003B390C /* LocationLabelView.xib */,
 				B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */,
 				B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */,
+				B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */,
+				A750C92F1ED42581007B1DD1 /* ReviewTableViewCell.xib */,
 			);
 			name = XibView;
 			sourceTree = "<group>";
@@ -330,7 +334,6 @@
 			children = (
 				B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */,
 				B57407241ECAD8D3002B0ECE /* WriteReviewViewController.swift */,
-				B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */,
 				B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */,
 			);
 			name = ReviewView;
@@ -424,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A723B6721EAF3FBF00469FE4 /* LaunchScreen.storyboard in Resources */,
+				A750C9301ED42581007B1DD1 /* ReviewTableViewCell.xib in Resources */,
 				A723B67A1EAF42D700469FE4 /* ListContainerView.storyboard in Resources */,
 				A723B67C1EAF42E600469FE4 /* ListView.storyboard in Resources */,
 				A723B66F1EAF3FBF00469FE4 /* Assets.xcassets in Resources */,

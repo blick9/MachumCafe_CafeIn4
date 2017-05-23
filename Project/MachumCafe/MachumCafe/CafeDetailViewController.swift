@@ -16,6 +16,7 @@ class CafeDetailViewController: UIViewController {
     var indexCafeID = String()
     var userID = String()
     var userBookmarkIDs = [String]()
+    let nib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -36,6 +37,7 @@ class CafeDetailViewController: UIViewController {
         detailTableView.dataSource = self
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
+        reviewTableView.register(nib, forCellReuseIdentifier: "Cell")
         
         cafeData = currentCafeModel.getCafe()
         
@@ -75,10 +77,12 @@ class CafeDetailViewController: UIViewController {
     }
     
     func viewInit() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         moreReviewButton.layer.cornerRadius = 5
         moreReviewButton.setTitle("리뷰 더 보기", for: .normal)
         detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         detailTableView.isScrollEnabled = false
+        reviewTableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         reviewTableView.isScrollEnabled = false
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
@@ -115,7 +119,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             }
         }
         else {
-            return 100
+            return 130
         }
     }
     
@@ -162,14 +166,18 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             }
             
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
             if !reviews.isEmpty {
                 let review = reviews[indexPath.row].getReview()
-                cell.reviewerNickName.text = review["nickname"] as? String
-                cell.reviewDescribe.text = review["reviewContent"] as? String
-                cell.reviewProfil.image = #imageLiteral(resourceName: "profil_side")
+                
+                cell.reviewer.text = review["nickname"] as? String
+                cell.reviewDate.text = review["date"] as? String
+                cell.reviewContent.text = review["reviewContent"] as? String
+                cell.reviewStarRating.rating = review["rating"] as! Double
+                cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
             }
             return cell
+            
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
