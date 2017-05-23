@@ -9,8 +9,10 @@
 import UIKit
 
 class ModelReview {
+    fileprivate var id : String?
     fileprivate var cafeId = String()
     fileprivate var userId = String()
+    fileprivate var nickname = String()
     fileprivate var date = String()
     fileprivate var reviewContent = String()
     fileprivate var rating = Double()
@@ -18,9 +20,10 @@ class ModelReview {
     
     init() {}
     
-    init(cafeId : String, userId: String, date: String, reviewContent: String, rating: Double) {
+    init(id: String? = nil, cafeId : String, userId: String, nickname: String, date: String, reviewContent: String, rating: Double) {
         self.cafeId = cafeId
         self.userId = userId
+        self.nickname = nickname
         self.date = date
         self.reviewContent = reviewContent
         self.rating = rating
@@ -30,6 +33,7 @@ class ModelReview {
         var reviewDic = [String : Any]()
         reviewDic["cafeId"] = cafeId
         reviewDic["userId"] = userId
+        reviewDic["nickname"] = nickname
         reviewDic["date"] = date
         reviewDic["reviewContent"] = reviewContent
         reviewDic["rating"] = rating

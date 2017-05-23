@@ -48,8 +48,8 @@ class ModelCafe {
         self.imagesData?.append(imageData)
     }
     
-    func setReview(review: ModelReview) {
-        reviews.append(review)
+    func setReviews(reviews: [ModelReview]) {
+        self.reviews = reviews
     }
     
     func getCafe() -> [String : Any] {
