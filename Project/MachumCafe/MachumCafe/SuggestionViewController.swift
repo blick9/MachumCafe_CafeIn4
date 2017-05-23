@@ -73,7 +73,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
         let address = "\(addressTextField.text!) " + "\(detailAddressTextField.text!)"
         
         NetworkAdmin.uploadsImage(images: uploadImage) { (imagesURL) in
-            let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: address, hours: self.hoursTextField.text!, category: self.filterArray, imagesURL: imagesURL)
+            let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: address, hours: self.hoursTextField.text!, latitude: self.selectedLocation.latitude, longitude: self.selectedLocation.longitude, category: self.filterArray, imagesURL: imagesURL)
             NetworkAdmin.suggestionNewCafe(cafe: cafe)
         }
         self.dismiss(animated: true, completion: nil)
