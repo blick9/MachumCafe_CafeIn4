@@ -40,6 +40,28 @@ class NetworkCafe {
         }
     }
     
+    static func getSpecificCafe(cafeId: String, callback: @escaping (_ modelCafe: ModelCafe) -> Void) {
+        var modelCafe = ModelCafe()
+        
+        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)").responseJSON { (response) in
+            let cafe = JSON(data: response.data!).dictionaryValue
+            
+            if let id = cafe["_id"]?.stringValue,
+                let name = cafe["name"]?.stringValue,
+                let address = cafe["address"]?.stringValue,
+                let longitude = cafe["location"]?.arrayValue[0].doubleValue,
+                let latitude = cafe["location"]?.arrayValue[1].doubleValue,
+                let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
+                let tel = cafe["tel"]?.stringValue
+                let hours = cafe["hours"]?.stringValue
+                let menu = cafe["menu"]?.stringValue
+                modelCafe = ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL)
+            }
+            callback(modelCafe)
+        }
+    }
+    
     // MARK: 카페 이미지 데이터모델에 저장
     static func getImagesData(imagesURL: [String], callback: @escaping (_ imageData: Data) -> Void) {
         if !imagesURL.isEmpty {

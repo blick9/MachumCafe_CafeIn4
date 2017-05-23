@@ -65,6 +65,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        print("url:\(url)")
+        print("urlhost: \(url.host)")
+        print("urlPath: \(url.path)")
+        
+        let urlPath : String = url.path as String!
+        
+            if(urlPath == "/inner") {
+                NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
+                    Cafe.sharedInstance.specificCafe = modelCafe
+                    
+//                    let listContainerViewController = UIStoryboard.ListContainerViewStoryboard.instantiateViewController(withIdentifier: "ListContainer") as! ListContainerViewController
+                    
+                let detailStoryboard: UIStoryboard = UIStoryboard(name: "CafeDetailView", bundle: nil)
+                let detailPage: CafeDetailViewController = detailStoryboard.instantiateViewController(withIdentifier: "CafeDetail" ) as! CafeDetailViewController
+                    detailPage.cafeModel = Cafe.sharedInstance.specificCafe
+                self.window?.rootViewController = detailPage
+                print("111111111")
+            }
+//            else if (urlPath == "/about") {
+//                
+//            }
+        }
+        
+        
+        
+        self.window?.makeKeyAndVisible()
+        return true
+    }
+    
     func initLocationManager() {
         seenError = false
         locationFixAchieved = false

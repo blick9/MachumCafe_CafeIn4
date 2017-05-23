@@ -18,7 +18,7 @@ class WriteReviewViewController: UIViewController {
     
     var reviewDictionary = Review.sharedInstance.review.getReview()
     var user = User.sharedInstance.user.getUser()
-    var cafe = Cafe.sharedInstance.cafeList[1].getCafe() // 변경 필요
+    var cafe = Cafe.sharedInstance.allCafeList[1].getCafe() // 변경 필요
     var writtenDate = String()
     override func viewDidLoad() {
         super.viewDidLoad()

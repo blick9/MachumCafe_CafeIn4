@@ -78,4 +78,5 @@ class Cafe {
         }
     }
     var bookmarkList = [ModelCafe]()
+    var specificCafe = ModelCafe()
 }
