@@ -39,9 +39,8 @@ class CafeDetailViewController: UIViewController {
         
         cafeData = currentCafeModel.getCafe()
         
-        //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
-        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) { (bool) in
-        }
+        //MARK: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
+        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
         
         let imagesData = cafeData["imagesData"] as? [Data]
         navigationItem.title = cafeData["name"] as? String

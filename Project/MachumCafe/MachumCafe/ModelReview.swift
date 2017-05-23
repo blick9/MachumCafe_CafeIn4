@@ -13,14 +13,14 @@ class ModelReview {
     fileprivate var cafeId = String()
     fileprivate var userId = String()
     fileprivate var nickname = String()
-    fileprivate var date = String()
+    fileprivate var date : String?
     fileprivate var reviewContent = String()
     fileprivate var rating = Double()
     //fileprivate var reviewImage = UIImage()
     
     init() {}
     
-    init(id: String? = nil, cafeId : String, userId: String, nickname: String, date: String, reviewContent: String, rating: Double) {
+    init(id: String? = nil, cafeId : String, userId: String, nickname: String, date: String? = nil, reviewContent: String, rating: Double) {
         self.cafeId = cafeId
         self.userId = userId
         self.nickname = nickname

@@ -27,12 +27,12 @@ class WriteReviewViewController: UIViewController {
     }
 
     @IBAction func registReview(_ sender: Any) {
-        //TODO: 작성일 추가
-        let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
+
+        let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, reviewContent: writeReview.text, rating: starRating.rating)
         NetworkCafe.postCafeReview(review: review) { (bool, modelReviews) in
             self.currentCafeModel.setReviews(reviews: modelReviews)
         }
-
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
 
 //        let indexPath = IndexPath(row: 0, section: 0)
 //        reviewView.tableView.insertRows(at: [indexPath], with: .automatic)
