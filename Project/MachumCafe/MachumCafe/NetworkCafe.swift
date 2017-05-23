@@ -53,13 +53,56 @@ class NetworkCafe {
         }
     }
     
-    static func putCafeReview(review: ModelReview) {
+    static func postCafeReview(review: ModelReview, callback: @escaping (_ message: Bool, _ modelReviews: [ModelReview]) -> Void) {
         let cafeId = review.getReview()["cafeId"] as! String
-        let param : Parameters = review.getReview()
-        print("cafeId")
-        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).response { (response) in
-            print(response.request)
-            
+        let param : Parameters = ["review":review.getReview()]
+        var modelReviews = [ModelReview]()
+        
+        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
+            let res = JSON(data: response.data!)
+            let message = res["message"].boolValue
+            let desc = res["description"].stringValue
+            let reviews = res["reviews"].arrayValue
+            let _ = reviews.map {
+                let review = $0.dictionaryValue
+                if let id = review["_id"]?.stringValue,
+                let userId = review["userId"]?.stringValue,
+                let nickname = review["nickname"]?.stringValue,
+                let date = review["date"]?.stringValue,
+                let reviewContent = review["reviewContent"]?.stringValue,
+                let rating = review["rating"]?.doubleValue {
+                    let modelReview = ModelReview(id: id, cafeId: cafeId, userId: userId, nickname: nickname, date: date, reviewContent: reviewContent, rating: rating)
+                    modelReviews.insert(modelReview, at: 0)
+                    print("modelReview", modelReview)
+                }
+            }
+            callback(message, modelReviews)
+        }
+    }
+    
+    static func getCafeReviews(cafeModel: ModelCafe, callback: @escaping (_ message: Bool) -> Void) {
+        let cafeId = cafeModel.getCafe()["id"] as! String
+        var modelReviews = [ModelReview]()
+        
+        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in
+            let res = JSON(data: response.data!)
+            let message = res["message"].boolValue
+            let desc = res["description"].stringValue
+            let reviews = res["reviews"].arrayValue
+            let _ = reviews.map {
+                let review = $0.dictionaryValue
+                if let id = review["_id"]?.stringValue,
+                    let userId = review["userId"]?.stringValue,
+                    let nickname = review["nickname"]?.stringValue,
+                    let date = review["date"]?.stringValue,
+                    let reviewContent = review["reviewContent"]?.stringValue,
+                    let rating = review["rating"]?.doubleValue {
+                    let modelReview = ModelReview(id: id, cafeId: cafeId, userId: userId, nickname: nickname, date: date, reviewContent: reviewContent, rating: rating)
+                    modelReviews.insert(modelReview, at: 0)
+                }
+            }
+            cafeModel.setReviews(reviews: modelReviews)
+            callback(message)
         }
     }
 }
