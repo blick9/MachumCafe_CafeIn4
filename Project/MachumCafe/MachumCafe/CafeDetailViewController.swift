@@ -12,6 +12,7 @@ class CafeDetailViewController: UIViewController {
     
     var currentCafeModel = ModelCafe()
     var cafeData = [String:Any]()
+    var reviews = [ModelReview]()
     var indexCafeID = String()
     var userID = String()
     var userBookmarkIDs = [String]()
@@ -24,25 +25,44 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var cafeImageView: UIImageView!
- //  @IBOutlet weak var reviewMoreButton: UIButton!
+    @IBOutlet weak var moreReviewButton: UIButton!
     
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
     let reviewer = ["구제이", "한나", "메이플"]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        detailTableView.delegate = self
+        detailTableView.dataSource = self
+        reviewTableView.delegate = self
+        reviewTableView.dataSource = self
+        
         cafeData = currentCafeModel.getCafe()
+        
+        //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
+        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) { (bool) in
+            print("first Count", self.reviews.count)
+            
+            //TODO: Cell에 적용
+            self.reloadReviewTable()
+            print("seconds Count", self.reviews.count)
+        }
+        
         let imagesData = cafeData["imagesData"] as? [Data]
-
         navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
 //        cafeImageView.image = UIImage(data: (imagesData?[0])!)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
 
+    func reloadReviewTable() {
+        self.reviews = self.currentCafeModel.getReviews()
+        self.reviewTableView.reloadData()
+        print("♻︎♻︎")
+        // 리뷰 작성 또는 viewDidLoad시 마다 호출
+    }
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +81,8 @@ class CafeDetailViewController: UIViewController {
     }
     
     func viewInit() {
+        moreReviewButton.layer.cornerRadius = 5
+        moreReviewButton.setTitle("리뷰 더 보기", for: .normal)
         detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         detailTableView.isScrollEnabled = false
         reviewTableView.isScrollEnabled = false
@@ -81,7 +103,6 @@ class CafeDetailViewController: UIViewController {
             }
         }
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -91,7 +112,6 @@ class CafeDetailViewController: UIViewController {
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView.tag == 1 {
             if indexPath.row == 3 {
@@ -113,7 +133,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         }
             
         else {
-            return reviewer.count
+            return reviews.count
         }
     }
     
@@ -150,8 +170,14 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
-
-            cell.reviewerNickName.text = reviewer[indexPath.row]
+            print("cell", reviews)
+            if !reviews.isEmpty {
+                print(indexPath.row)
+                let review = reviews[indexPath.row].getReview()
+                cell.reviewerNickName.text = review["nickname"] as? String
+                cell.reviewDescribe.text = review["reviewContent"] as? String
+                cell.reviewProfil.image = #imageLiteral(resourceName: "profil_side")
+            }
             return cell
         }
     }
