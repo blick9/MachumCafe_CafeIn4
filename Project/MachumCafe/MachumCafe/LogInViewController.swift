@@ -13,10 +13,12 @@ class LogInViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var kakaoLoginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .default
+        kakaoLoginButton.addTarget(self, action: #selector(kakaoLogin), for: .touchUpInside)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -28,6 +30,33 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func kakaoLogin() {
+        let session = KOSession.shared()
+        if (session?.isOpen())! {
+            session?.close()
+        }
+        session?.presentingViewController = self
+        session?.open(completionHandler: { (error) in
+            if (session?.isOpen())! {
+                KOSessionTask.meTask(completionHandler: { (profile, error) in
+                    let user = profile as! KOUser
+                    let id = String(describing: user.id)
+                    let email = user.email!
+                    let nickname = user.property(forKey: "nickname") as! String
+                    let imageUrl = user.property(forKey: "profile_image")
+                    var profileImage = Data()
+                    NetworkUser.getUserImage(imageUrl: imageUrl as! String, callback: { (imageData) in
+                        profileImage = imageData
+                        User.sharedInstance.user = ModelUser(id: id, email: email, nickname: nickname, bookmark: [String](), profileImage: profileImage)
+                        User.sharedInstance.isUser = true
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                })
+            }
+        })
+    }
+    
      @IBAction func logInButton(_ sender: Any) {
         let activityIndicator = UIActivityIndicatorView()
         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)

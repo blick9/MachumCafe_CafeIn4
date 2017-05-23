@@ -79,4 +79,12 @@ class NetworkUser {
         }
     }
     
+    static func getUserImage(imageUrl: String, callback: @escaping (_ imageData: Data) -> Void) {
+        Alamofire.request(imageUrl).responseData { (response) in
+            if let imageData = response.result.value {
+                callback(imageData)
+            }
+        }
+    }
+    
 }

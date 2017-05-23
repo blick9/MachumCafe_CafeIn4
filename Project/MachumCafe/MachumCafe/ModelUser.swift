@@ -14,14 +14,16 @@ class ModelUser {
     fileprivate var email = String()
     fileprivate var nickname = String()
     fileprivate var bookmark = [String]()
+    fileprivate var profileImage : Data?
     
     init() {}
     
-    init(id: String, email: String, nickname: String, bookmark: [String]) {
+    init(id: String, email: String, nickname: String, bookmark: [String], profileImage: Data? = nil) {
         self.id = id
         self.email = email
         self.nickname = nickname
         self.bookmark = bookmark
+        self.profileImage = profileImage
     }
     
     func getUser() -> [String : Any] {
@@ -30,6 +32,7 @@ class ModelUser {
         userDic["email"] = email
         userDic["nickname"] = nickname
         userDic["bookmark"] = bookmark
+        userDic["profileImage"] = profileImage
         return userDic
     }
     

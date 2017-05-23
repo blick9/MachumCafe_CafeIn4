@@ -43,6 +43,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         initLocationManager()
         return true
     }
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }
+        return false
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }
+        return true
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
