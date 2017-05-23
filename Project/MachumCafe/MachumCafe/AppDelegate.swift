@@ -34,8 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         UINavigationBar.appearance().isTranslucent = false
         
-        NetworkUser.getUser { (message, user) in
-            if message {
+        NetworkUser.getUser { (result, user) in
+            if result {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
             }
