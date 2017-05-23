@@ -37,7 +37,8 @@ class ListMapViewController: UIViewController{
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
         
-        googleMap.camera = GMSCameraPosition.camera(withLatitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double, zoom: 14)
+//        googleMap.camera = GMSCameraPosition.camera(withLatitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double, zoom: 14)
+        googleMap.camera = GMSCameraPosition.camera(withLatitude: 37.502323, longitude: 127.1090137, zoom: 14)
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
@@ -152,7 +153,7 @@ class ListMapViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailView" {
             let controller = segue.destination as! CafeDetailViewController
-            controller.cafeModel = currentSelectedCafe
+            controller.currentCafeModel = currentSelectedCafe
         }
     }
     

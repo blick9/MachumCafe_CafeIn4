@@ -9,7 +9,9 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
-    var reviews = [[String: Any]]()
+    
+    var currentCafeModel = ModelCafe()
+    var reviews = [ModelReview]()
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -17,14 +19,22 @@ class ReviewViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        reviews = currentCafeModel.getReviews()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
+    
+    func reloadReviewTable() {
+        reviews = currentCafeModel.getReviews()
+        tableView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let writeReview : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
-        writeReview.reviewView = self
+        let writeReviewView : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
+        writeReviewView.reviewView = self
+        writeReviewView.currentCafeModel = currentCafeModel
     }
-
 }
+
 extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,10 +48,13 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReviewTableViewCell
         
-        let item = reviews[indexPath.row]
-        cell.reviewContent.text = item["review"] as! String
-        cell.reviewStarRating.rating = item["starRating"] as! Double
-        
+        let item = reviews[indexPath.row].getReview()
+        cell.reviewer.text = item["nickname"] as? String
+        cell.reviewDate.text = item["date"] as? String
+        cell.reviewContent.text = item["reviewContent"] as? String
+        cell.reviewStarRating.rating = item["rating"] as! Double
+
         return cell
     }
 }
+

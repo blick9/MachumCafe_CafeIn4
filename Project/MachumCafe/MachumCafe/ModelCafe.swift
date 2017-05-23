@@ -21,6 +21,11 @@ class ModelCafe {
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
     fileprivate var imagesData : [Data]?
+    fileprivate var reviews = [ModelReview]() {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
+        }
+    }
     
     init() {}
         
@@ -42,6 +47,10 @@ class ModelCafe {
         self.imagesData?.append(imageData)
     }
     
+    func setReviews(reviews: [ModelReview]) {
+        self.reviews = reviews
+    }
+    
     func getCafe() -> [String : Any] {
         var cafeDic = [String : Any]()
         cafeDic["id"] = id
@@ -56,6 +65,10 @@ class ModelCafe {
         cafeDic["imagesURL"] = imagesURL
         cafeDic["imagesData"] = imagesData
         return cafeDic
+    }
+
+    func getReviews() -> [ModelReview] {
+        return reviews
     }
 }
 

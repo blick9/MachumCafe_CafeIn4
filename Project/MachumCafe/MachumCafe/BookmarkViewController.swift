@@ -77,7 +77,7 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
         if segue.identifier == "DetailView" {
             if let indexPaths = self.collectionView.indexPathsForSelectedItems{
                 let controller = segue.destination as! CafeDetailViewController
-                controller.cafeModel = Cafe.sharedInstance.bookmarkList[indexPaths[0].row]
+                controller.currentCafeModel = Cafe.sharedInstance.bookmarkList[indexPaths[0].row]
             }
         }
     }
