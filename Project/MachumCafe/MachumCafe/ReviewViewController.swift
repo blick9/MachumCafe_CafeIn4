@@ -10,14 +10,16 @@ import UIKit
 
 class ReviewViewController: UIViewController {
     var reviews = [[String: Any]]()
-    var reviewArray = [[String: Any]]()
+    
     @IBOutlet weak var tableView: UITableView!
+    var cafeDetailView = CafeDetailViewController()
+    var cafeId = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        cafeId = cafeDetailView.cafeData["id"] as! String
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let writeReview : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
@@ -43,7 +45,6 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
         cell.reviewStarRating.rating = item["rating"] as! Double
         cell.reviewDate.text = item["date"] as! String
         cell.reviewer.text = item["userId"] as! String
-        
         return cell
     }
 }

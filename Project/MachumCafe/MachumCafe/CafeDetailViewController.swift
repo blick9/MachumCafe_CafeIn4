@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CafeDetailViewController: UIViewController {
+class CafeDetailViewController: UIViewController, UIApplicationDelegate {
     
     var cafeModel = ModelCafe()
     var cafeData = [String:Any]()
@@ -40,8 +40,8 @@ class CafeDetailViewController: UIViewController {
 //        cafeImageView.image = UIImage(data: (imagesData?[0])!)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
+        
     }
-
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +79,36 @@ class CafeDetailViewController: UIViewController {
                 UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
             }
         }
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        print("url:\(url)")
+        print("urlhost: \(url.host)")
+        print("urlPath: \(url.path)")
+        
+        let urlPath : String = url.path as String!
+        
+        if(urlPath == "/inner") {
+            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
+                Cafe.sharedInstance.specificCafe = modelCafe
+                
+                let detailStoryboard: UIStoryboard = UIStoryboard(name: "CafeDetailView", bundle: nil)
+                let detailPage: CafeDetailViewController = detailStoryboard.instantiateViewController(withIdentifier: "CafeDetail" ) as! CafeDetailViewController
+                detailPage.cafeModel = Cafe.sharedInstance.specificCafe
+                self.present(detailPage, animated: true, completion: nil)
+            }
+        }
+        
+ //      self.window?.makeKeyAndVisible()
+        return true
+    }
+    
+    @IBAction func shareActionButton(_ sender: Any) {
+        NSURLFileScheme =
+        let activityVC = UIActivityViewController(activityItems: ["www"], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
     }
     
 
@@ -149,8 +179,13 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
+
             cell.reviewerNickName.text = reviewer[indexPath.row]
             return cell
         }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
+        reviewView.cafeDetailView = self
     }
 }

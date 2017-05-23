@@ -12,7 +12,7 @@
         <!--Review View Controller-->
         <scene sceneID="JSa-wh-Nwn">
             <objects>
-                <viewController storyboardIdentifier="ReviewView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OMy-sF-ULj" customClass="ReviewViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReviewView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OMy-sF-ULj" customClass="ReviewViewController" customModule="MachumCafe" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IxS-Kw-S4U"/>
                         <viewControllerLayoutGuide type="bottom" id="uIw-JX-aae"/>
@@ -143,7 +143,7 @@
         <!--Write Review View Controller-->
         <scene sceneID="ndF-Jm-pj9">
             <objects>
-                <viewController id="APR-hi-lDa" customClass="WriteReviewViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="APR-hi-lDa" customClass="WriteReviewViewController" customModule="MachumCafe" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CjA-T8-yud"/>
                         <viewControllerLayoutGuide type="bottom" id="zhf-Iq-XRl"/>
@@ -239,7 +239,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CF2-55-QFg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m10-fO-Znm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="m10-fO-Znm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

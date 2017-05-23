@@ -30,7 +30,7 @@ class ModelReview {
     
     func getReview() -> [String : Any] {
         var reviewDic = [String:Any]()
-        reviewDic["careId"] = cafeId
+        reviewDic["cafeId"] = cafeId
         reviewDic["userId"] = userId
         reviewDic["review"] = review
         reviewDic["date"] = date
