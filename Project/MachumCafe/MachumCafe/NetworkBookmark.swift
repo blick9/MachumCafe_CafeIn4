@@ -44,7 +44,7 @@ class NetworkBookmark {
     }
 
     // MARK: 즐겨찾기 추가 & 삭제
-    static func setMyBookmark(userId: String, cafeId: String, callback: @escaping (_ message: Bool, _ description: String, _ userBookmark: [String]) -> Void) {
+    static func setMyBookmark(userId: String, cafeId: String, callback: @escaping (_ message: Bool, _ description: String) -> Void) {
         let parameters : Parameters = ["cafeId" : cafeId]
         
         Alamofire.request("\(url)/api/v1/bookmark/\(userId)", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
@@ -60,7 +60,8 @@ class NetworkBookmark {
                 description = resDescription
                 userBookmark = resUserBookmark
             }
-            callback(message, description, userBookmark)
+            User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
+            callback(message, description)
         }
     }
     
