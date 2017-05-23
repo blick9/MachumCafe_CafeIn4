@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,7 +71,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vfd-iL-zDZ">
-                        <barButtonItem key="leftBarButtonItem" image="back_Bt" id="mUS-v9-hfO">
+                        <barButtonItem key="rightBarButtonItem" image="cancelButton" id="mUS-v9-hfO">
                             <connections>
                                 <action selector="closeButtonAction:" destination="uKK-o8-uwZ" id="Kjd-OS-l6H"/>
                             </connections>
@@ -90,7 +90,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aJu-HI-y5m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9SF-Me-Z1C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SF-Me-Z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -105,6 +105,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back_Bt" width="12" height="20"/>
+        <image name="cancelButton" width="19" height="20"/>
     </resources>
 </document>
