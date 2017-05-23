@@ -10,37 +10,37 @@ import UIKit
 import Cosmos
 
 class WriteReviewViewController: UIViewController {
+    var currentCafeModel = ModelCafe()
+    var cafeData = [String:Any]()
+    var reviewView = ReviewViewController()
+    var userData = User.sharedInstance.user.getUser()
+    var writtenDate = Date()
 
     @IBOutlet weak var writeReview: UITextView!
     @IBOutlet weak var starRating: CosmosView!
     
-    var reviewDictionary = [String : Any]()
-    var reviewView = ReviewViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        reviewDictionary["review"] = writeReview.text
-        reviewDictionary["starRating"] = starRating.rating
-        
-
-        // Do any additional setup after loading the view.
+        cafeData = currentCafeModel.getCafe()
+        starRating.rating = 0
+        print(currentCafeModel.getReviews())
     }
 
     @IBAction func registReview(_ sender: Any) {
-        print(starRating.rating)
-        
-        if let review = writeReview.text { reviewDictionary["review"] = review }
-        reviewDictionary["starRating"] = starRating.rating
-        reviewView.reviews.insert(reviewDictionary, at: 0)
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        reviewView.tableView.insertRows(at: [indexPath], with: .automatic)
+        //TODO: 작성일 추가
+        let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
+        NetworkCafe.postCafeReview(review: review) { (bool, modelReviews) in
+            self.currentCafeModel.setReviews(reviews: modelReviews)
+        }
+
+
+//        let indexPath = IndexPath(row: 0, section: 0)
+//        reviewView.tableView.insertRows(at: [indexPath], with: .automatic)
         
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelReview(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
     }
 

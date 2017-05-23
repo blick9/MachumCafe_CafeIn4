@@ -117,7 +117,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "DetailView" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! CafeDetailViewController
-                controller.cafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
+                controller.currentCafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
             }
         }
     }
