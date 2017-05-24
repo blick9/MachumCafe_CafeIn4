@@ -36,29 +36,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         UINavigationBar.appearance().isTranslucent = false
         
         // MARK: 카톡 로그인 세션 있을 경우 유저정보 Get, 없을경우 우리 서버에서 유저정보 Get, 둘다 세션 없을경우 nil
-        let session = KOSession.shared()
-        print("OUT: ", (session?.isOpen())!)
-        if (session?.isOpen())! {
-            print("INNER: ", (session?.isOpen())!)
-            KOSessionTask.meTask(completionHandler: { (profile, error) in
-                let user = profile as! KOUser
-                let id = String(describing: user.id)
-                let email = user.email!
-                let nickname = user.property(forKey: "nickname") as! String
-                let imageUrl = user.property(forKey: "profile_image") as! String
-                NetworkUser.getUserImage(imageUrl: imageUrl, callback: { (imageData) in
-                    User.sharedInstance.user = ModelUser(id: id, email: email, nickname: nickname, bookmark: [String](), profileImage: imageData)
-                    User.sharedInstance.isUser = true
-                })
-            })
-        } else {
+//        let session = KOSession.shared()
+//        print("OUT: ", (session?.isOpen())!)
+//        if (session?.isOpen())! {
+//            print("INNER: ", (session?.isOpen())!)
+//            KOSessionTask.meTask(completionHandler: { (profile, error) in
+//                if let userProfile = profile {
+//                    print(profile, userProfile, error)
+//                    let user = userProfile as! KOUser
+////                    let id = String(describing: user.id)
+//                    let email = user.email!
+//                    let nickname = user.property(forKey: "nickname") as! String
+//                    let imageURL = user.property(forKey: "profile_image") as! String
+//                    
+//                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL, callback: { (result, user) in
+//                        User.sharedInstance.user = user
+//                        User.sharedInstance.isUser = true
+//                    })
+//                }
+//            })
+//        } else {
             NetworkUser.getUser { (result, user) in
                 if result {
                     User.sharedInstance.user = user
                     User.sharedInstance.isUser = true
                 }
             }
-        }
+//        }
+        
         KOSession.shared().isAutomaticPeriodicRefresh = true
 
         initLocationManager()

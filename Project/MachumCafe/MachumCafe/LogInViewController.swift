@@ -32,6 +32,8 @@ class LogInViewController: UIViewController {
     }
     
     func kakaoLogin() {
+        let activityIndicator = UIActivityIndicatorView()
+        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
         let session = KOSession.shared()
         if (session?.isOpen())! {
             session?.close()
@@ -41,14 +43,22 @@ class LogInViewController: UIViewController {
             if (session?.isOpen())! {
                 KOSessionTask.meTask(completionHandler: { (profile, error) in
                     let user = profile as! KOUser
-                    let id = String(describing: user.id)
                     let email = user.email!
                     let nickname = user.property(forKey: "nickname") as! String
-                    let imageUrl = user.property(forKey: "profile_image") as! String
-                    NetworkUser.getUserImage(imageUrl: imageUrl, callback: { (imageData) in
-                        User.sharedInstance.user = ModelUser(id: id, email: email, nickname: nickname, bookmark: [String](), profileImage: imageData)
+                    let imageURL = user.property(forKey: "profile_image") as! String
+
+                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL, callback: { (result, user) in
+                        activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
+                        User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
-                        self.dismiss(animated: true, completion: nil)
+                        if !imageURL.isEmpty {
+                            NetworkUser.getUserImage(imageURL: imageURL, callback: { (imageData) in
+                                user.setProfileImage(profileImage: imageData)
+                                self.dismiss(animated: true, completion: nil)
+                            })
+                        } else {
+                            self.dismiss(animated: true, completion: nil)
+                        }
                     })
                 })
             }
@@ -63,7 +73,12 @@ class LogInViewController: UIViewController {
             if result {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
-                self.dismiss(animated: true, completion: nil)
+                if !(user.getUser()["imageURL"] as! String).isEmpty {
+                    NetworkUser.getUserImage(imageURL: user.getUser()["imageURL"] as! String, callback: { (imageData) in
+                        user.setProfileImage(profileImage: imageData)
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }
             } else {
                 UIAlertController().oneButtonAlert(target: self, title: "로그인", message: "아이디 또는 비밀번호를 다시 확인하세요.", isHandler: false)
             }

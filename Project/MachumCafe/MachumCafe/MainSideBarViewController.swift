@@ -45,7 +45,8 @@ class MainSideBarViewController: UIViewController {
             userInfoLabel.isHidden = true
             logInButton.isHidden = false
         case true :
-            userProfileImageView.image = UIImage(data: User.sharedInstance.user.getUser()["profileImage"] as! Data)
+            let profileImage = User.sharedInstance.user.getUser()["profileImage"] as! Data
+            userProfileImageView.image = profileImage.isEmpty ? #imageLiteral(resourceName: "profil_side") : UIImage(data: profileImage)
             userInfoLabel.isHidden = false
             userInfoLabel.text = ("\(User.sharedInstance.user.getUser()["nickname"] as! String)님")
             logInButton.isHidden = true

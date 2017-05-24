@@ -45,7 +45,35 @@ class NetworkUser {
                 let email = user["email"]?.stringValue,
                 let nickname = user["nickname"]?.stringValue,
                 let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark)
+                    var imageURL = String()
+                    if let userImageURL = user["imageURL"]?.stringValue {
+                        imageURL = userImageURL
+                    }
+                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
+                }
+            }
+            callback(result, modelUser)
+        }
+    }
+    
+    static func kakaoLogin(email: String, nickname: String, imageURL: String, callback: @escaping (_ result: Bool, _ modelUser: ModelUser) -> Void) {
+        let parameters : Parameters = [
+            "email": email,
+            "nickname": nickname,
+            "imageURL": imageURL
+        ]
+        
+        Alamofire.request("\(url)/api/v1/user/login/kakao", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+            var modelUser = ModelUser()
+            let res = JSON(data: response.data!)
+            let result = res["result"].boolValue
+            if let user = res["user"].dictionary {
+                if let id = user["_id"]?.stringValue,
+                let email = user["email"]?.stringValue,
+                let nickname = user["nickname"]?.stringValue,
+                let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }),
+                let imageURL = user["imageURL"]?.stringValue {
+                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
                 }
             }
             callback(result, modelUser)
@@ -79,8 +107,8 @@ class NetworkUser {
         }
     }
     
-    static func getUserImage(imageUrl: String, callback: @escaping (_ imageData: Data) -> Void) {
-        Alamofire.request(imageUrl).responseData { (response) in
+    static func getUserImage(imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
+        Alamofire.request(imageURL).responseData { (response) in
             if let imageData = response.result.value {
                 callback(imageData)
             }
