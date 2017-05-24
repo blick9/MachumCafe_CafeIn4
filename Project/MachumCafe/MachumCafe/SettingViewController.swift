@@ -29,12 +29,23 @@ class SettingViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
             let activityIndicator = UIActivityIndicatorView()
             let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
-            NetworkUser.logout { (des) in
-                User.sharedInstance.user = ModelUser()
-                User.sharedInstance.isUser = false
-                activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
-                self.dismiss(animated: true, completion: nil)
-                print(des, "\n로그아웃!")
+            let session = KOSession.shared()
+            if (session?.isOpen())! {
+                session?.logoutAndClose(completionHandler: { (success, error) in
+                    if success {
+                        print("로그아웃", success)
+                    } else {
+                        print("fail")
+                    }
+                })
+            } else {
+                NetworkUser.logout { (des) in
+                    User.sharedInstance.user = ModelUser()
+                    User.sharedInstance.isUser = false
+                    activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
+                    self.dismiss(animated: true, completion: nil)
+                    print(des, "\n로그아웃!")
+                }
             }
         }))
         self.present(alert, animated: true, completion: nil)
