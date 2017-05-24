@@ -33,6 +33,10 @@ class SettingViewController: UIViewController {
             if (session?.isOpen())! {
                 session?.logoutAndClose(completionHandler: { (success, error) in
                     if success {
+                        User.sharedInstance.user = ModelUser()
+                        User.sharedInstance.isUser = false
+                        activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
+                        self.dismiss(animated: true, completion: nil)
                         print("로그아웃", success)
                     } else {
                         print("fail")
