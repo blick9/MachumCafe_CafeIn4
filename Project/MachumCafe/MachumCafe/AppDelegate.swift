@@ -40,6 +40,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 User.sharedInstance.isUser = true
             }
         }
+        KOSession.shared().isAutomaticPeriodicRefresh = true
+        KOSessionTask.accessTokenInfoTask { (accessToken, error) in
+            if let token = accessToken {
+                KOSessionTask.meTask(completionHandler: { (profile, error) in
+                    let user = profile as! KOUser
+                    let id = String(describing: user.id)
+                    let email = user.email!
+                    let nickname = user.property(forKey: "nickname") as! String
+                    let imageUrl = user.property(forKey: "profile_image")
+                    var profileImage = Data()
+                    NetworkUser.getUserImage(imageUrl: imageUrl as! String, callback: { (imageData) in
+                        profileImage = imageData
+                        User.sharedInstance.user = ModelUser(id: id, email: email, nickname: nickname, bookmark: [String](), profileImage: profileImage)
+                        User.sharedInstance.isUser = true
+                    })
+                })
+            }
+        }
+        
         initLocationManager()
         return true
     }
@@ -48,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if KOSession.isKakaoAccountLoginCallback(url) {
             return KOSession.handleOpen(url)
         }
-        return false
+        return true
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -66,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        KOSession.handleDidEnterBackground()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -73,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         initLocationManager()
+        KOSession.handleDidBecomeActive()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

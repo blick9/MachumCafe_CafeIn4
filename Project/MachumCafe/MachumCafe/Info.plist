@@ -80,5 +80,7 @@
 	<false/>
 	<key>URL</key>
 	<string>http://localhost:3000</string>
+    <key>KAKAO_SECURE_MODE</key>
+    <true/>
 </dict>
 </plist>

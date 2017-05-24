@@ -50,6 +50,8 @@ class LogInViewController: UIViewController {
                         profileImage = imageData
                         User.sharedInstance.user = ModelUser(id: id, email: email, nickname: nickname, bookmark: [String](), profileImage: profileImage)
                         User.sharedInstance.isUser = true
+                        KOSessionTask.accessTokenInfoTask(completionHandler: { (accessTokenInfo, error) in
+                        })
                         self.dismiss(animated: true, completion: nil)
                     })
                 })
