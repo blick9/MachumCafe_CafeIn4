@@ -73,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let urlPath : String = url.path as String!
         let urlHost : String = url.host as String!
+        url.pathComponents
 
         if(urlPath == "/inner") {
             NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
@@ -80,7 +81,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 let detailStoryboard: UIStoryboard = UIStoryboard(name: "CafeDetailView", bundle: nil)
                 let detailPage: CafeDetailViewController = detailStoryboard.instantiateViewController(withIdentifier: "CafeDetail" ) as! CafeDetailViewController
                 detailPage.currentCafeModel = Cafe.sharedInstance.specificCafe
+//                MainViewController().present(detailPage, animated: true, completion: nil)
                 self.window?.rootViewController = detailPage
+                //push
             }
             
         }
