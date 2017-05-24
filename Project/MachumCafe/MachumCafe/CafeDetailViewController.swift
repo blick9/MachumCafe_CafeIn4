@@ -8,13 +8,15 @@
 
 import UIKit
 
-class CafeDetailViewController: UIViewController, UIApplicationDelegate {
+class CafeDetailViewController: UIViewController {
     
-    var cafeModel = ModelCafe()
+    var currentCafeModel = ModelCafe()
     var cafeData = [String:Any]()
+    var reviews = [ModelReview]()
+    var indexCafeID = String()
     var userID = String()
     var userBookmarkIDs = [String]()
-    var indexCafeID = String()
+
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -24,26 +26,40 @@ class CafeDetailViewController: UIViewController, UIApplicationDelegate {
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var cafeImageView: UIImageView!
- //  @IBOutlet weak var reviewMoreButton: UIButton!
+    @IBOutlet weak var moreReviewButton: UIButton!
     
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
     let reviewer = ["구제이", "한나", "메이플"]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        cafeData = cafeModel.getCafe()
+        detailTableView.delegate = self
+        detailTableView.dataSource = self
+        reviewTableView.delegate = self
+        reviewTableView.dataSource = self
+        
+        cafeData = currentCafeModel.getCafe()
+        
+        //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
+        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
+        
         let imagesData = cafeData["imagesData"] as? [Data]
-
         navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
 //        cafeImageView.image = UIImage(data: (imagesData?[0])!)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
 
     
+    func reloadReviewTable() {
+        self.reviews = self.currentCafeModel.getReviews()
+        self.reviewTableView.reloadData()
+        print("♻︎♻︎")
+        // 리뷰 작성 또는 viewDidLoad시 마다 호출
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // UserBookmark 정보 불러오기
@@ -60,6 +76,8 @@ class CafeDetailViewController: UIViewController, UIApplicationDelegate {
     }
     
     func viewInit() {
+        moreReviewButton.layer.cornerRadius = 5
+        moreReviewButton.setTitle("리뷰 더 보기", for: .normal)
         detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         detailTableView.isScrollEnabled = false
         reviewTableView.isScrollEnabled = false
@@ -69,10 +87,9 @@ class CafeDetailViewController: UIViewController, UIApplicationDelegate {
     }
     
     func bookmarkToggleButton() {
-        NetworkBookmark.setMyBookmark(userId: userID, cafeId: indexCafeID) { (message, des, userBookmark) in
+        NetworkBookmark.setMyBookmark(userId: userID, cafeId: indexCafeID) { (result, des) in
             print(des)
-            if message {
-                User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
+            if result {
                 self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadBookmark"), object: nil)
             } else {
@@ -81,36 +98,14 @@ class CafeDetailViewController: UIViewController, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-        print("url:\(url)")
-        print("urlhost: \(url.host)")
-        print("urlPath: \(url.path)")
-        
-        let urlPath : String = url.path as String!
-        
-        if(urlPath == "/inner") {
-            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
-                Cafe.sharedInstance.specificCafe = modelCafe
-                
-                let detailStoryboard: UIStoryboard = UIStoryboard(name: "CafeDetailView", bundle: nil)
-                let detailPage: CafeDetailViewController = detailStoryboard.instantiateViewController(withIdentifier: "CafeDetail" ) as! CafeDetailViewController
-                detailPage.cafeModel = Cafe.sharedInstance.specificCafe
-                self.present(detailPage, animated: true, completion: nil)
-            }
-        }
-        
- //      self.window?.makeKeyAndVisible()
-        return true
-    }
+
     
     @IBAction func shareActionButton(_ sender: Any) {
-        NSURLFileScheme =
+      //  let detailURL =
         let activityVC = UIActivityViewController(activityItems: ["www"], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -120,7 +115,6 @@ class CafeDetailViewController: UIViewController, UIApplicationDelegate {
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView.tag == 1 {
             if indexPath.row == 3 {
@@ -142,7 +136,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         }
             
         else {
-            return reviewer.count
+            return reviews.count
         }
     }
     
@@ -179,13 +173,17 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailReviewTableViewCell
-
-            cell.reviewerNickName.text = reviewer[indexPath.row]
+            if !reviews.isEmpty {
+                let review = reviews[indexPath.row].getReview()
+                cell.reviewerNickName.text = review["nickname"] as? String
+                cell.reviewDescribe.text = review["reviewContent"] as? String
+                cell.reviewProfil.image = #imageLiteral(resourceName: "profil_side")
+            }
             return cell
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
-        reviewView.cafeDetailView = self
+        reviewView.currentCafeModel = currentCafeModel
     }
 }

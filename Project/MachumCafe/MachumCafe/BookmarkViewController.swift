@@ -26,7 +26,7 @@ class BookmarkViewController: UIViewController {
     func getBookmarkList() {
         let activityIndicator = UIActivityIndicatorView()
         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
-        NetworkBookmark.getMyBookmark(userId: userId) { (message, cafeList) in
+        NetworkBookmark.getMyBookmark(userId: userId) { (result, cafeList) in
             Cafe.sharedInstance.bookmarkList = cafeList
             self.collectionView.reloadData()
             activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
@@ -77,7 +77,7 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
         if segue.identifier == "DetailView" {
             if let indexPaths = self.collectionView.indexPathsForSelectedItems{
                 let controller = segue.destination as! CafeDetailViewController
-                controller.cafeModel = Cafe.sharedInstance.bookmarkList[indexPaths[0].row]
+                controller.currentCafeModel = Cafe.sharedInstance.bookmarkList[indexPaths[0].row]
             }
         }
     }

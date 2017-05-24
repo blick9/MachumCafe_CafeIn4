@@ -15,12 +15,12 @@ class NetworkBookmark {
     private static let url = URLpath.getURL()
     
     // MARK: 즐겨찾기 목록 데이터모델에 저장
-    static func getMyBookmark(userId: String, callback: @escaping (_ message: Bool, _ modelCafe: [ModelCafe]) -> Void) {
+    static func getMyBookmark(userId: String, callback: @escaping (_ result: Bool, _ modelCafe: [ModelCafe]) -> Void) {
         var modelCafe = [ModelCafe]()
         
-        Alamofire.request("\(url)/api/v1/bookmark/\(userId)").responseJSON { (response) in
+        Alamofire.request("\(url)/api/v1/user/\(userId)/bookmark").responseJSON { (response) in
             let res = JSON(data: response.data!)
-            let message = res["message"].boolValue
+            let result = res["result"].boolValue
             let cafes = res["cafe"].arrayValue
             
             let _ = cafes.map {
@@ -39,28 +39,29 @@ class NetworkBookmark {
                     modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL))
                 }
             }
-            callback(message, modelCafe)
+            callback(result, modelCafe)
         }
     }
 
     // MARK: 즐겨찾기 추가 & 삭제
-    static func setMyBookmark(userId: String, cafeId: String, callback: @escaping (_ message: Bool, _ description: String, _ userBookmark: [String]) -> Void) {
+    static func setMyBookmark(userId: String, cafeId: String, callback: @escaping (_ result: Bool, _ description: String) -> Void) {
         let parameters : Parameters = ["cafeId" : cafeId]
         
-        Alamofire.request("\(url)/api/v1/bookmark/\(userId)", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-            var message = Bool()
+        Alamofire.request("\(url)/api/v1/user/\(userId)/bookmark", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+            var result = Bool()
             var description = String()
             var userBookmark = [String]()
             
             let res = JSON(data: response.data!).dictionary
-            if let resMessage = res?["message"]?.boolValue,
+            if let resResult = res?["result"]?.boolValue,
             let resDescription = res?["description"]?.stringValue,
             let resUserBookmark = res?["userBookmark"]?.arrayValue.map({ $0.stringValue }) {
-                message = resMessage
+                result = resResult
                 description = resDescription
                 userBookmark = resUserBookmark
             }
-            callback(message, description, userBookmark)
+            User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
+            callback(result, description)
         }
     }
     

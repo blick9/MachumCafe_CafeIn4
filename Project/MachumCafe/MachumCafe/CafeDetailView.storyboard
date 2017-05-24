@@ -139,7 +139,7 @@
                                                                 <constraint firstAttribute="width" constant="60" id="4rU-cK-6gW"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="손님" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfB-x7-lem">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구제이" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfB-x7-lem">
                                                             <rect key="frame" x="144" y="19" width="42" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="42" id="8OD-zP-bEO"/>
@@ -222,9 +222,6 @@
                                         <rect key="frame" x="284" y="189" width="23" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="share_Bt"/>
-                                        <connections>
-                                            <action selector="shareActionButton:" destination="ejC-8o-OCk" eventType="touchUpInside" id="2n9-u8-4Tt"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="미엘 (miel)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooV-Jh-HWD">
                                         <rect key="frame" x="23" y="189" width="125" height="19"/>
@@ -276,6 +273,7 @@
                         <outlet property="cafeImageView" destination="PiZ-92-6C6" id="Fbx-kR-5kI"/>
                         <outlet property="cafeNameLabel" destination="ooV-Jh-HWD" id="P7w-bi-P4K"/>
                         <outlet property="detailTableView" destination="HUB-vG-q52" id="qlA-Fp-Vqg"/>
+                        <outlet property="moreReviewButton" destination="9X9-VU-4mY" id="DFg-y0-R7f"/>
                         <outlet property="reviewHeight" destination="eZa-JQ-Z3p" id="iBo-B0-imx"/>
                         <outlet property="reviewTableView" destination="DgO-TJ-FRg" id="NvW-Am-zij"/>
                         <outlet property="shareButton" destination="ZT3-N0-Z5h" id="RPv-xg-Xtn"/>

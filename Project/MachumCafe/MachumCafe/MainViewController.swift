@@ -72,7 +72,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func presentFilterViewButtonAction(_ sender: Any) {
-
         let listContainerViewController = UIStoryboard.ListContainerViewStoryboard.instantiateViewController(withIdentifier: "ListContainer") as! ListContainerViewController
         navigationController?.pushViewController(listContainerViewController, animated: false)
         listContainerViewController.showFilterView()

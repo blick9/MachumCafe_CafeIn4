@@ -330,8 +330,8 @@
 			children = (
 				B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */,
 				B57407241ECAD8D3002B0ECE /* WriteReviewViewController.swift */,
-				B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */,
 				B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */,
+				B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */,
 			);
 			name = ReviewView;
 			sourceTree = "<group>";

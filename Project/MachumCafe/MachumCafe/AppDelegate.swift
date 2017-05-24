@@ -34,8 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         UINavigationBar.appearance().isTranslucent = false
         
-        NetworkUser.getUser { (message, user) in
-            if message {
+        NetworkUser.getUser { (result, user) in
+            if result {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
             }
@@ -65,6 +65,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        print("url:\(url)")
+        print("urlhost: \(url.host)")
+        print("urlPath: \(url.path)")
+        
+        let urlPath : String = url.path as String!
+        let urlHost : String = url.host as String!
+
+        if(urlPath == "/inner") {
+            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
+                Cafe.sharedInstance.specificCafe = modelCafe
+                let detailStoryboard: UIStoryboard = UIStoryboard(name: "CafeDetailView", bundle: nil)
+                let detailPage: CafeDetailViewController = detailStoryboard.instantiateViewController(withIdentifier: "CafeDetail" ) as! CafeDetailViewController
+                detailPage.currentCafeModel = Cafe.sharedInstance.specificCafe
+                self.window?.rootViewController = detailPage
+            }
+            
+        }
+        self.window?.makeKeyAndVisible()
+        return true
+    }
     
     func initLocationManager() {
         seenError = false
