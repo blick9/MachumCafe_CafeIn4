@@ -44,14 +44,10 @@ class LogInViewController: UIViewController {
                     let id = String(describing: user.id)
                     let email = user.email!
                     let nickname = user.property(forKey: "nickname") as! String
-                    let imageUrl = user.property(forKey: "profile_image")
-                    var profileImage = Data()
-                    NetworkUser.getUserImage(imageUrl: imageUrl as! String, callback: { (imageData) in
-                        profileImage = imageData
-                        User.sharedInstance.user = ModelUser(id: id, email: email, nickname: nickname, bookmark: [String](), profileImage: profileImage)
+                    let imageUrl = user.property(forKey: "profile_image") as! String
+                    NetworkUser.getUserImage(imageUrl: imageUrl, callback: { (imageData) in
+                        User.sharedInstance.user = ModelUser(id: id, email: email, nickname: nickname, bookmark: [String](), profileImage: imageData)
                         User.sharedInstance.isUser = true
-                        KOSessionTask.accessTokenInfoTask(completionHandler: { (accessTokenInfo, error) in
-                        })
                         self.dismiss(animated: true, completion: nil)
                     })
                 })
