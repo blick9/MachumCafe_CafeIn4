@@ -5,6 +5,7 @@
 //  Created by Febrix on 2017. 4. 25..
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
+// TODO: 카카오톡 로그인 연동 리팩토링! ! !
 
 import UIKit
 import GoogleMaps
@@ -36,9 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         // MARK: 카톡 토큰 있을 경우 유저정보 Get, 없을경우 우리 서버에서 유저정보 Get, 둘다 없을경우 nil
         let session = KOSession.shared()
-        print("OUT: ", session?.isOpen())
+        print("OUT: ", (session?.isOpen())!)
         if (session?.isOpen())! {
-            print("INNER: ", session?.isOpen())
+            print("INNER: ", (session?.isOpen())!)
             KOSessionTask.meTask(completionHandler: { (profile, error) in
                 let user = profile as? KOUser
                 let id = String(describing: user?.id)
