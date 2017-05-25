@@ -101,17 +101,11 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
         }
-        print(cafe["category"]!)
+
         cell.cafeNameLabel.text = cafe["name"] as? String
         cell.cafeAddressLabel.text = cafe["address"] as? String
         cell.distanceLabel.text = "\(Int(distanceInMeters))M"
-        if let cafeCategorys = cafe["category"] as? [String] {
-            var categorylabel = ""
-            for category in cafeCategorys {
-                categorylabel += "#\(category) "
-            }
-            cell.category.text = categorylabel
-        }
+        
         cell.bookmarkButton.isSelected = getUserBookmarkArray.contains(cafe["id"] as! String) ? true : false
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton(_:)), for: .touchUpInside)

@@ -9,14 +9,15 @@
 import UIKit
 
 class ListContainerViewController: UIViewController, SavedFilterDelegate {
-    var listTableViewController = UIViewController()
+    var listTableViewController = UIViewController() as? ListViewController
     var listMapViewController = UIViewController()
     var isMapView = false
     var selectedFilterArray = [String]()
-
+    
     @IBOutlet weak var listMapView: UIView!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     func savedFilter(SavedFilter pickedFilter: [String?]) {
         selectedFilterArray = [String]()
@@ -31,37 +32,37 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         listMapView.isHidden = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
 
-        listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView")
+        listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as! ListViewController
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
         print("filterArray 1 : ", selectedFilterArray)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("filterArray 2 : ", selectedFilterArray)
         applyFilter()
         print(Cafe.sharedInstance.filterCafeList.count, "------------------")
-        if selectedFilterArray.count != 0 {
-            if let categoryXib = Bundle.main.loadNibNamed("ShowCategoryView", owner: self, options: nil)?.first as? ShowCategoryView {
-                var isFilter = ""
-                for filter in selectedFilterArray {
-                    isFilter += "#\(filter) "
-                }
-                categoryXib.category.text = isFilter
-                self.view.addSubview(categoryXib)
-            }
-        }
+        print("filterArray 2 : ", selectedFilterArray)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     func applyFilter() {
         cafeFilter(filterArray: selectedFilterArray)
+        collectionView.reloadData()
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
         viewSwitchButtonItem.image = isMapView ? #imageLiteral(resourceName: "map_Bt") : #imageLiteral(resourceName: "list_Bt")
         
-        let newController = isMapView ? listTableViewController : listMapViewController
+        let newController = isMapView ? listTableViewController! : listMapViewController
         let oldController = childViewControllers.last
         
         oldController?.willMove(toParentViewController: nil)
@@ -105,5 +106,23 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
             }
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+    }
+}
+
+extension ListContainerViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedFilterArray.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
+        cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
+        cell.category.text = selectedFilterArray[indexPath.row]
+
+        return cell
     }
 }
