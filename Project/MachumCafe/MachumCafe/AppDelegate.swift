@@ -53,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     
                     NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
                         User.sharedInstance.user = user
+                        print(12345)
+                        dump(user)
                         User.sharedInstance.isUser = true
                         if !imageURL.isEmpty {
                             NetworkUser.getUserImage(imageURL: imageURL) { (imageData) in
@@ -66,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             // 카톡 유저 아닐 경우 우리 서버에서 세션 확인 후 모델 저장
             NetworkUser.getUser { (result, user) in
                 if result {
+                    print(678910)
+                    dump(user)
                     User.sharedInstance.user = user
                     User.sharedInstance.isUser = true
                     if !(user.getUser()["imageURL"] as! String).isEmpty {

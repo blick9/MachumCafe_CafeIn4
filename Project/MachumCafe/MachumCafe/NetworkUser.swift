@@ -71,8 +71,11 @@ class NetworkUser {
                 if let id = user["_id"]?.stringValue,
                 let email = user["email"]?.stringValue,
                 let nickname = user["nickname"]?.stringValue,
-                let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }),
-                let imageURL = user["imageURL"]?.stringValue {
+                let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
+                    var imageURL = String()
+                    if let userImageURL = user["imageURL"]?.stringValue {
+                        imageURL = userImageURL
+                    }
                     modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
                 }
             }
@@ -96,7 +99,8 @@ class NetworkUser {
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
+                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL
+                    )
                 }
             }
             callback(result, modelUser)
