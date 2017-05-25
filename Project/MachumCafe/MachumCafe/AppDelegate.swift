@@ -36,33 +36,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         UINavigationBar.appearance().isTranslucent = false
         
         // MARK: 카톡 로그인 세션 있을 경우 유저정보 Get, 없을경우 우리 서버에서 유저정보 Get, 둘다 세션 없을경우 nil
-//        let session = KOSession.shared()
-//        print("OUT: ", (session?.isOpen())!)
-//        if (session?.isOpen())! {
-//            print("INNER: ", (session?.isOpen())!)
-//            KOSessionTask.meTask(completionHandler: { (profile, error) in
-//                if let userProfile = profile {
-//                    print(profile, userProfile, error)
-//                    let user = userProfile as! KOUser
-////                    let id = String(describing: user.id)
-//                    let email = user.email!
-//                    let nickname = user.property(forKey: "nickname") as! String
-//                    let imageURL = user.property(forKey: "profile_image") as! String
-//                    
-//                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL, callback: { (result, user) in
-//                        User.sharedInstance.user = user
-//                        User.sharedInstance.isUser = true
-//                    })
-//                }
-//            })
-//        } else {
+        let session = KOSession.shared()
+        print("OUT: ", (session?.isOpen())!)
+        
+        // 카톡 세션 있을 시 유저 정보 모델 저장
+        if (session?.isOpen())! {
+            print("INNER: ", (session?.isOpen())!)
+
+            KOSessionTask.meTask(completionHandler: { (profile, error) in
+                if let userProfile = profile {
+                    let user = userProfile as! KOUser
+//                    let id = String(describing: user.id)
+                    let email = user.email!
+                    let nickname = user.property(forKey: "nickname") as! String
+                    let imageURL = user.property(forKey: "profile_image") as! String
+                    
+                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
+                        User.sharedInstance.user = user
+                        User.sharedInstance.isUser = true
+                        if !imageURL.isEmpty {
+                            NetworkUser.getUserImage(imageURL: imageURL) { (imageData) in
+                                user.setProfileImage(profileImage: imageData)
+                            }
+                        }
+                    }
+                }
+            })
+        } else {
+            // 카톡 유저 아닐 경우 우리 서버에서 세션 확인 후 모델 저장
             NetworkUser.getUser { (result, user) in
                 if result {
                     User.sharedInstance.user = user
                     User.sharedInstance.isUser = true
+                    if !(user.getUser()["imageURL"] as! String).isEmpty {
+                        NetworkUser.getUserImage(imageURL: user.getUser()["imageURL"] as! String) { (imageData) in
+                            user.setProfileImage(profileImage: imageData)
+                        }
+                    }
                 }
             }
-//        }
+        }
         
         KOSession.shared().isAutomaticPeriodicRefresh = true
 

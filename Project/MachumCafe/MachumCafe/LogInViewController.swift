@@ -47,19 +47,19 @@ class LogInViewController: UIViewController {
                     let nickname = user.property(forKey: "nickname") as! String
                     let imageURL = user.property(forKey: "profile_image") as! String
 
-                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL, callback: { (result, user) in
+                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
                         activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
                         if !imageURL.isEmpty {
-                            NetworkUser.getUserImage(imageURL: imageURL, callback: { (imageData) in
+                            NetworkUser.getUserImage(imageURL: imageURL) { (imageData) in
                                 user.setProfileImage(profileImage: imageData)
                                 self.dismiss(animated: true, completion: nil)
-                            })
+                            }
                         } else {
                             self.dismiss(animated: true, completion: nil)
                         }
-                    })
+                    }
                 })
             }
         })
@@ -74,10 +74,12 @@ class LogInViewController: UIViewController {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
                 if !(user.getUser()["imageURL"] as! String).isEmpty {
-                    NetworkUser.getUserImage(imageURL: user.getUser()["imageURL"] as! String, callback: { (imageData) in
+                    NetworkUser.getUserImage(imageURL: user.getUser()["imageURL"] as! String) { (imageData) in
                         user.setProfileImage(profileImage: imageData)
                         self.dismiss(animated: true, completion: nil)
-                    })
+                    }
+                } else {
+                    self.dismiss(animated: true, completion: nil)
                 }
             } else {
                 UIAlertController().oneButtonAlert(target: self, title: "로그인", message: "아이디 또는 비밀번호를 다시 확인하세요.", isHandler: false)

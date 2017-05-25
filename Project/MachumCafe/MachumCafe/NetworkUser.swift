@@ -92,7 +92,11 @@ class NetworkUser {
                 let email = user["email"]?.stringValue,
                 let nickname = user["nickname"]?.stringValue,
                 let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark)
+                    var imageURL = String()
+                    if let userImageURL = user["imageURL"]?.stringValue {
+                        imageURL = userImageURL
+                    }
+                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
                 }
             }
             callback(result, modelUser)
