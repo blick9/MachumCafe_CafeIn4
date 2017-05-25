@@ -100,7 +100,7 @@ class MainSideBarViewController: UIViewController {
     }
     
     @IBAction func bookmarkButtonAction(_ sender: Any) {
-        if User.sharedInstance.user.getUser()["id"] as! String == "" {
+        if !User.sharedInstance.isUser {
             UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
         } else {
             let bookmarkViewController = UIStoryboard.BookmarkViewStoryboard.instantiateViewController(withIdentifier: "Bookmark")
