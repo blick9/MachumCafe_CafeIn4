@@ -37,9 +37,9 @@ class SettingViewController: UIViewController {
                         User.sharedInstance.isUser = false
                         activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
                         self.dismiss(animated: true, completion: nil)
-                        print("로그아웃", success)
+                        print("카톡 유저 로그아웃!")
                     } else {
-                        print("fail")
+                        print("카톡 유저 로그아웃 실패!")
                     }
                 })
             } else {
