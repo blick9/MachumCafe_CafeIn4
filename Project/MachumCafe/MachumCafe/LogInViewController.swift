@@ -32,8 +32,6 @@ class LogInViewController: UIViewController {
     }
     
     func kakaoLogin() {
-        let activityIndicator = UIActivityIndicatorView()
-        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
         let session = KOSession.shared()
         if (session?.isOpen())! {
             session?.close()
@@ -48,6 +46,8 @@ class LogInViewController: UIViewController {
                     let imageURL = user.property(forKey: "profile_image") as! String
 
                     NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
+                        let activityIndicator = UIActivityIndicatorView()
+                        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
                         activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
