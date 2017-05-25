@@ -31,9 +31,9 @@ class LogInViewController: UIViewController {
      @IBAction func logInButton(_ sender: Any) {
         let activityIndicator = UIActivityIndicatorView()
         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
-        NetworkUser.logIn(email: emailTextField.text!, password: passwordTextField.text!) { (message, user) in
+        NetworkUser.logIn(email: emailTextField.text!, password: passwordTextField.text!) { (result, user) in
             activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
-            if message {
+            if result {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
                 self.dismiss(animated: true, completion: nil)

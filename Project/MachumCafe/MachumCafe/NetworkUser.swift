@@ -15,7 +15,7 @@ class NetworkUser {
     private static let url = URLpath.getURL()
 
     // MARK: 회원가입
-    static func register(email: String, password: String, nickname: String, callback: @escaping (_ message: Bool) -> Void) {
+    static func register(email: String, password: String, nickname: String, callback: @escaping (_ result: Bool) -> Void) {
         let parameters : Parameters = [
             "email" : email,
             "password" : password,
@@ -24,13 +24,13 @@ class NetworkUser {
         
         Alamofire.request("\(url)/api/v1/user/register", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             let res = JSON(data: response.data!)
-            let message = res["message"].boolValue
-            callback(message)
+            let result = res["result"].boolValue
+            callback(result)
         }
     }
     
     // MARK: 로그인
-    static func logIn(email: String, password: String, callback: @escaping (_ message: Bool, _ modelUser: ModelUser) -> Void) {
+    static func logIn(email: String, password: String, callback: @escaping (_ result: Bool, _ modelUser: ModelUser) -> Void) {
         let parameters : Parameters = [
             "email" : email,
             "password" : password
@@ -39,7 +39,7 @@ class NetworkUser {
         Alamofire.request("\(url)/api/v1/user/login", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             var modelUser = ModelUser()
             let res = JSON(data: response.data!)
-            let message = res["message"].boolValue
+            let result = res["result"].boolValue
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
                 let email = user["email"]?.stringValue,
@@ -48,17 +48,17 @@ class NetworkUser {
                     modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark)
                 }
             }
-            callback(message, modelUser)
+            callback(result, modelUser)
         }
     }
     
     // MARK: 세션정보 있을 경우 유저모델 저장
-    static func getUser(callback: @escaping (_ message: Bool, _ modelUser: ModelUser) -> Void) {
+    static func getUser(callback: @escaping (_ result: Bool, _ modelUser: ModelUser) -> Void) {
         Alamofire.request("\(url)/api/v1/user/login").responseJSON { (response) in
             var modelUser = ModelUser()
 
             let res = JSON(data: response.data!)
-            let message = res["message"].boolValue
+            let result = res["result"].boolValue
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
                 let email = user["email"]?.stringValue,
@@ -67,7 +67,7 @@ class NetworkUser {
                     modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark)
                 }
             }
-            callback(message, modelUser)
+            callback(result, modelUser)
         }
     }
     

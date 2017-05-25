@@ -37,7 +37,8 @@ class ListMapViewController: UIViewController{
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
         
-        googleMap.camera = GMSCameraPosition.camera(withLatitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double, zoom: 14)
+//        googleMap.camera = GMSCameraPosition.camera(withLatitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double, zoom: 14)
+        googleMap.camera = GMSCameraPosition.camera(withLatitude: 37.502323, longitude: 127.1090137, zoom: 14)
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
@@ -115,14 +116,16 @@ class ListMapViewController: UIViewController{
     
     func getCafeListWhenMovedLocation(coordinate: CLLocationCoordinate2D) {
         NetworkCafe.getCafeList(coordinate: ModelLocation(latitude: coordinate.latitude, longitude: coordinate.longitude, address: "")) { (modelCafe) in
+            var newCafeList = [ModelCafe]()
             for cafe in modelCafe {
                 let isCafe = Cafe.sharedInstance.allCafeList.filter({ (cafeList) -> Bool in
                     return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
                 })
                 if isCafe.isEmpty {
-                    Cafe.sharedInstance.allCafeList.append(cafe)
+                    newCafeList.append(cafe)
                 }
             }
+            Cafe.sharedInstance.allCafeList = newCafeList + Cafe.sharedInstance.allCafeList
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
             self.loadModelCafeData()
             self.insertCafeMarkers()
@@ -150,7 +153,7 @@ class ListMapViewController: UIViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailView" {
             let controller = segue.destination as! CafeDetailViewController
-            controller.cafeModel = currentSelectedCafe
+            controller.currentCafeModel = currentSelectedCafe
         }
     }
     

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Review View Controller-->
         <scene sceneID="JSa-wh-Nwn">
             <objects>
-                <viewController storyboardIdentifier="ReviewView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OMy-sF-ULj" customClass="ReviewViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReviewView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OMy-sF-ULj" customClass="ReviewViewController" customModule="MachumCafe" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IxS-Kw-S4U"/>
                         <viewControllerLayoutGuide type="bottom" id="uIw-JX-aae"/>
@@ -21,12 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ogo-qb-08g">
+                                <rect key="frame" x="0.0" y="64" width="375" height="550"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSy-7a-JuQ">
-                                <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="614" width="375" height="53"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWB-Pr-hn6">
-                                        <rect key="frame" x="132" y="17" width="110" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWB-Pr-hn6">
+                                        <rect key="frame" x="135" y="8.5" width="104" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="리뷰 작성하기">
                                             <color key="titleColor" red="1" green="0.9831145281" blue="0.97502447059999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -37,85 +41,11 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bWB-Pr-hn6" firstAttribute="centerY" secondItem="pSy-7a-JuQ" secondAttribute="centerY" id="CEb-ic-8i2"/>
+                                    <constraint firstItem="bWB-Pr-hn6" firstAttribute="centerX" secondItem="pSy-7a-JuQ" secondAttribute="centerX" id="O6n-C2-cCp"/>
+                                </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ogo-qb-08g">
-                                <rect key="frame" x="0.0" y="64" width="375" height="540"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="130" id="6df-cm-swZ" customClass="ReviewTableViewCell" customModule="MachumCafe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="130"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6df-cm-swZ" id="mvw-FF-IB9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2017/05/15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkj-Nz-ngT">
-                                                    <rect key="frame" x="268" y="16" width="86" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="커피 맛있어요~~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fl-oP-Xzu">
-                                                    <rect key="frame" x="112" y="73" width="242" height="53"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profil_side" translatesAutoresizingMaskIntoConstraints="NO" id="enx-OP-BQZ">
-                                                    <rect key="frame" x="22" y="16" width="60" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tk8-Ld-5uV" customClass="CosmosView" customModule="Cosmos">
-                                                    <rect key="frame" x="112" y="47" width="127" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                            <real key="value" value="2.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                                            <real key="value" value="20"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
-                                                            <integer key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
-                                                            <color key="value" red="1" green="0.90980392160000001" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                                            <color key="value" red="1" green="0.90980392160000001" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
-                                                            <real key="value" value="2"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                                            <color key="value" red="1" green="0.90980392160000001" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="익명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGJ-ub-DYv">
-                                                    <rect key="frame" x="112" y="16" width="30" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="reviewContent" destination="0fl-oP-Xzu" id="hYO-Z2-Z7H"/>
-                                            <outlet property="reviewDate" destination="hkj-Nz-ngT" id="kVx-AH-ooW"/>
-                                            <outlet property="reviewStarRating" destination="tk8-Ld-5uV" id="XTn-am-HoG"/>
-                                            <outlet property="reviewer" destination="ZGJ-ub-DYv" id="NnK-bY-Xdv"/>
-                                            <outlet property="reviewerPicture" destination="enx-OP-BQZ" id="g1l-32-6ek"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -123,8 +53,8 @@
                             <constraint firstItem="ogo-qb-08g" firstAttribute="leading" secondItem="5mN-gq-IbB" secondAttribute="leading" id="DF7-Ie-s9N"/>
                             <constraint firstAttribute="trailing" secondItem="ogo-qb-08g" secondAttribute="trailing" id="Mln-Ul-4tP"/>
                             <constraint firstItem="uIw-JX-aae" firstAttribute="top" secondItem="pSy-7a-JuQ" secondAttribute="bottom" id="TdH-Da-SWf"/>
-                            <constraint firstItem="uIw-JX-aae" firstAttribute="top" secondItem="ogo-qb-08g" secondAttribute="bottom" constant="63" id="XjA-qH-SDn"/>
-                            <constraint firstItem="pSy-7a-JuQ" firstAttribute="top" secondItem="IxS-Kw-S4U" secondAttribute="bottom" constant="539" id="k0w-3E-Lbz"/>
+                            <constraint firstItem="pSy-7a-JuQ" firstAttribute="top" secondItem="IxS-Kw-S4U" secondAttribute="bottom" constant="550" id="k0w-3E-Lbz"/>
+                            <constraint firstItem="pSy-7a-JuQ" firstAttribute="top" secondItem="ogo-qb-08g" secondAttribute="bottom" id="kec-lv-hOF"/>
                             <constraint firstAttribute="trailing" secondItem="pSy-7a-JuQ" secondAttribute="trailing" id="ssc-aj-ZgJ"/>
                             <constraint firstItem="pSy-7a-JuQ" firstAttribute="leading" secondItem="5mN-gq-IbB" secondAttribute="leading" id="wk9-wX-hHP"/>
                         </constraints>
@@ -138,12 +68,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xZ-UJ-LiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4079" y="2691"/>
+            <point key="canvasLocation" x="4077.5999999999999" y="2690.1049475262371"/>
         </scene>
         <!--Write Review View Controller-->
         <scene sceneID="ndF-Jm-pj9">
             <objects>
-                <viewController id="APR-hi-lDa" customClass="WriteReviewViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="APR-hi-lDa" customClass="WriteReviewViewController" customModule="MachumCafe" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CjA-T8-yud"/>
                         <viewControllerLayoutGuide type="bottom" id="zhf-Iq-XRl"/>
@@ -207,10 +137,10 @@
                                                 <color key="value" red="1" green="0.90980392156862744" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
-                                                <real key="value" value="2"/>
+                                                <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                <real key="value" value="2.5"/>
+                                                <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
                                                 <color key="value" red="1" green="0.90980392160000001" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -239,7 +169,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CF2-55-QFg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m10-fO-Znm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="m10-fO-Znm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -253,7 +183,4 @@
             <point key="canvasLocation" x="3122.4000000000001" y="2675.7121439280363"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="profil_side" width="80" height="80"/>
-    </resources>
 </document>

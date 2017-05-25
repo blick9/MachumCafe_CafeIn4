@@ -21,6 +21,11 @@ class ModelCafe {
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
     fileprivate var imagesData : [Data]?
+    fileprivate var reviews = [ModelReview]() {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
+        }
+    }
     
     init() {}
         
@@ -42,6 +47,10 @@ class ModelCafe {
         self.imagesData?.append(imageData)
     }
     
+    func setReviews(reviews: [ModelReview]) {
+        self.reviews = reviews
+    }
+    
     func getCafe() -> [String : Any] {
         var cafeDic = [String : Any]()
         cafeDic["id"] = id
@@ -57,25 +66,22 @@ class ModelCafe {
         cafeDic["imagesData"] = imagesData
         return cafeDic
     }
+
+    func getReviews() -> [ModelReview] {
+        return reviews
+    }
 }
 
 class Cafe {
     static let sharedInstance = Cafe()
     var allCafeList = [ModelCafe]() {
         didSet {
-            if self.allCafeList.count >= 1000 {
-                self.allCafeList.removeFirst(300)
+            if self.allCafeList.count >= 500 {
+                self.allCafeList.removeLast(150)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
             }
         }
     }
-    var filterCafeList = [ModelCafe]() {
-        didSet {
-            if self.allCafeList.count >= 300 {
-                self.allCafeList.removeFirst(100)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
-            }
-        }
-    }
+    var filterCafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
 }

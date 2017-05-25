@@ -52,10 +52,9 @@ class ListViewController: UIViewController {
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
         let cafeID = Cafe.sharedInstance.filterCafeList[buttonTag.tag].getCafe()["id"] as! String
-        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (message, des, userBookmark) in
+        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (result, des) in
             print(des)
-            if message {
-                User.sharedInstance.user.setBookmark(bookmarks: userBookmark)
+            if result {
                 self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
                 print(User.sharedInstance.user.getUser()["bookmark"]!)
                 buttonTag.isSelected = !buttonTag.isSelected
@@ -124,7 +123,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "DetailView" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! CafeDetailViewController
-                controller.cafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
+                controller.currentCafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
             }
         }
     }
