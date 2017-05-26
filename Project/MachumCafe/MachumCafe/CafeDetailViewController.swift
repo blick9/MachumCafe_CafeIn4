@@ -17,7 +17,6 @@ class CafeDetailViewController: UIViewController {
     var userID = String()
     var userBookmarkIDs = [String]()
     let nib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
-
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -54,7 +53,6 @@ class CafeDetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
 
-    
     func reloadReviewTable() {
         self.reviews = self.currentCafeModel.getReviews()
         self.reviewTableView.reloadData()
@@ -62,6 +60,7 @@ class CafeDetailViewController: UIViewController {
         // 리뷰 작성 또는 viewDidLoad시 마다 호출
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // UserBookmark 정보 불러오기
@@ -101,15 +100,6 @@ class CafeDetailViewController: UIViewController {
             UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
 
         }
-    }
-    
-
-    
-    @IBAction func shareActionButton(_ sender: Any) {
-      //  let detailURL =
-        let activityVC = UIActivityViewController(activityItems: ["www"], applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = self.view
-        self.present(activityVC, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

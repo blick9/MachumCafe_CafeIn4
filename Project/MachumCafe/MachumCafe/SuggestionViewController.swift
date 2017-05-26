@@ -13,6 +13,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
     var multiple = true
     var categoryArray = ["24시","연중무휴","주차","편한의자","좌식","모임","미팅룸","스터디","넓은공간","아이와함께","디저트","베이커리","로스팅","산책로","모닥불","드라이브","북카페","이색카페","야경","조용한","고급스러운","여유로운","힐링"]
     var filterArray = [String]()
+    var cafeData = [String:Any]()
     var selectedLocation = CLLocationCoordinate2D()
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
@@ -46,6 +47,9 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
         
         let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        cafeInfoDraw()
+        print("cafeData.isEmpty: ", cafeData.isEmpty)
+        print("cafeData: ", cafeData)
         // Do any additional setup after loading the view.
     }
     
@@ -111,6 +115,13 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
             }
         }
         draw()
+    }
+    
+    func cafeInfoDraw() {
+        nameTextField.text = cafeData["name"] as? String
+        telTextField.text = cafeData["tel"] as? String
+        addressTextField.text = cafeData["address"] as? String
+        hoursTextField.text = cafeData["hours"] as? String
     }
     
     @IBAction func closedAction(_ sender: Any) {
