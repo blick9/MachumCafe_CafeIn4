@@ -53,14 +53,13 @@ class NetworkCafe {
         }
     }
     
-    static func postCafeReview(review: ModelReview, callback: @escaping (_ result: Bool, _ modelReviews: [ModelReview]) -> Void) {
+    static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview]) -> Void) {
         let cafeId = review.getReview()["cafeId"] as! String
         let param : Parameters = ["review":review.getReview()]
         var modelReviews = [ModelReview]()
         
         Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
             let res = JSON(data: response.data!)
-            let result = res["result"].boolValue
             let reviews = res["reviews"].arrayValue
             let _ = reviews.map {
                 let review = $0.dictionaryValue
@@ -75,7 +74,7 @@ class NetworkCafe {
                     print("modelReview", modelReview)
                 }
             }
-            callback(result, modelReviews)
+            callback(modelReviews)
         }
     }
     
