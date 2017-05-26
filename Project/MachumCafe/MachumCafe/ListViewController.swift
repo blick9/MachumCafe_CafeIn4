@@ -54,7 +54,7 @@ class ListViewController: UIViewController {
         let cafeID = Cafe.sharedInstance.filterCafeList[buttonTag.tag].getCafe()["id"] as! String
         NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (result, des) in
             print(des)
-            if result {
+            if User.sharedInstance.isUser {
                 self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
                 print(User.sharedInstance.user.getUser()["bookmark"]!)
                 buttonTag.isSelected = !buttonTag.isSelected
