@@ -42,6 +42,12 @@ class NetworkAdmin {
     static func suggestionNewCafe(cafe: ModelCafe) {
         Alamofire.request("\(url)/api/v1/admin/suggestion/newcafe", method: .post, parameters: cafe.getCafe(), encoding: JSONEncoding.default).responseJSON {_ in}
     }
+    
+    static func suggestionEditCafe(cafe: [String:Any]) {
+        Alamofire.request("\(url)/api/v1/admin/suggestion/editcafe", method: .post, parameters: cafe, encoding: JSONEncoding.default).responseJSON { (_) in
+            
+        }
+    }
 }
 
     
