@@ -47,7 +47,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
         
         let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
-        cafeInfoDraw()
+//        cafeInfoDraw()
         print("cafeData.isEmpty: ", cafeData.isEmpty)
         print("cafeData: ", cafeData)
         // Do any additional setup after loading the view.
