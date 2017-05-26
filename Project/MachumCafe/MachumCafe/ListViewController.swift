@@ -12,7 +12,8 @@ import CoreLocation
 class ListViewController: UIViewController {
     var getUserID = String()
     var getUserBookmarkArray = [String]()
-    
+    var currentLocation = CLLocation()
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var isEmptyLabel: UILabel!
     
@@ -36,6 +37,7 @@ class ListViewController: UIViewController {
         
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        currentLocation = CLLocation(latitude: Location.sharedInstance.currentLocation.getLocation()["latitude"] as! Double , longitude: Location.sharedInstance.currentLocation.getLocation()["longitude"] as! Double)
         reloadTableView()
     }
     
@@ -84,13 +86,11 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
+        
         var cafe = Cafe.sharedInstance.filterCafeList[indexPath.row].getCafe()
-        
-        let currentLocation = CLLocation(latitude: Location.sharedInstance.currentLocation.getLocation()["latitude"] as! Double , longitude: Location.sharedInstance.currentLocation.getLocation()["longitude"] as! Double)
-        
         let cafeLocation = CLLocation(latitude: cafe["latitude"] as! CLLocationDegrees, longitude: cafe["longitude"] as! CLLocationDegrees)
-        
-        let distanceInMeters = currentLocation.distance(from: cafeLocation) 
+        var distance = Double(currentLocation.distance(from: cafeLocation))
+        let convertByDistance = distance.meterConvertToKiloMeter(places: 2)
         
         if (cafe["imagesData"] as! [Data]).isEmpty {
             NetworkCafe.getImagesData(imagesURL: cafe["imagesURL"] as! [String]) { (data) in
@@ -104,7 +104,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
 
         cell.cafeNameLabel.text = cafe["name"] as? String
         cell.cafeAddressLabel.text = cafe["address"] as? String
-        cell.distanceLabel.text = "\(Int(distanceInMeters))M"
+        cell.distanceLabel.text = "\(distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m")"
         
         if let cafeCategorys = cafe["category"] as? [String] {
             var categorylabel = ""
