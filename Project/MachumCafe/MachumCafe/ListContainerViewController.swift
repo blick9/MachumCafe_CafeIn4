@@ -125,4 +125,15 @@ extension ListContainerViewController : UICollectionViewDataSource, UICollection
 
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = Double((selectedFilterArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
+        return CGSize(width: width, height: 27)
+    }
+
 }
