@@ -143,32 +143,17 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             
             if indexPath.row == 0 {
                 cell.iconImage.image = cafeIcon[0]
-                if let tel = cafeData["tel"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = tel
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
-                }
+                cell.detailLabel.text = cafeData["tel"] as? String
             }
             
             if indexPath.row == 1 {
                 cell.iconImage.image = cafeIcon[1]
-                if let address = cafeData["address"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = address
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
-                }
+                cell.detailLabel.text = cafeData["address"] as? String
             }
             
             if indexPath.row == 2 {
                 cell.iconImage.image = cafeIcon[2]
-                if let hours = cafeData["hours"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = hours
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
-                }
+                cell.detailLabel.text = cafeData["hours"] as? String
             }
             
             if indexPath.row == 3 {
@@ -199,12 +184,5 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
         reviewView.currentCafeModel = currentCafeModel
-    }
-    
-    func suggestionButtonAction() {
-        let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
-        let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
-        suggestionViewController.cafeData = cafeData
-        present(suggestionViewNavigationController, animated: true, completion: nil)
     }
 }
