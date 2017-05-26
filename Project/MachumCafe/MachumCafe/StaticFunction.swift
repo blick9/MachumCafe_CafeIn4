@@ -88,6 +88,7 @@ extension UIStoryboard {
     static let FilterViewStoryboard = UIStoryboard(name: "FilterView", bundle: nil)
     static let LogInSignUpViewStoryboard = UIStoryboard(name: "LogIn&SignUpView", bundle: nil)
     static let BookmarkViewStoryboard = UIStoryboard(name: "BookmarkView", bundle: nil)
+    static let CafeDetailViewStoryboard = UIStoryboard(name: "CafeDetailView", bundle: nil)
     static let SuggestionViewStoryboard = UIStoryboard(name: "SuggestionView", bundle: nil)
     static let SettingViewStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
     static let SetLocationMapViewStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
