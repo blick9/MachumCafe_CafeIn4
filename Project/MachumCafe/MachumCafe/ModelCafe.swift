@@ -84,4 +84,5 @@ class Cafe {
     }
     var filterCafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
+    var specificCafe = ModelCafe()
 }
