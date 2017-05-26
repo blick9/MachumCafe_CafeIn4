@@ -112,7 +112,7 @@
                                             <outlet property="bookmarkButton" destination="v0Y-uU-oTA" id="V8w-Nf-0fM"/>
                                             <outlet property="cafeAddressLabel" destination="62y-l0-bhi" id="a70-bc-Oae"/>
                                             <outlet property="cafeNameLabel" destination="Qci-mE-oGf" id="BFB-kB-axo"/>
-                                            <outlet property="category" destination="1kE-k0-FqC" id="amw-6L-gKN"/>
+                                            <outlet property="category" destination="1kE-k0-FqC" id="LbB-aR-80y"/>
                                             <outlet property="distanceLabel" destination="C8J-TL-mI0" id="u5B-fJ-ZeI"/>
                                             <segue destination="fWC-di-gae" kind="show" identifier="DetailView" id="JB9-6v-gDu"/>
                                         </connections>
