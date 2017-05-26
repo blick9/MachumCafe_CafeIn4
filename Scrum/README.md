@@ -1,5 +1,19 @@
 # Scrum
 ## 일일 Scrum
+* ### 05.26(금)
+  * #### 전한나
+    * [ ] 디테일뷰 없는 항목 정리( '제보해주세요' 버튼 추가 및 SuggestionView 연결)
+    * [ ] editCafe api 생성
+    * [ ] 리뷰 cell count 리팩토링
+  * #### 구찬우
+    * [ ] 전체카페리스트 일 경우 카테고리 선택 항목 안보이게 리팩토링
+    * [ ] 기존 미터로 나오는 현상 1000m 이상 넘어가면 km로 나오게 리팩토링
+  * #### 이단비
+    * [ ] 공유 기능 마무리
+    * [ ] CafeDetailView 카페의 카테고리 항목 보이는 기능
+  * #### 조민재
+    * [ ] 키보드 Response
+
 * ### 05.23(화)
   * #### 전한나
     * [x] NetworkBookmark, 변수 이름 등 리팩토링
@@ -15,12 +29,12 @@
     * [ ] DetailView 리팩토링
     * [ ] Share 기능 구현 (Link)
   * #### 조민재
-    * [ ] ListView cell간 간격 조정
-    * [ ] ListView cell 각 카페별 tag 표시
+    * [x] ListView cell간 간격 조정
+    * [x] ListView cell 각 카페별 tag 표시
 
 * ### 05.22(월)
   * #### 전한나
-    * [ ] 카카오톡 로그인 연동
+    * [x] 카카오톡 로그인 연동
   * #### 구찬우
     * [x] Review Client 구현
     * [x] Review Server Api 구현
@@ -45,21 +59,21 @@
 * ### 05.16(화)
   * #### 전한나
     * [x] 경기도 DB 크롤링
-    * [ ] Filter 기능 구현
+    * [x] Filter 기능 구현
   * #### 구찬우
-    * [ ] Filter 기능 구현
+    * [x] Filter 기능 구현
     * [x] SetLocationView 주소 검색 기능 추가
     * [x] SuggestionView내 주소 검색 기능 추가
   * #### 이단비
     * [x] SuggestionView 카테고리 CollectionView 가져와 적용하기
   * #### 조민재
-    * [ ] Review 작성
+    * [x] Review 작성
     * [x] WriteReviewView 뷰 구성
     * [x] WriteReviewView starRaking 적용
 
 * ### 05.15(월)
   * #### 전한나
-    * [ ] SuggestionView Client Api 구현
+    * [x] SuggestionView Client Api 구현
     * [x] 지도 움직일 때 마다 데이터 불러오기 (중복 제외 로직 구현)
     * [x] Image Networking 이슈 해결
     * [x] BookmarkView 코드 리팩토링
@@ -69,13 +83,13 @@
     * [x] Image Networking 이슈 해결
     * [ ] 장소 검색 Api 적용
   * #### 이단비
-    * [ ] SuggestionView Client Api 구현
+    * [x] SuggestionView Client Api 구현
     * [x] FilterView 디자인 Support
       [x] FilterView 초기화 기능 구현
       [x] CollectionView 동적 Cell Size 구현
   * #### 조민재
-    * [ ] FilterView 초기화 기능 구현
-    * [ ] CollectionView 동적 Cell Size 구현
+    * [x] FilterView 초기화 기능 구현
+    * [x] CollectionView 동적 Cell Size 구현
     * [x] ReviewView 뷰 구성
     * [x] ReviewView tableView
 
@@ -103,15 +117,15 @@
 
   * ### 05.08(월)
     * #### 전체
-      * [ ] DB Model 재정의
+      * [x] DB Model 재정의
     * #### 전한나
       * [x] 크롤링 및 DB 자동화 로직
     * #### 구찬우
       * [x] 코드 개선
     * #### 이단비
-      * [ ] ImagePicker 추가 (다중 선택)
+      * [x] ImagePicker 추가 (다중 선택)
     * #### 조민재
-      * [ ] Background 위치 추적
+      * [x] Background 위치 추적
 
   * ### 05.04(목)
     * #### 전체 코드 리팩토링

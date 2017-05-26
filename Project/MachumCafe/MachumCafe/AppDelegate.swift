@@ -5,6 +5,7 @@
 //  Created by Febrix on 2017. 4. 25..
 //  Copyright © 2017년 Febrix. All rights reserved.
 //
+// TODO: 카카오톡 로그인 연동 리팩토링! ! !
 
 import UIKit
 import GoogleMaps
@@ -34,13 +35,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         UINavigationBar.appearance().isTranslucent = false
         
-        NetworkUser.getUser { (result, user) in
-            if result {
-                User.sharedInstance.user = user
-                User.sharedInstance.isUser = true
+        // MARK: 카톡 로그인 세션 있을 경우 유저정보 Get, 없을경우 우리 서버에서 유저정보 Get, 둘다 세션 없을경우 nil
+        let session = KOSession.shared()
+        // 카톡 세션 있을 시 유저 정보 모델 저장
+        if (session?.isOpen())! {
+            KOSessionTask.meTask(completionHandler: { (profile, error) in
+                if let userProfile = profile {
+                    let user = userProfile as! KOUser
+                    let email = user.email!
+                    let nickname = user.property(forKey: "nickname") as! String
+                    let imageURL = user.property(forKey: "profile_image") as! String
+                    
+                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
+                        User.sharedInstance.user = user
+                        User.sharedInstance.isUser = true
+                        if !imageURL.isEmpty {
+                            NetworkUser.getUserImage(imageURL: imageURL) { (imageData) in
+                                user.setProfileImage(profileImage: imageData)
+                            }
+                        }
+                    }
+                }
+            })
+        } else {
+            // 카톡 유저 아닐 경우 우리 서버에서 세션 확인 후 모델 저장
+            NetworkUser.getUser { (result, user) in
+                if result {
+                    User.sharedInstance.user = user
+                    User.sharedInstance.isUser = true
+                    if !(user.getUser()["imageURL"] as! String).isEmpty {
+                        NetworkUser.getUserImage(imageURL: user.getUser()["imageURL"] as! String) { (imageData) in
+                            user.setProfileImage(profileImage: imageData)
+                        }
+                    }
+                }
             }
         }
+        
+        KOSession.shared().isAutomaticPeriodicRefresh = true
+
         initLocationManager()
+        return true
+    }
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }
+        return true
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if KOSession.isKakaoAccountLoginCallback(url) {
+            return KOSession.handleOpen(url)
+        }
         return true
     }
 
@@ -52,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        KOSession.handleDidEnterBackground()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -59,6 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         initLocationManager()
+        KOSession.handleDidBecomeActive()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

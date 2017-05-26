@@ -30,7 +30,6 @@
 		A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A451EAF4A7600EB24C6 /* MainSideBarViewController.swift */; };
 		A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */; };
 		A7B73A4E1EB0434E00EB24C6 /* ListMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */; };
-		A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */; };
 		A7B73A531EB2597000EB24C6 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A521EB2597000EB24C6 /* FilterViewController.swift */; };
 		A7B73A551EB2597700EB24C6 /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7B73A541EB2597700EB24C6 /* FilterView.storyboard */; };
 		A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A581EB32E1300EB24C6 /* NetworkBookmark.swift */; };
@@ -44,12 +43,14 @@
 		A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */; };
 		B518D1921ED04A5E00A9C623 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */; };
 		B518D1931ED04A5E00A9C623 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */; };
+		B53EBC391ED6D2F3008950BC /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */; };
 		B56FD1361EC465D9002BDA2B /* NetworkAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */; };
 		B57407251ECAD8D3002B0ECE /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57407241ECAD8D3002B0ECE /* WriteReviewViewController.swift */; };
 		B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */; };
 		B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */; };
 		B58AAFDB1EB6CCA1002313CC /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */; };
 		B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */; };
+		B5B6C7671ED49FB4005F8CB6 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5B6C7661ED49FB4005F8CB6 /* KakaoOpenSDK.framework */; };
 		B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */; };
 		B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */; };
 		B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */; };
@@ -92,7 +93,6 @@
 		A7B73A451EAF4A7600EB24C6 /* MainSideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSideBarViewController.swift; sourceTree = "<group>"; };
 		A7B73A471EAF4A8100EB24C6 /* MainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainView.storyboard; sourceTree = "<group>"; };
 		A7B73A4D1EB0434E00EB24C6 /* ListMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListMapView.storyboard; sourceTree = "<group>"; };
-		A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
 		A7B73A521EB2597000EB24C6 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		A7B73A541EB2597700EB24C6 /* FilterView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilterView.storyboard; sourceTree = "<group>"; };
 		A7B73A581EB32E1300EB24C6 /* NetworkBookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkBookmark.swift; sourceTree = "<group>"; };
@@ -106,12 +106,15 @@
 		A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticFunction.swift; sourceTree = "<group>"; };
 		B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
+		B55B9C9D1ED4A12000E05665 /* MachumCafe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MachumCafe-Bridging-Header.h"; sourceTree = "<group>"; };
 		B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdmin.swift; sourceTree = "<group>"; };
 		B57407241ECAD8D3002B0ECE /* WriteReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMap.swift; sourceTree = "<group>"; };
 		B58AAFD81EB6CCA1002313CC /* BookmarkView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookmarkView.storyboard; sourceTree = "<group>"; };
 		B58AAFD91EB6CCA1002313CC /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		B58AAFDC1EB6D118002313CC /* BookmarkViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewCell.swift; sourceTree = "<group>"; };
+		B5B6C7661ED49FB4005F8CB6 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		B5BA81E41EC983EA00E5BBC9 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReviewView.storyboard; sourceTree = "<group>"; };
 		B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D5F55AB47AB6A2919F41773 /* Pods_MachumCafe.framework in Frameworks */,
+				B5B6C7671ED49FB4005F8CB6 /* KakaoOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +160,7 @@
 		34EC646EB29D465BF22D8288 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5B6C7661ED49FB4005F8CB6 /* KakaoOpenSDK.framework */,
 				DF69BB9D1440BFDB01A1A48E /* Pods_MachumCafe.framework */,
 			);
 			name = Frameworks;
@@ -229,7 +234,7 @@
 			children = (
 				A723B67E1EAF431700469FE4 /* ListContainerViewController.swift */,
 				A723B6801EAF432300469FE4 /* ListViewController.swift */,
-				A7B73A4F1EB0435D00EB24C6 /* ListMapViewController.swift */,
+				B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */,
 				A723B6821EAF433500469FE4 /* ListTableViewCell.swift */,
 				A723B6791EAF42D700469FE4 /* ListContainerView.storyboard */,
 				A723B67B1EAF42E600469FE4 /* ListView.storyboard */,
@@ -273,6 +278,7 @@
 				A723B6701EAF3FBF00469FE4 /* LaunchScreen.storyboard */,
 				A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */,
 				B7E57DAF1EB7026900A6D9A7 /* Info.plist */,
+				B55B9C9D1ED4A12000E05665 /* MachumCafe-Bridging-Header.h */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -399,6 +405,8 @@
 				TargetAttributes = {
 					A723B6631EAF3FBF00469FE4 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = XT45A6H292;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -528,6 +536,7 @@
 				A7B73A461EAF4A7600EB24C6 /* MainSideBarViewController.swift in Sources */,
 				A7B73A441EAF4A5700EB24C6 /* MainViewController.swift in Sources */,
 				B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */,
+				B53EBC391ED6D2F3008950BC /* ListMapViewController.swift in Sources */,
 				A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */,
 				A702F2201EBB2750003B390C /* SetLocationMapViewController.swift in Sources */,
 				B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */,
@@ -537,7 +546,6 @@
 				A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */,
 				B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */,
 				A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */,
-				A7B73A501EB0435D00EB24C6 /* ListMapViewController.swift in Sources */,
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
 				A7B73A5D1EB32E1300EB24C6 /* NetworkCafe.swift in Sources */,
 				A7B73A5F1EB32E1300EB24C6 /* URLpath.swift in Sources */,
@@ -654,12 +662,19 @@
 			baseConfigurationReference = D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XT45A6H292;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MachumCafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = febrix.9000.kuchen.MachumCafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MachumCafe/MachumCafe-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -669,12 +684,19 @@
 			baseConfigurationReference = 1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XT45A6H292;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MachumCafe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = febrix.9000.kuchen.MachumCafe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MachumCafe/MachumCafe-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
