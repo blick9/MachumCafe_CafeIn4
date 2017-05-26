@@ -12,11 +12,14 @@ class CafeDetailViewController: UIViewController {
     
     var currentCafeModel = ModelCafe()
     var cafeData = [String:Any]()
+    var cafeCategorys = [String]()
     var reviews = [ModelReview]()
     var indexCafeID = String()
     var userID = String()
     var userBookmarkIDs = [String]()
-    let nib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
+    let reviewTableViewCellNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
+    let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
+
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -29,20 +32,25 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var moreReviewButton: UIButton!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
-    var categoryCafeArray = cafeData["category"] as? [String]
 
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
     let reviewer = ["구제이", "한나", "메이플"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
         detailTableView.delegate = self
         detailTableView.dataSource = self
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
-        reviewTableView.register(nib, forCellReuseIdentifier: "Cell")
+        reviewTableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
+        
+        categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         
         cafeData = currentCafeModel.getCafe()
+        cafeCategorys = cafeData["category"] as! [String]
+        print(cafeCategorys)
         
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
@@ -191,34 +199,28 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         func numberOfSections(in collectionView: UICollectionView) -> Int {
             return 1
         }
-        
+
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return (categoryCafeArray?.count)!
+            return cafeCategorys.count
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
             cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
-            if let cafeCategorys = cafeData["category"] as? [String] {
-                var categoryLabel = ""
-                for category in cafeCategorys {
-                    categoryLabel += category
-                }
-                cell.category.text = categoryLabel
-
-            }
+           
+            cell.category.text = cafeCategorys[indexPath.row]
             
             return cell
         }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+            return UIEdgeInsets(top: 4, left: 5, bottom: 4, right: 5)
         }
         
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let width = Double((categoryCafeArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
-            return CGSize(width: width, height: 27)
+            let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
+            return CGSize(width: width, height: 20)
         }
     
 
