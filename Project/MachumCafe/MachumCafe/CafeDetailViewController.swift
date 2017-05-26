@@ -92,7 +92,7 @@ class CafeDetailViewController: UIViewController {
     func bookmarkToggleButton() {
         NetworkBookmark.setMyBookmark(userId: userID, cafeId: indexCafeID) { (result, des) in
             print(des)
-            if result {
+            if User.sharedInstance.isUser {
                 self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadBookmark"), object: nil)
             } else {

@@ -45,7 +45,8 @@ class MainSideBarViewController: UIViewController {
             userInfoLabel.isHidden = true
             logInButton.isHidden = false
         case true :
-            userProfileImageView.image = #imageLiteral(resourceName: "profil_side")
+            let profileImage = User.sharedInstance.user.getUser()["profileImage"] as! Data
+            userProfileImageView.image = profileImage.isEmpty ? #imageLiteral(resourceName: "profil_side") : UIImage(data: profileImage)
             userInfoLabel.isHidden = false
             userInfoLabel.text = ("\(User.sharedInstance.user.getUser()["nickname"] as! String)님")
             logInButton.isHidden = true
@@ -99,7 +100,7 @@ class MainSideBarViewController: UIViewController {
     }
     
     @IBAction func bookmarkButtonAction(_ sender: Any) {
-        if User.sharedInstance.user.getUser()["id"] as! String == "" {
+        if !User.sharedInstance.isUser {
             UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
         } else {
             let bookmarkViewController = UIStoryboard.BookmarkViewStoryboard.instantiateViewController(withIdentifier: "Bookmark")
