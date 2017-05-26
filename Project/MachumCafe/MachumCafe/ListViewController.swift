@@ -52,15 +52,15 @@ class ListViewController: UIViewController {
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
         let cafeID = Cafe.sharedInstance.filterCafeList[buttonTag.tag].getCafe()["id"] as! String
-        NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID) { (result, des) in
-            print(des)
-            if result {
+        if User.sharedInstance.isUser {
+            NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID, callback: { (desc) in
+                print(desc)
                 self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
                 print(User.sharedInstance.user.getUser()["bookmark"]!)
                 buttonTag.isSelected = !buttonTag.isSelected
-            } else {
-                UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요")
-            }
+            })
+        } else {
+            UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요")
         }
     }
     
@@ -105,6 +105,14 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.cafeNameLabel.text = cafe["name"] as? String
         cell.cafeAddressLabel.text = cafe["address"] as? String
         cell.distanceLabel.text = "\(Int(distanceInMeters))M"
+        
+        if let cafeCategorys = cafe["category"] as? [String] {
+            var categorylabel = ""
+            for category in cafeCategorys {
+                categorylabel += "#\(category) "
+            }
+            cell.category.text = categorylabel
+        }
         
         cell.bookmarkButton.isSelected = getUserBookmarkArray.contains(cafe["id"] as! String) ? true : false
         cell.bookmarkButton.tag = indexPath.row

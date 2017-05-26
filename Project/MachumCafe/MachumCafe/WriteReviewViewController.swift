@@ -34,13 +34,13 @@ class WriteReviewViewController: UIViewController {
         if writeReview.text.isEmpty || starRating.rating == 0 {
             UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록", message: "별점 또는 내용을 입력해주세요.", isHandler: false)
         } else {
-            let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
-            NetworkCafe.postCafeReview(review: review) { (bool, modelReviews) in
-                if bool {
+            if User.sharedInstance.isUser {
+                let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
+                NetworkCafe.postCafeReview(review: review, callback: { (modelReviews) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
-                } else {
-                    UIAlertController().oneButtonAlert(target: self.reviewView, title: "리뷰 등록실패", message: "로그인 후 이용해주세요.", isHandler: false)
-                }
+                })
+            } else {
+                UIAlertController().oneButtonAlert(target: self.reviewView, title: "리뷰 등록실패", message: "로그인 후 이용해주세요.", isHandler: false)
             }
             self.dismiss(animated: true, completion: nil)
         }

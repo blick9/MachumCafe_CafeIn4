@@ -15,7 +15,7 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var cafeAddressLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
-    
+    @IBOutlet weak var category: UILabel!
     
     override func layoutSubviews() {
         self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
