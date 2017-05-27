@@ -16,10 +16,10 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     let listViewNib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
 
     
-    @IBOutlet weak var listMapView: UIView!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var selectedFilterViewTopConstraint: NSLayoutConstraint!
     
     func savedFilter(SavedFilter pickedFilter: [String?]) {
         selectedFilterArray = [String]()
@@ -31,9 +31,9 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "맞춤카페 목록"
-        listMapView.isHidden = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-
+        selectedFilterViewTopConstraint.constant = -40
+        
         listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as! ListViewController
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
@@ -53,11 +53,27 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
     }
     
     func applyFilter() {
         cafeFilter(filterArray: selectedFilterArray)
         collectionView.reloadData()
+        showSelectedFilterView()
+    }
+    
+    func showSelectedFilterView() {
+        if selectedFilterArray.isEmpty {
+            self.selectedFilterViewTopConstraint.constant = -40
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        } else {
+            self.selectedFilterViewTopConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
