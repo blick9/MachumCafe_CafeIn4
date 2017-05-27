@@ -13,11 +13,12 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     var listMapViewController = UIViewController()
     var isMapView = false
     var selectedFilterArray = [String]()
+    let listViewNib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
     
-    @IBOutlet weak var listMapView: UIView!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var selectedFilterViewTopConstraint: NSLayoutConstraint!
     
     func savedFilter(SavedFilter pickedFilter: [String?]) {
         selectedFilterArray = [String]()
@@ -29,25 +30,21 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "맞춤카페 목록"
-        listMapView.isHidden = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-
+        selectedFilterViewTopConstraint.constant = -40
+        
         listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as! ListViewController
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
-        print("filterArray 1 : ", selectedFilterArray)
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(listViewNib, forCellWithReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         applyFilter()
-        print(Cafe.sharedInstance.filterCafeList.count, "------------------")
-        print("filterArray 2 : ", selectedFilterArray)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +54,21 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     func applyFilter() {
         cafeFilter(filterArray: selectedFilterArray)
         collectionView.reloadData()
+        showSelectedFilterView()
+    }
+    
+    func showSelectedFilterView() {
+        if selectedFilterArray.isEmpty {
+            self.selectedFilterViewTopConstraint.constant = -40
+            UIView.animate(withDuration: 0.3, animations: {
+//                self.view.layoutIfNeeded()
+            })
+        } else {
+            self.selectedFilterViewTopConstraint.constant = 0
+            UIView.animate(withDuration: 0.3, animations: {
+//                self.view.layoutIfNeeded()
+            })
+        }
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
@@ -135,5 +147,4 @@ extension ListContainerViewController : UICollectionViewDataSource, UICollection
         let width = Double((selectedFilterArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
         return CGSize(width: width, height: 27)
     }
-
 }
