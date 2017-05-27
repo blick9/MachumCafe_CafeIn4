@@ -110,3 +110,30 @@ public func getCafeListFromCurrentLocation() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
 }
+
+extension Double {
+    mutating func roundToPlaces(places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return Darwin.round(self * divisor) / divisor
+    }
+    
+    mutating func meterConvertToKiloMeter(places: Int) -> Double {
+        var result = Double()
+        if self > 1000 {
+            var kiloMeter = self / 1000
+            result = kiloMeter.roundToPlaces(places: places)
+        } else {
+            result = self.roundToPlaces(places: 0)
+        }
+        return result
+    }
+}
+
+extension String {
+    func returnDistanceByMeasure(distance: Double) -> String {
+        var dist = distance
+        let convertByDistance = dist.meterConvertToKiloMeter(places: 2)
+        let result = distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m"
+        return result
+    }
+}
