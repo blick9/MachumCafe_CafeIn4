@@ -51,8 +51,6 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
             getCafeInfo()
             checkSelected()
         }
-        print("cafeData.isEmpty: ", cafeData.isEmpty)
-        print("cafeData: ", cafeData)
         // Do any additional setup after loading the view.
     }
     
@@ -130,7 +128,6 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
                 previewImage[i].setBackgroundImage(imageArray[i], for: .normal)
             }
         }
-        print(imageArray, imageArray.count)
     }
     
     func savedImage(SavedImage pickedImage: [UIImage?]) {
@@ -154,7 +151,6 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
 }
 
 extension SuggestionViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -175,8 +171,6 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
         }
         cell.isSelected = !cell.isSelected
         filterArray.append(categoryArray[indexPath.row])
-        print(filterArray)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -184,7 +178,6 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
         if let index = filterArray.index(of: categoryIndex) {
             filterArray.remove(at: index)
         }
-        print(filterArray)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -202,7 +195,6 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
 }
 
 extension SuggestionViewController: GMSAutocompleteViewControllerDelegate {
-    
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         selectedLocation = place.coordinate
         NetworkMap.getAddressFromCoordinate(latitude: selectedLocation.latitude, longitude: selectedLocation.longitude) { address in

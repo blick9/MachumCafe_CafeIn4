@@ -19,7 +19,6 @@ class CafeDetailViewController: UIViewController {
     var userBookmarkIDs = [String]()
     let reviewTableViewCellNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
     let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
-
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -31,7 +30,6 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var cafeImageView: UIImageView!
     @IBOutlet weak var moreReviewButton: UIButton!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
-    
 
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
     let reviewer = ["구제이", "한나", "메이플"]
@@ -86,7 +84,6 @@ class CafeDetailViewController: UIViewController {
     func reloadReviewTable() {
         self.reviews = self.currentCafeModel.getReviews()
         self.reviewTableView.reloadData()
-        print("♻︎♻︎")
         // 리뷰 작성 또는 viewDidLoad시 마다 호출
     }
     
@@ -99,7 +96,6 @@ class CafeDetailViewController: UIViewController {
         bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
         
         //테이블뷰 높이 오토레이아웃 설정
-        let cell = detailTableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
         tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight))
         reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
         self.view.layoutIfNeeded()
@@ -136,6 +132,17 @@ class CafeDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
+        reviewView.currentCafeModel = currentCafeModel
+    }
+    
+    func suggestionButtonAction() {
+        let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
+        let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
+        suggestionViewController.cafeData = cafeData
+        present(suggestionViewNavigationController, animated: true, completion: nil)
+    }    
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
@@ -148,18 +155,14 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if tableView.tag == 1 {
             return 3
-        }
-            
-        else {
+        } else {
             return reviews.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
             cell.detailLabel.sizeToFit()
@@ -169,33 +172,23 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 if let tel = cafeData["tel"] as? String {
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = tel
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
                 }
-            }
-            
-            if indexPath.row == 1 {
+            } else if indexPath.row == 1 {
                 cell.iconImage.image = cafeIcon[1]
                 if let address = cafeData["address"] as? String {
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = address
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
                 }
-            }
-            
-            if indexPath.row == 2 {
+            } else if indexPath.row == 2 {
                 cell.iconImage.image = cafeIcon[2]
                 if let hours = cafeData["hours"] as? String {
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = hours
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
                 }
             }
+            cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
             return cell
-            
-            } else {
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
             if !reviews.isEmpty {
                 let review = reviews[indexPath.row].getReview()
@@ -207,51 +200,34 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
             }
             return cell
-            
         }
     }
 }
 
-    extension CafeDetailViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension CafeDetailViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
 
-        func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 1
-        }
-
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return cafeCategorys.count
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
-            cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
-           
-            cell.category.text = cafeCategorys[indexPath.row]
-            
-            return cell
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 4, left: 5, bottom: 4, right: 5)
-        }
-        
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
-            return CGSize(width: width, height: 20)
-        }
-    
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
-        reviewView.currentCafeModel = currentCafeModel
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cafeCategorys.count
     }
     
-    func suggestionButtonAction() {
-        let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
-        let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
-        suggestionViewController.cafeData = cafeData
-        present(suggestionViewNavigationController, animated: true, completion: nil)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
+        cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
+       
+        cell.category.text = cafeCategorys[indexPath.row]
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 4, left: 5, bottom: 4, right: 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
+        return CGSize(width: width, height: 20)
     }
 }

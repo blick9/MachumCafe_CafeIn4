@@ -31,7 +31,6 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
-        
         if !nicknameTextField.hasText || !emailTextField.hasText || !passwordTextField.hasText {
             UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "빈칸을 채워주세요 :(", isHandler: false)
         } else if passwordTextField.text! != cofirmPasswordTextField.text! {
@@ -47,13 +46,6 @@ class SignUpViewController: UIViewController {
                 }
             }
         }
-    }
-}
-
-extension String {
-    var isEmail: Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegEx).evaluate(with: self)
     }
 }
 
