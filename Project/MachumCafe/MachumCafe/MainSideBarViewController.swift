@@ -174,8 +174,19 @@ extension MainSideBarViewController : UIImagePickerControllerDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] {
             // Network Api 적용
-            userProfileImageView.image = image as? UIImage
             dismiss(animated: true, completion: nil)
+            NetworkUser.setUserProfileImage(userID: User.sharedInstance.user.getUser()["id"] as! String, image: image as! UIImage, callback: { (result) in
+                if result {
+//                    self.userProfileImageView.image = image as? UIImage
+                    let imageData = UIImageJPEGRepresentation(image as! UIImage, 0.1)
+                    User.sharedInstance.user.setProfileImage(profileImage: imageData!)
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
+                    }
+                } else {
+                    UIAlertController().oneButtonAlert(target: self, title: "에러", message: "잠시 후 다시 시도해주세요.", isHandler: false)
+                }
+            })
         }
     }
 }
