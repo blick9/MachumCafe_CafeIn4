@@ -30,9 +30,9 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var cafeImageView: UIImageView!
     @IBOutlet weak var moreReviewButton: UIButton!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
+    @IBOutlet weak var cafeImageScrollView: UIScrollView!
 
-    let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
-    let reviewer = ["구제이", "한나", "메이플"]
+    let cafeIcon = [#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "telephoneD"), #imageLiteral(resourceName: "hourD")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +54,14 @@ class CafeDetailViewController: UIViewController {
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
         
-        let imagesData = cafeData["imagesData"] as? [Data]
+        print(cafeData["imagesData"] as! [Data])
+        
+        if !(cafeData["imagesData"] as! [Data]).isEmpty {
+            makeCafeImageScrollView(imagesData: cafeData["imagesData"] as! [Data])
+        } else {
+            cafeImageScrollView.addSubview(UIImageView(image: #imageLiteral(resourceName: "1")))
+        }
+        
         navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
 //        cafeImageView.image = UIImage(data: (imagesData?[0])!)
@@ -114,6 +121,18 @@ class CafeDetailViewController: UIViewController {
         cafeNameLabel.sizeToFit()
     }
     
+    func makeCafeImageScrollView(imagesData: [Data]) {
+        for i in 0..<imagesData.count {
+            let cafeImage = UIImageView()
+            cafeImage.contentMode = .scaleAspectFill
+            cafeImage.image = UIImage(data: imagesData[i])
+            let xPosition = self.view.frame.width * CGFloat(i)
+            cafeImage.frame = CGRect(x: xPosition, y: 0, width: self.cafeImageScrollView.frame.width, height: self.cafeImageScrollView.frame.height)
+            cafeImageScrollView.contentSize.width = cafeImageScrollView.frame.width * CGFloat(i+1)
+            cafeImageScrollView.addSubview(cafeImage)
+        }
+    }
+    
     func bookmarkToggleButton() {
         if User.sharedInstance.isUser {
             NetworkBookmark.setMyBookmark(userId: userID, cafeId: indexCafeID, callback: { (desc) in
@@ -169,15 +188,15 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             
             if indexPath.row == 0 {
                 cell.iconImage.image = cafeIcon[0]
-                if let tel = cafeData["tel"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = tel
-                }
-            } else if indexPath.row == 1 {
-                cell.iconImage.image = cafeIcon[1]
                 if let address = cafeData["address"] as? String {
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = address
+                }
+            } else if indexPath.row == 1 {
+                cell.iconImage.image = cafeIcon[1]
+                if let tel = cafeData["tel"] as? String {
+                    cell.suggestionButton.isHidden = true
+                    cell.detailLabel.text = tel
                 }
             } else if indexPath.row == 2 {
                 cell.iconImage.image = cafeIcon[2]
