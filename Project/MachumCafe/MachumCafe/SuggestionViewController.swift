@@ -78,7 +78,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
         
         if cafeData.isEmpty {
             NetworkAdmin.uploadsImage(images: uploadImage) { (imagesURL) in
-                let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: address, hours: self.hoursTextField.text!, latitude: self.selectedLocation.latitude, longitude: self.selectedLocation.longitude, category: self.filterArray, imagesURL: imagesURL)
+                let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: address, hours: self.hoursTextField.text!, latitude: self.selectedLocation.latitude, longitude: self.selectedLocation.longitude, category: self.filterArray, rating: 0.0, imagesURL: imagesURL)
                 NetworkAdmin.suggestionNewCafe(cafe: cafe)
             }
         } else {
