@@ -66,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             user.setProfileImage(profileImage: imageData)
                         }
                     }
-                    print(User.sharedInstance.user.getUser())
                 }
             }
         }

@@ -50,9 +50,6 @@ class ModelReview {
     func setProfileImage(profileImage: Data) {
         self.profileImage = profileImage
     }
-//    func setProfileImageURL(imageURL: String) {
-//        self.profileImageURL = imageURL
-//    }
 }
 
 class Review {

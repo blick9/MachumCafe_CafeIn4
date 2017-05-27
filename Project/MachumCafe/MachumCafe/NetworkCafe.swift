@@ -103,7 +103,7 @@ class NetworkCafe {
         }
     }
     
-    static func getCafeReviews(cafeModel: ModelCafe/*, callback: @escaping (_ modelReviews: [ModelReview]) -> Void*/) {
+    static func getCafeReviews(cafeModel: ModelCafe) {
         let cafeId = cafeModel.getCafe()["id"] as! String
         var modelReviews = [ModelReview]()
         

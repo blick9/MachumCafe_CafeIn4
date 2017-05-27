@@ -54,9 +54,6 @@ class CafeDetailViewController: UIViewController {
         
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
-        
-        print(cafeData["imagesData"] as! [Data])
-        
         if !(cafeData["imagesData"] as! [Data]).isEmpty {
             makeCafeImageScrollView(imagesData: cafeData["imagesData"] as! [Data])
         } else {

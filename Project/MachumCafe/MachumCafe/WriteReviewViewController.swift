@@ -56,7 +56,6 @@ class WriteReviewViewController: UIViewController {
                 let review = ModelReview(isKakao: userData["isKakao"] as! Bool, cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, profileImageURL: userData["profileImageURL"] as? String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
                 NetworkCafe.postCafeReview(review: review, callback: { (modelReviews) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
-                    print(7)
                     self.dismiss(animated: true, completion: nil)
                 })
             } else {
