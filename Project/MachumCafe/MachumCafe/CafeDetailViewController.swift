@@ -146,42 +146,29 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 if let tel = cafeData["tel"] as? String {
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = tel
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
                 }
-            }
-            
-            if indexPath.row == 1 {
+            } else if indexPath.row == 1 {
                 cell.iconImage.image = cafeIcon[1]
                 if let address = cafeData["address"] as? String {
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = address
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
                 }
-            }
-            
-            if indexPath.row == 2 {
+            } else if indexPath.row == 2 {
                 cell.iconImage.image = cafeIcon[2]
                 if let hours = cafeData["hours"] as? String {
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = hours
-                } else {
-                    cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
                 }
-            }
-            
-            if indexPath.row == 3 {
+            } else if indexPath.row == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
                 cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
                 cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
                 cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
                 return cell
             }
+            cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
             return cell
-            }
-            
-        else {
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
             if !reviews.isEmpty {
                 let review = reviews[indexPath.row].getReview()
@@ -193,9 +180,9 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
             }
             return cell
-            
         }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
         reviewView.currentCafeModel = currentCafeModel

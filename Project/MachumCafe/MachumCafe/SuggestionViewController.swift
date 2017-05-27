@@ -51,8 +51,6 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
             getCafeInfo()
             checkSelected()
         }
-        print("cafeData.isEmpty: ", cafeData.isEmpty)
-        print("cafeData: ", cafeData)
         // Do any additional setup after loading the view.
     }
     
