@@ -9,7 +9,7 @@
 import UIKit
 import GooglePlaces
 
-class SuggestionViewController: UIViewController, SavedImageDelegate {
+class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFieldDelegate {
     var multiple = true
     var filterArray = [String]()
     var cafeData = [String:Any]()
@@ -31,6 +31,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
     
     var previewImage =  [PreviewImageButton]()
     var imageArray = [UIImage?]()
+    var textFieldArray = [UITextField]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,17 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
             getCafeInfo()
             checkSelected()
         }
+        
+        self.textFieldArray = [nameTextField,telTextField,addressTextField,detailAddressTextField,hoursTextField]
+        
+        for textfield in textFieldArray{
+            textfield.delegate = self
+        }
         // Do any additional setup after loading the view.
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func imagePickerActionButton(_ sender: Any) {

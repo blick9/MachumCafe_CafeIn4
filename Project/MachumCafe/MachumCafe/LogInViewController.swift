@@ -38,7 +38,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        textField.endEditing(true)
         return true
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

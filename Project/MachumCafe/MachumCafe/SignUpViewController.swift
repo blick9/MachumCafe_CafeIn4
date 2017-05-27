@@ -9,21 +9,51 @@
 import UIKit
 import Alamofire
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var cofirmPasswordTextField: UITextField!
+    var textFieldArray = [UITextField]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        self.textFieldArray = [nicknameTextField,emailTextField,passwordTextField,cofirmPasswordTextField]
+        for textfield in textFieldArray{
+            textfield.delegate = self
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .default
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for textfield in textFieldArray{
+            textfield.resignFirstResponder()
+        }
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if self.view.frame.origin.y == 0{
+            self.view.frame.origin.y -= 125
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+            if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y += 125
+        }
+    }
+
     
     @IBAction func backButtonAction(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: true)
