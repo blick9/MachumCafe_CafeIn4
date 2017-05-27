@@ -38,11 +38,11 @@ class WriteReviewViewController: UIViewController {
                 let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
                 NetworkCafe.postCafeReview(review: review, callback: { (modelReviews) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
+                    self.dismiss(animated: true, completion: nil)
                 })
             } else {
-                UIAlertController().oneButtonAlert(target: self.reviewView, title: "리뷰 등록실패", message: "로그인 후 이용해주세요.", isHandler: false)
+                UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록실패", message: "로그인 후 이용해주세요.", isHandler: false)
             }
-            self.dismiss(animated: true, completion: nil)
         }
 
 //        let indexPath = IndexPath(row: 0, section: 0)
