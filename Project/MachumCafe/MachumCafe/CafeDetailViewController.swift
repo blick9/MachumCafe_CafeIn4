@@ -230,7 +230,11 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.reviewDate.text = review["date"] as? String
                 cell.reviewContent.text = review["reviewContent"] as? String
                 cell.reviewStarRating.rating = review["rating"] as! Double
-                cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
+                
+                NetworkUser.getUserImage(userID: review["userId"] as? String, imageURL: review["profileImageURL"] as! String, callback: { (imageData) in
+                    cell.reviewerPicture.image = UIImage(data: imageData)
+                })
+//                cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
             }
             return cell
         }

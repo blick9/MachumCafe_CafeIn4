@@ -122,18 +122,21 @@ class NetworkUser {
     }
     
     static func getUserImage(userID: String?, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
-        if let isUserID = userID {
-            Alamofire.request("\(url)/api/v1/user/\(isUserID)/profileimage/\(imageURL)").responseData(completionHandler: { (response) in
-                if let imageData = response.result.value {
-                    callback(imageData)
-                }
-            })
-        } else {
+        let session = KOSession.shared()
+        print("session?.isOpen(): ", (session?.isOpen())!)
+        if (session?.isOpen())! {
             Alamofire.request(imageURL).responseData { (response) in
                 if let imageData = response.result.value {
                     callback(imageData)
                 }
             }
+        } else {
+            Alamofire.request("\(url)/api/v1/user/\(userID!))/profileimage/\(imageURL)").responseData(completionHandler: { (response) in
+                print(response)
+                if let imageData = response.result.value {
+                    callback(imageData)
+                }
+            })
         }
     }
     

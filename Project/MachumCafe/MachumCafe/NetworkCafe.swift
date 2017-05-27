@@ -94,15 +94,18 @@ class NetworkCafe {
                 let reviewContent = review["reviewContent"]?.stringValue,
                 let rating = review["rating"]?.doubleValue {
                     let modelReview = ModelReview(id: id, cafeId: cafeId, userId: userId, nickname: nickname, date: date, reviewContent: reviewContent, rating: rating)
+                    if let profileImageURL = review["profileImageURL"]?.stringValue {
+//                        modelReview.setProfileImage(profileImage: User.sharedInstance.user.getUser()["profileImage"] as! Data)
+                        modelReview.setProfileImageURL(imageURL: profileImageURL)
+                    }
                     modelReviews.insert(modelReview, at: 0)
-                    print("modelReview", modelReview)
                 }
             }
             callback(modelReviews)
         }
     }
     
-    static func getCafeReviews(cafeModel: ModelCafe) {
+    static func getCafeReviews(cafeModel: ModelCafe/*, callback: @escaping (_ modelReviews: [ModelReview]) -> Void*/) {
         let cafeId = cafeModel.getCafe()["id"] as! String
         var modelReviews = [ModelReview]()
         
@@ -118,9 +121,13 @@ class NetworkCafe {
                     let reviewContent = review["reviewContent"]?.stringValue,
                     let rating = review["rating"]?.doubleValue {
                     let modelReview = ModelReview(id: id, cafeId: cafeId, userId: userId, nickname: nickname, date: date, reviewContent: reviewContent, rating: rating)
+                    if let profileImageURL = review["profileImageURL"]?.stringValue {
+                        modelReview.setProfileImageURL(imageURL: profileImageURL)
+                    }
                     modelReviews.insert(modelReview, at: 0)
                 }
             }
+//            callback(modelReviews)
             cafeModel.setReviews(reviews: modelReviews)
         }
     }
