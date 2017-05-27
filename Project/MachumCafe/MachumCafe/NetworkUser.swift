@@ -49,7 +49,7 @@ class NetworkUser {
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
+                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
                 }
             }
             callback(result, modelUser)
@@ -76,7 +76,7 @@ class NetworkUser {
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
+                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
                 }
             }
             callback(result, modelUser)
@@ -99,7 +99,7 @@ class NetworkUser {
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL
+                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL
                     )
                 }
             }
@@ -123,4 +123,27 @@ class NetworkUser {
         }
     }
     
+    static func setUserProfileImage(userID: String, image: UIImage, callback: @escaping (_ result: Bool) -> Void) {
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            let imageData = UIImageJPEGRepresentation(image, 0.1)
+            multipartFormData.append(imageData!, withName: "image", fileName: "file.png", mimeType: "image/png")
+        }, to: "\(url)/api/v1/user/\(userID)/profileimage", method: .put) { (res) in
+            switch res {
+            case .success(let upload, _, _):
+                print("success")
+                upload.responseJSON(completionHandler: { (response) in
+                    let res = JSON(data: response.data!)
+                    let result = res["result"].boolValue
+                    let imageURL = res["imageURL"].stringValue
+                    let convertURL = "\(url)/api/v1/user/profileimage/\(imageURL)"
+                    User.sharedInstance.user.setProfileImageURL(imageURL: convertURL)
+                    callback(result)
+                })
+            case .failure(let error):
+                print("failed")
+                print(error)
+            }
+        }
+    }
 }

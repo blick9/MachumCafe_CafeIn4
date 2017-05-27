@@ -14,18 +14,17 @@ class ModelUser {
     fileprivate var email = String()
     fileprivate var nickname = String()
     fileprivate var bookmark = [String]()
-    fileprivate var imageURL : String?
+    fileprivate var profileImageURL : String?
     fileprivate var profileImage = Data()
     
     init() {}
     
-    init(id: String, email: String, nickname: String, bookmark: [String], imageURL: String? = nil) {
+    init(id: String, email: String, nickname: String, bookmark: [String], profileImageURL: String? = nil) {
         self.id = id
         self.email = email
         self.nickname = nickname
         self.bookmark = bookmark
-        self.imageURL = imageURL
-        self.profileImage = Data()
+        self.profileImageURL = profileImageURL
     }
     
     func getUser() -> [String : Any] {
@@ -34,23 +33,31 @@ class ModelUser {
         userDic["email"] = email
         userDic["nickname"] = nickname
         userDic["bookmark"] = bookmark
-        userDic["imageURL"] = imageURL
+        userDic["profileImageURL"] = profileImageURL
         userDic["profileImage"] = profileImage
         return userDic
-    }
-    
-    func setProfileImage(profileImage: Data) {
-        self.profileImage = profileImage
     }
     
     func setBookmark(bookmarks : [String]) {
         bookmark = bookmarks
     }
     
+    func setProfileImage(profileImage: Data) {
+        self.profileImage = profileImage
+    }
+    
+    func setProfileImageURL(imageURL: String) {
+        self.profileImageURL = imageURL
+    }
+    
 }
 
 class User {
     static let sharedInstance = User()
-    var isUser = Bool()
+    var isUser = Bool() {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
+        }
+    }
     var user = ModelUser()
 }

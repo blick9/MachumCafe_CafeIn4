@@ -13,17 +13,18 @@ class ModelReview {
     fileprivate var cafeId = String()
     fileprivate var userId = String()
     fileprivate var nickname = String()
+    fileprivate var profileImageURL : String?
     fileprivate var date = String()
     fileprivate var reviewContent = String()
     fileprivate var rating = Double()
-    //fileprivate var reviewImage = UIImage()
     
     init() {}
     
-    init(id: String? = nil, cafeId : String, userId: String, nickname: String, date: String, reviewContent: String, rating: Double) {
+    init(id: String? = nil, cafeId : String, userId: String, nickname: String, profileImageURL: String? = nil, date: String, reviewContent: String, rating: Double) {
         self.cafeId = cafeId
         self.userId = userId
         self.nickname = nickname
+        self.profileImageURL = profileImageURL
         self.date = date
         self.reviewContent = reviewContent
         self.rating = rating
@@ -34,6 +35,7 @@ class ModelReview {
         reviewDic["cafeId"] = cafeId
         reviewDic["userId"] = userId
         reviewDic["nickname"] = nickname
+        reviewDic["profileImageURL"] = profileImageURL
         reviewDic["date"] = date
         reviewDic["reviewContent"] = reviewContent
         reviewDic["rating"] = rating

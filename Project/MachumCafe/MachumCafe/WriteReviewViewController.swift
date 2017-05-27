@@ -53,7 +53,7 @@ class WriteReviewViewController: UIViewController {
             UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록", message: "별점 또는 내용을 입력해주세요.", isHandler: false)
         } else {
             if User.sharedInstance.isUser {
-                let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
+                let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, profileImageURL: userData["profileImageURL"] as? String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
                 NetworkCafe.postCafeReview(review: review, callback: { (modelReviews) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
                     self.dismiss(animated: true, completion: nil)

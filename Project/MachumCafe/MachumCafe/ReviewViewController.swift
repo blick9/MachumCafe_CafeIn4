@@ -54,7 +54,8 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
         cell.reviewDate.text = review["date"] as? String
         cell.reviewContent.text = review["reviewContent"] as? String
         cell.reviewStarRating.rating = review["rating"] as! Double
-        cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
+        // ModelReview 내 UserProfileImage 추가 후 연동
+//        cell.reviewerPicture.image = UIImage(data: User.sharedInstance.user.getUser()["profileImage"] as! Data)
 
         return cell
     }
