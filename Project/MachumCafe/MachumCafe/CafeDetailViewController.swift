@@ -25,19 +25,21 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
+    @IBOutlet weak var categoryCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
-    @IBOutlet weak var cafeImageView: UIImageView!
     @IBOutlet weak var moreReviewButton: UIButton!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
+    @IBOutlet weak var cafeImageScrollView: UIScrollView!
 
-    let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
-    let reviewer = ["구제이", "한나", "메이플"]
+    let cafeIcon = [#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "telephoneD"), #imageLiteral(resourceName: "hourD")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        categoryCollectionView.allowsSelection = false
+    
         detailTableView.delegate = self
         detailTableView.dataSource = self
         reviewTableView.delegate = self
@@ -45,19 +47,24 @@ class CafeDetailViewController: UIViewController {
         reviewTableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
         let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
         navigationItem.rightBarButtonItem = moreButton
-        
+       // categoryCollectionView.isScrollEnabled = false
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
-        
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
         
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
         
-        let imagesData = cafeData["imagesData"] as? [Data]
+        print(cafeData["imagesData"] as! [Data])
+        
+        if !(cafeData["imagesData"] as! [Data]).isEmpty {
+            makeCafeImageScrollView(imagesData: cafeData["imagesData"] as! [Data])
+        } else {
+            cafeImageScrollView.addSubview(UIImageView(image: #imageLiteral(resourceName: "1")))
+        }
+        
         navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
-//        cafeImageView.image = UIImage(data: (imagesData?[0])!)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
@@ -98,6 +105,10 @@ class CafeDetailViewController: UIViewController {
         //테이블뷰 높이 오토레이아웃 설정
         tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight))
         reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
+        //카테고리 높이 오토레이아웃 설정
+        if cafeCategorys.count > 5 {
+            categoryCollectionHeight.constant = CGFloat(1.7 * categoryCollectionView.frame.height)
+        }
         self.view.layoutIfNeeded()
     }
     
@@ -112,6 +123,18 @@ class CafeDetailViewController: UIViewController {
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
         cafeNameLabel.sizeToFit()
+    }
+    
+    func makeCafeImageScrollView(imagesData: [Data]) {
+        for i in 0..<imagesData.count {
+            let cafeImage = UIImageView()
+            cafeImage.contentMode = .scaleAspectFill
+            cafeImage.image = UIImage(data: imagesData[i])
+            let xPosition = self.view.frame.width * CGFloat(i)
+            cafeImage.frame = CGRect(x: xPosition, y: 0, width: self.cafeImageScrollView.frame.width, height: self.cafeImageScrollView.frame.height)
+            cafeImageScrollView.contentSize.width = cafeImageScrollView.frame.width * CGFloat(i+1)
+            cafeImageScrollView.addSubview(cafeImage)
+        }
     }
     
     func bookmarkToggleButton() {
@@ -142,7 +165,14 @@ class CafeDetailViewController: UIViewController {
         let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
         suggestionViewController.cafeData = cafeData
         present(suggestionViewNavigationController, animated: true, completion: nil)
-    }    
+    }
+    func phoneCallButtonAction() {
+        let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
+        UIApplication.shared.openURL(url as! URL)
+        print("CCCCCLLLLLCCCCLLLLLLCCCCLLLL")
+        print(url)
+
+    }
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
@@ -166,18 +196,19 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
             cell.detailLabel.sizeToFit()
-            
+
             if indexPath.row == 0 {
                 cell.iconImage.image = cafeIcon[0]
-                if let tel = cafeData["tel"] as? String {
+                if let address = cafeData["address"] as? String {
                     cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = tel
+                    cell.phoneCallButton.isHidden = true
+                    cell.detailLabel.text = address
                 }
             } else if indexPath.row == 1 {
                 cell.iconImage.image = cafeIcon[1]
-                if let address = cafeData["address"] as? String {
+                if let tel = cafeData["tel"] as? String {
                     cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = address
+                    cell.detailLabel.text = tel
                 }
             } else if indexPath.row == 2 {
                 cell.iconImage.image = cafeIcon[2]
@@ -185,8 +216,10 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = hours
                 }
+                cell.phoneCallButton.isHidden = true
             }
             cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
+            cell.phoneCallButton.addTarget(self, action: #selector(phoneCallButtonAction), for: .touchUpInside)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
@@ -208,26 +241,24 @@ extension CafeDetailViewController : UICollectionViewDataSource, UICollectionVie
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cafeCategorys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
-        cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
-       
         cell.category.text = cafeCategorys[indexPath.row]
         
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 4, left: 5, bottom: 4, right: 5)
+        return UIEdgeInsets(top: 10, left: 3, bottom: 5, right: 3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
-        return CGSize(width: width, height: 20)
+        let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 8
+        return CGSize(width: width, height: 25)
     }
 }
