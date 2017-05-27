@@ -25,6 +25,7 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
+    @IBOutlet weak var categoryCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var moreReviewButton: UIButton!
@@ -37,6 +38,8 @@ class CafeDetailViewController: UIViewController {
         super.viewDidLoad()
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        categoryCollectionView.allowsSelection = false
+    
         detailTableView.delegate = self
         detailTableView.dataSource = self
         reviewTableView.delegate = self
@@ -44,9 +47,8 @@ class CafeDetailViewController: UIViewController {
         reviewTableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
         let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
         navigationItem.rightBarButtonItem = moreButton
-        
+       // categoryCollectionView.isScrollEnabled = false
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
-        
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
         
@@ -103,6 +105,10 @@ class CafeDetailViewController: UIViewController {
         //테이블뷰 높이 오토레이아웃 설정
         tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight))
         reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
+        //카테고리 높이 오토레이아웃 설정
+        if cafeCategorys.count > 5 {
+            categoryCollectionHeight.constant = CGFloat(1.7 * categoryCollectionView.frame.height)
+        }
         self.view.layoutIfNeeded()
     }
     
@@ -225,26 +231,24 @@ extension CafeDetailViewController : UICollectionViewDataSource, UICollectionVie
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cafeCategorys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
-        cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
-       
         cell.category.text = cafeCategorys[indexPath.row]
         
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 4, left: 5, bottom: 4, right: 5)
+        return UIEdgeInsets(top: 10, left: 3, bottom: 5, right: 3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
-        return CGSize(width: width, height: 20)
+        let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 8
+        return CGSize(width: width, height: 25)
     }
 }
