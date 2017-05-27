@@ -66,12 +66,12 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         if selectedFilterArray.isEmpty {
             self.selectedFilterViewTopConstraint.constant = -40
             UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
+//                self.view.layoutIfNeeded()
             })
         } else {
             self.selectedFilterViewTopConstraint.constant = 0
             UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
+//                self.view.layoutIfNeeded()
             })
         }
     }
