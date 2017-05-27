@@ -42,7 +42,7 @@ class MainSideBarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar + 1)
-//        checkIsUser()
+        checkIsUser()
     }
     
     func checkIsUser() {

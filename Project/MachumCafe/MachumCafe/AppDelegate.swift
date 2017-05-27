@@ -43,14 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 if let userProfile = profile {
                     let user = userProfile as! KOUser
                     let email = user.email!
-                    let nickname = user.property(forKey: "nickname") as! String
-                    let imageURL = user.property(forKey: "profile_image") as! String
                     
-                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
+                    NetworkUser.kakaoLogin(email: email, nickname: String(), imageURL: String()) { (result, user) in
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
-                        if !imageURL.isEmpty {
-                            NetworkUser.getUserImage(imageURL: imageURL) { (imageData) in
+                        if !(user.getUser()["profileImageURL"] as! String).isEmpty {
+                            NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                                 user.setProfileImage(profileImage: imageData)
                             }
                         }
@@ -64,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     User.sharedInstance.user = user
                     User.sharedInstance.isUser = true
                     if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                        NetworkUser.getUserImage(imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
+                        NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                             user.setProfileImage(profileImage: imageData)
                         }
                     }

@@ -62,6 +62,12 @@ class NetworkUser {
             "nickname": nickname,
             "imageURL": imageURL
         ]
+//        if let isNickname = nickname {
+//            parameters["nickname"] = isNickname
+//        }
+//        if let isImageURL = imageURL {
+//            parameters["imageURL"] = isImageURL
+//        }
         
         Alamofire.request("\(url)/api/v1/user/login/kakao", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             var modelUser = ModelUser()
@@ -115,16 +121,23 @@ class NetworkUser {
         }
     }
     
-    static func getUserImage(imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
-        Alamofire.request(imageURL).responseData { (response) in
-            if let imageData = response.result.value {
-                callback(imageData)
+    static func getUserImage(userID: String?, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
+        if let isUserID = userID {
+            Alamofire.request("\(url)/api/v1/user/\(isUserID)/profileimage/\(imageURL)").responseData(completionHandler: { (response) in
+                if let imageData = response.result.value {
+                    callback(imageData)
+                }
+            })
+        } else {
+            Alamofire.request(imageURL).responseData { (response) in
+                if let imageData = response.result.value {
+                    callback(imageData)
+                }
             }
         }
     }
     
     static func setUserProfileImage(userID: String, image: UIImage, callback: @escaping (_ result: Bool) -> Void) {
-        
         Alamofire.upload(multipartFormData: { multipartFormData in
             let imageData = UIImageJPEGRepresentation(image, 0.1)
             multipartFormData.append(imageData!, withName: "image", fileName: "file.png", mimeType: "image/png")
@@ -136,8 +149,7 @@ class NetworkUser {
                     let res = JSON(data: response.data!)
                     let result = res["result"].boolValue
                     let imageURL = res["imageURL"].stringValue
-                    let convertURL = "\(url)/api/v1/user/profileimage/\(imageURL)"
-                    User.sharedInstance.user.setProfileImageURL(imageURL: convertURL)
+                    User.sharedInstance.user.setProfileImageURL(imageURL: imageURL)
                     callback(result)
                 })
             case .failure(let error):
