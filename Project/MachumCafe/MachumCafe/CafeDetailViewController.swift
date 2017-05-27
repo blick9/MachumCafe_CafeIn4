@@ -165,7 +165,14 @@ class CafeDetailViewController: UIViewController {
         let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
         suggestionViewController.cafeData = cafeData
         present(suggestionViewNavigationController, animated: true, completion: nil)
-    }    
+    }
+    func phoneCallButtonAction() {
+        let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
+        UIApplication.shared.openURL(url as! URL)
+        print("CCCCCLLLLLCCCCLLLLLLCCCCLLLL")
+        print(url)
+
+    }
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
@@ -189,11 +196,12 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
             cell.detailLabel.sizeToFit()
-            
+
             if indexPath.row == 0 {
                 cell.iconImage.image = cafeIcon[0]
                 if let address = cafeData["address"] as? String {
                     cell.suggestionButton.isHidden = true
+                    cell.phoneCallButton.isHidden = true
                     cell.detailLabel.text = address
                 }
             } else if indexPath.row == 1 {
@@ -208,8 +216,10 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = hours
                 }
+                cell.phoneCallButton.isHidden = true
             }
             cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
+            cell.phoneCallButton.addTarget(self, action: #selector(phoneCallButtonAction), for: .touchUpInside)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
