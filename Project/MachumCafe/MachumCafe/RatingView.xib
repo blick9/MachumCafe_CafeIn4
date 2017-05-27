@@ -12,28 +12,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RatingView" customModule="MachumCafe" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="324" height="412"/>
+            <rect key="frame" x="0.0" y="0.0" width="44" height="16"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ir-1b-lxF">
-                    <rect key="frame" x="36" y="8" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4.5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hiq-Qy-b7u">
+                    <rect key="frame" x="23" y="1" width="18.091881473055452" height="14.822264339370733"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="10"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RatingStarFill" translatesAutoresizingMaskIntoConstraints="NO" id="DY5-jP-Sda">
-                    <rect key="frame" x="7" y="7" width="12" height="12"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RatingStarEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="zj2-dc-qQ0">
+                    <rect key="frame" x="3" y="2" width="11.988596156843975" height="11.988596156843975"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.98382906581424145" green="1" blue="0.49837043850195684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="ratingLabel" destination="Hiq-Qy-b7u" id="NZc-HT-a3I"/>
+                <outlet property="ratingStarImage" destination="zj2-dc-qQ0" id="mYA-Ij-sS4"/>
+            </connections>
             <point key="canvasLocation" x="126" y="159"/>
         </view>
     </objects>
     <resources>
-        <image name="RatingStarFill" width="12" height="12"/>
+        <image name="RatingStarEmpty" width="12" height="12"/>
     </resources>
 </document>
