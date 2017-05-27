@@ -13,6 +13,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
     var multiple = true
     var categoryArray = ["24시","연중무휴","주차","편한의자","좌식","모임","미팅룸","스터디","넓은공간","아이와함께","디저트","베이커리","로스팅","산책로","모닥불","드라이브","북카페","이색카페","야경","조용한","고급스러운","여유로운","힐링"]
     var filterArray = [String]()
+    var cafeData = [String:Any]()
     var selectedLocation = CLLocationCoordinate2D()
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
@@ -46,6 +47,10 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
         
         let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        if !cafeData.isEmpty {
+            getCafeInfo()
+            checkSelected()
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -72,11 +77,39 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
         let uploadImage = imageArray.flatMap { $0 }
         let address = "\(addressTextField.text!) " + "\(detailAddressTextField.text!)"
         
-        NetworkAdmin.uploadsImage(images: uploadImage) { (imagesURL) in
-            let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: address, hours: self.hoursTextField.text!, latitude: self.selectedLocation.latitude, longitude: self.selectedLocation.longitude, category: self.filterArray, imagesURL: imagesURL)
-            NetworkAdmin.suggestionNewCafe(cafe: cafe)
+        if cafeData.isEmpty {
+            NetworkAdmin.uploadsImage(images: uploadImage) { (imagesURL) in
+                let cafe = ModelCafe(name: self.nameTextField.text!, tel: self.telTextField.text!, address: address, hours: self.hoursTextField.text!, latitude: self.selectedLocation.latitude, longitude: self.selectedLocation.longitude, category: self.filterArray, imagesURL: imagesURL)
+                NetworkAdmin.suggestionNewCafe(cafe: cafe)
+            }
+        } else {
+            NetworkAdmin.uploadsImage(images: uploadImage, callback: { (imagesURL) in
+                self.cafeData["imagesData"] = [String]()
+                self.cafeData["name"] = self.nameTextField.text!
+                self.cafeData["tel"] = self.telTextField.text!
+                self.cafeData["address"] = address
+                self.cafeData["hours"] = self.hoursTextField.text!
+                self.cafeData["category"] = self.filterArray
+                let temp = self.cafeData["imagesURL"] as! [String]
+                self.cafeData["imagesURL"] = temp + imagesURL
+                NetworkAdmin.suggestionEditCafe(cafe: self.cafeData)
+            })
         }
-        self.dismiss(animated: true, completion: nil)
+        UIAlertController().oneButtonAlert(target: self, title: "제보 완료", message: "소중한 의견 감사합니다.\n빠른시간 내에 적용하겠습니다 :)", isHandler: true)
+    }
+    
+    func getCafeInfo() {
+        nameTextField.text = cafeData["name"] as? String
+        telTextField.text = cafeData["tel"] as? String
+        addressTextField.text = cafeData["address"] as? String
+        hoursTextField.text = cafeData["hours"] as? String
+        filterArray = cafeData["category"] as! [String]
+    }
+    
+    func checkSelected() {
+        for filter in filterArray {
+            categoryCollectionView.selectItem(at: [0, categoryArray.index(of: filter)!], animated: false, scrollPosition: .top)
+        }
     }
     
     func draw() {

@@ -13,6 +13,8 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     var listMapViewController = UIViewController()
     var isMapView = false
     var selectedFilterArray = [String]()
+    let listViewNib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
+
     
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
@@ -40,8 +42,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(listViewNib, forCellWithReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {

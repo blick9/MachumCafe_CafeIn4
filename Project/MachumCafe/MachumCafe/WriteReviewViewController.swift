@@ -15,7 +15,10 @@ class WriteReviewViewController: UIViewController {
     var reviewView = ReviewViewController()
     var userData = User.sharedInstance.user.getUser()
     var writtenDate = Date()
-
+    var reviewDictionary = Review.sharedInstance.review.getReview()
+    var user = User.sharedInstance.user.getUser()
+    var cafe = Cafe.sharedInstance.allCafeList[1].getCafe() // 변경 필요
+    
     @IBOutlet weak var writeReview: UITextView!
     @IBOutlet weak var starRating: CosmosView!
     

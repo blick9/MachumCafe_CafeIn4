@@ -12,6 +12,7 @@ class CafeDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var suggestionButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
