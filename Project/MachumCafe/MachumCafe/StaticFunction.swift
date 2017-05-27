@@ -144,3 +144,4 @@ extension String {
         return NSPredicate(format: "SELF MATCHES %@", emailRegEx).evaluate(with: self)
     }
 }
+
