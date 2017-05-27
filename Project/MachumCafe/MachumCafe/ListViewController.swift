@@ -107,10 +107,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.distanceLabel.text = "\(distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m")"
         
         if let cafeCategorys = cafe["category"] as? [String] {
-            var categorylabel = ""
-            for category in cafeCategorys {
-                categorylabel += "#\(category) "
-            }
+            let categorylabel = cafeCategorys.reduce("") { $0 + "#\($1) " }
             cell.category.text = categorylabel
         }
         
