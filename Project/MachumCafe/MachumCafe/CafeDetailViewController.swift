@@ -19,7 +19,6 @@ class CafeDetailViewController: UIViewController {
     var userBookmarkIDs = [String]()
     let reviewTableViewCellNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
     let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
-
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -31,7 +30,6 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var cafeImageView: UIImageView!
     @IBOutlet weak var moreReviewButton: UIButton!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
-    
 
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
     let reviewer = ["구제이", "한나", "메이플"]
@@ -67,7 +65,6 @@ class CafeDetailViewController: UIViewController {
     func reloadReviewTable() {
         self.reviews = self.currentCafeModel.getReviews()
         self.reviewTableView.reloadData()
-        print("♻︎♻︎")
         // 리뷰 작성 또는 viewDidLoad시 마다 호출
     }
 
@@ -81,7 +78,6 @@ class CafeDetailViewController: UIViewController {
         bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
         
         //테이블뷰 높이 오토레이아웃 설정
-        let cell = detailTableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
         tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight))
         reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
         self.view.layoutIfNeeded()
@@ -141,18 +137,14 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if tableView.tag == 1 {
             return 3
-        }
-            
-        else {
+        } else {
             return reviews.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
             cell.detailLabel.sizeToFit()
@@ -195,7 +187,6 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
 }
 
 extension CafeDetailViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -216,7 +207,6 @@ extension CafeDetailViewController : UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 4, left: 5, bottom: 4, right: 5)
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
