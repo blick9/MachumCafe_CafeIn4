@@ -50,7 +50,6 @@ class CafeDetailViewController: UIViewController {
         
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
-        print(cafeCategorys)
         
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
@@ -66,10 +65,11 @@ class CafeDetailViewController: UIViewController {
     
     func moreButtonAction() {
         let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let reportEditAction = UIAlertAction(title: "수정 제안", style: .default) { _ in
-            print("수정제안")
+        let reportEditAction = UIAlertAction(title: "수정 제보", style: .default) { _ in
+            self.suggestionButtonAction()
         }
         let reportCloseAction = UIAlertAction(title: "폐업 신고", style: .destructive) { _ in
+            //TODO: 폐업 신고 Network 메서드 구현
             print("폐업 신고")
         }
         let closeAction = UIAlertAction(title: "닫기", style: .cancel) { _ in
