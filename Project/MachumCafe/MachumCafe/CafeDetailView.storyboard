@@ -45,31 +45,39 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="telephoneD" translatesAutoresizingMaskIntoConstraints="NO" id="qWm-A1-VSx">
                                                             <rect key="frame" x="44" y="19" width="15" height="15"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-5a-VkI">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-5a-VkI">
                                                             <rect key="frame" x="86" y="5" width="270" height="42"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bnp-wt-qZA">
-                                                            <rect key="frame" x="86" y="5" width="270" height="42"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" name=".AppleSDGothicNeoI-Regular" family=".Apple SD Gothic NeoI" pointSize="15"/>
-                                                            <state key="normal" title="제보해주세요"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bnp-wt-qZA">
+                                                            <rect key="frame" x="86" y="14" width="85" height="25"/>
+                                                            <state key="normal" image="suggestion"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3t-52-kg3">
+                                                            <rect key="frame" x="216" y="14" width="65" height="25"/>
+                                                            <state key="normal" image="phoneCall"/>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="4Ak-5a-VkI" firstAttribute="top" secondItem="rmc-1W-a7b" secondAttribute="topMargin" constant="-4" id="PBV-oq-8PP"/>
+                                                        <constraint firstItem="Bnp-wt-qZA" firstAttribute="top" secondItem="4Ak-5a-VkI" secondAttribute="top" constant="9" id="1Ug-AN-bki"/>
+                                                        <constraint firstItem="4Ak-5a-VkI" firstAttribute="top" secondItem="rmc-1W-a7b" secondAttribute="topMargin" constant="-3" id="PBV-oq-8PP"/>
                                                         <constraint firstItem="4Ak-5a-VkI" firstAttribute="centerY" secondItem="rmc-1W-a7b" secondAttribute="centerYWithinMargins" constant="-1" id="Ro9-4n-YzO"/>
+                                                        <constraint firstItem="Bnp-wt-qZA" firstAttribute="bottom" secondItem="4Ak-5a-VkI" secondAttribute="bottom" constant="-8" id="Wvk-yk-7cf"/>
+                                                        <constraint firstItem="d3t-52-kg3" firstAttribute="centerY" secondItem="4Ak-5a-VkI" secondAttribute="centerY" constant="0.5" id="bG8-Rx-ChK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="d3t-52-kg3" secondAttribute="trailing" constant="94" id="bg3-kq-FEq"/>
                                                         <constraint firstItem="qWm-A1-VSx" firstAttribute="trailing" secondItem="4Ak-5a-VkI" secondAttribute="leading" constant="-27" id="d4Q-iQ-RZ1"/>
+                                                        <constraint firstItem="Bnp-wt-qZA" firstAttribute="leading" secondItem="4Ak-5a-VkI" secondAttribute="leading" id="e6P-aU-T7e"/>
                                                         <constraint firstItem="qWm-A1-VSx" firstAttribute="leading" secondItem="rmc-1W-a7b" secondAttribute="leadingMargin" constant="36" id="eZ3-uk-R4I"/>
                                                         <constraint firstItem="qWm-A1-VSx" firstAttribute="centerY" secondItem="rmc-1W-a7b" secondAttribute="centerY" id="lGS-zj-Wkd"/>
-                                                        <constraint firstAttribute="trailing" secondItem="4Ak-5a-VkI" secondAttribute="trailing" constant="19" id="vwe-nr-Yvo"/>
+                                                        <constraint firstItem="Bnp-wt-qZA" firstAttribute="trailing" secondItem="4Ak-5a-VkI" secondAttribute="trailing" constant="-185" id="wkV-Us-rKS"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="detailLabel" destination="4Ak-5a-VkI" id="8ch-XM-C0R"/>
                                                     <outlet property="iconImage" destination="qWm-A1-VSx" id="4kI-I0-c7b"/>
+                                                    <outlet property="phoneCallButton" destination="d3t-52-kg3" id="Cqj-ta-u4H"/>
                                                     <outlet property="suggestionButton" destination="Bnp-wt-qZA" id="P3K-K8-FTz"/>
                                                 </connections>
                                             </tableViewCell>
@@ -99,10 +107,10 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yPp-Zp-Cz6">
-                                        <rect key="frame" x="8" y="440" width="359" height="50"/>
+                                        <rect key="frame" x="32" y="440" width="311" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="uiP-EU-Q47"/>
+                                            <constraint firstAttribute="height" priority="750" constant="50" id="uiP-EU-Q47"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VwL-GZ-svp">
                                             <size key="itemSize" width="50" height="50"/>
@@ -115,9 +123,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ViB-iS-Sqq">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="PiZ-92-6C6" userLabel="tempImage">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nys-DB-xoM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
-                                            </imageView>
+                                            </scrollView>
                                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSa-Bh-4Kg">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,13 +133,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="OSa-Bh-4Kg" firstAttribute="top" secondItem="PiZ-92-6C6" secondAttribute="top" id="6kU-DH-0ow"/>
-                                            <constraint firstItem="OSa-Bh-4Kg" firstAttribute="leading" secondItem="PiZ-92-6C6" secondAttribute="leading" id="87T-3t-5OZ"/>
+                                            <constraint firstItem="OSa-Bh-4Kg" firstAttribute="top" secondItem="nys-DB-xoM" secondAttribute="top" id="5vG-MC-Xgi"/>
                                             <constraint firstItem="OSa-Bh-4Kg" firstAttribute="width" secondItem="ViB-iS-Sqq" secondAttribute="height" multiplier="1:1" constant="145" id="BzH-L8-9lg"/>
                                             <constraint firstAttribute="height" constant="230" id="DO5-f2-Aas"/>
-                                            <constraint firstItem="PiZ-92-6C6" firstAttribute="centerX" secondItem="ViB-iS-Sqq" secondAttribute="centerXWithinMargins" id="FMm-2u-NdP"/>
-                                            <constraint firstItem="PiZ-92-6C6" firstAttribute="centerY" secondItem="ViB-iS-Sqq" secondAttribute="centerYWithinMargins" id="aF9-W6-fHA"/>
-                                            <constraint firstItem="PiZ-92-6C6" firstAttribute="height" secondItem="ViB-iS-Sqq" secondAttribute="height" id="cIo-L8-Idz"/>
+                                            <constraint firstItem="OSa-Bh-4Kg" firstAttribute="bottom" secondItem="nys-DB-xoM" secondAttribute="bottom" id="EfZ-b6-1Wc"/>
+                                            <constraint firstItem="OSa-Bh-4Kg" firstAttribute="trailing" secondItem="nys-DB-xoM" secondAttribute="trailing" id="Xg3-wA-pjg"/>
+                                            <constraint firstItem="OSa-Bh-4Kg" firstAttribute="top" secondItem="ViB-iS-Sqq" secondAttribute="top" id="ikI-pI-Vu7"/>
+                                            <constraint firstItem="OSa-Bh-4Kg" firstAttribute="leading" secondItem="nys-DB-xoM" secondAttribute="leading" id="kIB-qY-ycw"/>
                                             <constraint firstItem="OSa-Bh-4Kg" firstAttribute="centerX" secondItem="ViB-iS-Sqq" secondAttribute="centerXWithinMargins" id="tIZ-7v-DAd"/>
                                             <constraint firstItem="OSa-Bh-4Kg" firstAttribute="centerY" secondItem="ViB-iS-Sqq" secondAttribute="centerYWithinMargins" id="ukh-8y-ibC"/>
                                         </constraints>
@@ -178,14 +186,14 @@
                                     <constraint firstItem="ViB-iS-Sqq" firstAttribute="top" secondItem="O3u-gt-fNw" secondAttribute="top" id="PIv-EU-Exk"/>
                                     <constraint firstItem="DgO-TJ-FRg" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leadingMargin" constant="-8" id="RLv-Ks-vRY"/>
                                     <constraint firstItem="HUB-vG-q52" firstAttribute="trailing" secondItem="ViB-iS-Sqq" secondAttribute="trailing" id="SH5-KI-SSk"/>
-                                    <constraint firstItem="yPp-Zp-Cz6" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leading" constant="8" id="XcZ-BZ-Q3Q"/>
+                                    <constraint firstItem="yPp-Zp-Cz6" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leading" constant="32" id="SqH-E3-f1J"/>
                                     <constraint firstItem="BwK-7Z-hkT" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leadingMargin" id="fyG-KA-QQd"/>
                                     <constraint firstItem="HUB-vG-q52" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leading" id="gc5-Qj-R4u"/>
                                     <constraint firstItem="BwK-7Z-hkT" firstAttribute="top" secondItem="yPp-Zp-Cz6" secondAttribute="bottom" id="ggm-KT-2Tf"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="BwK-7Z-hkT" secondAttribute="trailing" id="hsU-LU-8dy"/>
+                                    <constraint firstItem="yPp-Zp-Cz6" firstAttribute="centerX" secondItem="BwK-7Z-hkT" secondAttribute="centerX" id="lmV-SZ-fSN"/>
                                     <constraint firstItem="9X9-VU-4mY" firstAttribute="top" secondItem="DgO-TJ-FRg" secondAttribute="bottom" constant="7" id="mmC-nc-mF9"/>
                                     <constraint firstAttribute="trailing" secondItem="9X9-VU-4mY" secondAttribute="trailing" constant="24" id="qSB-ul-yXI"/>
-                                    <constraint firstAttribute="trailing" secondItem="yPp-Zp-Cz6" secondAttribute="trailing" constant="8" id="tta-iv-x35"/>
                                     <constraint firstItem="HUB-vG-q52" firstAttribute="top" secondItem="ViB-iS-Sqq" secondAttribute="bottom" id="v4H-FQ-Pqh"/>
                                     <constraint firstItem="yPp-Zp-Cz6" firstAttribute="top" secondItem="HUB-vG-q52" secondAttribute="bottom" id="wFA-Qz-nAI"/>
                                 </constraints>
@@ -202,8 +210,9 @@
                     <navigationItem key="navigationItem" id="PG9-9P-Ga9"/>
                     <connections>
                         <outlet property="bookmarkButton" destination="KOa-uo-k0F" id="lfO-IR-i9t"/>
-                        <outlet property="cafeImageView" destination="PiZ-92-6C6" id="Fbx-kR-5kI"/>
+                        <outlet property="cafeImageScrollView" destination="nys-DB-xoM" id="vnD-Pe-kJ1"/>
                         <outlet property="cafeNameLabel" destination="ooV-Jh-HWD" id="P7w-bi-P4K"/>
+                        <outlet property="categoryCollectionHeight" destination="uiP-EU-Q47" id="2Rb-5p-TmC"/>
                         <outlet property="categoryCollectionView" destination="yPp-Zp-Cz6" id="vAJ-JQ-MKS"/>
                         <outlet property="detailTableView" destination="HUB-vG-q52" id="qlA-Fp-Vqg"/>
                         <outlet property="moreReviewButton" destination="9X9-VU-4mY" id="3fF-W9-Yw0"/>
@@ -227,9 +236,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="800" height="533"/>
         <image name="Bookmark_Bt" width="26" height="23"/>
+        <image name="phoneCall" width="65" height="25"/>
         <image name="share_Bt" width="20" height="19"/>
+        <image name="suggestion" width="85" height="25"/>
         <image name="telephoneD" width="15" height="15"/>
     </resources>
 </document>
