@@ -12,11 +12,14 @@ class CafeDetailViewController: UIViewController {
     
     var currentCafeModel = ModelCafe()
     var cafeData = [String:Any]()
+    var cafeCategorys = [String]()
     var reviews = [ModelReview]()
     var indexCafeID = String()
     var userID = String()
     var userBookmarkIDs = [String]()
-    let nib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
+    let reviewTableViewCellNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
+    let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
+
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
@@ -27,19 +30,27 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var cafeImageView: UIImageView!
     @IBOutlet weak var moreReviewButton: UIButton!
+    @IBOutlet weak var categoryCollectionView: UICollectionView!
     
+
     let cafeIcon = [#imageLiteral(resourceName: "telephoneD"),#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "hourD")]
     let reviewer = ["구제이", "한나", "메이플"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
         detailTableView.delegate = self
         detailTableView.dataSource = self
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
-        reviewTableView.register(nib, forCellReuseIdentifier: "Cell")
+        reviewTableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
+        
+        categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         
         cafeData = currentCafeModel.getCafe()
+        cafeCategorys = cafeData["category"] as! [String]
+        print(cafeCategorys)
         
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
@@ -70,8 +81,8 @@ class CafeDetailViewController: UIViewController {
         bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
         
         //테이블뷰 높이 오토레이아웃 설정
-        let cell = detailTableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
-        tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight) + Double(cell.frame.height))
+        let cell = detailTableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
+        tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight))
         reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
         self.view.layoutIfNeeded()
     }
@@ -107,19 +118,24 @@ class CafeDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
+        reviewView.currentCafeModel = currentCafeModel
+    }
+    
+    func suggestionButtonAction() {
+        let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
+        let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
+        suggestionViewController.cafeData = cafeData
+        present(suggestionViewNavigationController, animated: true, completion: nil)
+    }    
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView.tag == 1 {
-            if indexPath.row == 3 {
-                return 75
-            }
-            else {
-                return 53
-            }
-        }
-        else {
+            return 53
+        } else {
             return 130
         }
     }
@@ -127,7 +143,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableView.tag == 1 {
-            return 4
+            return 3
         }
             
         else {
@@ -159,12 +175,6 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                     cell.suggestionButton.isHidden = true
                     cell.detailLabel.text = hours
                 }
-            } else if indexPath.row == 3 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CafeDetailCategoryTableViewCell
-                cell.categoryIcon1.image = #imageLiteral(resourceName: "parkingCategoryIcon") as UIImage
-                cell.categoryIcon2.image = #imageLiteral(resourceName: "smokingCategoryIcon") as UIImage
-                cell.categoryIcon3.image = #imageLiteral(resourceName: "restroomCategoryIcon") as UIImage
-                return cell
             }
             cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
             return cell
@@ -182,16 +192,34 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             return cell
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
-        reviewView.currentCafeModel = currentCafeModel
+}
+
+extension CafeDetailViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cafeCategorys.count
     }
     
-    func suggestionButtonAction() {
-        let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
-        let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
-        suggestionViewController.cafeData = cafeData
-        present(suggestionViewNavigationController, animated: true, completion: nil)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
+        cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
+       
+        cell.category.text = cafeCategorys[indexPath.row]
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 4, left: 5, bottom: 4, right: 5)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = Double((cafeCategorys[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
+        return CGSize(width: width, height: 20)
     }
 }
