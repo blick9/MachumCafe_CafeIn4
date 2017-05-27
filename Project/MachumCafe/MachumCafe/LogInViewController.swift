@@ -73,8 +73,8 @@ class LogInViewController: UIViewController {
             if result {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
-                if !(user.getUser()["imageURL"] as! String).isEmpty {
-                    NetworkUser.getUserImage(imageURL: user.getUser()["imageURL"] as! String) { (imageData) in
+                if !(user.getUser()["profileImageURL"] as! String).isEmpty {
+                    NetworkUser.getUserImage(imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                         user.setProfileImage(profileImage: imageData)
                         self.dismiss(animated: true, completion: nil)
                     }
