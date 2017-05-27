@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -21,6 +21,9 @@ class LogInViewController: UIViewController {
         kakaoLoginButton.addTarget(self, action: #selector(kakaoLogin), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,11 +35,17 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    // 키보드 내리기
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        emailTextField.endEditing(true)
-        passwordTextField.endEditing(true)
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        textField.endEditing(true)
+        return true
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
@@ -52,6 +61,7 @@ class LogInViewController: UIViewController {
             }
         }
     }
+    
     func kakaoLogin() {
         let session = KOSession.shared()
         if (session?.isOpen())! {
