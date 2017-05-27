@@ -224,17 +224,22 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
             if !reviews.isEmpty {
-                let review = reviews[indexPath.row].getReview()
+                var review = reviews[indexPath.row].getReview()
                 
                 cell.reviewer.text = review["nickname"] as? String
                 cell.reviewDate.text = review["date"] as? String
                 cell.reviewContent.text = review["reviewContent"] as? String
                 cell.reviewStarRating.rating = review["rating"] as! Double
                 
-                NetworkUser.getUserImage(userID: review["userId"] as? String, imageURL: review["profileImageURL"] as! String, callback: { (imageData) in
-                    cell.reviewerPicture.image = UIImage(data: imageData)
-                })
-//                cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
+                if !(review["profileImageURL"] as! String).isEmpty {
+                    NetworkUser.getUserImage(userID: review["userId"] as? String, isKakao: review["isKakao"] as! Bool, imageURL: review["profileImageURL"] as! String) { (profileImageData) in
+                        self.reviews[indexPath.row].setProfileImage(profileImage: profileImageData)
+                        review = self.reviews[indexPath.row].getReview()
+                        cell.reviewerPicture.image = UIImage(data: review["profileImage"] as! Data)
+                    }
+                } else {
+                    cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
+                }
             }
             return cell
         }

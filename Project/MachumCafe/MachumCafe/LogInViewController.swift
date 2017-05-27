@@ -82,7 +82,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
                         if !imageURL.isEmpty {
-                            NetworkUser.getUserImage(userID: nil, imageURL: imageURL) { (imageData) in
+                            NetworkUser.getUserImage(userID: nil, isKakao: user.getUser()["isKakao"] as! Bool, imageURL: imageURL) { (imageData) in
                                 user.setProfileImage(profileImage: imageData)
                                 self.dismiss(animated: true, completion: nil)
                             }
@@ -104,7 +104,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
                 if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                    NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
+                    NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, isKakao: user.getUser()["isKakao"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                         user.setProfileImage(profileImage: imageData)
                         self.dismiss(animated: true, completion: nil)
                     }

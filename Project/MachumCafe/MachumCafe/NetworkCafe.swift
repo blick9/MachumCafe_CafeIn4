@@ -88,16 +88,14 @@ class NetworkCafe {
             let _ = reviews.map {
                 let review = $0.dictionaryValue
                 if let id = review["_id"]?.stringValue,
+                let isKakao = review["isKakao"]?.boolValue,
                 let userId = review["userId"]?.stringValue,
                 let nickname = review["nickname"]?.stringValue,
+                let profileImageURL = review["profileImageURL"]?.stringValue,
                 let date = review["date"]?.stringValue,
                 let reviewContent = review["reviewContent"]?.stringValue,
                 let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, cafeId: cafeId, userId: userId, nickname: nickname, date: date, reviewContent: reviewContent, rating: rating)
-                    if let profileImageURL = review["profileImageURL"]?.stringValue {
-//                        modelReview.setProfileImage(profileImage: User.sharedInstance.user.getUser()["profileImage"] as! Data)
-                        modelReview.setProfileImageURL(imageURL: profileImageURL)
-                    }
+                    let modelReview = ModelReview(id: id, isKakao: isKakao, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
                     modelReviews.insert(modelReview, at: 0)
                 }
             }
@@ -115,19 +113,17 @@ class NetworkCafe {
             let _ = reviews.map {
                 let review = $0.dictionaryValue
                 if let id = review["_id"]?.stringValue,
-                    let userId = review["userId"]?.stringValue,
-                    let nickname = review["nickname"]?.stringValue,
-                    let date = review["date"]?.stringValue,
-                    let reviewContent = review["reviewContent"]?.stringValue,
-                    let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, cafeId: cafeId, userId: userId, nickname: nickname, date: date, reviewContent: reviewContent, rating: rating)
-                    if let profileImageURL = review["profileImageURL"]?.stringValue {
-                        modelReview.setProfileImageURL(imageURL: profileImageURL)
-                    }
+                let isKakao = review["isKakao"]?.boolValue,
+                let userId = review["userId"]?.stringValue,
+                let nickname = review["nickname"]?.stringValue,
+                let profileImageURL = review["profileImageURL"]?.stringValue,
+                let date = review["date"]?.stringValue,
+                let reviewContent = review["reviewContent"]?.stringValue,
+                let rating = review["rating"]?.doubleValue {
+                    let modelReview = ModelReview(id: id, isKakao: isKakao, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
                     modelReviews.insert(modelReview, at: 0)
                 }
             }
-//            callback(modelReviews)
             cafeModel.setReviews(reviews: modelReviews)
         }
     }

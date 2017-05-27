@@ -42,6 +42,7 @@ class NetworkUser {
             let result = res["result"].boolValue
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
+                let isKakao = user["isKakao"]?.boolValue,
                 let email = user["email"]?.stringValue,
                 let nickname = user["nickname"]?.stringValue,
                 let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
@@ -49,7 +50,7 @@ class NetworkUser {
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
+                    modelUser = ModelUser(id: id, isKakao: isKakao, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
                 }
             }
             callback(result, modelUser)
@@ -62,12 +63,6 @@ class NetworkUser {
             "nickname": nickname,
             "imageURL": imageURL
         ]
-//        if let isNickname = nickname {
-//            parameters["nickname"] = isNickname
-//        }
-//        if let isImageURL = imageURL {
-//            parameters["imageURL"] = isImageURL
-//        }
         
         Alamofire.request("\(url)/api/v1/user/login/kakao", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             var modelUser = ModelUser()
@@ -75,6 +70,7 @@ class NetworkUser {
             let result = res["result"].boolValue
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
+                let isKakao = user["isKakao"]?.boolValue,
                 let email = user["email"]?.stringValue,
                 let nickname = user["nickname"]?.stringValue,
                 let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
@@ -82,7 +78,7 @@ class NetworkUser {
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
+                    modelUser = ModelUser(id: id, isKakao: isKakao, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
                 }
             }
             callback(result, modelUser)
@@ -99,13 +95,14 @@ class NetworkUser {
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
                 let email = user["email"]?.stringValue,
+                let isKakao = user["isKakao"]?.boolValue,
                 let nickname = user["nickname"]?.stringValue,
                 let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
                     var imageURL = String()
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL
+                    modelUser = ModelUser(id: id, isKakao: isKakao, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL
                     )
                 }
             }
@@ -121,22 +118,19 @@ class NetworkUser {
         }
     }
     
-    static func getUserImage(userID: String?, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
-        let session = KOSession.shared()
-        print("session?.isOpen(): ", (session?.isOpen())!)
-        if (session?.isOpen())! {
+    static func getUserImage(userID: String?, isKakao: Bool, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
+        if isKakao {
             Alamofire.request(imageURL).responseData { (response) in
                 if let imageData = response.result.value {
                     callback(imageData)
                 }
             }
         } else {
-            Alamofire.request("\(url)/api/v1/user/\(userID!))/profileimage/\(imageURL)").responseData(completionHandler: { (response) in
-                print(response)
+            Alamofire.request("\(url)/api/v1/user/\(userID!)/profileimage/\(imageURL)").responseData { (response) in
                 if let imageData = response.result.value {
                     callback(imageData)
                 }
-            })
+            }
         }
     }
     

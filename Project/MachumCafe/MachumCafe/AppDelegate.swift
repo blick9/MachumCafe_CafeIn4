@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
                         if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                            NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
+                            NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, isKakao: user.getUser()["isKakao"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                                 user.setProfileImage(profileImage: imageData)
                             }
                         }
@@ -62,14 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     User.sharedInstance.user = user
                     User.sharedInstance.isUser = true
                     if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                        NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
+                        NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, isKakao: user.getUser()["isKakao"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                             user.setProfileImage(profileImage: imageData)
                         }
                     }
+                    print(User.sharedInstance.user.getUser())
                 }
             }
         }
-        
         KOSession.shared().isAutomaticPeriodicRefresh = true
 
         initLocationManager()
@@ -113,29 +113,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("url:\(url)")
-        print("urlhost: \(url.host)")
-        print("urlPath: \(url.path)")
-        
-        let urlPath : String = url.path as String!
-        let urlHost : String = url.host as String!
-        
-        if(urlPath == "/inner") {
-            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
-                Cafe.sharedInstance.specificCafe = modelCafe
-                let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
-                let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetailView") as! CafeDetailViewController
-                let cafeDetailNavigationViewController = UINavigationController(rootViewController: cafeDetailViewController)
-                cafeDetailViewController.currentCafeModel = Cafe.sharedInstance.specificCafe
-                self.window?.rootViewController = mainViewController
-                mainViewController.navigationController?.pushViewController(cafeDetailNavigationViewController, animated: true)
-            }
-            
-        }
-        self.window?.makeKeyAndVisible()
-        return true
-    }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//        print("url:\(url)")
+//        print("urlhost: \(url.host)")
+//        print("urlPath: \(url.path)")
+//        
+//        let urlPath : String = url.path as String!
+//        let urlHost : String = url.host as String!
+//        
+//        if(urlPath == "/inner") {
+//            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
+//                Cafe.sharedInstance.specificCafe = modelCafe
+//                let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
+//                let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetailView") as! CafeDetailViewController
+//                let cafeDetailNavigationViewController = UINavigationController(rootViewController: cafeDetailViewController)
+//                cafeDetailViewController.currentCafeModel = Cafe.sharedInstance.specificCafe
+//                self.window?.rootViewController = mainViewController
+//                mainViewController.navigationController?.pushViewController(cafeDetailNavigationViewController, animated: true)
+//            }
+//            
+//        }
+//        self.window?.makeKeyAndVisible()
+//        return true
+//    }
     
     
     func initLocationManager() {

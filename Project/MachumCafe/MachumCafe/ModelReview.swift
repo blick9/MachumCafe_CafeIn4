@@ -10,6 +10,7 @@ import UIKit
 
 class ModelReview {
     fileprivate var id : String?
+    fileprivate var isKakao = Bool()
     fileprivate var cafeId = String()
     fileprivate var userId = String()
     fileprivate var nickname = String()
@@ -21,12 +22,12 @@ class ModelReview {
     
     init() {}
     
-    init(id: String? = nil, cafeId : String, userId: String, nickname: String, profileImageURL: String? = nil, profileImage: Data? = nil, date: String, reviewContent: String, rating: Double) {
+    init(id: String? = nil, isKakao: Bool, cafeId : String, userId: String, nickname: String, profileImageURL: String? = nil, date: String, reviewContent: String, rating: Double) {
         self.cafeId = cafeId
+        self.isKakao = isKakao
         self.userId = userId
         self.nickname = nickname
         self.profileImageURL = profileImageURL
-        self.profileImage = profileImage
         self.date = date
         self.reviewContent = reviewContent
         self.rating = rating
@@ -35,6 +36,7 @@ class ModelReview {
     func getReview() -> [String : Any] {
         var reviewDic = [String : Any]()
         reviewDic["cafeId"] = cafeId
+        reviewDic["isKakao"] = isKakao
         reviewDic["userId"] = userId
         reviewDic["nickname"] = nickname
         reviewDic["profileImageURL"] = profileImageURL
@@ -48,10 +50,9 @@ class ModelReview {
     func setProfileImage(profileImage: Data) {
         self.profileImage = profileImage
     }
-    
-    func setProfileImageURL(imageURL: String) {
-        self.profileImageURL = imageURL
-    }
+//    func setProfileImageURL(imageURL: String) {
+//        self.profileImageURL = imageURL
+//    }
 }
 
 class Review {
