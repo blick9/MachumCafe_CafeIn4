@@ -20,6 +20,7 @@ class ListTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
         self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
+        distanceLabel.sizeToFit()
     
     }
     

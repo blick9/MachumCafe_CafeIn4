@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FsF-yt-tfK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FsF-yt-tfK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -33,7 +33,7 @@
                             </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UQk-Gw-rcK">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BVn-dt-b0f"/>
                                 </constraints>
@@ -46,6 +46,7 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Tac-u8-9Wq" firstAttribute="leading" secondItem="Bva-Oe-efw" secondAttribute="leading" id="3mQ-aG-ysu"/>
                             <constraint firstAttribute="trailing" secondItem="UQk-Gw-rcK" secondAttribute="trailing" id="6NJ-Hj-QGc"/>
@@ -71,8 +72,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="UQk-Gw-rcK" id="y7n-kP-Mxu"/>
                         <outlet property="listView" destination="Tac-u8-9Wq" id="ty2-7Y-drR"/>
+                        <outlet property="listcollectionView" destination="UQk-Gw-rcK" id="TWw-zL-R1h"/>
                         <outlet property="selectedFilterViewTopConstraint" destination="Ntt-dP-HTs" id="7I6-ks-ooS"/>
                         <outlet property="viewSwitchButtonItem" destination="zF9-r4-EPs" id="CCa-ux-96p"/>
                     </connections>

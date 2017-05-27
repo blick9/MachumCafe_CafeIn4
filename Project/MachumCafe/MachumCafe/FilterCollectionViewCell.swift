@@ -11,6 +11,7 @@ import UIKit
 class FilterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var category: UILabel!
 
+    @IBOutlet weak var listCategory: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -28,6 +29,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.init(red: 255, green: 232, blue: 129).cgColor
         category.textColor = UIColor.init(red: 51, green: 51, blue: 51)
         category.sizeToFit()
+        
     }
 
 
