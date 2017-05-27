@@ -45,6 +45,8 @@ class CafeDetailViewController: UIViewController {
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         reviewTableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
+        let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
+        navigationItem.rightBarButtonItem = moreButton
         
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         
@@ -63,14 +65,30 @@ class CafeDetailViewController: UIViewController {
         viewInit()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
-
+    
+    func moreButtonAction() {
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let reportEditAction = UIAlertAction(title: "수정 제안", style: .default) { _ in
+            print("수정제안")
+        }
+        let reportCloseAction = UIAlertAction(title: "폐업 신고", style: .destructive) { _ in
+            print("폐업 신고")
+        }
+        let closeAction = UIAlertAction(title: "닫기", style: .cancel) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        actionSheetController.addAction(reportEditAction)
+        actionSheetController.addAction(reportCloseAction)
+        actionSheetController.addAction(closeAction)
+        present(actionSheetController, animated: true, completion: nil)
+    }
+    
     func reloadReviewTable() {
         self.reviews = self.currentCafeModel.getReviews()
         self.reviewTableView.reloadData()
         print("♻︎♻︎")
         // 리뷰 작성 또는 viewDidLoad시 마다 호출
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
