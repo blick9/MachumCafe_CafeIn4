@@ -111,6 +111,8 @@ public func getCafeListFromCurrentLocation() {
     }
 }
 
+public let categoryArray = ["24시", "연중무휴", "주차", "편한의자", "좌식", "모임", "미팅룸", "스터디", "넓은공간", "아이와함께", "디저트", "베이커리", "로스팅", "산책로", "모닥불", "드라이브", "북카페", "이색카페", "야경", "조용한", "고급스러운", "여유로운", "힐링", "테라스"]
+
 extension Double {
     mutating func roundToPlaces(places: Int) -> Double {
         let divisor = pow(10.0, Double(places))
