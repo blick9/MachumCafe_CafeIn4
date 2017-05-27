@@ -30,7 +30,10 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        emailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
+    }
     func kakaoLogin() {
         let session = KOSession.shared()
         if (session?.isOpen())! {
