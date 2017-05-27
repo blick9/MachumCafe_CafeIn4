@@ -27,7 +27,6 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
-    @IBOutlet weak var cafeImageView: UIImageView!
     @IBOutlet weak var moreReviewButton: UIButton!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var cafeImageScrollView: UIScrollView!
@@ -64,7 +63,6 @@ class CafeDetailViewController: UIViewController {
         
         navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
-//        cafeImageView.image = UIImage(data: (imagesData?[0])!)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
