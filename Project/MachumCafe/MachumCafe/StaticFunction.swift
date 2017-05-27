@@ -92,6 +92,7 @@ extension UIStoryboard {
     static let SettingViewStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
     static let SetLocationMapViewStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
     static let ReviewViewStoryboard = UIStoryboard(name: "ReviewView", bundle: nil)
+    static let CafeDetailViewStoryboard = UIStoryboard(name: "CafeDetailView", bundle: nil)
 }
 
 public func getCafeListFromCurrentLocation() {
