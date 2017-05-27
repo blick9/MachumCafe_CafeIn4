@@ -51,6 +51,10 @@ class ModelUser {
 
 class User {
     static let sharedInstance = User()
-    var isUser = Bool()
+    var isUser = Bool() {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
+        }
+    }
     var user = ModelUser()
 }
