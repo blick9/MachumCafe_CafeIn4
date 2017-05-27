@@ -104,7 +104,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
 
         cell.cafeNameLabel.text = cafe["name"] as? String
         cell.cafeAddressLabel.text = cafe["address"] as? String
-        cell.distanceLabel.text = "\(Int(distanceInMeters))M"
+        cell.distanceLabel.text = "\(Int(distanceInMeters))m"
         
         if let cafeCategorys = cafe["category"] as? [String] {
             var categorylabel = ""

@@ -120,7 +120,7 @@ extension ListContainerViewController : UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
-        cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
+        cell.backgroundColor = UIColor.white
         cell.category.text = selectedFilterArray[indexPath.row]
 
         return cell
