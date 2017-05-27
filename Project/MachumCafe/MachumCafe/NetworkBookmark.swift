@@ -23,7 +23,7 @@ class NetworkBookmark {
             let cafes = res["cafe"].arrayValue
             
             let _ = cafes.map {
-                let cafe = $0.dictionaryValue
+                var cafe = $0.dictionaryValue
                 
                 if let id = cafe["_id"]?.stringValue,
                 let name = cafe["name"]?.stringValue,
@@ -31,11 +31,12 @@ class NetworkBookmark {
                 let longitude = cafe["location"]?.arrayValue[0].doubleValue,
                 let latitude = cafe["location"]?.arrayValue[1].doubleValue,
                 let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
                 let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
                     let tel = cafe["tel"]?.stringValue
                     let hours = cafe["hours"]?.stringValue
                     let menu = cafe["menu"]?.stringValue
-                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL))
+                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL))
                 }
             }
             callback(modelCafe)

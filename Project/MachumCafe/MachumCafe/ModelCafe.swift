@@ -18,6 +18,7 @@ class ModelCafe {
     fileprivate var latitude : Double?
     fileprivate var longitude : Double?
     fileprivate var category = [String]()
+    fileprivate var rating = Double()
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
     fileprivate var imagesData : [Data]?
@@ -29,7 +30,7 @@ class ModelCafe {
     
     init() {}
         
-    init(id: String? = nil, name: String, tel: String?, address: String, hours: String?, latitude: Double? = nil, longitude: Double? = nil, category: [String],  menu: String? = nil, imagesURL: [String]) {
+    init(id: String? = nil, name: String, tel: String?, address: String, hours: String?, latitude: Double? = nil, longitude: Double? = nil, category: [String], rating: Double, menu: String? = nil, imagesURL: [String]) {
         self.id = id
         self.name = name
         self.tel = tel
@@ -38,6 +39,7 @@ class ModelCafe {
         self.latitude = latitude
         self.longitude = longitude
         self.category = category
+        self.rating = rating
         self.menu = menu
         self.imagesURL = imagesURL
         self.imagesData = [Data]()
@@ -61,6 +63,7 @@ class ModelCafe {
         cafeDic["latitude"] = latitude
         cafeDic["longitude"] = longitude
         cafeDic["category"] = category
+        cafeDic["rating"] = rating
         cafeDic["menu"] = menu
         cafeDic["imagesURL"] = imagesURL
         cafeDic["imagesData"] = imagesData
@@ -84,4 +87,5 @@ class Cafe {
     }
     var filterCafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
+    var specificCafe = ModelCafe()
 }

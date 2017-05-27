@@ -20,16 +20,12 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
-
-        print(#function, "Table")
         // Do any additional setup after loading the view.
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,10 +67,17 @@ class ListViewController: UIViewController {
         displayEmptyLabel()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailView" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! CafeDetailViewController
+                controller.currentCafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
+            }
+        }
+    }
 }
 
 extension ListViewController : UITableViewDelegate, UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -82,7 +85,6 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Cafe.sharedInstance.filterCafeList.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
@@ -107,10 +109,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.distanceLabel.text = "\(distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m")"
         
         if let cafeCategorys = cafe["category"] as? [String] {
-            var categorylabel = ""
-            for category in cafeCategorys {
-                categorylabel += "#\(category) "
-            }
+            let categorylabel = cafeCategorys.reduce("") { $0 + "#\($1) " }
             cell.category.text = categorylabel
         }
         
@@ -120,14 +119,4 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DetailView" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let controller = segue.destination as! CafeDetailViewController
-                controller.currentCafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
-            }
-        }
-    }
-    
 }

@@ -92,6 +92,7 @@ extension UIStoryboard {
     static let SettingViewStoryboard = UIStoryboard(name: "SettingView", bundle: nil)
     static let SetLocationMapViewStoryboard = UIStoryboard(name: "SetLocationMapView", bundle: nil)
     static let ReviewViewStoryboard = UIStoryboard(name: "ReviewView", bundle: nil)
+    static let CafeDetailViewStoryboard = UIStoryboard(name: "CafeDetailView", bundle: nil)
 }
 
 public func getCafeListFromCurrentLocation() {
@@ -109,6 +110,8 @@ public func getCafeListFromCurrentLocation() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
 }
+
+public let categoryArray = ["24시", "연중무휴", "주차", "편한의자", "좌식", "모임", "미팅룸", "스터디", "넓은공간", "아이와함께", "디저트", "베이커리", "로스팅", "산책로", "모닥불", "드라이브", "북카페", "이색카페", "야경", "조용한", "고급스러운", "여유로운", "힐링", "테라스"]
 
 extension Double {
     mutating func roundToPlaces(places: Int) -> Double {
@@ -134,6 +137,11 @@ extension String {
         let convertByDistance = dist.meterConvertToKiloMeter(places: 2)
         let result = distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m"
         return result
+    }
+    
+    var isEmail: Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegEx).evaluate(with: self)
     }
 }
 

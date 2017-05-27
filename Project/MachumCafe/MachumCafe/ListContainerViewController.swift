@@ -13,6 +13,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     var listMapViewController = UIViewController()
     var isMapView = false
     var selectedFilterArray = [String]()
+    let listViewNib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
     
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
@@ -36,23 +37,18 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
-        print("filterArray 1 : ", selectedFilterArray)
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(listViewNib, forCellWithReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         applyFilter()
-        print(Cafe.sharedInstance.filterCafeList.count, "------------------")
-        print("filterArray 2 : ", selectedFilterArray)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
     }
     
     func applyFilter() {
@@ -65,12 +61,12 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         if selectedFilterArray.isEmpty {
             self.selectedFilterViewTopConstraint.constant = -40
             UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
+//                self.view.layoutIfNeeded()
             })
         } else {
             self.selectedFilterViewTopConstraint.constant = 0
             UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
+//                self.view.layoutIfNeeded()
             })
         }
     }
@@ -151,5 +147,4 @@ extension ListContainerViewController : UICollectionViewDataSource, UICollection
         let width = Double((selectedFilterArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10
         return CGSize(width: width, height: 27)
     }
-
 }

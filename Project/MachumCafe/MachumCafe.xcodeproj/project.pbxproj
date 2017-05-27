@@ -55,7 +55,6 @@
 		B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */; };
 		B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */; };
 		B5C9D2AB1ECC1F8500662C27 /* ModelReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */; };
-		B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */; };
 		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
 		B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */; };
@@ -119,7 +118,6 @@
 		B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReviewView.storyboard; sourceTree = "<group>"; };
 		B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelReview.swift; sourceTree = "<group>"; };
-		B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 				B7E57DA51EB59F2200A6D9A7 /* CafeDetailViewController.swift */,
 				B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */,
 				B7E57DA91EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift */,
-				B78D2A1D1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift */,
 				B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */,
 			);
 			name = CafeDetailView;
@@ -525,7 +522,6 @@
 				B57407251ECAD8D3002B0ECE /* WriteReviewViewController.swift in Sources */,
 				A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */,
 				A723B67F1EAF431700469FE4 /* ListContainerViewController.swift in Sources */,
-				B78D2A1E1EB8593E0069E2E9 /* CafeDetailCategoryTableViewCell.swift in Sources */,
 				B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */,
 				B7E57DA61EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift in Sources */,
 				A7B73A631EB32E2200EB24C6 /* ModelUser.swift in Sources */,

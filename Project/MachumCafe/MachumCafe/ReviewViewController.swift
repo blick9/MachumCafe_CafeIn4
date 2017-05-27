@@ -9,7 +9,6 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
-    
     var currentCafeModel = ModelCafe()
     var reviews = [ModelReview]()
     
@@ -38,8 +37,7 @@ class ReviewViewController: UIViewController {
     }
 }
 
-extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
-    
+extension ReviewViewController : UITableViewDelegate, UITableViewDataSource { 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
