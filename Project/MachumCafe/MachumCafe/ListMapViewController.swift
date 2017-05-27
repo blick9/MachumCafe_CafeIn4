@@ -112,7 +112,6 @@ class ListMapViewController: UIViewController{
         circ.map = googleMap
     }
     
-    
     func getCafeListWhenMovedLocation(coordinate: CLLocationCoordinate2D) {
         NetworkCafe.getCafeList(coordinate: ModelLocation(latitude: coordinate.latitude, longitude: coordinate.longitude, address: "")) { (modelCafe) in
             var newCafeList = [ModelCafe]()
@@ -155,7 +154,6 @@ class ListMapViewController: UIViewController{
             controller.currentCafeModel = currentSelectedCafe
         }
     }
-    
 }
 
 extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate {
