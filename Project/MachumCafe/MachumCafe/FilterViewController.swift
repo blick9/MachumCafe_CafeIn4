@@ -19,7 +19,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var multiple = true
-    var categoryArray = ["24시", "연중무휴", "주차", "편한의자", "좌식", "모임", "미팅룸", "스터디", "넓은공간", "아이와함께", "디저트", "베이커리", "로스팅", "산책로", "모닥불", "드라이브", "북카페", "이색카페", "야경", "조용한", "고급스러운", "여유로운", "힐링"]
+
     var filterArray = [String]()
     
     override func viewDidLoad() {
@@ -60,12 +60,12 @@ class FilterViewController: UIViewController {
 }
 
 extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //categoryArray -> StaticFuncion.swift
         return categoryArray.count
     }
     
@@ -102,9 +102,9 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20.0
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
     }
-
 }
 

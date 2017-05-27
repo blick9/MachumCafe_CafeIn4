@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FsF-yt-tfK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FsF-yt-tfK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,28 +22,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktj-mb-iTF" userLabel="ListMapView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <connections>
-                                    <segue destination="fHl-Sh-Is7" kind="embed" id="dVv-ws-Vxe"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-u8-9Wq" userLabel="ListView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="563" id="4lz-QJ-jny"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="Hrr-hb-S2h" kind="embed" id="rYR-W9-fg8"/>
                                 </connections>
                             </containerView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UQk-Gw-rcK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BVn-dt-b0f"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tgz-0n-NKK">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Tac-u8-9Wq" firstAttribute="leading" secondItem="Bva-Oe-efw" secondAttribute="leading" id="3mQ-aG-ysu"/>
+                            <constraint firstAttribute="trailing" secondItem="UQk-Gw-rcK" secondAttribute="trailing" id="6NJ-Hj-QGc"/>
+                            <constraint firstItem="Tac-u8-9Wq" firstAttribute="top" secondItem="UQk-Gw-rcK" secondAttribute="bottom" id="KdT-Zm-YIo"/>
+                            <constraint firstItem="UQk-Gw-rcK" firstAttribute="top" secondItem="0Wk-kH-mIc" secondAttribute="bottom" id="Ntt-dP-HTs"/>
                             <constraint firstItem="dwo-LK-Bsc" firstAttribute="top" secondItem="Tac-u8-9Wq" secondAttribute="bottom" id="Q5R-aP-B5V"/>
-                            <constraint firstAttribute="trailing" secondItem="ktj-mb-iTF" secondAttribute="trailing" id="V8W-rb-mHc"/>
                             <constraint firstAttribute="trailing" secondItem="Tac-u8-9Wq" secondAttribute="trailing" id="W0b-BC-uJv"/>
-                            <constraint firstItem="ktj-mb-iTF" firstAttribute="top" secondItem="0Wk-kH-mIc" secondAttribute="bottom" id="eDC-gX-NKC"/>
-                            <constraint firstItem="dwo-LK-Bsc" firstAttribute="top" secondItem="ktj-mb-iTF" secondAttribute="bottom" id="jdy-uU-hGE"/>
-                            <constraint firstItem="Tac-u8-9Wq" firstAttribute="top" secondItem="0Wk-kH-mIc" secondAttribute="bottom" id="q91-JU-cWl"/>
-                            <constraint firstItem="ktj-mb-iTF" firstAttribute="leading" secondItem="Bva-Oe-efw" secondAttribute="leading" id="wdQ-Kq-7Ct"/>
+                            <constraint firstItem="UQk-Gw-rcK" firstAttribute="leading" secondItem="Bva-Oe-efw" secondAttribute="leading" id="X9v-PP-SCb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zlF-jy-VmJ">
@@ -61,8 +71,9 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="listMapView" destination="ktj-mb-iTF" id="a2O-qy-VBn"/>
+                        <outlet property="collectionView" destination="UQk-Gw-rcK" id="y7n-kP-Mxu"/>
                         <outlet property="listView" destination="Tac-u8-9Wq" id="ty2-7Y-drR"/>
+                        <outlet property="selectedFilterViewTopConstraint" destination="Ntt-dP-HTs" id="7I6-ks-ooS"/>
                         <outlet property="viewSwitchButtonItem" destination="zF9-r4-EPs" id="CCa-ux-96p"/>
                     </connections>
                 </viewController>

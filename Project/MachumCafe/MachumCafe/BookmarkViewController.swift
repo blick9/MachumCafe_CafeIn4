@@ -26,7 +26,7 @@ class BookmarkViewController: UIViewController {
     func getBookmarkList() {
         let activityIndicator = UIActivityIndicatorView()
         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
-        NetworkBookmark.getMyBookmark(userId: userId) { (result, cafeList) in
+        NetworkBookmark.getMyBookmark(userId: userId) { (cafeList) in
             Cafe.sharedInstance.bookmarkList = cafeList
             self.collectionView.reloadData()
             activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
@@ -41,10 +41,18 @@ class BookmarkViewController: UIViewController {
     @IBAction func closeButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailView" {
+            if let indexPaths = self.collectionView.indexPathsForSelectedItems{
+                let controller = segue.destination as! CafeDetailViewController
+                controller.currentCafeModel = Cafe.sharedInstance.bookmarkList[indexPaths[0].row]
+            }
+        }
+    }
 }
 
 extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewDelegate {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -71,15 +79,4 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
         cell.bookmarkCafeAddress.text = modelBookmark["address"] as? String
         return cell
     }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DetailView" {
-            if let indexPaths = self.collectionView.indexPathsForSelectedItems{
-                let controller = segue.destination as! CafeDetailViewController
-                controller.currentCafeModel = Cafe.sharedInstance.bookmarkList[indexPaths[0].row]
-            }
-        }
-    }
-    
 }

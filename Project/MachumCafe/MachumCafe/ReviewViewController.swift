@@ -9,7 +9,6 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
-    
     var currentCafeModel = ModelCafe()
     var reviews = [ModelReview]()
     
@@ -17,8 +16,11 @@ class ReviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "카페 리뷰"
         tableView.delegate = self
         tableView.dataSource = self
+        let nib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "Cell")
         reviews = currentCafeModel.getReviews()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
@@ -35,8 +37,7 @@ class ReviewViewController: UIViewController {
     }
 }
 
-extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
-    
+extension ReviewViewController : UITableViewDelegate, UITableViewDataSource { 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -48,11 +49,12 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReviewTableViewCell
         
-        let item = reviews[indexPath.row].getReview()
-        cell.reviewer.text = item["nickname"] as? String
-        cell.reviewDate.text = item["date"] as? String
-        cell.reviewContent.text = item["reviewContent"] as? String
-        cell.reviewStarRating.rating = item["rating"] as! Double
+        let review = reviews[indexPath.row].getReview()
+        cell.reviewer.text = review["nickname"] as? String
+        cell.reviewDate.text = review["date"] as? String
+        cell.reviewContent.text = review["reviewContent"] as? String
+        cell.reviewStarRating.rating = review["rating"] as! Double
+        cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
 
         return cell
     }

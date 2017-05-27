@@ -15,7 +15,10 @@ class WriteReviewViewController: UIViewController {
     var reviewView = ReviewViewController()
     var userData = User.sharedInstance.user.getUser()
     var writtenDate = Date()
-
+    var reviewDictionary = Review.sharedInstance.review.getReview()
+    var user = User.sharedInstance.user.getUser()
+    var cafe = Cafe.sharedInstance.allCafeList[1].getCafe() // 변경 필요
+    
     @IBOutlet weak var writeReview: UITextView!
     @IBOutlet weak var starRating: CosmosView!
     
@@ -27,17 +30,24 @@ class WriteReviewViewController: UIViewController {
     }
 
     @IBAction func registReview(_ sender: Any) {
-
-        let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, reviewContent: writeReview.text, rating: starRating.rating)
-        NetworkCafe.postCafeReview(review: review) { (bool, modelReviews) in
-            self.currentCafeModel.setReviews(reviews: modelReviews)
+        //TODO: 작성일 추가
+        if writeReview.text.isEmpty || starRating.rating == 0 {
+            UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록", message: "별점 또는 내용을 입력해주세요.", isHandler: false)
+        } else {
+            if User.sharedInstance.isUser {
+                let review = ModelReview(cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
+                NetworkCafe.postCafeReview(review: review, callback: { (modelReviews) in
+                    self.currentCafeModel.setReviews(reviews: modelReviews)
+                    self.dismiss(animated: true, completion: nil)
+                })
+            } else {
+                UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록실패", message: "로그인 후 이용해주세요.", isHandler: false)
+            }
         }
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
 
 //        let indexPath = IndexPath(row: 0, section: 0)
 //        reviewView.tableView.insertRows(at: [indexPath], with: .automatic)
         
-        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelReview(_ sender: Any) {
