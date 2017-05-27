@@ -21,7 +21,7 @@ class NetworkCafe {
         Alamofire.request("\(url)/api/v1/cafe", method: .post, parameters: coordinate.getLocation(), encoding: JSONEncoding.default).responseJSON { (response) in
             let cafes = JSON(data: response.data!).arrayValue
             let _ = cafes.map {
-                let cafe = $0.dictionaryValue
+                var cafe = $0.dictionaryValue
                 
                 if let id = cafe["_id"]?.stringValue,
                     let name = cafe["name"]?.stringValue,
@@ -29,11 +29,12 @@ class NetworkCafe {
                     let longitude = cafe["location"]?.arrayValue[0].doubleValue,
                     let latitude = cafe["location"]?.arrayValue[1].doubleValue,
                     let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                    let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
                     let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
                     let tel = cafe["tel"]?.stringValue
                     let hours = cafe["hours"]?.stringValue
                     let menu = cafe["menu"]?.stringValue
-                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL))
+                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL))
                 }
             }
             callback(modelCafe)
@@ -44,7 +45,7 @@ class NetworkCafe {
         var modelCafe = ModelCafe()
         
         Alamofire.request("\(url)/api/v1/cafe/\(cafeId)").responseJSON { (response) in
-            let cafe = JSON(data: response.data!).dictionaryValue
+            var cafe = JSON(data: response.data!).dictionaryValue
             
             if let id = cafe["_id"]?.stringValue,
                 let name = cafe["name"]?.stringValue,
@@ -52,11 +53,12 @@ class NetworkCafe {
                 let longitude = cafe["location"]?.arrayValue[0].doubleValue,
                 let latitude = cafe["location"]?.arrayValue[1].doubleValue,
                 let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
                 let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
                 let tel = cafe["tel"]?.stringValue
                 let hours = cafe["hours"]?.stringValue
                 let menu = cafe["menu"]?.stringValue
-                modelCafe = ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL)
+                modelCafe = ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL)
             }
             callback(modelCafe)
         }
