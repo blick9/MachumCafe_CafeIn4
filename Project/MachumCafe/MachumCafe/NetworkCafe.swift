@@ -88,14 +88,14 @@ class NetworkCafe {
             let _ = reviews.map {
                 let review = $0.dictionaryValue
                 if let id = review["_id"]?.stringValue,
-                let isKakao = review["isKakao"]?.boolValue,
+                let isKakaoImage = review["isKakaoImage"]?.boolValue,
                 let userId = review["userId"]?.stringValue,
                 let nickname = review["nickname"]?.stringValue,
                 let profileImageURL = review["profileImageURL"]?.stringValue,
                 let date = review["date"]?.stringValue,
                 let reviewContent = review["reviewContent"]?.stringValue,
                 let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, isKakao: isKakao, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
+                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
                     modelReviews.insert(modelReview, at: 0)
                 }
             }
@@ -113,14 +113,14 @@ class NetworkCafe {
             let _ = reviews.map {
                 let review = $0.dictionaryValue
                 if let id = review["_id"]?.stringValue,
-                let isKakao = review["isKakao"]?.boolValue,
+                let isKakaoImage = review["isKakaoImage"]?.boolValue,
                 let userId = review["userId"]?.stringValue,
                 let nickname = review["nickname"]?.stringValue,
                 let profileImageURL = review["profileImageURL"]?.stringValue,
                 let date = review["date"]?.stringValue,
                 let reviewContent = review["reviewContent"]?.stringValue,
                 let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, isKakao: isKakao, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
+                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
                     modelReviews.insert(modelReview, at: 0)
                 }
             }
