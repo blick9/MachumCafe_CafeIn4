@@ -56,8 +56,7 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
         cell.reviewStarRating.rating = review["rating"] as! Double
         // ModelReview 내 UserProfileImage 추가 후 연동
         if !(review["profileImageURL"] as! String).isEmpty {
-            NetworkUser.getUserImage(userID: review["userId"] as? String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String) { (profileImageData) in
-                print(review["profileImageURL"] as! String)
+            NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String) { (profileImageData) in
                 self.reviews[indexPath.row].setProfileImage(profileImage: profileImageData)
                 review = self.reviews[indexPath.row].getReview()
                 cell.reviewerPicture.image = UIImage(data: review["profileImage"] as! Data)

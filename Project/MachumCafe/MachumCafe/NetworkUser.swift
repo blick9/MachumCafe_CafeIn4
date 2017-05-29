@@ -118,7 +118,7 @@ class NetworkUser {
         }
     }
     
-    static func getUserImage(userID: String?, isKakaoImage: Bool, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
+    static func getUserImage(userID: String, isKakaoImage: Bool, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
         if isKakaoImage {
             Alamofire.request(imageURL).responseData { (response) in
                 if let imageData = response.result.value {
@@ -126,7 +126,7 @@ class NetworkUser {
                 }
             }
         } else {
-            Alamofire.request("\(url)/api/v1/user/\(userID!)/profileimage/\(imageURL)").responseData { (response) in
+            Alamofire.request("\(url)/api/v1/user/\(userID)/profileimage/\(imageURL)").responseData { (response) in
                 if let imageData = response.result.value {
                     callback(imageData)
                 }

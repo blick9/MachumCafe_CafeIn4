@@ -15,12 +15,12 @@ class ModelUser {
     fileprivate var email = String()
     fileprivate var nickname = String()
     fileprivate var bookmark = [String]()
-    fileprivate var profileImageURL : String?
+    fileprivate var profileImageURL = String()
     fileprivate var profileImage = Data()
     
     init() {}
     
-    init(id: String, isKakaoImage: Bool, email: String, nickname: String, bookmark: [String], profileImageURL: String? = nil) {
+    init(id: String, isKakaoImage: Bool, email: String, nickname: String, bookmark: [String], profileImageURL: String) {
         self.id = id
         self.isKakaoImage = isKakaoImage
         self.email = email
