@@ -47,8 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     NetworkUser.kakaoLogin(email: email, nickname: String(), imageURL: String()) { (result, user) in
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
+//                        dump(user)
                         if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                            NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
+                            NetworkUser.getUserImage(userID: user.getUser()["id"] as! String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                                 user.setProfileImage(profileImage: imageData)
                             }
                         }
@@ -62,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     User.sharedInstance.user = user
                     User.sharedInstance.isUser = true
                     if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                        NetworkUser.getUserImage(userID: user.getUser()["id"] as? String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
+                        NetworkUser.getUserImage(userID: user.getUser()["id"] as! String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                             user.setProfileImage(profileImage: imageData)
                         }
                     }

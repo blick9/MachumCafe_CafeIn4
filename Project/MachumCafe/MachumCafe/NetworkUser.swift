@@ -67,6 +67,7 @@ class NetworkUser {
         Alamofire.request("\(url)/api/v1/user/login/kakao", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             var modelUser = ModelUser()
             let res = JSON(data: response.data!)
+            print(res)
             let result = res["result"].boolValue
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
@@ -118,7 +119,7 @@ class NetworkUser {
         }
     }
     
-    static func getUserImage(userID: String?, isKakaoImage: Bool, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
+    static func getUserImage(userID: String, isKakaoImage: Bool, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
         if isKakaoImage {
             Alamofire.request(imageURL).responseData { (response) in
                 if let imageData = response.result.value {
@@ -126,7 +127,9 @@ class NetworkUser {
                 }
             }
         } else {
-            Alamofire.request("\(url)/api/v1/user/\(userID!)/profileimage/\(imageURL)").responseData { (response) in
+            print(imageURL)
+            print("\(url)/api/v1/user/\(userID)/profileimage/\(imageURL)")
+            Alamofire.request("\(url)/api/v1/user/\(userID)/profileimage/\(imageURL)").responseData { (response) in
                 if let imageData = response.result.value {
                     callback(imageData)
                 }
