@@ -11,6 +11,7 @@ import Foundation
 class ModelUser {
     
     fileprivate var id = String()
+    fileprivate var isKakaoImage = Bool()
     fileprivate var email = String()
     fileprivate var nickname = String()
     fileprivate var bookmark = [String]()
@@ -19,8 +20,9 @@ class ModelUser {
     
     init() {}
     
-    init(id: String, email: String, nickname: String, bookmark: [String], profileImageURL: String? = nil) {
+    init(id: String, isKakaoImage: Bool, email: String, nickname: String, bookmark: [String], profileImageURL: String? = nil) {
         self.id = id
+        self.isKakaoImage = isKakaoImage
         self.email = email
         self.nickname = nickname
         self.bookmark = bookmark
@@ -30,6 +32,7 @@ class ModelUser {
     func getUser() -> [String : Any] {
         var userDic = [String : Any]()
         userDic["id"] = id
+        userDic["isKakaoImage"] = isKakaoImage
         userDic["email"] = email
         userDic["nickname"] = nickname
         userDic["bookmark"] = bookmark
@@ -46,8 +49,9 @@ class ModelUser {
         self.profileImage = profileImage
     }
     
-    func setProfileImageURL(imageURL: String) {
+    func setProfileImageURL(imageURL: String, isKakaoImage: Bool) {
         self.profileImageURL = imageURL
+        self.isKakaoImage = isKakaoImage
     }
     
 }

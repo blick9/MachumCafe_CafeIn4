@@ -54,9 +54,6 @@ class CafeDetailViewController: UIViewController {
         
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
-        
-        print(cafeData["imagesData"] as! [Data])
-        
         if !(cafeData["imagesData"] as! [Data]).isEmpty {
             makeCafeImageScrollView(imagesData: cafeData["imagesData"] as! [Data])
         } else {
@@ -224,13 +221,22 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
             if !reviews.isEmpty {
-                let review = reviews[indexPath.row].getReview()
+                var review = reviews[indexPath.row].getReview()
                 
                 cell.reviewer.text = review["nickname"] as? String
                 cell.reviewDate.text = review["date"] as? String
                 cell.reviewContent.text = review["reviewContent"] as? String
                 cell.reviewStarRating.rating = review["rating"] as! Double
-                cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
+                
+                if !(review["profileImageURL"] as! String).isEmpty {
+                    NetworkUser.getUserImage(userID: review["userId"] as? String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String) { (profileImageData) in
+                        self.reviews[indexPath.row].setProfileImage(profileImage: profileImageData)
+                        review = self.reviews[indexPath.row].getReview()
+                        cell.reviewerPicture.image = UIImage(data: review["profileImage"] as! Data)
+                    }
+                } else {
+                    cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
+                }
             }
             return cell
         }
