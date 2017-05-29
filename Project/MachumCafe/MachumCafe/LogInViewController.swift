@@ -74,13 +74,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     let email = user.email!
                     let nickname = user.property(forKey: "nickname") as! String
                     let imageURL = user.property(forKey: "profile_image") as! String
-print("!!!!!!!!!!imageURL: ", imageURL)
+                    
                     NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
                         let activityIndicator = UIActivityIndicatorView()
                         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
                         activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
-                        print("????????????user: ", user.getUser())
-                        dump(user)
+                        
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
                         if !imageURL.isEmpty {
