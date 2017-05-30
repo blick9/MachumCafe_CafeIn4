@@ -16,16 +16,23 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var category: UILabel!
+    var ratingValue = String()
+    var ratingViewxib = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as! RatingView
     
     override func layoutSubviews() {
-        self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
-        self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
-    
+        super.layoutSubviews()
+        self.cafeNameLabel.sizeToFit()
+        ratingViewxib.ratingLabel.text = ratingValue
+        ratingViewxib.ratingStarImage.image = ratingValue == "0.0" ? #imageLiteral(resourceName: "RatingStarEmpty") : #imageLiteral(resourceName: "RatingStarFill")
+        ratingViewxib.frame = CGRect(x: cafeNameLabel.frame.maxX + 5 , y: cafeNameLabel.frame.midY - 5, width: 44, height: 18)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
+        self.bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
+        self.addSubview(ratingViewxib)
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

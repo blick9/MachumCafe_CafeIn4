@@ -17,7 +17,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var viewSwitchButtonItem: UIBarButtonItem!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var listcollectionView: UICollectionView!
     @IBOutlet weak var selectedFilterViewTopConstraint: NSLayoutConstraint!
     
     func savedFilter(SavedFilter pickedFilter: [String?]) {
@@ -32,15 +32,18 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         self.navigationItem.title = "맞춤카페 목록"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         selectedFilterViewTopConstraint.constant = -40
+        listcollectionView.delegate = self
+        listcollectionView.dataSource = self
+        listcollectionView.register(listViewNib, forCellWithReuseIdentifier: "Cell")
+        listcollectionView.allowsSelection = false
         
         listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as! ListViewController
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(listViewNib, forCellWithReuseIdentifier: "Cell")
+        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +56,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     
     func applyFilter() {
         cafeFilter(filterArray: selectedFilterArray)
-        collectionView.reloadData()
+        listcollectionView.reloadData()
         showSelectedFilterView()
     }
     
@@ -122,6 +125,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
 }
 
 extension ListContainerViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -132,8 +136,9 @@ extension ListContainerViewController : UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
-        cell.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
+        cell.backgroundColor = UIColor.clear
         cell.category.text = selectedFilterArray[indexPath.row]
+      //  cell.category.textColor = UIColor.init(red: 255, green: 232, blue: 129)
 
         return cell
     }

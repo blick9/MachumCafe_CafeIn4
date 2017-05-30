@@ -73,6 +73,10 @@ class ModelCafe {
     func getReviews() -> [ModelReview] {
         return reviews
     }
+    
+    func setRating(rating: Double) {
+        self.rating = rating
+    }
 }
 
 class Cafe {

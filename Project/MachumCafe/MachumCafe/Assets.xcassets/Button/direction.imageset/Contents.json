@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "restroomCategoryIcon.png",
+      "filename" : "direction.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "restroomCategoryIcon@2x.png",
+      "filename" : "direction@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "restroomCategoryIcon@3x.png",
+      "filename" : "direction@3x.png",
       "scale" : "3x"
     }
   ],

@@ -87,7 +87,6 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
-        
         var cafe = Cafe.sharedInstance.filterCafeList[indexPath.row].getCafe()
         let cafeLocation = CLLocation(latitude: cafe["latitude"] as! CLLocationDegrees, longitude: cafe["longitude"] as! CLLocationDegrees)
         var distance = Double(currentLocation.distance(from: cafeLocation))
@@ -104,8 +103,8 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         }
         cell.cafeNameLabel.text = cafe["name"] as? String
         cell.cafeAddressLabel.text = cafe["address"] as? String
+        cell.ratingValue = String(describing: cafe["rating"]!)
         cell.distanceLabel.text = "\(distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m")"
-        
         if let cafeCategorys = cafe["category"] as? [String] {
             let categorylabel = cafeCategorys.reduce("") { $0 + "#\($1) " }
             cell.category.text = categorylabel
@@ -114,7 +113,7 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.bookmarkButton.isSelected = getUserBookmarkArray.contains(cafe["id"] as! String) ? true : false
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton(_:)), for: .touchUpInside)
-        
         return cell
     }
+    
 }
