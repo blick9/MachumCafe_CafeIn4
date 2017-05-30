@@ -114,29 +114,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("url:\(url)")
+        print("urlhost: \(url.host)")
+        print("urlPath: \(url.path)")
+        print(url.pathComponents[1])
+
+        let urlPath : String = url.path as String!
+        let urlHost : String = url.host as String!
+        
+        if(urlPath == "/inner") {
+            
+            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
+                Cafe.sharedInstance.specificCafe = modelCafe
+                let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
+                let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetailView") as! CafeDetailViewController
+                let cafeDetailNavigationViewController = UINavigationController(rootViewController: cafeDetailViewController)
+                cafeDetailViewController.currentCafeModel = Cafe.sharedInstance.specificCafe
+                self.window?.rootViewController = mainViewController
+                mainViewController.navigationController?.pushViewController(cafeDetailNavigationViewController, animated: true)
+            }
+        }
+        self.window?.makeKeyAndVisible()
+        return true
+    }
     
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-//        print("url:\(url)")
-//        print("urlhost: \(url.host)")
-//        print("urlPath: \(url.path)")
-//        
-//        let urlPath : String = url.path as String!
-//        let urlHost : String = url.host as String!
-//        
-//        if(urlPath == "/inner") {
-//            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
-//                Cafe.sharedInstance.specificCafe = modelCafe
-//                let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
-//                let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetailView") as! CafeDetailViewController
-//                let cafeDetailNavigationViewController = UINavigationController(rootViewController: cafeDetailViewController)
-//                cafeDetailViewController.currentCafeModel = Cafe.sharedInstance.specificCafe
-//                self.window?.rootViewController = mainViewController
-//                mainViewController.navigationController?.pushViewController(cafeDetailNavigationViewController, animated: true)
-//            }
-//            
+//    func getDetailID(_ id : String) {
+//        NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
+//            Cafe.sharedInstance.specificCafe = modelCafe
+//        let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
+//        let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetailView") as! CafeDetailViewController
+//        self.window?.rootViewController?.performSegue(withIdentifier: "DetailView", sender: nil)
 //        }
-//        self.window?.makeKeyAndVisible()
-//        return true
 //    }
     
     func initLocationManager() {

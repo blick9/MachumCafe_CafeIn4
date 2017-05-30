@@ -28,11 +28,23 @@
 				<string>kakao9895e6314a9d30a203c757f976173c23</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>febrix.9000.kuchen.MachumCafe</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>machumCafe</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>9895e6314a9d30a203c757f976173c23</string>
+	<key>KAKAO_SECURE_MODE</key>
+	<true/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakao9895e6314a9d30a203c757f976173c23</string>
@@ -79,8 +91,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>URL</key>
-	<string>http://localhost:3000</string>
-    <key>KAKAO_SECURE_MODE</key>
-    <true/>
+	<string>http://13.124.47.112:3000</string>
 </dict>
 </plist>
