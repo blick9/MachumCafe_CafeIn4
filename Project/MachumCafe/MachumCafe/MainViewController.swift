@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         
         for i in 0..<bannerArray.count {
             let bannerView = UIImageView()
-            bannerView.contentMode = .scaleAspectFit
+            bannerView.contentMode = .scaleToFill
             bannerView.image = bannerArray[i]
             let xPosition = self.view.frame.width * CGFloat(i)
             bannerView.frame = CGRect(x: xPosition, y: 0, width: self.mainBannerScrollView.frame.width, height: self.mainBannerScrollView.frame.height)
