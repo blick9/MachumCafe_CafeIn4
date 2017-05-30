@@ -60,6 +60,12 @@ class SetLocationMapViewController: UIViewController, UISearchControllerDelegate
         
         applyButton.tintColor = UIColor(red: 255, green: 232, blue: 129)
         addressView.layer.cornerRadius = 3
+        
+        resultsViewController?.delegate = self
+        let addressFilter = GMSAutocompleteFilter()
+        addressFilter.type = .noFilter
+        addressFilter.country = "KR"
+        resultsViewController?.autocompleteFilter = addressFilter
     }
     
     func GMSAutocompleteInit() {
@@ -84,6 +90,11 @@ class SetLocationMapViewController: UIViewController, UISearchControllerDelegate
     func didPresentSearchController(_ searchController: UISearchController) {
         // Glitter Cancel Button
 //        searchController.searchBar.showsCancelButton = false
+//        resultsViewController?.autocompleteFilter?.type = .noFilter
+//        resultsViewController?.autocompleteFilter?.country = "KR"
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        
         print(#function)
     }
     
@@ -115,7 +126,7 @@ extension SetLocationMapViewController : GMSMapViewDelegate, CLLocationManagerDe
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        googleMap.animate(toLocation: coordinate)
+        googleMap.animate(toLocation:  coordinate)
         print(coordinate)
         /* Center 조정용 Marker
         let adjustCenterPointMarker = GMSMarker(position: coordinate)
