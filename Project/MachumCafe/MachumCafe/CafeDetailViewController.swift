@@ -73,8 +73,15 @@ class CafeDetailViewController: UIViewController {
             self.suggestionButtonAction()
         }
         let reportCloseAction = UIAlertAction(title: "폐업 신고", style: .destructive) { _ in
-            //TODO: 폐업 신고 Network 메서드 구현
-            print("폐업 신고")
+            let alert = UIAlertController(title: "폐업 신고", message: "폐업 신고를 하시겠습니까?", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "취소", style: .default)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: { (_) in
+                NetworkAdmin.suggestionClesedCafe(cafe: self.cafeData)
+                UIAlertController().oneButtonAlert(target: self, title: "제보 완료", message: "소중한 의견 감사합니다.\n빠른시간 내에 적용하겠습니다 :)", isHandler: false)
+            })
+            alert.addAction(confirm)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
         }
         let closeAction = UIAlertAction(title: "닫기", style: .cancel) { _ in
             self.dismiss(animated: true, completion: nil)
