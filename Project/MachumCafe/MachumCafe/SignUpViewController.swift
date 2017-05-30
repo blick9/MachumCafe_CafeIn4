@@ -65,6 +65,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate{
             UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "빈칸을 채워주세요 :(", isHandler: false)
         } else if passwordTextField.text! != cofirmPasswordTextField.text! {
             UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "비밀번호가 일치하지 않습니다.", isHandler: false)
+        } else if !(passwordTextField.text?.isPassword)! {
+            UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "비밀번호는 6자리 이상 입력 해주세요.", isHandler: false)
         } else if !(emailTextField.text?.isEmail)! {
             UIAlertController().oneButtonAlert(target: self, title: "회원가입", message: "올바른 이메일을 입력해주세요", isHandler: false)
         } else {
