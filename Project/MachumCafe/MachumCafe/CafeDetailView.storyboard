@@ -96,11 +96,8 @@
                                             <action selector="shareActionButton:" destination="ejC-8o-OCk" eventType="touchUpInside" id="t0K-Iv-DJi"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미엘 (miel)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooV-Jh-HWD">
-                                        <rect key="frame" x="36" y="185" width="114.5" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="ooV-Jh-HWD" secondAttribute="height" multiplier="19:5" id="n7f-hJ-LEz"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooV-Jh-HWD">
+                                        <rect key="frame" x="36" y="185" width="93.5" height="30"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -225,20 +222,22 @@
                             <constraint firstItem="O3u-gt-fNw" firstAttribute="leading" secondItem="fIW-fB-5ne" secondAttribute="leading" id="eZ2-mY-j2S"/>
                             <constraint firstItem="O3u-gt-fNw" firstAttribute="centerX" secondItem="fIW-fB-5ne" secondAttribute="centerXWithinMargins" id="vAH-Dm-wqu"/>
                             <constraint firstAttribute="topMargin" secondItem="O3u-gt-fNw" secondAttribute="top" id="wHk-pe-qe9"/>
+                            <constraint firstAttribute="trailing" secondItem="ooV-Jh-HWD" secondAttribute="trailing" priority="750" constant="245.5" id="xPB-1B-B9p"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PG9-9P-Ga9"/>
                     <connections>
+                        <outlet property="backgroundScrollView" destination="O3u-gt-fNw" id="RLa-X8-nS6"/>
                         <outlet property="bookmarkButton" destination="KOa-uo-k0F" id="lfO-IR-i9t"/>
                         <outlet property="cafeImageScrollView" destination="nys-DB-xoM" id="vnD-Pe-kJ1"/>
                         <outlet property="cafeNameLabel" destination="ooV-Jh-HWD" id="P7w-bi-P4K"/>
                         <outlet property="categoryCollectionHeight" destination="uiP-EU-Q47" id="2Rb-5p-TmC"/>
                         <outlet property="categoryCollectionView" destination="yPp-Zp-Cz6" id="vAJ-JQ-MKS"/>
                         <outlet property="detailTableView" destination="HUB-vG-q52" id="qlA-Fp-Vqg"/>
+                        <outlet property="detailTableViewHeight" destination="08g-yz-FKF" id="oU8-jp-C8g"/>
                         <outlet property="moreReviewButton" destination="9X9-VU-4mY" id="3fF-W9-Yw0"/>
-                        <outlet property="reviewHeight" destination="eZa-JQ-Z3p" id="iBo-B0-imx"/>
                         <outlet property="reviewTableView" destination="DgO-TJ-FRg" id="VvJ-Ih-ZSr"/>
-                        <outlet property="tableViewHeight" destination="08g-yz-FKF" id="MPe-j7-3Ry"/>
+                        <outlet property="reviewTableViewHeight" destination="eZa-JQ-Z3p" id="jsZ-VL-Imi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nq8-P4-9rN" userLabel="First Responder" sceneMemberID="firstResponder"/>
