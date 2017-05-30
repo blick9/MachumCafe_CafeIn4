@@ -52,7 +52,7 @@ class BookmarkViewController: UIViewController {
     }
 }
 
-extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -78,5 +78,22 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
         cell.bookmarkCafeName.text = modelBookmark["name"] as? String
         cell.bookmarkCafeAddress.text = modelBookmark["address"] as? String
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 2 - 6
+        return CGSize(width: width, height: width*1.2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 7, left: 4, bottom: 5, right: 4)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2.0
     }
 }
