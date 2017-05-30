@@ -42,6 +42,7 @@ class NetworkUser {
             let result = res["result"].boolValue
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
+                let isKakaoImage = user["isKakaoImage"]?.boolValue,
                 let email = user["email"]?.stringValue,
                 let nickname = user["nickname"]?.stringValue,
                 let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
@@ -49,7 +50,7 @@ class NetworkUser {
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
+                    modelUser = ModelUser(id: id, isKakaoImage: isKakaoImage, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
                 }
             }
             callback(result, modelUser)
@@ -69,6 +70,7 @@ class NetworkUser {
             let result = res["result"].boolValue
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
+                let isKakaoImage = user["isKakaoImage"]?.boolValue,
                 let email = user["email"]?.stringValue,
                 let nickname = user["nickname"]?.stringValue,
                 let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
@@ -76,7 +78,7 @@ class NetworkUser {
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL)
+                    modelUser = ModelUser(id: id, isKakaoImage: isKakaoImage, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
                 }
             }
             callback(result, modelUser)
@@ -93,13 +95,14 @@ class NetworkUser {
             if let user = res["user"].dictionary {
                 if let id = user["_id"]?.stringValue,
                 let email = user["email"]?.stringValue,
+                let isKakaoImage = user["isKakaoImage"]?.boolValue,
                 let nickname = user["nickname"]?.stringValue,
                 let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
                     var imageURL = String()
                     if let userImageURL = user["imageURL"]?.stringValue {
                         imageURL = userImageURL
                     }
-                    modelUser = ModelUser(id: id, email: email, nickname: nickname, bookmark: bookmark, imageURL: imageURL
+                    modelUser = ModelUser(id: id, isKakaoImage: isKakaoImage, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL
                     )
                 }
             }
@@ -115,12 +118,44 @@ class NetworkUser {
         }
     }
     
-    static func getUserImage(imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
-        Alamofire.request(imageURL).responseData { (response) in
-            if let imageData = response.result.value {
-                callback(imageData)
+    static func getUserImage(userID: String, isKakaoImage: Bool, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
+        if isKakaoImage {
+            Alamofire.request(imageURL).responseData { (response) in
+                if let imageData = response.result.value {
+                    callback(imageData)
+                }
+            }
+        } else {
+            Alamofire.request("\(url)/api/v1/user/\(userID)/profileimage/\(imageURL)").responseData { (response) in
+                if let imageData = response.result.value {
+                    callback(imageData)
+                }
             }
         }
     }
     
+    static func setUserProfileImage(userID: String, image: UIImage, callback: @escaping (_ result: Bool) -> Void) {
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            let imageData = UIImageJPEGRepresentation(image, 0.1)
+            multipartFormData.append(imageData!, withName: "image", fileName: "file.png", mimeType: "image/png")
+        }, to: "\(url)/api/v1/user/\(userID)/profileimage", method: .put) { (res) in
+            switch res {
+            case .success(let upload, _, _):
+                print("success")
+                upload.responseJSON(completionHandler: { (response) in
+                    let res = JSON(data: response.data!)
+                    let result = res["result"].boolValue
+                    if let user = res["user"].dictionary {
+                        let imageURL = user["imageURL"]?.stringValue
+                        let isKakaoImage = user["isKakaoImage"]?.boolValue
+                        User.sharedInstance.user.setProfileImageURL(imageURL: imageURL!, isKakaoImage: isKakaoImage!)
+                    }
+                    callback(result)
+                })
+            case .failure(let error):
+                print("failed")
+                print(error)
+            }
+        }
+    }
 }

@@ -9,13 +9,14 @@
 import UIKit
 import GooglePlaces
 
-class SuggestionViewController: UIViewController, SavedImageDelegate {
+class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFieldDelegate {
     var multiple = true
     var filterArray = [String]()
     var cafeData = [String:Any]()
     var selectedLocation = CLLocationCoordinate2D()
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
+    @IBOutlet weak var suggestionScrollView: UIScrollView!
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var telTextField: UITextField!
@@ -31,6 +32,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
     
     var previewImage =  [PreviewImageButton]()
     var imageArray = [UIImage?]()
+    var textFieldArray = [UITextField]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +52,19 @@ class SuggestionViewController: UIViewController, SavedImageDelegate {
             getCafeInfo()
             checkSelected()
         }
-        // Do any additional setup after loading the view.
+        
+        self.textFieldArray = [nameTextField,telTextField,addressTextField,detailAddressTextField,hoursTextField]
+        
+        for textfield in textFieldArray{
+            textfield.delegate = self
+        }
+        self.hideKeyboardWhenTappedAround()
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
     @IBAction func imagePickerActionButton(_ sender: Any) {
         let imagePickerViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "imagePicker") as! SuggestionImagePickerViewController
         let navigationVC = UINavigationController(rootViewController: imagePickerViewController)
@@ -221,5 +233,18 @@ extension SuggestionViewController: GMSAutocompleteViewControllerDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
+}
+//suggestionView 화면 클릭시 키보드 내리기
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        // canclesTouchesInView가 고정값으로 true임. true인 경우는 이전에 전달 된 터치를 touchesCancelled (_ : with :) 메시지를 통해 취소해야 다음 터치가 먹힌다. 하지만 false로 지정하면 멀티 터치가 되어 이 예외사항을 피할 수 있다.
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
