@@ -112,7 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
+
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
 //        print("url:\(url)")
 //        print("urlhost: \(url.host)")
@@ -136,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 //        self.window?.makeKeyAndVisible()
 //        return true
 //    }
-    
+
     
     func initLocationManager() {
         seenError = false

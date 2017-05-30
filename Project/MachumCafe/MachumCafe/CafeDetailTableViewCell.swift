@@ -19,6 +19,10 @@ class CafeDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func layoutSubviews() {
+        self.detailLabel.sizeToFit()
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
