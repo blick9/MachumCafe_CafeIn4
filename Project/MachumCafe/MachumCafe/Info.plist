@@ -33,6 +33,8 @@
 	<string>1</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>9895e6314a9d30a203c757f976173c23</string>
+	<key>KAKAO_SECURE_MODE</key>
+	<true/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakao9895e6314a9d30a203c757f976173c23</string>
@@ -51,7 +53,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Use Camera?</string>
+	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Allow location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -80,7 +82,5 @@
 	<false/>
 	<key>URL</key>
 	<string>http://localhost:3000</string>
-    <key>KAKAO_SECURE_MODE</key>
-    <true/>
 </dict>
 </plist>
