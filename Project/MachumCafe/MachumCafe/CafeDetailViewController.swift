@@ -22,7 +22,6 @@ class CafeDetailViewController: UIViewController {
     
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var reviewHeight: NSLayoutConstraint!
     @IBOutlet weak var categoryCollectionHeight: NSLayoutConstraint!
@@ -42,12 +41,13 @@ class CafeDetailViewController: UIViewController {
     
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        detailTableView.separatorColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2)
+        
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         reviewTableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
         let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
         navigationItem.rightBarButtonItem = moreButton
-       // categoryCollectionView.isScrollEnabled = false
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
@@ -60,8 +60,9 @@ class CafeDetailViewController: UIViewController {
             cafeImageScrollView.addSubview(UIImageView(image: #imageLiteral(resourceName: "1")))
         }
         
-        navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
+        cafeNameLabel.shadowOffset = CGSize(width: 2, height: 2)
+        cafeNameLabel.shadowColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
@@ -91,6 +92,13 @@ class CafeDetailViewController: UIViewController {
         // 리뷰 작성 또는 viewDidLoad시 마다 호출
     }
     
+    @IBAction func shareActionButton(_ sender: Any) {
+        let activityViewController = UIActivityViewController(activityItems: ["URL"], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // UserBookmark 정보 불러오기
@@ -101,9 +109,20 @@ class CafeDetailViewController: UIViewController {
         
         //테이블뷰 높이 오토레이아웃 설정
         tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight))
-        reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
+        if reviews.count == 1 {
+            reviewHeight.constant = CGFloat(1.0 * reviewTableView.rowHeight)
+        }
+        else if reviews.count == 2 {
+            reviewHeight.constant = CGFloat(2.0 * reviewTableView.rowHeight)
+        }
+        else if reviews.count == 3 {
+            reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
+        }
+        else {
+            reviewHeight.constant = 0
+        }
         //카테고리 높이 오토레이아웃 설정
-        if cafeCategorys.count > 5 {
+        if cafeCategorys.count >= 5 {
             categoryCollectionHeight.constant = CGFloat(1.7 * categoryCollectionView.frame.height)
         }
         self.view.layoutIfNeeded()
@@ -166,9 +185,6 @@ class CafeDetailViewController: UIViewController {
     func phoneCallButtonAction() {
         let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
         UIApplication.shared.openURL(url as! URL)
-        print("CCCCCLLLLLCCCCLLLLLLCCCCLLLL")
-        print(url)
-
     }
 }
 
@@ -177,7 +193,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         if tableView.tag == 1 {
             return 53
         } else {
-            return 130
+            return reviewHeight.constant
         }
     }
     
@@ -192,7 +208,6 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
-            cell.detailLabel.sizeToFit()
 
             if indexPath.row == 0 {
                 cell.iconImage.image = cafeIcon[0]
@@ -255,7 +270,7 @@ extension CafeDetailViewController : UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
         cell.category.text = cafeCategorys[indexPath.row]
-        
+
         return cell
     }
 
