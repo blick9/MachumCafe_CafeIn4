@@ -94,16 +94,7 @@ extension UIStoryboard {
 
 public func getCafeListFromCurrentLocation() {
     NetworkCafe.getCafeList(coordinate: Location.sharedInstance.currentLocation) { (modelCafe) in
-        var newCafeList = [ModelCafe]()
-        for cafe in modelCafe {
-            let isCafe = Cafe.sharedInstance.allCafeList.filter({ (cafeList) -> Bool in
-                return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
-            })
-            if isCafe.isEmpty {
-                newCafeList.append(cafe)
-            }
-        }
-        Cafe.sharedInstance.allCafeList = newCafeList + Cafe.sharedInstance.allCafeList
+        Cafe.sharedInstance.allCafeList = modelCafe
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
 }
