@@ -21,7 +21,7 @@ class NetworkCafe {
         Alamofire.request("\(url)/api/v1/cafe", method: .post, parameters: coordinate.getLocation(), encoding: JSONEncoding.default).responseJSON { (response) in
             let cafes = JSON(data: response.data!).arrayValue
             let _ = cafes.map {
-                let cafe = $0.dictionaryValue
+                var cafe = $0.dictionaryValue
                 
                 if let id = cafe["_id"]?.stringValue,
                     let name = cafe["name"]?.stringValue,
@@ -29,11 +29,12 @@ class NetworkCafe {
                     let longitude = cafe["location"]?.arrayValue[0].doubleValue,
                     let latitude = cafe["location"]?.arrayValue[1].doubleValue,
                     let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                    let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
                     let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
                     let tel = cafe["tel"]?.stringValue
                     let hours = cafe["hours"]?.stringValue
                     let menu = cafe["menu"]?.stringValue
-                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL))
+                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL))
                 }
             }
             callback(modelCafe)
@@ -44,7 +45,7 @@ class NetworkCafe {
         var modelCafe = ModelCafe()
         
         Alamofire.request("\(url)/api/v1/cafe/\(cafeId)").responseJSON { (response) in
-            let cafe = JSON(data: response.data!).dictionaryValue
+            var cafe = JSON(data: response.data!).dictionaryValue
             
             if let id = cafe["_id"]?.stringValue,
                 let name = cafe["name"]?.stringValue,
@@ -52,11 +53,12 @@ class NetworkCafe {
                 let longitude = cafe["location"]?.arrayValue[0].doubleValue,
                 let latitude = cafe["location"]?.arrayValue[1].doubleValue,
                 let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
                 let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
                 let tel = cafe["tel"]?.stringValue
                 let hours = cafe["hours"]?.stringValue
                 let menu = cafe["menu"]?.stringValue
-                modelCafe = ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, menu: menu, imagesURL: imagesURL)
+                modelCafe = ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL)
             }
             callback(modelCafe)
         }
@@ -86,14 +88,15 @@ class NetworkCafe {
             let _ = reviews.map {
                 let review = $0.dictionaryValue
                 if let id = review["_id"]?.stringValue,
+                let isKakaoImage = review["isKakaoImage"]?.boolValue,
                 let userId = review["userId"]?.stringValue,
                 let nickname = review["nickname"]?.stringValue,
+                let profileImageURL = review["profileImageURL"]?.stringValue,
                 let date = review["date"]?.stringValue,
                 let reviewContent = review["reviewContent"]?.stringValue,
                 let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, cafeId: cafeId, userId: userId, nickname: nickname, date: date, reviewContent: reviewContent, rating: rating)
+                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
                     modelReviews.insert(modelReview, at: 0)
-                    print("modelReview", modelReview)
                 }
             }
             callback(modelReviews)
@@ -110,12 +113,14 @@ class NetworkCafe {
             let _ = reviews.map {
                 let review = $0.dictionaryValue
                 if let id = review["_id"]?.stringValue,
-                    let userId = review["userId"]?.stringValue,
-                    let nickname = review["nickname"]?.stringValue,
-                    let date = review["date"]?.stringValue,
-                    let reviewContent = review["reviewContent"]?.stringValue,
-                    let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, cafeId: cafeId, userId: userId, nickname: nickname, date: date, reviewContent: reviewContent, rating: rating)
+                let isKakaoImage = review["isKakaoImage"]?.boolValue,
+                let userId = review["userId"]?.stringValue,
+                let nickname = review["nickname"]?.stringValue,
+                let profileImageURL = review["profileImageURL"]?.stringValue,
+                let date = review["date"]?.stringValue,
+                let reviewContent = review["reviewContent"]?.stringValue,
+                let rating = review["rating"]?.doubleValue {
+                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
                     modelReviews.insert(modelReview, at: 0)
                 }
             }

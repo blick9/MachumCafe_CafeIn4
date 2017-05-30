@@ -25,7 +25,6 @@ class ListViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
-        
         // Do any additional setup after loading the view.
     }
     
@@ -35,7 +34,6 @@ class ListViewController: UIViewController {
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         currentLocation = CLLocation(latitude: Location.sharedInstance.currentLocation.getLocation()["latitude"] as! Double , longitude: Location.sharedInstance.currentLocation.getLocation()["longitude"] as! Double)
-        reloadTableView()
     }
     
     func displayEmptyLabel() {
@@ -104,7 +102,6 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
         }
-
         cell.cafeNameLabel.text = cafe["name"] as? String
         cell.cafeAddressLabel.text = cafe["address"] as? String
         cell.distanceLabel.text = "\(distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m")"
