@@ -43,14 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 if let userProfile = profile {
                     let user = userProfile as! KOUser
                     let email = user.email!
-                    let nickname = user.property(forKey: "nickname") as! String
-                    let imageURL = user.property(forKey: "profile_image") as! String
                     
-                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
+                    NetworkUser.kakaoLogin(email: email, nickname: String(), imageURL: String()) { (result, user) in
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
-                        if !imageURL.isEmpty {
-                            NetworkUser.getUserImage(imageURL: imageURL) { (imageData) in
+
+                        if !(user.getUser()["profileImageURL"] as! String).isEmpty {
+                            NetworkUser.getUserImage(userID: user.getUser()["id"] as! String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                                 user.setProfileImage(profileImage: imageData)
                             }
                         }
@@ -63,15 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 if result {
                     User.sharedInstance.user = user
                     User.sharedInstance.isUser = true
-                    if !(user.getUser()["imageURL"] as! String).isEmpty {
-                        NetworkUser.getUserImage(imageURL: user.getUser()["imageURL"] as! String) { (imageData) in
+                    if !(user.getUser()["profileImageURL"] as! String).isEmpty {
+                        NetworkUser.getUserImage(userID: user.getUser()["id"] as! String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                             user.setProfileImage(profileImage: imageData)
                         }
                     }
                 }
             }
         }
-        
         KOSession.shared().isAutomaticPeriodicRefresh = true
 
         initLocationManager()
@@ -115,39 +113,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("url:\(url)")
-        print("urlhost: \(url.host)")
-        print("urlPath: \(url.path)")
-        print(url.pathComponents[1])
 
-        let urlPath : String = url.path as String!
-        let urlHost : String = url.host as String!
-        
-        if(urlPath == "/inner") {
-            
-            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
-                Cafe.sharedInstance.specificCafe = modelCafe
-                let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
-                let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetailView") as! CafeDetailViewController
-                let cafeDetailNavigationViewController = UINavigationController(rootViewController: cafeDetailViewController)
-                cafeDetailViewController.currentCafeModel = Cafe.sharedInstance.specificCafe
-                self.window?.rootViewController = mainViewController
-                mainViewController.navigationController?.pushViewController(cafeDetailNavigationViewController, animated: true)
-            }
-        }
-        self.window?.makeKeyAndVisible()
-        return true
-    }
-    
-//    func getDetailID(_ id : String) {
-//        NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
-//            Cafe.sharedInstance.specificCafe = modelCafe
-//        let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
-//        let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetailView") as! CafeDetailViewController
-//        self.window?.rootViewController?.performSegue(withIdentifier: "DetailView", sender: nil)
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//        print("url:\(url)")
+//        print("urlhost: \(url.host)")
+//        print("urlPath: \(url.path)")
+//        
+//        let urlPath : String = url.path as String!
+//        let urlHost : String = url.host as String!
+//        
+//        if(urlPath == "/inner") {
+//            NetworkCafe.getSpecificCafe(cafeId: "59183c36b5b73265b1dc3360") { (modelCafe) in
+//                Cafe.sharedInstance.specificCafe = modelCafe
+//                let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
+//                let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetailView") as! CafeDetailViewController
+//                let cafeDetailNavigationViewController = UINavigationController(rootViewController: cafeDetailViewController)
+//                cafeDetailViewController.currentCafeModel = Cafe.sharedInstance.specificCafe
+//                self.window?.rootViewController = mainViewController
+//                mainViewController.navigationController?.pushViewController(cafeDetailNavigationViewController, animated: true)
+//            }
+//            
 //        }
+//        self.window?.makeKeyAndVisible()
+//        return true
 //    }
+
     
     func initLocationManager() {
         seenError = false

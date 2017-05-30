@@ -63,7 +63,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Use Camera?</string>
+	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Allow location</string>
 	<key>NSPhotoLibraryUsageDescription</key>

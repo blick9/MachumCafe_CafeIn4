@@ -74,15 +74,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     let email = user.email!
                     let nickname = user.property(forKey: "nickname") as! String
                     let imageURL = user.property(forKey: "profile_image") as! String
-
+                    
                     NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
                         let activityIndicator = UIActivityIndicatorView()
                         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
                         activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
+                        
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
                         if !imageURL.isEmpty {
-                            NetworkUser.getUserImage(imageURL: imageURL) { (imageData) in
+                            NetworkUser.getUserImage(userID: (user.getUser()["id"] as! String), isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                                 user.setProfileImage(profileImage: imageData)
                                 self.dismiss(animated: true, completion: nil)
                             }
@@ -103,8 +104,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             if result {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
-                if !(user.getUser()["imageURL"] as! String).isEmpty {
-                    NetworkUser.getUserImage(imageURL: user.getUser()["imageURL"] as! String) { (imageData) in
+                if !(user.getUser()["profileImageURL"] as! String).isEmpty {
+                    NetworkUser.getUserImage(userID: user.getUser()["id"] as! String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                         user.setProfileImage(profileImage: imageData)
                         self.dismiss(animated: true, completion: nil)
                     }
