@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dy3-tv-K7e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dy3-tv-K7e">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -35,20 +35,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="182.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bva-Mx-vSx">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bva-Mx-vSx">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
                                                     <color key="backgroundColor" red="0.94498242161128909" green="1" blue="0.80681792621773774" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="listDim" translatesAutoresizingMaskIntoConstraints="NO" id="Yua-Zm-33X" userLabel="BlackLayer">
                                                     <rect key="frame" x="-1" y="0.0" width="377" height="179.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qci-mE-oGf">
-                                                    <rect key="frame" x="10" y="103" width="357" height="37.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qci-mE-oGf">
+                                                    <rect key="frame" x="10" y="103" width="80" height="38"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="23"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62y-l0-bhi">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62y-l0-bhi">
                                                     <rect key="frame" x="11" y="134.5" width="356" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="12"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,35 +61,31 @@
                                                     </constraints>
                                                     <state key="normal" image="Bookmark_Bt"/>
                                                 </button>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="020-Lu-D7z">
-                                                    <rect key="frame" x="-1" y="180" width="376" height="3"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카테고리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kE-k0-FqC">
-                                                    <rect key="frame" x="11" y="156" width="42" height="14.5"/>
+                                                    <rect key="frame" x="11" y="156" width="323" height="15"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="거리" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8J-TL-mI0">
-                                                    <rect key="frame" x="344.5" y="7" width="22.5" height="21"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                    <rect key="frame" x="339" y="7" width="28" height="21"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="direction" translatesAutoresizingMaskIntoConstraints="NO" id="MEi-ZB-fXA">
-                                                    <rect key="frame" x="323" y="8" width="13" height="15"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="direction" translatesAutoresizingMaskIntoConstraints="NO" id="MEi-ZB-fXA">
+                                                    <rect key="frame" x="322" y="9.5" width="12" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="MEi-ZB-fXA" secondAttribute="height" multiplier="13:15" id="CZj-gk-OuO"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="v0Y-uU-oTA" firstAttribute="leading" secondItem="1kE-k0-FqC" secondAttribute="trailing" constant="10" id="05S-AS-84Z"/>
                                                 <constraint firstItem="Qci-mE-oGf" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="topMargin" constant="95" id="1Su-eh-ovd"/>
                                                 <constraint firstItem="Bva-Mx-vSx" firstAttribute="leading" secondItem="uEH-gx-lLS" secondAttribute="leading" id="58a-Yi-O4s"/>
                                                 <constraint firstItem="Qci-mE-oGf" firstAttribute="leading" secondItem="uEH-gx-lLS" secondAttribute="leadingMargin" constant="2" id="Ai4-6L-svo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Qci-mE-oGf" secondAttribute="trailing" id="BSV-sz-Ua0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Qci-mE-oGf" secondAttribute="trailing" priority="250" constant="273" id="BSV-sz-Ua0"/>
                                                 <constraint firstAttribute="bottom" secondItem="Bva-Mx-vSx" secondAttribute="bottom" constant="2.5" id="Bs9-8a-05V"/>
                                                 <constraint firstItem="1kE-k0-FqC" firstAttribute="leading" secondItem="Qci-mE-oGf" secondAttribute="leading" constant="1" id="DkP-M7-yqr"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Qci-mE-oGf" secondAttribute="bottom" constant="34" id="EA8-Yp-8dz"/>
@@ -99,17 +95,17 @@
                                                 <constraint firstItem="Qci-mE-oGf" firstAttribute="top" secondItem="C8J-TL-mI0" secondAttribute="bottom" constant="75" id="JK2-4g-2EU"/>
                                                 <constraint firstItem="Yua-Zm-33X" firstAttribute="height" secondItem="Bva-Mx-vSx" secondAttribute="height" id="KM5-Sz-syw"/>
                                                 <constraint firstItem="Yua-Zm-33X" firstAttribute="width" secondItem="Bva-Mx-vSx" secondAttribute="width" constant="2" id="Mqs-xC-rBP"/>
-                                                <constraint firstItem="MEi-ZB-fXA" firstAttribute="trailing" secondItem="C8J-TL-mI0" secondAttribute="leading" priority="750" constant="-4" id="TMx-zj-dXv"/>
+                                                <constraint firstItem="MEi-ZB-fXA" firstAttribute="trailing" secondItem="C8J-TL-mI0" secondAttribute="leading" priority="750" constant="-5" id="TMx-zj-dXv"/>
                                                 <constraint firstItem="Bva-Mx-vSx" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="top" id="WE0-En-yhK"/>
                                                 <constraint firstItem="C8J-TL-mI0" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="topMargin" constant="-1" id="bSx-YY-K7e"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bva-Mx-vSx" secondAttribute="trailing" id="dNc-64-9nE"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="leading" secondItem="uEH-gx-lLS" secondAttribute="leadingMargin" constant="3" id="eA9-nk-nK2"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="top" secondItem="Qci-mE-oGf" secondAttribute="bottom" constant="-6" id="emK-OW-nW8"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="v0Y-uU-oTA" secondAttribute="bottom" constant="9.5" id="jk2-cz-shT"/>
-                                                <constraint firstItem="C8J-TL-mI0" firstAttribute="trailing" secondItem="Qci-mE-oGf" secondAttribute="trailing" id="qke-wi-QQU"/>
+                                                <constraint firstAttribute="trailing" secondItem="C8J-TL-mI0" secondAttribute="trailing" constant="8" id="pVE-t3-HuO"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="bottom" secondItem="1kE-k0-FqC" secondAttribute="top" constant="-7" id="qrb-eU-4gD"/>
                                                 <constraint firstItem="62y-l0-bhi" firstAttribute="trailing" secondItem="uEH-gx-lLS" secondAttribute="trailingMargin" id="r25-xa-kov"/>
-                                                <constraint firstItem="MEi-ZB-fXA" firstAttribute="centerY" secondItem="C8J-TL-mI0" secondAttribute="centerY" constant="-2" id="rAK-3X-TJD"/>
+                                                <constraint firstItem="MEi-ZB-fXA" firstAttribute="centerY" secondItem="C8J-TL-mI0" secondAttribute="centerY" constant="-1" id="rAK-3X-TJD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
