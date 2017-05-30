@@ -24,9 +24,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6t-lT-pER">
-                                <rect key="frame" x="0.0" y="30" width="375" height="135"/>
+                                <rect key="frame" x="0.0" y="25" width="375" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="135" id="145-SC-dv6"/>
+                                    <constraint firstAttribute="height" constant="140" id="145-SC-dv6"/>
                                 </constraints>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ted-6G-gWV">
@@ -120,7 +120,7 @@
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="centerX" secondItem="F6t-lT-pER" secondAttribute="centerX" id="UtA-Jh-Ysf"/>
                             <constraint firstItem="ted-6G-gWV" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="c8R-n3-0qA"/>
                             <constraint firstAttribute="trailing" secondItem="F6t-lT-pER" secondAttribute="trailing" id="dCh-oN-jo7"/>
-                            <constraint firstItem="F6t-lT-pER" firstAttribute="top" secondItem="9RO-6K-g8r" secondAttribute="topMargin" constant="30" id="oq6-40-Rgd"/>
+                            <constraint firstItem="F6t-lT-pER" firstAttribute="top" secondItem="9RO-6K-g8r" secondAttribute="topMargin" constant="25" id="oq6-40-Rgd"/>
                             <constraint firstItem="F6t-lT-pER" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" id="qDz-NO-0FA"/>
                         </constraints>
                     </view>
