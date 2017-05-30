@@ -8,7 +8,8 @@
     * [x] 폐업신고 api 생성, 버튼 기능 활성화
     * [x] 카페 리스트 텍스트 마지막 \n 삭제
     * [x] 위치 설정 label 크기 수정
-    * [ ] 비밀번호 유효성 검사, placeholder 추가
+    * [x] 비밀번호 유효성 검사, placeholder 추가
+    * [ ] listMapView 카페 핀 터치 시 올라오는 뷰에 카페 이미지 적용
   * #### 구찬우
     * [ ] 메인 스크롤뷰 자동 스크롤 및 indicator 추가
     * [ ] ListTableView 내 별점 위치 정렬
