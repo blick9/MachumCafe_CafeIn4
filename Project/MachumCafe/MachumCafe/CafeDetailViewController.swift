@@ -109,9 +109,7 @@ class CafeDetailViewController: UIViewController {
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
         }
-        let closeAction = UIAlertAction(title: "닫기", style: .cancel) { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
+        let closeAction = UIAlertAction(title: "닫기", style: .cancel)
         actionSheetController.addAction(reportEditAction)
         actionSheetController.addAction(reportCloseAction)
         actionSheetController.addAction(closeAction)
