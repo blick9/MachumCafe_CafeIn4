@@ -57,7 +57,6 @@ class WriteReviewViewController: UIViewController {
                 NetworkCafe.postCafeReview(review: review, callback: { (modelReviews, rating) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
                     self.currentCafeModel.setRating(rating: rating)
-                    print("testetset ", self.currentCafeModel.getCafe()["rating"])
                     self.dismiss(animated: true, completion: nil)
                 })
             } else {

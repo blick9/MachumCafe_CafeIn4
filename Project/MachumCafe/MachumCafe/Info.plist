@@ -28,6 +28,16 @@
 				<string>kakao9895e6314a9d30a203c757f976173c23</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>febrix.9000.kuchen.MachumCafe</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>machumCafe</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
