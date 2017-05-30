@@ -21,8 +21,11 @@ class RatingView: UIView {
     */
     
     override func layoutSubviews() {
-        self.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
-        ratingStarImage.image = ratingLabel.text == "0.0" ? #imageLiteral(resourceName: "RatingStarEmpty") : #imageLiteral(resourceName: "RatingStarFill")
     }
-
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
+        self.layer.cornerRadius = CGFloat(self.frame.height / 6)
+    }
 }

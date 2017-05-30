@@ -177,8 +177,8 @@
 				B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */,
 				B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */,
 				A750C92F1ED42581007B1DD1 /* ReviewTableViewCell.xib */,
-				A7EACE931ED95A1200BD01EE /* RatingView.xib */,
 				A7EACE951ED95A3900BD01EE /* RatingView.swift */,
+				A7EACE931ED95A1200BD01EE /* RatingView.xib */,
 			);
 			name = XibView;
 			sourceTree = "<group>";
