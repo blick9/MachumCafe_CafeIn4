@@ -104,7 +104,7 @@
                                             <segue destination="490-OX-HcS" kind="show" identifier="ReviewView" id="zWM-yi-73l"/>
                                         </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="HUB-vG-q52">
+                                    <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="53" sectionHeaderHeight="28" sectionFooterHeight="40" translatesAutoresizingMaskIntoConstraints="NO" id="HUB-vG-q52">
                                         <rect key="frame" x="0.0" y="228" width="375" height="210"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -133,7 +133,7 @@
                                                             <state key="normal" image="suggestion"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3t-52-kg3">
-                                                            <rect key="frame" x="216" y="14" width="65" height="25"/>
+                                                            <rect key="frame" x="189" y="14" width="65" height="25"/>
                                                             <state key="normal" image="phoneCall"/>
                                                         </button>
                                                     </subviews>
@@ -143,7 +143,7 @@
                                                         <constraint firstItem="4Ak-5a-VkI" firstAttribute="centerY" secondItem="rmc-1W-a7b" secondAttribute="centerYWithinMargins" constant="-1" id="Ro9-4n-YzO"/>
                                                         <constraint firstItem="Bnp-wt-qZA" firstAttribute="bottom" secondItem="4Ak-5a-VkI" secondAttribute="bottom" constant="-8" id="Wvk-yk-7cf"/>
                                                         <constraint firstItem="d3t-52-kg3" firstAttribute="centerY" secondItem="4Ak-5a-VkI" secondAttribute="centerY" constant="0.5" id="bG8-Rx-ChK"/>
-                                                        <constraint firstAttribute="trailing" secondItem="d3t-52-kg3" secondAttribute="trailing" constant="94" id="bg3-kq-FEq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="d3t-52-kg3" secondAttribute="trailing" constant="121" id="bg3-kq-FEq"/>
                                                         <constraint firstItem="qWm-A1-VSx" firstAttribute="trailing" secondItem="4Ak-5a-VkI" secondAttribute="leading" constant="-27" id="d4Q-iQ-RZ1"/>
                                                         <constraint firstItem="Bnp-wt-qZA" firstAttribute="leading" secondItem="4Ak-5a-VkI" secondAttribute="leading" id="e6P-aU-T7e"/>
                                                         <constraint firstItem="qWm-A1-VSx" firstAttribute="leading" secondItem="rmc-1W-a7b" secondAttribute="leadingMargin" constant="36" id="eZ3-uk-R4I"/>
@@ -185,8 +185,8 @@
                                     <constraint firstItem="yPp-Zp-Cz6" firstAttribute="centerX" secondItem="BwK-7Z-hkT" secondAttribute="centerX" id="lmV-SZ-fSN"/>
                                     <constraint firstItem="9X9-VU-4mY" firstAttribute="top" secondItem="DgO-TJ-FRg" secondAttribute="bottom" constant="7" id="mmC-nc-mF9"/>
                                     <constraint firstAttribute="trailing" secondItem="9X9-VU-4mY" secondAttribute="trailing" constant="24" id="qSB-ul-yXI"/>
-                                    <constraint firstItem="HUB-vG-q52" firstAttribute="top" secondItem="ViB-iS-Sqq" secondAttribute="bottom" id="v4H-FQ-Pqh"/>
-                                    <constraint firstItem="yPp-Zp-Cz6" firstAttribute="top" secondItem="HUB-vG-q52" secondAttribute="bottom" id="wFA-Qz-nAI"/>
+                                    <constraint firstItem="HUB-vG-q52" firstAttribute="top" secondItem="ViB-iS-Sqq" secondAttribute="bottom" constant="-2" id="v4H-FQ-Pqh"/>
+                                    <constraint firstItem="yPp-Zp-Cz6" firstAttribute="top" secondItem="HUB-vG-q52" secondAttribute="bottom" constant="2" id="wFA-Qz-nAI"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

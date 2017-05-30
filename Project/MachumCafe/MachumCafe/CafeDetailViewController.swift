@@ -62,8 +62,9 @@ class CafeDetailViewController: UIViewController {
             cafeImageScrollView.addSubview(UIImageView(image: #imageLiteral(resourceName: "1")))
         }
         
-        navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
+        cafeNameLabel.shadowOffset = CGSize(width: 2, height: 2)
+        cafeNameLabel.shadowColor = UIColor.init(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         viewInit()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
