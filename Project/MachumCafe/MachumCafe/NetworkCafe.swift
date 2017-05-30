@@ -77,7 +77,7 @@ class NetworkCafe {
         }
     }
     
-    static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview]) -> Void) {
+    static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview], _ rating: Double) -> Void) {
         let cafeId = review.getReview()["cafeId"] as! String
         let param : Parameters = ["review":review.getReview()]
         var modelReviews = [ModelReview]()
@@ -85,6 +85,7 @@ class NetworkCafe {
         Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
             let res = JSON(data: response.data!)
             let reviews = res["reviews"].arrayValue
+            let rating = res["rating"].doubleValue
             let _ = reviews.map {
                 let review = $0.dictionaryValue
                 if let id = review["_id"]?.stringValue,
@@ -99,7 +100,7 @@ class NetworkCafe {
                     modelReviews.insert(modelReview, at: 0)
                 }
             }
-            callback(modelReviews)
+            callback(modelReviews, rating)
         }
     }
     

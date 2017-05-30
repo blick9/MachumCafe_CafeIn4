@@ -54,8 +54,10 @@ class WriteReviewViewController: UIViewController {
         } else {
             if User.sharedInstance.isUser {
                 let review = ModelReview(isKakaoImage: userData["isKakaoImage"] as! Bool, cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, profileImageURL: userData["profileImageURL"] as? String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
-                NetworkCafe.postCafeReview(review: review, callback: { (modelReviews) in
+                NetworkCafe.postCafeReview(review: review, callback: { (modelReviews, rating) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
+                    self.currentCafeModel.setRating(rating: rating)
+                    print("testetset ", self.currentCafeModel.getCafe()["rating"])
                     self.dismiss(animated: true, completion: nil)
                 })
             } else {
