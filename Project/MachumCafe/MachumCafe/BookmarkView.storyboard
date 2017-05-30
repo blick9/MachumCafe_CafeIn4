@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gVh-GS-tpg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gVh-GS-tpg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,12 +24,13 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gTu-O8-AeG">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.93717105263157896" green="0.93717105263157896" blue="0.93717105263157896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="gax-cz-VkI">
-                                    <size key="itemSize" width="183" height="211"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="scrollIndicatorInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="3" id="gax-cz-VkI">
+                                    <size key="itemSize" width="180" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="3" minY="3" maxX="3" maxY="3"/>
+                                    <inset key="sectionInset" minX="3" minY="10" maxX="3" maxY="2"/>
                                 </collectionViewFlowLayout>
                                 <label key="backgroundView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="즐겨찾는 카페가 없습니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AFh-Xm-vlL">
                                     <rect key="frame" x="0.0" y="-64" width="375" height="603"/>
@@ -40,42 +41,53 @@
                                 </label>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="gn4-QF-wOi" customClass="BookmarkViewCell" customModule="MachumCafe" customModuleProvider="target">
-                                        <rect key="frame" x="3" y="3" width="183" height="211"/>
+                                        <rect key="frame" x="3" y="10" width="180" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="183" height="211"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="fB9-st-8am">
-                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="147"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="fB9-st-8am">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-dB-R0k">
-                                                    <rect key="frame" x="5" y="155" width="176" height="21"/>
+                                                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nCD-iW-Z2z">
+                                                    <rect key="frame" x="0.0" y="149" width="180" height="51"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="nCD-iW-Z2z" secondAttribute="height" multiplier="60:17" id="OiQ-ll-1wN"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="IBP-dB-R0k">
+                                                    <rect key="frame" x="5" y="153" width="173" height="21"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="카페 주소" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-0F-Ofj">
-                                                    <rect key="frame" x="5" y="176" width="176" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-0F-Ofj">
+                                                    <rect key="frame" x="5" y="175" width="170" height="24"/>
+                                                    <string key="text">카페주소
+카페주소</string>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="10"/>
                                                     <color key="textColor" red="0.81350740131578947" green="0.81350740131578947" blue="0.81350740131578947" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="nCD-iW-Z2z" secondAttribute="bottom" id="5cd-Kw-vzt"/>
                                             <constraint firstAttribute="trailing" secondItem="fB9-st-8am" secondAttribute="trailing" id="9uR-f3-olR"/>
-                                            <constraint firstAttribute="bottom" secondItem="fB9-st-8am" secondAttribute="bottom" constant="64" id="Fba-Cm-adG"/>
-                                            <constraint firstItem="IBP-dB-R0k" firstAttribute="top" secondItem="fB9-st-8am" secondAttribute="bottom" constant="8" id="emL-ua-6fx"/>
+                                            <constraint firstAttribute="bottom" secondItem="fB9-st-8am" secondAttribute="bottom" id="Fba-Cm-adG"/>
+                                            <constraint firstAttribute="trailing" secondItem="nCD-iW-Z2z" secondAttribute="trailing" id="Idz-Uk-9L5"/>
                                             <constraint firstAttribute="trailing" secondItem="IBP-dB-R0k" secondAttribute="trailing" constant="2" id="g4E-5h-RZU"/>
                                             <constraint firstItem="fB9-st-8am" firstAttribute="leading" secondItem="gn4-QF-wOi" secondAttribute="leading" id="ggH-Ko-LBY"/>
+                                            <constraint firstItem="nCD-iW-Z2z" firstAttribute="leading" secondItem="gn4-QF-wOi" secondAttribute="leading" id="j3y-oD-rOz"/>
                                             <constraint firstItem="SHb-0F-Ofj" firstAttribute="leading" secondItem="gn4-QF-wOi" secondAttribute="leading" constant="5" id="jCH-bT-ku2"/>
-                                            <constraint firstAttribute="trailing" secondItem="SHb-0F-Ofj" secondAttribute="trailing" constant="2" id="jFL-cZ-PFF"/>
+                                            <constraint firstAttribute="trailing" secondItem="SHb-0F-Ofj" secondAttribute="trailing" constant="5" id="jFL-cZ-PFF"/>
                                             <constraint firstItem="IBP-dB-R0k" firstAttribute="leading" secondItem="gn4-QF-wOi" secondAttribute="leading" constant="5" id="jWA-ea-Dna"/>
+                                            <constraint firstItem="IBP-dB-R0k" firstAttribute="top" secondItem="nCD-iW-Z2z" secondAttribute="top" constant="4" id="lwD-Wd-LC9"/>
+                                            <constraint firstItem="SHb-0F-Ofj" firstAttribute="top" secondItem="IBP-dB-R0k" secondAttribute="bottom" priority="750" constant="1" id="qDA-Fg-m3T"/>
                                             <constraint firstItem="fB9-st-8am" firstAttribute="top" secondItem="gn4-QF-wOi" secondAttribute="top" id="tDf-X1-WjP"/>
-                                            <constraint firstItem="SHb-0F-Ofj" firstAttribute="top" secondItem="IBP-dB-R0k" secondAttribute="bottom" id="uYB-fI-Xwo"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="SHb-0F-Ofj" secondAttribute="bottom" constant="-1" id="vtf-oc-Igh"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="bookmarkCafeAddress" destination="SHb-0F-Ofj" id="4v0-3x-NQp"/>
@@ -124,7 +136,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gVh-GS-tpg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DiN-nV-BLd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DiN-nV-BLd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
