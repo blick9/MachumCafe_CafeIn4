@@ -41,12 +41,13 @@ class CafeDetailViewController: UIViewController {
     
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        detailTableView.separatorColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2)
+        
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         reviewTableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
         let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
         navigationItem.rightBarButtonItem = moreButton
-       // categoryCollectionView.isScrollEnabled = false
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
@@ -207,7 +208,6 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
-            cell.detailLabel.sizeToFit()
 
             if indexPath.row == 0 {
                 cell.iconImage.image = cafeIcon[0]
