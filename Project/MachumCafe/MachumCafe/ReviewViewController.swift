@@ -60,6 +60,8 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
                 self.reviews[indexPath.row].setProfileImage(profileImage: profileImageData)
                 review = self.reviews[indexPath.row].getReview()
                 cell.reviewerPicture.image = UIImage(data: review["profileImage"] as! Data)
+                cell.reviewerPicture.layer.masksToBounds = true
+                cell.reviewerPicture.layer.cornerRadius = CGFloat(cell.reviewerPicture.frame.height / 2)
             }
         } else {
             cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
