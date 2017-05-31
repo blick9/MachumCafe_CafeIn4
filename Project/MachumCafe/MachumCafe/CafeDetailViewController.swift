@@ -18,13 +18,14 @@ class CafeDetailViewController: UIViewController {
     var userID = String()
     var userBookmarkIDs = [String]()
     let reviewTableViewCellNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
-    let nib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
+    let filterCollectionViewCellnib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
+    var ratingViewxib = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as! RatingView
     
+    @IBOutlet weak var backgroundScrollView: UIScrollView!
     @IBOutlet weak var cafeNameLabel: UILabel!
     @IBOutlet weak var bookmarkButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
-    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var reviewHeight: NSLayoutConstraint!
+    @IBOutlet weak var detailTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var reviewTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var categoryCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var reviewTableView: UITableView!
@@ -36,35 +37,60 @@ class CafeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewInit()
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
         categoryCollectionView.allowsSelection = false
     
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        detailTableView.separatorColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2)
+        
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         reviewTableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
+        
         let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
         navigationItem.rightBarButtonItem = moreButton
-       // categoryCollectionView.isScrollEnabled = false
-        categoryCollectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        categoryCollectionView.register(filterCollectionViewCellnib, forCellWithReuseIdentifier: "Cell")
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
         
         //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
-        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
+        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) {
+            //테이블뷰 높이 오토레이아웃 설정
+            self.applyReviewTableViewHeight()
+        }
+        
         if !(cafeData["imagesData"] as! [Data]).isEmpty {
             makeCafeImageScrollView(imagesData: cafeData["imagesData"] as! [Data])
         } else {
             cafeImageScrollView.addSubview(UIImageView(image: #imageLiteral(resourceName: "1")))
         }
         
-        navigationItem.title = cafeData["name"] as? String
         cafeNameLabel.text = cafeData["name"] as? String
+        cafeNameLabel.shadowOffset = CGSize(width: 1.5, height: 1.5)
+        cafeNameLabel.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
         bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
-        viewInit()
+        cafeNameLabel.sizeToFit()
+
+        ratingViewxib.ratingLabel.text = String(describing: cafeData["rating"]!)
+        ratingViewxib.ratingStarImage.image = String(describing: cafeData["rating"]!) == "0.0" ? #imageLiteral(resourceName: "RatingStarEmpty") : #imageLiteral(resourceName: "RatingStarFill")
+        ratingViewxib.frame = CGRect(x: cafeNameLabel.frame.maxX + 5 , y: cafeNameLabel.frame.midY - 11, width: 44, height: 18)
+        backgroundScrollView.addSubview(ratingViewxib)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
+    }
+    
+    func applyReviewTableViewHeight() {
+        var indexCount : Int {
+            let reviewsCount = self.reviews.count
+            return reviewsCount > 3 ? 3 : reviewsCount
+        }
+        setReviewTableViewHeight(count: indexCount)
+    }
+    
+    func setReviewTableViewHeight(count: Int) {
+        reviewTableViewHeight.constant = CGFloat(CGFloat(count) * self.reviewTableView.rowHeight)
     }
     
     func moreButtonAction() {
@@ -83,9 +109,7 @@ class CafeDetailViewController: UIViewController {
             alert.addAction(cancel)
             self.present(alert, animated: true, completion: nil)
         }
-        let closeAction = UIAlertAction(title: "닫기", style: .cancel) { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
+        let closeAction = UIAlertAction(title: "닫기", style: .cancel)
         actionSheetController.addAction(reportEditAction)
         actionSheetController.addAction(reportCloseAction)
         actionSheetController.addAction(closeAction)
@@ -93,11 +117,19 @@ class CafeDetailViewController: UIViewController {
     }
     
     func reloadReviewTable() {
-        self.reviews = self.currentCafeModel.getReviews()
-        self.reviewTableView.reloadData()
+        reviews = currentCafeModel.getReviews()
+        applyReviewTableViewHeight()
+        reviewTableView.reloadData()
         // 리뷰 작성 또는 viewDidLoad시 마다 호출
     }
     
+    @IBAction func shareActionButton(_ sender: Any) {
+        let activityViewController = UIActivityViewController(activityItems: ["URL"], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // UserBookmark 정보 불러오기
@@ -106,11 +138,8 @@ class CafeDetailViewController: UIViewController {
         indexCafeID = cafeData["id"] as! String
         bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
         
-        //테이블뷰 높이 오토레이아웃 설정
-        tableViewHeight.constant = CGFloat(Double(3) * Double(detailTableView.rowHeight))
-        reviewHeight.constant = CGFloat(3.0 * reviewTableView.rowHeight)
         //카테고리 높이 오토레이아웃 설정
-        if cafeCategorys.count > 5 {
+        if cafeCategorys.count >= 5 {
             categoryCollectionHeight.constant = CGFloat(1.7 * categoryCollectionView.frame.height)
         }
         self.view.layoutIfNeeded()
@@ -126,19 +155,24 @@ class CafeDetailViewController: UIViewController {
         reviewTableView.isScrollEnabled = false
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmark_Bt"), for: .normal)
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
-        cafeNameLabel.sizeToFit()
     }
     
     func makeCafeImageScrollView(imagesData: [Data]) {
         for i in 0..<imagesData.count {
-            let cafeImage = UIImageView()
-            cafeImage.contentMode = .scaleAspectFill
-            cafeImage.image = UIImage(data: imagesData[i])
             let xPosition = self.view.frame.width * CGFloat(i)
-            cafeImage.frame = CGRect(x: xPosition, y: 0, width: self.cafeImageScrollView.frame.width, height: self.cafeImageScrollView.frame.height)
-            cafeImageScrollView.contentSize.width = cafeImageScrollView.frame.width * CGFloat(i+1)
+            let cafeImage = UIImageView()
+            cafeImage.image = UIImage(data: imagesData[i])
+            cafeImage.frame = CGRect(x: xPosition, y: 0, width: self.view.frame.width, height: self.cafeImageScrollView.frame.height)
+            cafeImage.contentMode = .scaleAspectFill
+            cafeImage.clipsToBounds = true
             cafeImageScrollView.addSubview(cafeImage)
+            let blackLayer = UIView()
+            blackLayer.backgroundColor = UIColor.black
+            blackLayer.alpha = 0.1
+            blackLayer.frame = CGRect(x: xPosition, y: 0, width: self.view.frame.width, height: self.cafeImageScrollView.frame.height)
+            cafeImageScrollView.addSubview(blackLayer)
         }
+        cafeImageScrollView.contentSize.width = cafeImageScrollView.frame.width * CGFloat(imagesData.count)
     }
     
     func bookmarkToggleButton() {
@@ -173,15 +207,12 @@ class CafeDetailViewController: UIViewController {
     func phoneCallButtonAction() {
         let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
         UIApplication.shared.openURL(url as! URL)
-        print("CCCCCLLLLLCCCCLLLLLLCCCCLLLL")
-        print(url)
-
     }
 }
 
 extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView.tag == 1 {
+        if tableView == detailTableView {
             return 53
         } else {
             return 130
@@ -189,7 +220,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView.tag == 1 {
+        if tableView == detailTableView {
             return 3
         } else {
             return reviews.count
@@ -199,7 +230,6 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
-            cell.detailLabel.sizeToFit()
 
             if indexPath.row == 0 {
                 cell.iconImage.image = cafeIcon[0]
@@ -262,7 +292,7 @@ extension CafeDetailViewController : UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
         cell.category.text = cafeCategorys[indexPath.row]
-        
+
         return cell
     }
 

@@ -26,7 +26,6 @@ class WriteReviewViewController: UIViewController {
         super.viewDidLoad()
         cafeData = currentCafeModel.getCafe()
         starRating.rating = 0
-        print(currentCafeModel.getReviews())
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -57,7 +56,6 @@ class WriteReviewViewController: UIViewController {
                 NetworkCafe.postCafeReview(review: review, callback: { (modelReviews, rating) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
                     self.currentCafeModel.setRating(rating: rating)
-                    print("testetset ", self.currentCafeModel.getCafe()["rating"])
                     self.dismiss(animated: true, completion: nil)
                 })
             } else {

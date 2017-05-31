@@ -14,6 +14,8 @@ class CafeDetailReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewerNickName: UILabel!
     @IBOutlet weak var reviewDescribe: UILabel!
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,6 +11,7 @@ import UIKit
 class RatingView: UIView {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var ratingStarImage: UIImageView!
+    @IBOutlet weak var backgroundView: UIView!
     
     /*
     // Only override draw() if you perform custom drawing.
@@ -25,7 +26,7 @@ class RatingView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor(red: 255, green: 232, blue: 129)
+        backgroundView.layer.cornerRadius = CGFloat(self.frame.height / 6)
         self.layer.cornerRadius = CGFloat(self.frame.height / 6)
     }
 }

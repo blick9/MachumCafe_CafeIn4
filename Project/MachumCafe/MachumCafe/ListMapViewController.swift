@@ -83,21 +83,19 @@ class ListMapViewController: UIViewController{
             let cafeAddress = cafe["address"] as! String
             let latitude = cafe["latitude"] as! Double
             let longitude = cafe["longitude"] as! Double
-            let cafeImage = cafe["imagesData"] as! [Data]
             if !markerIDArray.contains(cafeID) {
-                createMarker(titleMarker: cafeName, snippetMarker: cafeAddress, image: #imageLiteral(resourceName: "1"), targetData: cafeData, latitude: latitude, longitude: longitude)
+                createMarker(titleMarker: cafeName, snippetMarker: cafeAddress, targetData: cafeData, latitude: latitude, longitude: longitude)
                 markerIDArray.append(cafeID)
             }
         }
     }
     
-    func createMarker(titleMarker : String, snippetMarker : String, image: UIImage?, targetData: Any?, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
+    func createMarker(titleMarker : String, snippetMarker : String, targetData: Any?, latitude : CLLocationDegrees, longitude : CLLocationDegrees) {
         let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
         marker.title = titleMarker
         marker.snippet = snippetMarker
-        marker.userData = [image, targetData]
+        marker.userData = targetData
         marker.icon = GMSMarker.markerImage(with: .black)
-        //        marker.icon = #imageLiteral(resourceName: "locationIcon")
         marker.appearAnimation = GMSMarkerAnimation.pop
         marker.map = googleMap
     }
@@ -170,14 +168,22 @@ extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate 
         isTapMarker = true
         infoViewAnimate()
         
-        let userData = marker.userData as! [Any]
+        let cafe = marker.userData as! ModelCafe
         //MARK: Zoom이 12Lv 이하일 경우 Camera Move와 동시에 14Lv로 확대
+        if (cafe.getCafe()["imagesData"] as! [Data]).isEmpty {
+            NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String]) { (imageData) in
+                (marker.userData as! ModelCafe).setImagesData(imageData: imageData)
+                self.cafeImageView.image = UIImage(data: (cafe.getCafe()["imagesData"] as! [Data])[0])
+            }
+        } else {
+            self.cafeImageView.image = UIImage(data: (cafe.getCafe()["imagesData"] as! [Data])[0])
+        }
+        
         googleMap.animate(toLocation: marker.position)
         if googleMap.camera.zoom <= 12 { googleMap.animate(toZoom: 14) }
         cafeName.text = marker.title
         cafeAddress.text = marker.snippet
-        cafeImageView.image = userData[0] as? UIImage
-        currentSelectedCafe = userData[1] as! ModelCafe
+        currentSelectedCafe = cafe
         return true
     }
 }

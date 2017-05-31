@@ -85,7 +85,8 @@ class NetworkCafe {
         Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
             let res = JSON(data: response.data!)
             let reviews = res["reviews"].arrayValue
-            let rating = res["rating"].doubleValue
+            var rating = res["rating"].doubleValue
+            rating = rating.roundToPlaces(places: 1)
             let _ = reviews.map {
                 let review = $0.dictionaryValue
                 if let id = review["_id"]?.stringValue,
@@ -104,7 +105,7 @@ class NetworkCafe {
         }
     }
     
-    static func getCafeReviews(cafeModel: ModelCafe) {
+    static func getCafeReviews(cafeModel: ModelCafe, callback: @escaping () -> Void) {
         let cafeId = cafeModel.getCafe()["id"] as! String
         var modelReviews = [ModelReview]()
         
@@ -126,6 +127,7 @@ class NetworkCafe {
                 }
             }
             cafeModel.setReviews(reviews: modelReviews)
+            callback()
         }
     }
 }
