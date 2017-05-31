@@ -30,7 +30,7 @@
                                 </constraints>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ted-6G-gWV">
-                                <rect key="frame" x="32.5" y="215" width="310" height="90"/>
+                                <rect key="frame" x="33" y="215" width="310" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pO-HB-Avo" userLabel="24hButton">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -65,7 +65,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HUw-Vf-CO7">
-                                <rect key="frame" x="32.5" y="328" width="310" height="90"/>
+                                <rect key="frame" x="33" y="328" width="310" height="90"/>
                                 <subviews>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-Y1-uB5" userLabel="dessertButton">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -110,6 +110,12 @@
                                     <action selector="presentFilterViewButtonAction:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="jB5-pg-w0p"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fUW-RT-f5l">
+                                <rect key="frame" x="171" y="128" width="33" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="aW6-Jb-QfJ"/>
+                                </constraints>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -120,8 +126,10 @@
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="centerX" secondItem="F6t-lT-pER" secondAttribute="centerX" id="UtA-Jh-Ysf"/>
                             <constraint firstItem="ted-6G-gWV" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="c8R-n3-0qA"/>
                             <constraint firstAttribute="trailing" secondItem="F6t-lT-pER" secondAttribute="trailing" id="dCh-oN-jo7"/>
+                            <constraint firstItem="fUW-RT-f5l" firstAttribute="bottom" secondItem="F6t-lT-pER" secondAttribute="bottom" id="ddi-67-vLp"/>
                             <constraint firstItem="F6t-lT-pER" firstAttribute="top" secondItem="9RO-6K-g8r" secondAttribute="topMargin" constant="25" id="oq6-40-Rgd"/>
                             <constraint firstItem="F6t-lT-pER" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" id="qDz-NO-0FA"/>
+                            <constraint firstItem="fUW-RT-f5l" firstAttribute="centerX" secondItem="F6t-lT-pER" secondAttribute="centerX" id="rha-dr-tGQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="E8O-iC-3wb">
@@ -132,6 +140,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mainBannerPageController" destination="fUW-RT-f5l" id="eDJ-Ce-AzC"/>
                         <outlet property="mainBannerScrollView" destination="F6t-lT-pER" id="zcn-pS-BMf"/>
                     </connections>
                 </viewController>
