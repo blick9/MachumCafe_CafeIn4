@@ -42,7 +42,6 @@ class MainSideBarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.keyWindow?.windowLevel = (UIWindowLevelStatusBar + 1)
-        checkIsUser()
     }
     
     func checkIsUser() {
@@ -177,7 +176,6 @@ extension MainSideBarViewController : UIImagePickerControllerDelegate, UINavigat
             dismiss(animated: true, completion: nil)
             NetworkUser.setUserProfileImage(userID: User.sharedInstance.user.getUser()["id"] as! String, image: image as! UIImage, callback: { (result) in
                 if result {
-//                    self.userProfileImageView.image = image as? UIImage
                     let imageData = UIImageJPEGRepresentation(image as! UIImage, 0.1)
                     User.sharedInstance.user.setProfileImage(profileImage: imageData!)
                     DispatchQueue.main.async {
