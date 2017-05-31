@@ -6,21 +6,21 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="130" id="zNw-nh-RcI" customClass="ReviewTableViewCell" customModule="MachumCafe" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="200" id="zNw-nh-RcI" customClass="ReviewTableViewCell" customModule="MachumCafe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zNw-nh-RcI" id="NJk-vV-cjq">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8i-55-6BP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a8i-55-6BP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cI8-AG-OGH" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="72" y="33" width="127" height="18"/>
@@ -73,22 +73,42 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97952302629999999" green="0.97952302629999999" blue="0.97952302629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-Lb-1bV">
-                        <rect key="frame" x="0.0" y="72" width="375" height="58"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-Lb-1bV">
+                        <rect key="frame" x="0.0" y="72" width="375" height="119.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review Content" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAt-UI-TgM">
-                                <rect key="frame" x="23" y="-8" width="340" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAt-UI-TgM">
+                                <rect key="frame" x="23" y="0.0" width="352" height="119.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="135.5" id="d1Q-oK-5Zo"/>
+                                </constraints>
+                                <string key="text">Review Content
+Review Content
+Review Content</string>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="VAt-UI-TgM" firstAttribute="leading" secondItem="f5M-Lb-1bV" secondAttribute="leading" constant="23" id="47p-wT-z07"/>
+                            <constraint firstAttribute="trailing" secondItem="VAt-UI-TgM" secondAttribute="trailing" id="6Ws-Xr-eGZ"/>
+                            <constraint firstAttribute="bottom" secondItem="VAt-UI-TgM" secondAttribute="bottom" id="NNV-WZ-soh"/>
+                            <constraint firstItem="VAt-UI-TgM" firstAttribute="top" secondItem="f5M-Lb-1bV" secondAttribute="top" id="yXY-Zs-8Hp"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="f5M-Lb-1bV" firstAttribute="leading" secondItem="a8i-55-6BP" secondAttribute="leading" id="4qD-Bd-IqR"/>
+                    <constraint firstItem="f5M-Lb-1bV" firstAttribute="trailing" secondItem="a8i-55-6BP" secondAttribute="trailing" id="64P-sd-Zdj"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="f5M-Lb-1bV" secondAttribute="bottom" id="9fe-Wj-JIL"/>
+                    <constraint firstItem="f5M-Lb-1bV" firstAttribute="leading" secondItem="NJk-vV-cjq" secondAttribute="leading" id="GL1-kD-j3R"/>
+                    <constraint firstItem="f5M-Lb-1bV" firstAttribute="top" secondItem="a8i-55-6BP" secondAttribute="bottom" id="YfX-V9-Sjf"/>
+                    <constraint firstAttribute="trailing" secondItem="f5M-Lb-1bV" secondAttribute="trailing" id="bDz-MA-ysK"/>
+                    <constraint firstItem="f5M-Lb-1bV" firstAttribute="top" secondItem="NJk-vV-cjq" secondAttribute="top" constant="72" id="eoZ-Za-nAz"/>
+                    <constraint firstItem="a8i-55-6BP" firstAttribute="top" secondItem="NJk-vV-cjq" secondAttribute="top" id="jaX-S9-Zko"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="reviewContent" destination="VAt-UI-TgM" id="nri-Z2-Eb0"/>
@@ -97,7 +117,7 @@
                 <outlet property="reviewer" destination="14s-Pe-4IJ" id="cLI-yi-gMo"/>
                 <outlet property="reviewerPicture" destination="9bS-Na-v0E" id="jC2-tL-KEb"/>
             </connections>
-            <point key="canvasLocation" x="-136" y="104"/>
+            <point key="canvasLocation" x="-136.5" y="126"/>
         </tableViewCell>
     </objects>
     <resources>
