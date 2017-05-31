@@ -53,6 +53,7 @@ class CafeDetailViewController: UIViewController {
         let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
         navigationItem.rightBarButtonItem = moreButton
         categoryCollectionView.register(filterCollectionViewCellnib, forCellWithReuseIdentifier: "Cell")
+        
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
         
@@ -60,6 +61,12 @@ class CafeDetailViewController: UIViewController {
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) {
             //테이블뷰 높이 오토레이아웃 설정
             self.applyReviewTableViewHeight()
+            
+            //카테고리 높이 오토레이아웃 설정
+            if self.cafeCategorys.count >= 5 {
+                self.categoryCollectionHeight.constant = CGFloat(1.7 * self.categoryCollectionView.frame.height)
+            }
+            self.view.layoutIfNeeded()
         }
         
         if !(cafeData["imagesData"] as! [Data]).isEmpty {
@@ -121,12 +128,12 @@ class CafeDetailViewController: UIViewController {
     }
     
     @IBAction func shareActionButton(_ sender: Any) {
-        let activityViewController = UIActivityViewController(activityItems: ["URL"], applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: ["machumcafe://host/cafe/\(indexCafeID)"], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         
         self.present(activityViewController, animated: true, completion: nil)
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // UserBookmark 정보 불러오기
@@ -134,12 +141,6 @@ class CafeDetailViewController: UIViewController {
         userBookmarkIDs = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         indexCafeID = cafeData["id"] as! String
         bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
-        
-        //카테고리 높이 오토레이아웃 설정
-        if cafeCategorys.count >= 5 {
-            categoryCollectionHeight.constant = CGFloat(1.7 * categoryCollectionView.frame.height)
-        }
-        self.view.layoutIfNeeded()
     }
     
     func viewInit() {
@@ -172,7 +173,7 @@ class CafeDetailViewController: UIViewController {
             blackLayer.frame = CGRect(x: xPosition, y: 0, width: self.view.frame.width, height: self.cafeImageScrollView.frame.height)
             cafeImageScrollView.addSubview(blackLayer)
         }
-        cafeImageScrollView.contentSize.width = cafeImageScrollView.frame.width * CGFloat(imagesData.count)
+        cafeImageScrollView.contentSize.width = view.frame.width * CGFloat(imagesData.count)
     }
     
     func bookmarkToggleButton() {
@@ -184,7 +185,6 @@ class CafeDetailViewController: UIViewController {
             })
         } else {
             UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
-
         }
     }
 
@@ -204,6 +204,7 @@ class CafeDetailViewController: UIViewController {
         suggestionViewController.cafeData = cafeData
         present(suggestionViewNavigationController, animated: true, completion: nil)
     }
+    
     func phoneCallButtonAction() {
         let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
         UIApplication.shared.openURL(url as! URL)
@@ -215,7 +216,7 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         if tableView == detailTableView {
             return 53
         } else {
-            return 130
+            return reviewTableView.rowHeight
         }
     }
     

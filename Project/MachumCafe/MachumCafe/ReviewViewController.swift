@@ -11,6 +11,7 @@ import UIKit
 class ReviewViewController: UIViewController {
     var currentCafeModel = ModelCafe()
     var reviews = [ModelReview]()
+    let reviewTableViewCellNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -19,8 +20,8 @@ class ReviewViewController: UIViewController {
         navigationItem.title = "카페 리뷰"
         tableView.delegate = self
         tableView.dataSource = self
-        let nib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "Cell")
+        tableView.allowsSelection = false
+        tableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
         reviews = currentCafeModel.getReviews()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
@@ -67,6 +68,10 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
             cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.rowHeight
     }
 }
 

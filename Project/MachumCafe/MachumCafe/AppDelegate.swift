@@ -112,6 +112,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        // machumCafe://host/cafe/:id
+        let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetail") as! CafeDetailViewController
+        
+        getCafeInfo(id: url.pathComponents, target: cafeDetailViewController) {
+            self.pushSpecificCafeDetailView(id: url.pathComponents, target: cafeDetailViewController)
+        }
+        
+        self.window?.makeKeyAndVisible()
+        return true
+    }
+    
+    func pushSpecificCafeDetailView(id: [String], target: CafeDetailViewController) {
+        let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
+        let mainNavigationViewController = UINavigationController(rootViewController: mainViewController)
+        self.window?.rootViewController = mainNavigationViewController
+        mainNavigationViewController.pushViewController(target, animated: true)
+    }
+    
+    func getCafeInfo(id: [String], target: CafeDetailViewController, callback: @escaping () -> Void) {
+        NetworkCafe.getSpecificCafe(cafeId: id[2]){ (modelCafe) in
+            Cafe.sharedInstance.specificCafe = modelCafe
+            
+            NetworkCafe.getImagesData(imagesURL: modelCafe.getCafe()["imagesURL"] as! [String], callback: { (data) in
+                Cafe.sharedInstance.specificCafe.setImagesData(imageData: data)
+                target.currentCafeModel = Cafe.sharedInstance.specificCafe
+            })
+            callback()
+        }
+    }
+
     
     func initLocationManager() {
         seenError = false
