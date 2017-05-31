@@ -50,7 +50,7 @@ class SetLocationMapViewController: UIViewController, UISearchControllerDelegate
         // x : -14 = markerImage Width / 2
         // y : -40 = markerImage Height
         let markerImage = UIImageView(frame: CGRect(x: googleMap.center.x-14, y: googleMap.center.y-(mapInsets.bottom-10)-40, width: 0, height: 0))
-        markerImage.image = #imageLiteral(resourceName: "MapMarker")
+        markerImage.image = #imageLiteral(resourceName: "mapPin")
         markerImage.sizeToFit()
         view.addSubview(markerImage)
         
