@@ -83,7 +83,7 @@ class CafeDetailViewController: UIViewController {
 
         ratingViewxib.ratingLabel.text = String(describing: cafeData["rating"]!)
         ratingViewxib.ratingStarImage.image = String(describing: cafeData["rating"]!) == "0.0" ? #imageLiteral(resourceName: "RatingStarEmpty") : #imageLiteral(resourceName: "RatingStarFill")
-        ratingViewxib.frame = CGRect(x: cafeNameLabel.frame.maxX, y: cafeNameLabel.frame.midY - 11, width: 44, height: 18)
+        ratingViewxib.frame = CGRect(x: cafeNameLabel.frame.maxX + 5 , y: cafeNameLabel.frame.midY - 11, width: 44, height: 18)
         backgroundScrollView.addSubview(ratingViewxib)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
