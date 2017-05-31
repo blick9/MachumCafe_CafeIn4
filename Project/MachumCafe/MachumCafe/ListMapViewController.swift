@@ -21,6 +21,7 @@ class ListMapViewController: UIViewController{
 
     @IBOutlet weak var googleMap: GMSMapView!
     @IBOutlet weak var cafeName: UILabel!
+    @IBOutlet weak var cafePhone: UILabel!
     @IBOutlet weak var cafeAddress: UILabel!
     @IBOutlet weak var cafeImageView: UIImageView!
     @IBOutlet weak var cafeInfoView: UIView!
@@ -61,11 +62,8 @@ class ListMapViewController: UIViewController{
     func initView() {
         cafeInfoViewBottomConstraint.constant = -(cafeInfoView.frame.height+10)
         cafeInfoView.layer.cornerRadius = 5
-        cafeInfoView.layer.borderColor = UIColor.lightGray.cgColor
-        cafeInfoView.layer.borderWidth = 0.5
+        cafeImageView.layer.cornerRadius = 3
         cafeImageView.backgroundColor = UIColor.white
-        cafeImageView.layer.borderColor = UIColor.lightGray.cgColor
-        cafeImageView.layer.borderWidth = 0.5
         cafeImageView.layer.masksToBounds = true
     }
     
@@ -95,7 +93,7 @@ class ListMapViewController: UIViewController{
         marker.title = titleMarker
         marker.snippet = snippetMarker
         marker.userData = targetData
-        marker.icon = GMSMarker.markerImage(with: .black)
+        marker.icon = #imageLiteral(resourceName: "mapPin")
         marker.appearAnimation = GMSMarkerAnimation.pop
         marker.map = googleMap
     }
@@ -183,6 +181,7 @@ extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate 
         if googleMap.camera.zoom <= 12 { googleMap.animate(toZoom: 14) }
         cafeName.text = marker.title
         cafeAddress.text = marker.snippet
+        cafePhone.text = cafe.getCafe()["tel"] as! String
         currentSelectedCafe = cafe
         return true
     }
