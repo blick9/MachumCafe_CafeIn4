@@ -69,9 +69,6 @@ class CafeDetailViewController: UIViewController {
         }
         
         cafeNameLabel.text = cafeData["name"] as? String
-        cafeNameLabel.shadowOffset = CGSize(width: 1.5, height: 1.5)
-        cafeNameLabel.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
-        bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         cafeNameLabel.sizeToFit()
 
         ratingViewxib.ratingLabel.text = String(describing: cafeData["rating"]!)
@@ -150,6 +147,9 @@ class CafeDetailViewController: UIViewController {
     func viewInit() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         moreReviewButton.layer.cornerRadius = 5
+        cafeNameLabel.shadowOffset = CGSize(width: 1.5, height: 1.5)
+        cafeNameLabel.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
+        bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
         moreReviewButton.setTitle("리뷰 더 보기", for: .normal)
         detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         detailTableView.isScrollEnabled = false
