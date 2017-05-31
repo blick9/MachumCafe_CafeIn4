@@ -25,6 +25,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         
         if let locationLabelxib = Bundle.main.loadNibNamed("LocationLabelView", owner: self, options: nil)?.first as? LocationLabelView {
             locationLabelxib.delegate = self
+            locationLabelxib.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: locationLabelxib.frame.height)
             self.view.addSubview(locationLabelxib)
         }
         Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(autoScrollMainBanner), userInfo: nil, repeats: true)
@@ -49,7 +50,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             mainBannerScrollView.addSubview(bannerView)
             mainBannerScrollView.addSubview(connectLinkButton)
         }
-        mainBannerScrollView.contentSize.width = mainBannerScrollView.frame.width * CGFloat(bannerArray.count)
+        mainBannerScrollView.contentSize.width = view.frame.width * CGFloat(bannerArray.count)
     }
     
     func autoScrollMainBanner() {

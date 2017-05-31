@@ -173,7 +173,7 @@ class CafeDetailViewController: UIViewController {
             blackLayer.frame = CGRect(x: xPosition, y: 0, width: self.view.frame.width, height: self.cafeImageScrollView.frame.height)
             cafeImageScrollView.addSubview(blackLayer)
         }
-        cafeImageScrollView.contentSize.width = cafeImageScrollView.frame.width * CGFloat(imagesData.count)
+        cafeImageScrollView.contentSize.width = view.frame.width * CGFloat(imagesData.count)
     }
     
     func bookmarkToggleButton() {
