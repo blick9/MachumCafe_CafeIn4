@@ -50,6 +50,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profil_side" translatesAutoresizingMaskIntoConstraints="NO" id="9bS-Na-v0E">
@@ -63,15 +64,19 @@
                                 <color key="textColor" red="0.43414884869999998" green="0.43414884869999998" blue="0.43414884869999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2017/05/15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcF-Ad-i1l">
-                                <rect key="frame" x="281" y="8" width="86" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017/05/15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcF-Ad-i1l">
+                                <rect key="frame" x="302.5" y="8" width="64.5" height="21"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="14"/>
                                 <color key="textColor" red="0.6575657895" green="0.6575657895" blue="0.6575657895" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.97952302629999999" green="0.97952302629999999" blue="0.97952302629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tcF-Ad-i1l" secondAttribute="trailing" constant="8" id="J77-Io-POK"/>
+                            <constraint firstItem="tcF-Ad-i1l" firstAttribute="top" secondItem="a8i-55-6BP" secondAttribute="top" constant="8" id="Tg0-du-4dX"/>
+                            <constraint firstAttribute="bottom" secondItem="tcF-Ad-i1l" secondAttribute="bottom" constant="43" id="u4V-rA-tdX"/>
+                        </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-Lb-1bV">
                         <rect key="frame" x="0.0" y="72" width="375" height="119.5"/>
@@ -104,10 +109,12 @@ Review Content</string>
                     <constraint firstItem="f5M-Lb-1bV" firstAttribute="trailing" secondItem="a8i-55-6BP" secondAttribute="trailing" id="64P-sd-Zdj"/>
                     <constraint firstAttribute="bottomMargin" secondItem="f5M-Lb-1bV" secondAttribute="bottom" id="9fe-Wj-JIL"/>
                     <constraint firstItem="f5M-Lb-1bV" firstAttribute="leading" secondItem="NJk-vV-cjq" secondAttribute="leading" id="GL1-kD-j3R"/>
+                    <constraint firstItem="a8i-55-6BP" firstAttribute="leading" secondItem="NJk-vV-cjq" secondAttribute="leading" id="S4i-dy-j2F"/>
                     <constraint firstItem="f5M-Lb-1bV" firstAttribute="top" secondItem="a8i-55-6BP" secondAttribute="bottom" id="YfX-V9-Sjf"/>
                     <constraint firstAttribute="trailing" secondItem="f5M-Lb-1bV" secondAttribute="trailing" id="bDz-MA-ysK"/>
                     <constraint firstItem="f5M-Lb-1bV" firstAttribute="top" secondItem="NJk-vV-cjq" secondAttribute="top" constant="72" id="eoZ-Za-nAz"/>
                     <constraint firstItem="a8i-55-6BP" firstAttribute="top" secondItem="NJk-vV-cjq" secondAttribute="top" id="jaX-S9-Zko"/>
+                    <constraint firstAttribute="trailing" secondItem="a8i-55-6BP" secondAttribute="trailing" id="zxu-Hj-i2U"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
