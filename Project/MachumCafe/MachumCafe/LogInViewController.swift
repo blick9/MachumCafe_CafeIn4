@@ -85,9 +85,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                         if !imageURL.isEmpty {
                             NetworkUser.getUserImage(userID: (user.getUser()["id"] as! String), isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
                                 user.setProfileImage(profileImage: imageData)
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
                                 self.dismiss(animated: true, completion: nil)
                             }
                         } else {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
                             self.dismiss(animated: true, completion: nil)
                         }
                     }
