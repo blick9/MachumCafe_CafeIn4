@@ -59,7 +59,6 @@
 		B5C9D2AB1ECC1F8500662C27 /* ModelReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */; };
 		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
-		B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */; };
 		B78D2A291EBB15A50069E2E9 /* SuggestionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */; };
 		B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift */; };
 		B7DFA2721EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */; };
@@ -124,7 +123,6 @@
 		B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelReview.swift; sourceTree = "<group>"; };
 		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
-		B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategory.swift; sourceTree = "<group>"; };
 		B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionImagePickerViewController.swift; sourceTree = "<group>"; };
 		B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionImagePickerViewCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -354,7 +352,6 @@
 			children = (
 				B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */,
 				B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */,
-				B78D2A261EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift */,
 				B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift */,
 				B7DFA2711EC40BAD00BF4D33 /* SuggestionImagePickerViewCollectionViewCell.swift */,
 				B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */,
@@ -545,7 +542,6 @@
 				A702F2201EBB2750003B390C /* SetLocationMapViewController.swift in Sources */,
 				B5BA81E51EC983EA00E5BBC9 /* ReviewViewController.swift in Sources */,
 				B518D1921ED04A5E00A9C623 /* FilterCollectionViewCell.swift in Sources */,
-				B78D2A271EBAFA060069E2E9 /* SuggestionCategoryTableViewCell.swift in Sources */,
 				A723B6831EAF433500469FE4 /* ListTableViewCell.swift in Sources */,
 				A702F2181EBB07E6003B390C /* LocationLabelView.swift in Sources */,
 				B7E57DA81EB59F2200A6D9A7 /* CafeDetailViewController.swift in Sources */,
