@@ -27,7 +27,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3u-gt-fNw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="130" sectionHeaderHeight="60" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DgO-TJ-FRg">
+                                    <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="200" sectionHeaderHeight="60" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DgO-TJ-FRg">
                                         <rect key="frame" x="0.0" y="464" width="375" height="181"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -96,8 +96,11 @@
                                             <action selector="shareActionButton:" destination="ejC-8o-OCk" eventType="touchUpInside" id="t0K-Iv-DJi"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ooV-Jh-HWD">
-                                        <rect key="frame" x="36" y="185" width="93.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ooV-Jh-HWD">
+                                        <rect key="frame" x="20" y="185" width="93.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="205" id="2e9-fr-d9A"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -207,7 +210,7 @@
                                     <constraint firstItem="HUB-vG-q52" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leading" id="gc5-Qj-R4u"/>
                                     <constraint firstItem="BwK-7Z-hkT" firstAttribute="top" secondItem="yPp-Zp-Cz6" secondAttribute="bottom" id="ggm-KT-2Tf"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="BwK-7Z-hkT" secondAttribute="trailing" id="hsU-LU-8dy"/>
-                                    <constraint firstItem="ooV-Jh-HWD" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leading" constant="36" id="jKn-NF-zsJ"/>
+                                    <constraint firstItem="ooV-Jh-HWD" firstAttribute="leading" secondItem="O3u-gt-fNw" secondAttribute="leading" constant="20" id="jKn-NF-zsJ"/>
                                     <constraint firstItem="yPp-Zp-Cz6" firstAttribute="centerX" secondItem="BwK-7Z-hkT" secondAttribute="centerX" id="lmV-SZ-fSN"/>
                                     <constraint firstItem="9X9-VU-4mY" firstAttribute="top" secondItem="DgO-TJ-FRg" secondAttribute="bottom" constant="7" id="mmC-nc-mF9"/>
                                     <constraint firstAttribute="trailing" secondItem="9X9-VU-4mY" secondAttribute="trailing" constant="24" id="qSB-ul-yXI"/>
@@ -222,7 +225,6 @@
                             <constraint firstItem="O3u-gt-fNw" firstAttribute="leading" secondItem="fIW-fB-5ne" secondAttribute="leading" id="eZ2-mY-j2S"/>
                             <constraint firstItem="O3u-gt-fNw" firstAttribute="centerX" secondItem="fIW-fB-5ne" secondAttribute="centerXWithinMargins" id="vAH-Dm-wqu"/>
                             <constraint firstAttribute="topMargin" secondItem="O3u-gt-fNw" secondAttribute="top" id="wHk-pe-qe9"/>
-                            <constraint firstAttribute="trailing" secondItem="ooV-Jh-HWD" secondAttribute="trailing" priority="750" constant="245.5" id="xPB-1B-B9p"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PG9-9P-Ga9"/>
