@@ -36,23 +36,3 @@ class PreviewImageButton : UIButton {
     }
     
 }
-
-
-/*
-class category {
-    enum categoryButton {
-        case parking, smoking, restroom
-        func applyCategory() -> UIImage {
-            switch self {
-            case .parking:
-                return #imageLiteral(resourceName: "parkingCategoryIcon")
-            case .smoking:
-                return #imageLiteral(resourceName: "smokingCategoryIcon")
-            case .restroom:
-                return #imageLiteral(resourceName: "restroomCategoryIcon")
-                
-            }
-        }
-    }
-}
-*/
