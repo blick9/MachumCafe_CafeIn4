@@ -16,14 +16,24 @@ protocol SavedImageDelegate {
 }
 
 class SuggestionImagePickerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
     var delegate : SavedImageDelegate?
-
     var imageArray = [UIImage]()
     var selectedImageArray = [UIImage]()
-    
     var multiple = true
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "사진선택"
+        grabPhotos()
+        collectionView?.allowsMultipleSelection = multiple
+        collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
+        selectedImageArray.removeAll(keepingCapacity: false)
+        
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
 
-    func grabPhtos() {
+    func grabPhotos() {
         let imageManager = PHImageManager.default()
         let requestOptions = PHImageRequestOptions()
         requestOptions.isSynchronous = true
@@ -42,7 +52,7 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
                 }
             }
             else {
-                print("You got no photos!")
+                print("no photos")
                 self.collectionView?.reloadData()
             }
         }
@@ -53,55 +63,19 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
     }
     
     @IBAction func doneActionButton(_ sender: Any) {
-        
         delegate?.savedImage(SavedImage: selectedImageArray)
         self.dismiss(animated: true, completion: nil)
-
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.title = "사진선택"
-        grabPhtos()
-        collectionView?.allowsMultipleSelection = multiple
-        collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
-        selectedImageArray.removeAll(keepingCapacity: false)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return imageArray.count
     }
 
@@ -109,9 +83,6 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         let imageView = cell.viewWithTag(1) as! UIImageView
         imageView.image = imageArray[indexPath.row]
-    
-        // Configure the cell
-    
         return cell
     }
     
@@ -122,14 +93,12 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
         }
         cell.isSelected = !cell.isSelected
         selectedImageArray.append(imageArray[indexPath.row])
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let photoindex = imageArray[indexPath.row]
         if let index = selectedImageArray.index(of: photoindex) {
             selectedImageArray.remove(at: index)
-            
         }
     }
     
@@ -145,36 +114,4 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1.0
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
