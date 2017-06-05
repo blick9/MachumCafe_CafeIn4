@@ -46,7 +46,6 @@
 		B518D1921ED04A5E00A9C623 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */; };
 		B518D1931ED04A5E00A9C623 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */; };
 		B53EBC391ED6D2F3008950BC /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */; };
-		B567CA771EDEA8E200149795 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567CA761EDEA8E200149795 /* Images.xcassets */; };
 		B56FD1361EC465D9002BDA2B /* NetworkAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */; };
 		B57407251ECAD8D3002B0ECE /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57407241ECAD8D3002B0ECE /* WriteReviewViewController.swift */; };
 		B58154D81EB9CEE1003B7A92 /* NetworkMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */; };
@@ -111,7 +110,6 @@
 		B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
 		B55B9C9D1ED4A12000E05665 /* MachumCafe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MachumCafe-Bridging-Header.h"; sourceTree = "<group>"; };
-		B567CA761EDEA8E200149795 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdmin.swift; sourceTree = "<group>"; };
 		B57407241ECAD8D3002B0ECE /* WriteReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkMap.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				A702F2191EBB1C23003B390C /* XibView */,
 				A7B73A491EAF4E2A00EB24C6 /* Extension */,
 				A7B73A4A1EAF4F4E00EB24C6 /* Resource */,
-				B567CA761EDEA8E200149795 /* Images.xcassets */,
 			);
 			path = MachumCafe;
 			sourceTree = "<group>";
@@ -451,7 +448,6 @@
 				B58AAFDA1EB6CCA1002313CC /* BookmarkView.storyboard in Resources */,
 				B7E57DA71EB59F2200A6D9A7 /* CafeDetailView.storyboard in Resources */,
 				A702F2161EBB06DA003B390C /* LocationLabelView.xib in Resources */,
-				B567CA771EDEA8E200149795 /* Images.xcassets in Resources */,
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 				B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */,
 				A7EACE941ED95A1200BD01EE /* RatingView.xib in Resources */,
@@ -665,7 +661,6 @@
 			baseConfigurationReference = D38A059CD17D7E380F4ECDD7 /* Pods-MachumCafe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -688,7 +683,6 @@
 			baseConfigurationReference = 1A03314B529D40BEFE0925CC /* Pods-MachumCafe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
