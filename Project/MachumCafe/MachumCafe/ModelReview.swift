@@ -9,6 +9,7 @@
 import UIKit
 
 class ModelReview {
+    
     fileprivate var id : String?
     fileprivate var isKakaoImage = Bool()
     fileprivate var cafeId = String()

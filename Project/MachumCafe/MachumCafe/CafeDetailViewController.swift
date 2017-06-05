@@ -20,6 +20,7 @@ class CafeDetailViewController: UIViewController {
     let reviewTableViewCellNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
     let filterCollectionViewCellnib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
     var ratingViewxib = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as! RatingView
+    let cafeIcon = [#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "telephoneD"), #imageLiteral(resourceName: "hourD")]
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     @IBOutlet weak var cafeNameLabel: UILabel!
@@ -33,8 +34,6 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var cafeImageScrollView: UIScrollView!
 
-    let cafeIcon = [#imageLiteral(resourceName: "adressD"),#imageLiteral(resourceName: "telephoneD"), #imageLiteral(resourceName: "hourD")]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewInit()
@@ -57,12 +56,8 @@ class CafeDetailViewController: UIViewController {
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
         
-        //TODO: 카페 리뷰는 카페디테일 들어갈때마다 GET해옴
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) {
-            //테이블뷰 높이 오토레이아웃 설정
             self.applyReviewTableViewHeight()
-            
-            //카테고리 높이 오토레이아웃 설정
             if self.cafeCategorys.count >= 5 {
                 self.categoryCollectionHeight.constant = CGFloat(1.7 * self.categoryCollectionView.frame.height)
             }
@@ -124,7 +119,6 @@ class CafeDetailViewController: UIViewController {
         reviews = currentCafeModel.getReviews()
         applyReviewTableViewHeight()
         reviewTableView.reloadData()
-        // 리뷰 작성 또는 viewDidLoad시 마다 호출
     }
     
     @IBAction func shareActionButton(_ sender: Any) {
@@ -136,7 +130,6 @@ class CafeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // UserBookmark 정보 불러오기
         userID = User.sharedInstance.user.getUser()["id"] as! String
         userBookmarkIDs = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         indexCafeID = cafeData["id"] as! String

@@ -71,12 +71,6 @@ extension UIActivityIndicatorView {
     }
 }
 
-extension UIBarButtonItem {
-    static var isSelected: Bool {
-        return false
-    }
-}
-
 extension UIStoryboard {
     static let MainViewStoryboard = UIStoryboard(name: "MainView", bundle: nil)
     static let ListContainerViewStoryboard = UIStoryboard(name: "ListContainerView", bundle: nil)

@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkCafe {
-    
+
     private static let url = URLpath.getURL()
     
     // MARK: 현위치 반경 1km 내 카페목록 불러오기

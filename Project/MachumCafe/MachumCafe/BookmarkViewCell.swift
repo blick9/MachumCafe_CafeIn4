@@ -17,6 +17,5 @@ class BookmarkViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         
         self.layer.cornerRadius = 6
-        
     }
 }

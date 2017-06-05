@@ -9,6 +9,7 @@
 import UIKit
 
 class LocationLabelView: UIView {
+    
     weak var delegate: UIViewController?
     
     @IBOutlet weak var addressLabel: UILabel!
@@ -26,7 +27,6 @@ class LocationLabelView: UIView {
     @IBAction func presentSetLocationMapViewButtonAction(_ sender: Any) {
         let setLocationViewController = UIStoryboard.SetLocationMapViewStoryboard.instantiateViewController(withIdentifier: "SetMyLocationMapView")
         let setLocationViewNavigationController = UINavigationController(rootViewController: setLocationViewController)
-//        (self.delegate as! UIViewController)?.present(setLocationViewNavigationController, animated: true, completion: nil)
         self.delegate?.present(setLocationViewNavigationController, animated: true, completion: nil)
     }
 

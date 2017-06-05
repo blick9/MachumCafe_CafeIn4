@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkAdmin {
-    
+
     private static let url = URLpath.getURL()
     
     // MARK: 이미지 업로드

@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkMap {
-    
+
     private static let mapKey = "AIzaSyBNTjHJ-wYRN_p9x7HMJu-_sI2LG-kzVj4"
     
     static func getAddressFromCoordinate(latitude: CLLocationDegrees, longitude: CLLocationDegrees, callBack: @escaping ([String]) -> Void) {

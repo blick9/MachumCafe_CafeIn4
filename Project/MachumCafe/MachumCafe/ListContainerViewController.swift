@@ -9,6 +9,7 @@
 import UIKit
 
 class ListContainerViewController: UIViewController, SavedFilterDelegate {
+    
     var listTableViewController = UIViewController() as? ListViewController
     var listMapViewController = UIViewController()
     var isMapView = false
@@ -37,13 +38,10 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         listcollectionView.register(listViewNib, forCellWithReuseIdentifier: "Cell")
         listcollectionView.allowsSelection = false
         
-        listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as! ListViewController
+        listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as? ListViewController
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
-        
-        
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,15 +136,12 @@ extension ListContainerViewController : UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
         cell.backgroundColor = UIColor.clear
         cell.category.text = selectedFilterArray[indexPath.row]
-      //  cell.category.textColor = UIColor.init(red: 255, green: 232, blue: 129)
-
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = Double((selectedFilterArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 10

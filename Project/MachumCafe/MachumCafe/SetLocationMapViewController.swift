@@ -11,9 +11,9 @@ import GoogleMaps
 import GooglePlaces
 
 class SetLocationMapViewController: UIViewController, UISearchControllerDelegate {
+    
     var locationManager = CLLocationManager()
     var currentLocation = ModelLocation()
-    
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
@@ -54,9 +54,11 @@ class SetLocationMapViewController: UIViewController, UISearchControllerDelegate
         markerImage.sizeToFit()
         view.addSubview(markerImage)
         
-//        let adjustCenterPointView = UIView(frame: CGRect(x: googleMap.center.x, y: googleMap.center.y-(mapInsets.bottom-10), width: 3, height: 3))
-//        adjustCenterPointView.backgroundColor = UIColor.red
-//        view.addSubview(adjustCenterPointView)
+        /* Center 조정용
+        let adjustCenterPointView = UIView(frame: CGRect(x: googleMap.center.x, y: googleMap.center.y-(mapInsets.bottom-10), width: 3, height: 3))
+        adjustCenterPointView.backgroundColor = UIColor.red
+        view.addSubview(adjustCenterPointView)
+         */
         
         applyButton.tintColor = UIColor(red: 255, green: 232, blue: 129)
         addressView.layer.cornerRadius = 3
@@ -79,11 +81,8 @@ class SetLocationMapViewController: UIViewController, UISearchControllerDelegate
         searchController?.searchBar.sizeToFit()
         navigationItem.titleView = searchController?.searchBar
         
-        // When UISearchController presents the results view, present it in
-        // this view controller, not one further up the chain.
         definesPresentationContext = true
         
-        // Prevent the navigation bar from being hidden when searching.
         searchController?.hidesNavigationBarDuringPresentation = false
     }
     
@@ -93,9 +92,6 @@ class SetLocationMapViewController: UIViewController, UISearchControllerDelegate
 //        resultsViewController?.autocompleteFilter?.type = .noFilter
 //        resultsViewController?.autocompleteFilter?.country = "KR"
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        
-        
-        print(#function)
     }
     
     @IBAction func applyButtonAction(_ sender: Any) {
@@ -113,9 +109,6 @@ class SetLocationMapViewController: UIViewController, UISearchControllerDelegate
 extension SetLocationMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        currentLocation = CLLocationCoordinate2D(latitude: (locations.last?.coordinate.latitude)!, longitude: (locations.last?.coordinate.longitude)!)
-//        print(locations.last?.coordinate.latitude, locations.last?.coordinate.longitude)
-
     }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
@@ -132,11 +125,10 @@ extension SetLocationMapViewController : GMSMapViewDelegate, CLLocationManagerDe
         let adjustCenterPointMarker = GMSMarker(position: coordinate)
         adjustCenterPointMarker.icon = GMSMarker.markerImage(with: .black)
         adjustCenterPointMarker.map = googleMap
- */
+         */
     }
 }
 
-// Handle the user's selection.
 extension SetLocationMapViewController: GMSAutocompleteResultsViewControllerDelegate {
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
@@ -147,11 +139,9 @@ extension SetLocationMapViewController: GMSAutocompleteResultsViewControllerDele
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didFailAutocompleteWithError error: Error){
-        // TODO: handle the error.
         print("Error: ", error.localizedDescription)
     }
     
-    // Turn the network activity indicator on and off again.
     func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }

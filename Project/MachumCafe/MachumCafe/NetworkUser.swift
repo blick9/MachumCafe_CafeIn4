@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkUser {
-    
+
     private static let url = URLpath.getURL()
 
     // MARK: 회원가입
