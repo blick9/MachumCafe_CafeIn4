@@ -15,12 +15,10 @@ protocol SavedFilterDelegate {
 class FilterViewController: UIViewController {
     
     var delegate: SavedFilterDelegate?
+    var multiple = true
+    var filterArray = [String]()
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    var multiple = true
-
-    var filterArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +63,6 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //categoryArray -> StaticFuncion.swift
         return categoryArray.count
     }
     

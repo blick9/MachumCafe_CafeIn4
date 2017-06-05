@@ -10,29 +10,27 @@ import UIKit
 import GooglePlaces
 
 class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFieldDelegate {
+    
     var multiple = true
     var filterArray = [String]()
     var cafeData = [String:Any]()
     var selectedLocation = CLLocationCoordinate2D()
+    var previewImage =  [PreviewImageButton]()
+    var imageArray = [UIImage?]()
+    var textFieldArray = [UITextField]()
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var suggestionScrollView: UIScrollView!
-
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var telTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var detailAddressTextField: UITextField!
     @IBOutlet weak var hoursTextField: UITextField!
-    
     @IBOutlet weak var previewImage1: PreviewImageButton!
     @IBOutlet weak var previewImage2: PreviewImageButton!
     @IBOutlet weak var previewImage3: PreviewImageButton!
     @IBOutlet weak var previewImage4: PreviewImageButton!
     @IBOutlet weak var previewImage5: PreviewImageButton!
-    
-    var previewImage =  [PreviewImageButton]()
-    var imageArray = [UIImage?]()
-    var textFieldArray = [UITextField]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +38,6 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
         for item in previewImage {
             item.addTarget(self, action: #selector(SuggestionViewController.buttonTapped), for: UIControlEvents.touchUpInside)
         }
-        // addressTextField.sizeToFit()
         categoryCollectionView?.allowsMultipleSelection = multiple
         self.navigationItem.title = "필터검색"
         categoryCollectionView.delegate = self
@@ -60,6 +57,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
         }
         self.hideKeyboardWhenTappedAround()
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -123,7 +121,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
         }
     }
     
-    func draw() {
+    func refreshSelectedImage() {
         imageArray = imageArray.filter { $0 != nil }.flatMap { return $0 }
         
         if imageArray.count < 5 {
@@ -143,7 +141,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
     
     func savedImage(SavedImage pickedImage: [UIImage?]) {
         self.imageArray = pickedImage
-        draw()
+        refreshSelectedImage()
     }
     
     func buttonTapped(sender : PreviewImageButton) {
@@ -153,7 +151,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
                 imageArray[index] = nil
             }
         }
-        draw()
+        refreshSelectedImage()
     }
     
     @IBAction func closedAction(_ sender: Any) {
@@ -215,16 +213,13 @@ extension SuggestionViewController: GMSAutocompleteViewControllerDelegate {
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        // TODO: handle the error.
         print("Error: ", error.localizedDescription)
     }
     
-    // User canceled the operation.
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         dismiss(animated: true, completion: nil)
     }
     
-    // Turn the network activity indicator on and off again.
     func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
@@ -234,11 +229,10 @@ extension SuggestionViewController: GMSAutocompleteViewControllerDelegate {
     }
     
 }
-//suggestionView 화면 클릭시 키보드 내리기
+
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        // canclesTouchesInView가 고정값으로 true임. true인 경우는 이전에 전달 된 터치를 touchesCancelled (_ : with :) 메시지를 통해 취소해야 다음 터치가 먹힌다. 하지만 false로 지정하면 멀티 터치가 되어 이 예외사항을 피할 수 있다.
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }

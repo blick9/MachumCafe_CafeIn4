@@ -9,6 +9,7 @@
 import UIKit
 
 class MainSideBarViewController: UIViewController {
+    
     let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var sideBarView: UIView!
@@ -33,7 +34,6 @@ class MainSideBarViewController: UIViewController {
         
         imagePicker.delegate = self
         
-        // 코드 정리 시 지울 것
         buttonInit()
         checkIsUser()
         NotificationCenter.default.addObserver(self, selector: #selector(checkIsUser), name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
@@ -64,7 +64,6 @@ class MainSideBarViewController: UIViewController {
     }
     
     func buttonInit() {
-        //Button Design
         logInButton.layer.borderWidth = 1
         logInButton.layer.borderColor = UIColor.gray.cgColor
         logInButton.layer.cornerRadius = self.logInButton.frame.height/CGFloat(2)
@@ -74,9 +73,6 @@ class MainSideBarViewController: UIViewController {
         reportButton.tintColor = UIColor.black
         myBookmarkButton.tintColor = UIColor.black
         
-        //Make Underline
-        
-        // Make Underline
         let attrs = [NSFontAttributeName : UIFont.systemFont(ofSize: 15),
                      NSForegroundColorAttributeName : UIColor.gray,
                      NSUnderlineStyleAttributeName : 1] as [String : Any]
@@ -172,7 +168,6 @@ class MainSideBarViewController: UIViewController {
 extension MainSideBarViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] {
-            // Network Api 적용
             dismiss(animated: true, completion: nil)
             NetworkUser.setUserProfileImage(userID: User.sharedInstance.user.getUser()["id"] as! String, image: image as! UIImage, callback: { (result) in
                 if result {

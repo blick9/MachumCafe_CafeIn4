@@ -11,11 +11,12 @@ import Alamofire
 
 class SignUpViewController: UIViewController, UITextFieldDelegate{
     
+    var textFieldArray = [UITextField]()
+    
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var cofirmPasswordTextField: UITextField!
-    var textFieldArray = [UITextField]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

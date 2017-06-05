@@ -9,6 +9,7 @@
 import Foundation
 
 class ModelLocation {
+    
     fileprivate var latitude = Double()
     fileprivate var longitude = Double()
     fileprivate var address : String?

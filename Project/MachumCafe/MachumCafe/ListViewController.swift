@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 
 class ListViewController: UIViewController {
+    
     var getUserID = String()
     var getUserBookmarkArray = [String]()
     var currentLocation = CLLocation()
@@ -25,7 +26,6 @@ class ListViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +45,6 @@ class ListViewController: UIViewController {
             tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
         }
     }
-    
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
         let cafeID = Cafe.sharedInstance.filterCafeList[buttonTag.tag].getCafe()["id"] as! String

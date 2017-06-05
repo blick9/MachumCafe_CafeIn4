@@ -9,6 +9,7 @@
 import UIKit
 
 class BookmarkViewController: UIViewController {
+    
     var userId = User.sharedInstance.user.getUser()["id"] as! String
     
     @IBOutlet weak var collectionView: UICollectionView!

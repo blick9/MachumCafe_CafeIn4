@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkBookmark {
-    
+
     private static let url = URLpath.getURL()
     
     // MARK: 즐겨찾기 목록 데이터모델에 저장

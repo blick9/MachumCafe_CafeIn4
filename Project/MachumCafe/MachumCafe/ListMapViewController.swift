@@ -167,7 +167,6 @@ extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate 
         infoViewAnimate()
         
         let cafe = marker.userData as! ModelCafe
-        //MARK: Zoom이 12Lv 이하일 경우 Camera Move와 동시에 14Lv로 확대
         if (cafe.getCafe()["imagesData"] as! [Data]).isEmpty {
             NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String]) { (imageData) in
                 (marker.userData as! ModelCafe).setImagesData(imageData: imageData)

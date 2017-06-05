@@ -119,14 +119,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let cafeDetailViewController = UIStoryboard.CafeDetailViewStoryboard.instantiateViewController(withIdentifier: "CafeDetail") as! CafeDetailViewController
         
         getCafeInfo(id: url.pathComponents, target: cafeDetailViewController) {
-            self.pushSpecificCafeDetailView(id: url.pathComponents, target: cafeDetailViewController)
+            self.pushSpecificCafeDetailView(target: cafeDetailViewController)
         }
         
         self.window?.makeKeyAndVisible()
         return true
     }
     
-    func pushSpecificCafeDetailView(id: [String], target: CafeDetailViewController) {
+    func pushSpecificCafeDetailView(target: CafeDetailViewController) {
         let mainViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "Main")
         let mainNavigationViewController = UINavigationController(rootViewController: mainViewController)
         self.window?.rootViewController = mainNavigationViewController
@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             callback()
         }
     }
-
+    
     
     func initLocationManager() {
         seenError = false

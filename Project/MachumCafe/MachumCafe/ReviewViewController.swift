@@ -9,6 +9,7 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
+    
     var currentCafeModel = ModelCafe()
     var reviews = [ModelReview]()
     let reviewTableViewCellNib = UINib(nibName: "ReviewTableViewCell", bundle: nil)
@@ -55,7 +56,6 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
         cell.reviewDate.text = review["date"] as? String
         cell.reviewContent.text = review["reviewContent"] as? String
         cell.reviewStarRating.rating = review["rating"] as! Double
-        // ModelReview 내 UserProfileImage 추가 후 연동
         if !(review["profileImageURL"] as! String).isEmpty {
             NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String) { (profileImageData) in
                 self.reviews[indexPath.row].setProfileImage(profileImage: profileImageData)

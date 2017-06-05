@@ -9,6 +9,7 @@
 import Foundation
 
 class URLpath {
+    
     static func getURL() -> String {
         let filePath = Bundle.main.path(forResource: "Info", ofType: "plist")
         let info = NSDictionary(contentsOfFile: filePath!)

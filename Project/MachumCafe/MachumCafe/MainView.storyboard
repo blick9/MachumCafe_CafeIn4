@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -117,7 +116,10 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BcK-do-aI9">
-                                <rect key="frame" x="168" y="120" width="39" height="37"/>
+                                <rect key="frame" x="168" y="128" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="o7u-XQ-QKr"/>
+                                </constraints>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -128,7 +130,7 @@
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="IM7-1i-wH4"/>
                             <constraint firstItem="HUw-Vf-CO7" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="NhE-Hw-c9q"/>
                             <constraint firstAttribute="trailing" secondItem="F6t-lT-pER" secondAttribute="trailing" id="QeR-1S-3Wh"/>
-                            <constraint firstItem="BcK-do-aI9" firstAttribute="bottom" secondItem="F6t-lT-pER" secondAttribute="bottomMargin" id="Qgh-7A-m8w"/>
+                            <constraint firstItem="BcK-do-aI9" firstAttribute="bottom" secondItem="F6t-lT-pER" secondAttribute="bottom" id="Qgh-7A-m8w"/>
                             <constraint firstItem="Ox6-AF-ea0" firstAttribute="top" secondItem="wLl-SV-zdY" secondAttribute="bottom" constant="63" id="Tms-hg-FrI"/>
                             <constraint firstItem="ted-6G-gWV" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="c8R-n3-0qA"/>
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="leading" secondItem="HUw-Vf-CO7" secondAttribute="leading" constant="-8.5" id="et4-7X-bjc"/>
@@ -308,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i41-U3-bIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1477.5999999999999" y="-38.23088455772114"/>
+            <point key="canvasLocation" x="3089" y="-6"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DDV-TN-Syu">
