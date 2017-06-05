@@ -11,9 +11,9 @@
     * [x] 비밀번호 유효성 검사, placeholder 추가
     * [ ] listMapView 카페 핀 터치 시 올라오는 뷰에 카페 이미지 적용
   * #### 구찬우
-    * [ ] 메인 스크롤뷰 자동 스크롤 및 indicator 추가
+    * [x] 메인 스크롤뷰 자동 스크롤 및 indicator 추가
     * [x] ListTableView 내 별점 위치 정렬
-    * [ ] Deep Link 구현
+    * [x] Deep Link 구현
     * [x] 남은거리 글자크기 키우기
     * [x] 리뷰 더보기 cell 리뷰 갯수만큼 보이기
     * [x] detailView 에 평점 기능 추가
@@ -40,9 +40,9 @@
     * [x] 전체적인 유저 모델 kakao유저와 local유저 구분하여 전체 코드 대응
     * [x] 리뷰 등록 및 보일때 리뷰등록한 유저의 프로필 사진 보이는 기능 구현
   * #### 구찬우
-    * [ ] ReviewView more 버튼 수정
-    * [ ] 서버 local user 프로필 이미지 업르드 api 생성
-    * [ ] 클라이언트 user 프로필 이미지 추가
+    * [x] ReviewView more 버튼 수정
+    * [x] 서버 local user 프로필 이미지 업로드 api 생성
+    * [x] 클라이언트 user 프로필 이미지 추가
   * #### 이단비
     * [ ] 공유 기능 마무리
     * [ ] cafeDetailView 카테고리 cell 높이 수정
@@ -75,8 +75,8 @@
     * [x] suggestionNewCafe시 좌표 전송, 서버에서 request 대응
     * [x] SpecificCafe GET api 생성
   * #### 구찬우
-    * [ ] DetailView 리팩토링(정보 없는 cell정리)
-    * [ ] DetailView 카테고리 표시 (FilterCollectionViewCell 이용)
+    * [x] DetailView 리팩토링(정보 없는 cell정리)
+    * [x] DetailView 카테고리 표시 (FilterCollectionViewCell 이용)
   * #### 이단비
     * [ ] DetailView 리팩토링
     * [ ] Share 기능 구현 (Link)
