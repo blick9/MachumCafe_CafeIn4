@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9ci-8g-hJI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Setting View Controller-->
+        <scene sceneID="aky-pk-h9u">
+            <objects>
+                <viewController storyboardIdentifier="SettingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y9m-lC-UzP" customClass="SettingViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mTl-wV-Nn6"/>
+                        <viewControllerLayoutGuide type="bottom" id="c45-JK-rbN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Pg-32-OzX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hy-Ex-VEn">
+                                <rect key="frame" x="33" y="148" width="309" height="33"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <state key="normal" title="로그아웃"/>
+                                <connections>
+                                    <action selector="logOutButtonAction:" destination="y9m-lC-UzP" eventType="touchUpInside" id="ATe-ob-5E4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4hy-Ex-VEn" firstAttribute="top" secondItem="mTl-wV-Nn6" secondAttribute="bottom" constant="84" id="4T3-pc-808"/>
+                            <constraint firstItem="4hy-Ex-VEn" firstAttribute="leading" secondItem="0Pg-32-OzX" secondAttribute="leadingMargin" constant="17" id="VGu-7S-zFx"/>
+                            <constraint firstItem="4hy-Ex-VEn" firstAttribute="centerX" secondItem="0Pg-32-OzX" secondAttribute="centerX" id="bQE-ar-PhA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tYZ-tf-NV5">
+                        <barButtonItem key="rightBarButtonItem" image="cancelButton" id="BCa-xq-WeV">
+                            <connections>
+                                <action selector="closeButtonAction:" destination="y9m-lC-UzP" id="MI7-nx-sUF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="logOutButton" destination="4hy-Ex-VEn" id="vrh-Dw-SzB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y5b-DB-CfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="856.79999999999995" y="170.46476761619192"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7NA-E8-EL0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9ci-8g-hJI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IMg-9j-iPo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="y9m-lC-UzP" kind="relationship" relationship="rootViewController" id="VrT-6q-UQH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aJe-4W-6FA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="171.36431784107947"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cancelButton" width="19" height="20"/>
+    </resources>
+</document>

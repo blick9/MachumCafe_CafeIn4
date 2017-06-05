@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FsF-yt-tfK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--List Container View Controller-->
+        <scene sceneID="4ey-WD-Fln">
+            <objects>
+                <viewController storyboardIdentifier="ListContainer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="H4B-Hk-kTG" customClass="ListContainerViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Wk-kH-mIc"/>
+                        <viewControllerLayoutGuide type="bottom" id="dwo-LK-Bsc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bva-Oe-efw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-u8-9Wq" userLabel="ListView">
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="563" id="4lz-QJ-jny"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Hrr-hb-S2h" kind="embed" id="rYR-W9-fg8"/>
+                                </connections>
+                            </containerView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UQk-Gw-rcK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BVn-dt-b0f"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tgz-0n-NKK">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Tac-u8-9Wq" firstAttribute="leading" secondItem="Bva-Oe-efw" secondAttribute="leading" id="3mQ-aG-ysu"/>
+                            <constraint firstAttribute="trailing" secondItem="UQk-Gw-rcK" secondAttribute="trailing" id="6NJ-Hj-QGc"/>
+                            <constraint firstItem="Tac-u8-9Wq" firstAttribute="top" secondItem="UQk-Gw-rcK" secondAttribute="bottom" id="KdT-Zm-YIo"/>
+                            <constraint firstItem="UQk-Gw-rcK" firstAttribute="top" secondItem="0Wk-kH-mIc" secondAttribute="bottom" id="Ntt-dP-HTs"/>
+                            <constraint firstItem="dwo-LK-Bsc" firstAttribute="top" secondItem="Tac-u8-9Wq" secondAttribute="bottom" id="Q5R-aP-B5V"/>
+                            <constraint firstAttribute="trailing" secondItem="Tac-u8-9Wq" secondAttribute="trailing" id="W0b-BC-uJv"/>
+                            <constraint firstItem="UQk-Gw-rcK" firstAttribute="leading" secondItem="Bva-Oe-efw" secondAttribute="leading" id="X9v-PP-SCb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zlF-jy-VmJ">
+                        <rightBarButtonItems>
+                            <barButtonItem image="filter_Bt" id="84q-ye-2ug">
+                                <connections>
+                                    <action selector="showFilterViewButtonItem:" destination="H4B-Hk-kTG" id="hD6-Lj-72V"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="map_Bt" id="zF9-r4-EPs">
+                                <connections>
+                                    <action selector="listViewSwitchToggleButtonAction:" destination="H4B-Hk-kTG" id="oxk-gh-PC2"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listView" destination="Tac-u8-9Wq" id="ty2-7Y-drR"/>
+                        <outlet property="listcollectionView" destination="UQk-Gw-rcK" id="TWw-zL-R1h"/>
+                        <outlet property="selectedFilterViewTopConstraint" destination="Ntt-dP-HTs" id="7I6-ks-ooS"/>
+                        <outlet property="viewSwitchButtonItem" destination="zF9-r4-EPs" id="CCa-ux-96p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lch-jh-453" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112.8" y="139.880059970015"/>
+        </scene>
+        <!--ListView-->
+        <scene sceneID="d9B-Xu-v7i">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ListView" referencedIdentifier="ListView" id="Hrr-hb-S2h" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wfe-4a-lGZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-120" y="568"/>
+        </scene>
+        <!--ListMap-->
+        <scene sceneID="4Ad-Ps-NBy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ListMapView" referencedIdentifier="ListMap" id="fHl-Sh-Is7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u5v-V9-VmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="568"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ihi-UC-DZc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FsF-yt-tfK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JGW-IK-2fB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="H4B-Hk-kTG" kind="relationship" relationship="rootViewController" id="loD-pa-2HA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUa-Jy-mnS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-634" y="140"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="filter_Bt" width="20" height="20"/>
+        <image name="map_Bt" width="19" height="18"/>
+    </resources>
+</document>

@@ -57,7 +57,6 @@
   * [Github Issue](https://github.com/ni9n/MachumCafe_CafeIn4/issues)
 
 ## 기타
-
   * ### 팀원 이니셜
     ```
     구찬우 - [9]
