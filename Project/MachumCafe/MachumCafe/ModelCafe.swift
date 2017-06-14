@@ -10,19 +10,18 @@ import Foundation
 
 class ModelCafe {
     
-    fileprivate var id : String?
-    fileprivate var name = String()
-    fileprivate var tel : String?
-    fileprivate var address = String()
-    fileprivate var hours : String?
-    fileprivate var latitude : Double?
-    fileprivate var longitude : Double?
-    fileprivate var category = [String]()
-    fileprivate var rating = Double()
-    fileprivate var menu : String?
-    fileprivate var imagesURL = [String]()
-    fileprivate var imagesData : [Data]?
-    fileprivate var reviews = [ModelReview]() {
+    private var id : String?
+    private var name = String()
+    private var tel : String?
+    private var address = String()
+    private var hours : String?
+    private var latitude : Double?
+    private var longitude : Double?
+    private var category = [String]()
+    private var rating = Double()
+    private var menu : String?
+    private var imagesURL = [String]()
+    private var reviews = [ModelReview]() {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
         }
@@ -42,11 +41,6 @@ class ModelCafe {
         self.rating = rating
         self.menu = menu
         self.imagesURL = imagesURL
-        self.imagesData = [Data]()
-    }
-    
-    func setImagesData(imageData: Data) {
-        self.imagesData?.append(imageData)
     }
     
     func setReviews(reviews: [ModelReview]) {
@@ -66,7 +60,6 @@ class ModelCafe {
         cafeDic["rating"] = rating
         cafeDic["menu"] = menu
         cafeDic["imagesURL"] = imagesURL
-        cafeDic["imagesData"] = imagesData
         return cafeDic
     }
 

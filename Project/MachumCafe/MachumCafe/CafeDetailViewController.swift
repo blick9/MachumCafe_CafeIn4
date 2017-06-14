@@ -64,10 +64,10 @@ class CafeDetailViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
-        if !(cafeData["imagesData"] as! [Data]).isEmpty {
-            makeCafeImageScrollView(imagesData: cafeData["imagesData"] as! [Data])
+        if !(cafeData["imagesURL"] as! [String]).isEmpty {
+            makeCafeImageScrollView(imagesURL: cafeData["imagesURL"] as! [String])
         } else {
-            cafeImageScrollView.addSubview(UIImageView(image: #imageLiteral(resourceName: "1")))
+            cafeImageScrollView.addSubview(UIImageView(image: #imageLiteral(resourceName: "2")))
         }
         
         cafeNameLabel.text = cafeData["name"] as? String
@@ -151,11 +151,12 @@ class CafeDetailViewController: UIViewController {
         bookmarkButton.setImage(#imageLiteral(resourceName: "Bookmarked_Bt"), for: .selected)
     }
     
-    func makeCafeImageScrollView(imagesData: [Data]) {
-        for i in 0..<imagesData.count {
+    func makeCafeImageScrollView(imagesURL: [String]) {
+        for i in 0..<imagesURL.count {
+            let cafeImageResource = NetworkCafe.getCafeImage(imageURL: imagesURL[i])
             let xPosition = self.view.frame.width * CGFloat(i)
             let cafeImage = UIImageView()
-            cafeImage.image = UIImage(data: imagesData[i])
+            cafeImage.kf.setImage(with: cafeImageResource)
             cafeImage.frame = CGRect(x: xPosition, y: 0, width: self.view.frame.width, height: self.cafeImageScrollView.frame.height)
             cafeImage.contentMode = .scaleAspectFill
             cafeImage.clipsToBounds = true
@@ -166,7 +167,7 @@ class CafeDetailViewController: UIViewController {
             blackLayer.frame = CGRect(x: xPosition, y: 0, width: self.view.frame.width, height: self.cafeImageScrollView.frame.height)
             cafeImageScrollView.addSubview(blackLayer)
         }
-        cafeImageScrollView.contentSize.width = view.frame.width * CGFloat(imagesData.count)
+        cafeImageScrollView.contentSize.width = view.frame.width * CGFloat(imagesURL.count)
     }
     
     func bookmarkToggleButton() {
@@ -179,11 +180,6 @@ class CafeDetailViewController: UIViewController {
         } else {
             UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -201,6 +197,11 @@ class CafeDetailViewController: UIViewController {
     func phoneCallButtonAction() {
         let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
         UIApplication.shared.openURL(url as! URL)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        clearMemory()
     }
 }
 
@@ -260,11 +261,8 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.reviewStarRating.rating = review["rating"] as! Double
                 
                 if !(review["profileImageURL"] as! String).isEmpty {
-                    NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String) { (profileImageData) in
-                        self.reviews[indexPath.row].setProfileImage(profileImage: profileImageData)
-                        review = self.reviews[indexPath.row].getReview()
-                        cell.reviewerPicture.image = UIImage(data: review["profileImage"] as! Data)
-                    }
+                    let profileImage = NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String)
+                    cell.reviewerPicture.kf.setImage(with: profileImage)
                 } else {
                     cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
                 }

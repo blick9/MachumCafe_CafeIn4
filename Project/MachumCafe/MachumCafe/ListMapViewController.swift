@@ -150,6 +150,11 @@ class ListMapViewController: UIViewController{
             controller.currentCafeModel = currentSelectedCafe
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        clearMemory()
+    }
 }
 
 extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate {
@@ -167,20 +172,20 @@ extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate 
         infoViewAnimate()
         
         let cafe = marker.userData as! ModelCafe
-        if (cafe.getCafe()["imagesData"] as! [Data]).isEmpty {
-            NetworkCafe.getImagesData(imagesURL: cafe.getCafe()["imagesURL"] as! [String]) { (imageData) in
-                (marker.userData as! ModelCafe).setImagesData(imageData: imageData)
-                self.cafeImageView.image = UIImage(data: (cafe.getCafe()["imagesData"] as! [Data])[0])
-            }
+        let cafeDic = cafe.getCafe()
+        
+        if !(cafeDic["imagesURL"] as! [String]).isEmpty {
+            let cafeImage = NetworkCafe.getCafeImage(imageURL: (cafeDic["imagesURL"] as! [String])[0])
+            self.cafeImageView.kf.setImage(with: cafeImage)
         } else {
-            self.cafeImageView.image = UIImage(data: (cafe.getCafe()["imagesData"] as! [Data])[0])
+            self.cafeImageView.image = #imageLiteral(resourceName: "2")
         }
         
         googleMap.animate(toLocation: marker.position)
         if googleMap.camera.zoom <= 12 { googleMap.animate(toZoom: 14) }
         cafeName.text = marker.title
         cafeAddress.text = marker.snippet
-        cafePhone.text = cafe.getCafe()["tel"] as! String
+        cafePhone.text = (cafeDic["tel"] as! String)
         currentSelectedCafe = cafe
         return true
     }
