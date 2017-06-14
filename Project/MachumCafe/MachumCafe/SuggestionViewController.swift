@@ -243,12 +243,22 @@ extension SuggestionViewController: GMSAutocompleteViewControllerDelegate {
 
 extension SuggestionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func takePhoto() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: nil)
+        let checkEmpty = imageArray.flatMap{ $0 }
+        if checkEmpty.count != 5 {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .camera
+                imagePicker.allowsEditing = false
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: "사진선택", message: "사진은 최대 5장까지 가능합니다.", preferredStyle: .alert)
+            present(alert, animated: true, completion: nil)
+            let time = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: time) {
+                alert.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
