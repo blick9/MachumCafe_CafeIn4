@@ -17,8 +17,8 @@ protocol SavedImageDelegate {
 class SuggestionImagePickerViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var delegate : SavedImageDelegate?
-    var imageArray = [UIImage]()
     var selectedImageArray = [UIImage]()
+    var imageDic = [Int : UIImage]()
     var multiple = true
     var photoLibrary = PhotoLibrary()
     
@@ -54,14 +54,13 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        let imageView = cell.viewWithTag(1) as! UIImageView
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SuggestionImagePickerViewCollectionViewCell
         DispatchQueue.global(qos: .background).async {
             self.photoLibrary.setPhoto(at: indexPath.row) { (image) in
                 if let image = image {
-                    self.imageArray.append(image)
+                    self.imageDic[indexPath.row] = image
                     DispatchQueue.main.async {
-                        imageView.image = image
+                        cell.photoLibraryImage.image = image
                     }
                 }
             }
@@ -75,7 +74,7 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
         }
         
         if selectedImageArray.count != 5 {
-            selectedImageArray.append(imageArray[indexPath.row])
+            selectedImageArray.append(imageDic[indexPath.row]!)
         } else {
             collectionView.deselectItem(at: indexPath, animated: false)
             let alert = UIAlertController(title: "사진선택", message: "사진은 최대 5장까지 가능합니다.", preferredStyle: .alert)
@@ -89,8 +88,8 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let photoindex = imageArray[indexPath.row]
-        if let index = selectedImageArray.index(of: photoindex) {
+        let photoindex = imageDic[indexPath.row]
+        if let index = selectedImageArray.index(of: photoindex!) {
             selectedImageArray.remove(at: index)
         }
     }
