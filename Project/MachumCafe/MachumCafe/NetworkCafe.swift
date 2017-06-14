@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Kingfisher
 
 class NetworkCafe {
 
@@ -75,6 +76,11 @@ class NetworkCafe {
                 })
             }
         }
+    }
+    
+    static func getCafeImage(imageURL: String) -> ImageResource {
+        let cafeImage = ImageResource(downloadURL: URL(string: imageURL)!, cacheKey: imageURL)
+        return cafeImage
     }
     
     static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview], _ rating: Double) -> Void) {
