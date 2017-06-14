@@ -10,12 +10,12 @@ import Foundation
 
 class ModelUser {
     
-    fileprivate var id = String()
-    fileprivate var isKakaoImage = Bool()
-    fileprivate var email = String()
-    fileprivate var nickname = String()
-    fileprivate var bookmark = [String]()
-    fileprivate var profileImageURL = String()
+    private var id = String()
+    private var isKakaoImage = Bool()
+    private var email = String()
+    private var nickname = String()
+    private var bookmark = [String]()
+    private var profileImageURL = String()
     
     init() {}
     

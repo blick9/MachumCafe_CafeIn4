@@ -10,16 +10,16 @@ import UIKit
 
 class ModelReview {
     
-    fileprivate var id : String?
-    fileprivate var isKakaoImage = Bool()
-    fileprivate var cafeId = String()
-    fileprivate var userId = String()
-    fileprivate var nickname = String()
-    fileprivate var profileImageURL : String?
-    fileprivate var profileImage : Data?
-    fileprivate var date = String()
-    fileprivate var reviewContent = String()
-    fileprivate var rating = Double()
+    private var id : String?
+    private var isKakaoImage = Bool()
+    private var cafeId = String()
+    private var userId = String()
+    private var nickname = String()
+    private var profileImageURL : String?
+    private var profileImage : Data?
+    private var date = String()
+    private var reviewContent = String()
+    private var rating = Double()
     
     init() {}
     
