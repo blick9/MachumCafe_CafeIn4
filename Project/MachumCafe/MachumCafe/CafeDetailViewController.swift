@@ -181,11 +181,6 @@ class CafeDetailViewController: UIViewController {
             UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let reviewView : ReviewViewController = (segue.destination as? ReviewViewController)!
@@ -202,6 +197,11 @@ class CafeDetailViewController: UIViewController {
     func phoneCallButtonAction() {
         let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
         UIApplication.shared.openURL(url as! URL)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        clearMemory()
     }
 }
 

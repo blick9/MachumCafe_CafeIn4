@@ -73,6 +73,11 @@ class ListViewController: UIViewController {
             }
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        clearMemory()
+    }
 }
 
 extension ListViewController : UITableViewDelegate, UITableViewDataSource {

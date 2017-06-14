@@ -51,6 +51,11 @@ class BookmarkViewController: UIViewController {
             }
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        clearMemory()
+    }
 }
 
 extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

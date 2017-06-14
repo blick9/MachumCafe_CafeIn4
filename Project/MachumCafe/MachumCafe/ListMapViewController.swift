@@ -150,6 +150,11 @@ class ListMapViewController: UIViewController{
             controller.currentCafeModel = currentSelectedCafe
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        clearMemory()
+    }
 }
 
 extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate {
