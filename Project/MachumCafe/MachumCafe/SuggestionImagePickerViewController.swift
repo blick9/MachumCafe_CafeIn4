@@ -66,17 +66,26 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
                 }
             }
         }
-        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         guard multiple else {
             return
         }
-        cell.isSelected = !cell.isSelected
-        selectedImageArray.append(imageArray[indexPath.row])
+        
+        if selectedImageArray.count != 5 {
+            selectedImageArray.append(imageArray[indexPath.row])
+        } else {
+            collectionView.deselectItem(at: indexPath, animated: false)
+            let alert = UIAlertController(title: "사진선택", message: "사진은 최대 5장까지 가능합니다.", preferredStyle: .alert)
+            present(alert, animated: true, completion: nil)
+            let time = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: time) {
+                alert.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
