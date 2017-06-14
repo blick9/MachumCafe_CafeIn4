@@ -136,11 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func getCafeInfo(id: [String], target: CafeDetailViewController, callback: @escaping () -> Void) {
         NetworkCafe.getSpecificCafe(cafeId: id[2]){ (modelCafe) in
             Cafe.sharedInstance.specificCafe = modelCafe
-            
-            NetworkCafe.getImagesData(imagesURL: modelCafe.getCafe()["imagesURL"] as! [String], callback: { (data) in
-                Cafe.sharedInstance.specificCafe.setImagesData(imageData: data)
-                target.currentCafeModel = Cafe.sharedInstance.specificCafe
-            })
+            target.currentCafeModel = Cafe.sharedInstance.specificCafe
             callback()
         }
     }

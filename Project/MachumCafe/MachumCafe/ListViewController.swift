@@ -91,15 +91,6 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         var distance = Double(currentLocation.distance(from: cafeLocation))
         let convertByDistance = distance.meterConvertToKiloMeter(places: 2)
         
-//        if (cafe["imagesData"] as! [Data]).isEmpty {
-//            NetworkCafe.getImagesData(imagesURL: cafe["imagesURL"] as! [String]) { (data) in
-//                Cafe.sharedInstance.filterCafeList[indexPath.row].setImagesData(imageData: data)
-//                cafe = Cafe.sharedInstance.filterCafeList[indexPath.row].getCafe()
-//                cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
-//            }
-//        } else {
-//            cell.backgroundImageView.image = UIImage(data: (cafe["imagesData"] as! [Data])[0])
-//        }
         if !(cafe["imagesURL"] as! [String]).isEmpty {
             let cafeImage = NetworkCafe.getCafeImage(imageURL: (cafe["imagesURL"] as! [String])[0])
             cell.backgroundImageView.kf.setImage(with: cafeImage)

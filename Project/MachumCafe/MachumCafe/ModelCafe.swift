@@ -21,7 +21,6 @@ class ModelCafe {
     fileprivate var rating = Double()
     fileprivate var menu : String?
     fileprivate var imagesURL = [String]()
-    fileprivate var imagesData : [Data]?
     fileprivate var reviews = [ModelReview]() {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
@@ -42,11 +41,6 @@ class ModelCafe {
         self.rating = rating
         self.menu = menu
         self.imagesURL = imagesURL
-        self.imagesData = [Data]()
-    }
-    
-    func setImagesData(imageData: Data) {
-        self.imagesData?.append(imageData)
     }
     
     func setReviews(reviews: [ModelReview]) {
@@ -66,7 +60,6 @@ class ModelCafe {
         cafeDic["rating"] = rating
         cafeDic["menu"] = menu
         cafeDic["imagesURL"] = imagesURL
-        cafeDic["imagesData"] = imagesData
         return cafeDic
     }
 
