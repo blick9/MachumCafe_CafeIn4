@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import CoreLocation
+import Kingfisher
 
 extension UIAlertController {
     func presentSuggestionLogInAlert(target : UIViewController, title : String, message : String) {
@@ -129,5 +130,9 @@ extension String {
     var isPassword: Bool {
         return self.characters.count >= 6 ? true : false
     }
+}
+
+func clearMemory() {
+    KingfisherManager.shared.cache.clearMemoryCache()
 }
 

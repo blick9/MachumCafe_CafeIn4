@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Kingfisher
 
 class NetworkCafe {
 
@@ -64,17 +65,9 @@ class NetworkCafe {
         }
     }
     
-    // MARK: 카페 이미지 데이터모델에 저장
-    static func getImagesData(imagesURL: [String], callback: @escaping (_ imageData: Data) -> Void) {
-        if !imagesURL.isEmpty {
-            for imageURL in imagesURL {
-                Alamofire.request("\(imageURL)").responseData(completionHandler: { (response) in
-                    if let imageData = response.result.value {
-                        callback(imageData)
-                    }
-                })
-            }
-        }
+    static func getCafeImage(imageURL: String) -> ImageResource {
+        let cafeImage = ImageResource(downloadURL: URL(string: imageURL)!, cacheKey: imageURL)
+        return cafeImage
     }
     
     static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview], _ rating: Double) -> Void) {

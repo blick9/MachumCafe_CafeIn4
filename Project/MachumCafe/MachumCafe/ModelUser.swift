@@ -10,13 +10,12 @@ import Foundation
 
 class ModelUser {
     
-    fileprivate var id = String()
-    fileprivate var isKakaoImage = Bool()
-    fileprivate var email = String()
-    fileprivate var nickname = String()
-    fileprivate var bookmark = [String]()
-    fileprivate var profileImageURL = String()
-    fileprivate var profileImage = Data()
+    private var id = String()
+    private var isKakaoImage = Bool()
+    private var email = String()
+    private var nickname = String()
+    private var bookmark = [String]()
+    private var profileImageURL = String()
     
     init() {}
     
@@ -37,16 +36,11 @@ class ModelUser {
         userDic["nickname"] = nickname
         userDic["bookmark"] = bookmark
         userDic["profileImageURL"] = profileImageURL
-        userDic["profileImage"] = profileImage
         return userDic
     }
     
     func setBookmark(bookmarks : [String]) {
         bookmark = bookmarks
-    }
-    
-    func setProfileImage(profileImage: Data) {
-        self.profileImage = profileImage
     }
     
     func setProfileImageURL(imageURL: String, isKakaoImage: Bool) {

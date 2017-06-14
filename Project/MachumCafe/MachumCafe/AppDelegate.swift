@@ -47,12 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     NetworkUser.kakaoLogin(email: email, nickname: String(), imageURL: String()) { (result, user) in
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
-
-                        if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                            NetworkUser.getUserImage(userID: user.getUser()["id"] as! String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
-                                user.setProfileImage(profileImage: imageData)
-                            }
-                        }
                     }
                 }
             })
@@ -62,11 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 if result {
                     User.sharedInstance.user = user
                     User.sharedInstance.isUser = true
-                    if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                        NetworkUser.getUserImage(userID: user.getUser()["id"] as! String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
-                            user.setProfileImage(profileImage: imageData)
-                        }
-                    }
                 }
             }
         }
@@ -136,11 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func getCafeInfo(id: [String], target: CafeDetailViewController, callback: @escaping () -> Void) {
         NetworkCafe.getSpecificCafe(cafeId: id[2]){ (modelCafe) in
             Cafe.sharedInstance.specificCafe = modelCafe
-            
-            NetworkCafe.getImagesData(imagesURL: modelCafe.getCafe()["imagesURL"] as! [String], callback: { (data) in
-                Cafe.sharedInstance.specificCafe.setImagesData(imageData: data)
-                target.currentCafeModel = Cafe.sharedInstance.specificCafe
-            })
+            target.currentCafeModel = Cafe.sharedInstance.specificCafe
             callback()
         }
     }

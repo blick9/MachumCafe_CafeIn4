@@ -57,13 +57,10 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
         cell.reviewContent.text = review["reviewContent"] as? String
         cell.reviewStarRating.rating = review["rating"] as! Double
         if !(review["profileImageURL"] as! String).isEmpty {
-            NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String) { (profileImageData) in
-                self.reviews[indexPath.row].setProfileImage(profileImage: profileImageData)
-                review = self.reviews[indexPath.row].getReview()
-                cell.reviewerPicture.image = UIImage(data: review["profileImage"] as! Data)
+            let profileImage = NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String)
+                cell.reviewerPicture.kf.setImage(with: profileImage)
                 cell.reviewerPicture.layer.masksToBounds = true
                 cell.reviewerPicture.layer.cornerRadius = CGFloat(cell.reviewerPicture.frame.height / 2)
-            }
         } else {
             cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
         }
