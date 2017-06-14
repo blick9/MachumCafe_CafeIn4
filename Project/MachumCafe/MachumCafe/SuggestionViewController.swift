@@ -64,10 +64,21 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
     }
 
     @IBAction func imagePickerActionButton(_ sender: Any) {
-        let imagePickerViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "imagePicker") as! SuggestionImagePickerViewController
-        let navigationVC = UINavigationController(rootViewController: imagePickerViewController)
-        imagePickerViewController.delegate = self
-        present(navigationVC, animated: false, completion: nil)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "직접 촬영", style: .default) { (_) in
+            self.takePhoto()
+        }
+        let photoLibraryAction = UIAlertAction(title: "사진 앨범에서 선택", style: .default) { (_) in
+            let imagePickerViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "imagePicker") as! SuggestionImagePickerViewController
+            let navigationVC = UINavigationController(rootViewController: imagePickerViewController)
+            imagePickerViewController.delegate = self
+            self.present(navigationVC, animated: false, completion: nil)
+        }
+        let closeAction = UIAlertAction(title: "닫기", style: .cancel, handler: nil)
+        alert.addAction(cameraAction)
+        alert.addAction(photoLibraryAction)
+        alert.addAction(closeAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func addressSerchButtonAction(_ sender: Any) {
@@ -226,6 +237,27 @@ extension SuggestionViewController: GMSAutocompleteViewControllerDelegate {
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+}
+
+extension SuggestionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func takePhoto() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageArray.append(image)
+            refreshSelectedImage()
+        }
+        dismiss(animated: true, completion: nil)
     }
     
 }
