@@ -261,11 +261,8 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
                 cell.reviewStarRating.rating = review["rating"] as! Double
                 
                 if !(review["profileImageURL"] as! String).isEmpty {
-                    NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String) { (profileImageData) in
-                        self.reviews[indexPath.row].setProfileImage(profileImage: profileImageData)
-                        review = self.reviews[indexPath.row].getReview()
-                        cell.reviewerPicture.image = UIImage(data: review["profileImage"] as! Data)
-                    }
+                    let profileImage = NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String)
+                    cell.reviewerPicture.kf.setImage(with: profileImage)
                 } else {
                     cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
                 }

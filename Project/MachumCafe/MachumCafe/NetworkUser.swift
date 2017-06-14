@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Kingfisher
 
 class NetworkUser {
 
@@ -118,12 +119,9 @@ class NetworkUser {
         }
     }
     
-    static func getUserImage(userID: String, isKakaoImage: Bool, imageURL: String, callback: @escaping (_ imageData: Data) -> Void) {
-        Alamofire.request(isKakaoImage ? imageURL : "\(url)/api/v1/user/\(userID)/profileimage/\(imageURL)").responseData { (response) in
-            if let imageData = response.result.value {
-                callback(imageData)
-            }
-        }        
+    static func getUserImage(userID: String, isKakaoImage: Bool, imageURL: String) -> ImageResource {
+        let profileImage = isKakaoImage ? ImageResource(downloadURL: URL(string: imageURL)!, cacheKey: imageURL) : ImageResource(downloadURL: URL(string:  "\(url)/api/v1/user/\(userID)/profileimage/\(imageURL)")!, cacheKey: imageURL)
+        return profileImage
     }
     
     static func setUserProfileImage(userID: String, image: UIImage, callback: @escaping (_ result: Bool) -> Void) {
@@ -140,6 +138,7 @@ class NetworkUser {
                     if let user = res["user"].dictionary {
                         let imageURL = user["imageURL"]?.stringValue
                         let isKakaoImage = user["isKakaoImage"]?.boolValue
+                        KingfisherManager.shared.cache.removeImage(forKey: imageURL!, fromDisk: true, completionHandler: nil)
                         User.sharedInstance.user.setProfileImageURL(imageURL: imageURL!, isKakaoImage: isKakaoImage!)
                     }
                     callback(result)

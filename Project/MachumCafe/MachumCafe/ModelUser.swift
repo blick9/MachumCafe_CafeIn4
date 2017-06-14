@@ -16,7 +16,6 @@ class ModelUser {
     fileprivate var nickname = String()
     fileprivate var bookmark = [String]()
     fileprivate var profileImageURL = String()
-    fileprivate var profileImage = Data()
     
     init() {}
     
@@ -37,16 +36,11 @@ class ModelUser {
         userDic["nickname"] = nickname
         userDic["bookmark"] = bookmark
         userDic["profileImageURL"] = profileImageURL
-        userDic["profileImage"] = profileImage
         return userDic
     }
     
     func setBookmark(bookmarks : [String]) {
         bookmark = bookmarks
-    }
-    
-    func setProfileImage(profileImage: Data) {
-        self.profileImage = profileImage
     }
     
     func setProfileImageURL(imageURL: String, isKakaoImage: Bool) {

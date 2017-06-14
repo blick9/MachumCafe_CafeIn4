@@ -53,8 +53,13 @@ class MainSideBarViewController: UIViewController {
             settingProfileImage.isEnabled = false
             settingProfileImageIcon.isHidden = true
         case true :
-            let profileImage = User.sharedInstance.user.getUser()["profileImage"] as! Data
-            userProfileImageView.image = profileImage.isEmpty ? #imageLiteral(resourceName: "profil_side") : UIImage(data: profileImage)
+            let user = User.sharedInstance.user.getUser()
+            if !(user["profileImageURL"] as! String).isEmpty {
+                let profileImage = NetworkUser.getUserImage(userID: user["id"] as! String, isKakaoImage: user["isKakaoImage"] as! Bool, imageURL: user["profileImageURL"] as! String)
+                userProfileImageView.kf.setImage(with: profileImage)
+            } else {
+                userProfileImageView.image = #imageLiteral(resourceName: "profil_side")
+            }
             userInfoLabel.isHidden = false
             userInfoLabel.text = ("\(User.sharedInstance.user.getUser()["nickname"] as! String)님")
             logInButton.isHidden = true
@@ -171,8 +176,6 @@ extension MainSideBarViewController : UIImagePickerControllerDelegate, UINavigat
             dismiss(animated: true, completion: nil)
             NetworkUser.setUserProfileImage(userID: User.sharedInstance.user.getUser()["id"] as! String, image: image as! UIImage, callback: { (result) in
                 if result {
-                    let imageData = UIImageJPEGRepresentation(image as! UIImage, 0.1)
-                    User.sharedInstance.user.setProfileImage(profileImage: imageData!)
                     DispatchQueue.main.async {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
                     }

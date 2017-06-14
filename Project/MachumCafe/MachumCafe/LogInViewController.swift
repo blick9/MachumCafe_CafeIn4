@@ -82,16 +82,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                         
                         User.sharedInstance.user = user
                         User.sharedInstance.isUser = true
-                        if !imageURL.isEmpty {
-                            NetworkUser.getUserImage(userID: (user.getUser()["id"] as! String), isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
-                                user.setProfileImage(profileImage: imageData)
-                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
-                                self.dismiss(animated: true, completion: nil)
-                            }
-                        } else {
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)
-                            self.dismiss(animated: true, completion: nil)
-                        }
+                        self.dismiss(animated: true, completion: nil)
                     }
                 })
             }
@@ -106,14 +97,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             if result {
                 User.sharedInstance.user = user
                 User.sharedInstance.isUser = true
-                if !(user.getUser()["profileImageURL"] as! String).isEmpty {
-                    NetworkUser.getUserImage(userID: user.getUser()["id"] as! String, isKakaoImage: user.getUser()["isKakaoImage"] as! Bool, imageURL: user.getUser()["profileImageURL"] as! String) { (imageData) in
-                        user.setProfileImage(profileImage: imageData)
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                } else {
-                    self.dismiss(animated: true, completion: nil)
-                }
+                self.dismiss(animated: true, completion: nil)
             } else {
                 UIAlertController().oneButtonAlert(target: self, title: "로그인", message: "아이디 또는 비밀번호를 다시 확인하세요.", isHandler: false)
             }
