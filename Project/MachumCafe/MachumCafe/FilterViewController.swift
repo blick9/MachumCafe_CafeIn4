@@ -53,6 +53,8 @@ class FilterViewController: UIViewController {
     
     @IBAction func confirmFilter(_ sender: UIButton) {
         delegate?.savedFilter(SavedFilter: filterArray)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
         dismiss(animated: true, completion: nil)
     }
 }
