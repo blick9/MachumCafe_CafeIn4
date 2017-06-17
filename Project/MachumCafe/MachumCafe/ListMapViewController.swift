@@ -31,6 +31,7 @@ class ListMapViewController: UIViewController{
         super.viewDidLoad()
         initView()
         loadModelCafeData()
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshMapMarkers), name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
 
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -44,12 +45,6 @@ class ListMapViewController: UIViewController{
         googleMap.settings.myLocationButton = true
         googleMap.settings.zoomGestures = true
         googleMap.padding = mapPaddingInsets
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshMapMarkers), name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        refreshMapMarkers()
     }
     
     func refreshMapMarkers() {
@@ -68,7 +63,6 @@ class ListMapViewController: UIViewController{
     }
     
     func loadModelCafeData() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
         currentLocation = Location.sharedInstance.currentLocation.getLocation()
         modelCafe = Cafe.sharedInstance.filterCafeList
     }
@@ -120,7 +114,7 @@ class ListMapViewController: UIViewController{
                 }
             }
             Cafe.sharedInstance.allCafeList = newCafeList + Cafe.sharedInstance.allCafeList
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
             self.loadModelCafeData()
             self.insertCafeMarkers()
         }

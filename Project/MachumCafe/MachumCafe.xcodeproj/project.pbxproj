@@ -57,6 +57,7 @@
 		B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */; };
 		B5BA81E91EC9937000E5BBC9 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */; };
 		B5C9D2AB1ECC1F8500662C27 /* ModelReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */; };
+		B5E394BE1EF185860044BC93 /* PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E394BD1EF185860044BC93 /* PhotoLibrary.swift */; };
 		B78D2A201EBAE9A50069E2E9 /* SuggestionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */; };
 		B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */; };
 		B78D2A291EBB15A50069E2E9 /* SuggestionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */; };
@@ -121,6 +122,7 @@
 		B5BA81E61EC9840200E5BBC9 /* ReviewView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ReviewView.storyboard; sourceTree = "<group>"; };
 		B5BA81E81EC9937000E5BBC9 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		B5C9D2AA1ECC1F8500662C27 /* ModelReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelReview.swift; sourceTree = "<group>"; };
+		B5E394BD1EF185860044BC93 /* PhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibrary.swift; sourceTree = "<group>"; };
 		B78D2A1F1EBAE9A50069E2E9 /* SuggestionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SuggestionView.storyboard; sourceTree = "<group>"; };
 		B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewController.swift; sourceTree = "<group>"; };
 		B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionCategory.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 		B78D2A211EBAE9B20069E2E9 /* SuggestionView */ = {
 			isa = PBXGroup;
 			children = (
+				B5E394BD1EF185860044BC93 /* PhotoLibrary.swift */,
 				B78D2A221EBAE9DD0069E2E9 /* SuggestionViewController.swift */,
 				B78D2A281EBB15A50069E2E9 /* SuggestionCategory.swift */,
 				B7DFA26F1EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift */,
@@ -521,6 +524,7 @@
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
 				A76197B61EBD84A7008E50D5 /* ModelLocation.swift in Sources */,
 				B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */,
+				B5E394BE1EF185860044BC93 /* PhotoLibrary.swift in Sources */,
 				B7DFA2701EC40B8500BF4D33 /* SuggestionImagePickerViewController.swift in Sources */,
 				B78D2A231EBAE9DD0069E2E9 /* SuggestionViewController.swift in Sources */,
 				B57407251ECAD8D3002B0ECE /* WriteReviewViewController.swift in Sources */,

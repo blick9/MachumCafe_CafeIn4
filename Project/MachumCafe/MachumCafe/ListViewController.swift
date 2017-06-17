@@ -34,6 +34,8 @@ class ListViewController: UIViewController {
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
         currentLocation = CLLocation(latitude: Location.sharedInstance.currentLocation.getLocation()["latitude"] as! Double , longitude: Location.sharedInstance.currentLocation.getLocation()["longitude"] as! Double)
+        
+        displayEmptyLabel()
     }
     
     func displayEmptyLabel() {
@@ -62,7 +64,6 @@ class ListViewController: UIViewController {
     
     func reloadTableView() {
         tableView.reloadData()
-        displayEmptyLabel()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +103,6 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.backgroundImageView.image = #imageLiteral(resourceName: "2")
         }
-        
         cell.cafeNameLabel.text = cafe["name"] as? String
         cell.cafeAddressLabel.text = cafe["address"] as? String
         cell.ratingValue = String(describing: cafe["rating"]!)
@@ -117,5 +117,4 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton(_:)), for: .touchUpInside)
         return cell
     }
-    
 }

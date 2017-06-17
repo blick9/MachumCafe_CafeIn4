@@ -41,11 +41,9 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as? ListViewController
         listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         applyFilter()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applyFilter), name: NSNotification.Name(rawValue: "applyFilter"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
