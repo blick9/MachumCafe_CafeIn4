@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 private let reuseIdentifier = "Cell"
 
@@ -20,16 +21,30 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
     var selectedImageArray = [UIImage]()
     var imageDic = [Int : UIImage]()
     var multiple = true
-    var photoLibrary = PhotoLibrary()
+    var photoLibrary: PhotoLibrary!
+    var numberOfSection = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkAuthorized()
         navigationItem.title = "사진선택"
         collectionView?.allowsMultipleSelection = multiple
         collectionView?.selectItem(at: nil, animated: true, scrollPosition: UICollectionViewScrollPosition())
         selectedImageArray.removeAll(keepingCapacity: false)
         
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    func checkAuthorized() {
+        PHPhotoLibrary.requestAuthorization { result in
+            if result == .authorized {
+                self.photoLibrary = PhotoLibrary()
+                self.numberOfSection = 1
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+            }
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -46,7 +61,7 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return numberOfSection
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
