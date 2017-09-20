@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="595-Ii-jiZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="595-Ii-jiZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,13 +25,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6t-lT-pER">
-                                <rect key="frame" x="0.0" y="25" width="375" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="F6t-lT-pER" secondAttribute="height" multiplier="75:28" id="0Ll-8D-gbo"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="25" width="375" height="167"/>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ted-6G-gWV">
-                                <rect key="frame" x="32.5" y="205" width="310" height="90"/>
+                                <rect key="frame" x="32.5" y="255" width="310" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pO-HB-Avo" userLabel="24hButton">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -63,12 +61,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ted-6G-gWV" secondAttribute="height" multiplier="31:9" id="JGE-il-PIZ"/>
-                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HUw-Vf-CO7">
-                                <rect key="frame" x="32.5" y="318" width="310" height="90"/>
+                                <rect key="frame" x="32.5" y="368" width="310" height="90"/>
                                 <subviews>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHo-Y1-uB5" userLabel="dessertButton">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -101,12 +96,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="HUw-Vf-CO7" secondAttribute="height" multiplier="31:9" id="SXS-XE-vT2"/>
-                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLl-SV-zdY" userLabel="fiterButton">
-                                <rect key="frame" x="24" y="552" width="327" height="52"/>
+                                <rect key="frame" x="24" y="541" width="327" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wLl-SV-zdY" secondAttribute="height" multiplier="327:52" id="07s-ic-dfK"/>
                                 </constraints>
@@ -116,7 +108,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BcK-do-aI9">
-                                <rect key="frame" x="168" y="128" width="39" height="37"/>
+                                <rect key="frame" x="168" y="155" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="39" id="o7u-XQ-QKr"/>
                                 </constraints>
@@ -125,15 +117,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="F6t-lT-pER" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" id="5Nx-fM-Wcy"/>
-                            <constraint firstItem="ted-6G-gWV" firstAttribute="top" secondItem="F6t-lT-pER" secondAttribute="bottom" constant="40" id="8tv-0s-bBD"/>
                             <constraint firstItem="HUw-Vf-CO7" firstAttribute="top" secondItem="ted-6G-gWV" secondAttribute="bottom" constant="23" id="BNU-QH-5AM"/>
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="IM7-1i-wH4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HUw-Vf-CO7" secondAttribute="trailing" constant="16.5" id="K95-ye-SrK"/>
                             <constraint firstItem="HUw-Vf-CO7" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="NhE-Hw-c9q"/>
                             <constraint firstAttribute="trailing" secondItem="F6t-lT-pER" secondAttribute="trailing" id="QeR-1S-3Wh"/>
                             <constraint firstItem="BcK-do-aI9" firstAttribute="bottom" secondItem="F6t-lT-pER" secondAttribute="bottom" id="Qgh-7A-m8w"/>
-                            <constraint firstItem="Ox6-AF-ea0" firstAttribute="top" secondItem="wLl-SV-zdY" secondAttribute="bottom" constant="63" id="Tms-hg-FrI"/>
+                            <constraint firstItem="F6t-lT-pER" firstAttribute="height" secondItem="9RO-6K-g8r" secondAttribute="height" multiplier="0.25" id="WXS-nP-F9q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ted-6G-gWV" secondAttribute="trailing" constant="16.5" id="Yhu-5m-Uzy"/>
+                            <constraint firstItem="wLl-SV-zdY" firstAttribute="centerY" secondItem="9RO-6K-g8r" secondAttribute="centerY" multiplier="1.7" id="bdq-Bi-ar1"/>
                             <constraint firstItem="ted-6G-gWV" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="c8R-n3-0qA"/>
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="leading" secondItem="HUw-Vf-CO7" secondAttribute="leading" constant="-8.5" id="et4-7X-bjc"/>
+                            <constraint firstItem="ted-6G-gWV" firstAttribute="centerY" secondItem="9RO-6K-g8r" secondAttribute="centerY" multiplier="0.9" id="iI2-Au-Z2T"/>
                             <constraint firstItem="BcK-do-aI9" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="o3K-2v-4KR"/>
                             <constraint firstItem="F6t-lT-pER" firstAttribute="top" secondItem="9RO-6K-g8r" secondAttribute="topMargin" constant="25" id="oq6-40-Rgd"/>
                             <constraint firstItem="HUw-Vf-CO7" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" constant="32.5" id="uY6-8s-kSQ"/>
@@ -317,7 +312,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="595-Ii-jiZ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Iiz-BR-TRk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Iiz-BR-TRk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
