@@ -60,9 +60,9 @@ class FilterViewController: UIViewController {
 }
 
 extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryArray.count
@@ -75,9 +75,7 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard multiple else {
-            return
-        }
+        guard multiple else { return }
 
         let filter = filterArray.filter { $0 == categoryArray[indexPath.row] }
         if filter.isEmpty {
@@ -94,16 +92,68 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = Double((categoryArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 20
-        return CGSize(width: width, height: 35.0)
+        let width = categoryArray[indexPath.item].unicodeScalars.count * 15 + 25
+        return CGSize(width: width, height: 35)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20.0
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        return 8
     }
+    
+}
+
+class CustomCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        
+        guard let superAttributes = super.layoutAttributesForElements(in: rect) else { return nil }
+        guard let attributes = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes] else { return nil }
+        var xPoint: CGFloat = collectionView!.frame.maxX
+        var maxY: CGFloat = -1
+        var rowSize = [[CGFloat]]()
+        var currentRow = 0
+        
+        attributes.forEach { layout in
+            if xPoint + layout.frame.width + minimumInteritemSpacing >= collectionView!.frame.maxX {
+                xPoint = 8
+                layout.frame.origin.y = rowSize.isEmpty ? 0 : maxY + minimumLineSpacing + 10
+                if rowSize.count == 0 {
+                    rowSize = [[xPoint, 0]]
+                } else {
+                    rowSize.append([xPoint, 0])
+                    currentRow += 1
+                }
+            }
+            layout.frame.origin.x = xPoint
+            xPoint += layout.frame.width + minimumInteritemSpacing
+            maxY = max(layout.frame.maxY, maxY)
+            rowSize[currentRow][1] = xPoint - minimumInteritemSpacing
+        }
+            
+        xPoint = 8
+        maxY = -1.0
+        currentRow = 0
+
+        attributes.forEach { layout in
+            if layout.frame.origin.y >= maxY {
+                xPoint = 8
+                print(123)
+                let rowWidth = rowSize[currentRow][1] - rowSize[currentRow][0]
+                let appendedMargin = (collectionView!.frame.width - 8 - rowWidth - 8) / 2
+                xPoint += appendedMargin
+                currentRow += 1
+            }
+            layout.frame.origin.x = xPoint
+            xPoint += layout.frame.width + minimumInteritemSpacing
+            maxY = max(layout.frame.maxY, maxY)
+        }
+
+        return attributes
+    }
+    
 }
 
