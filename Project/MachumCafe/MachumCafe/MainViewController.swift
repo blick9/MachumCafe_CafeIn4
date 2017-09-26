@@ -13,24 +13,24 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     var bannerArray = [UIImage]()
     var filterArray = [String]()
     
-    @IBOutlet weak var mainBannerScrollView: UIScrollView!
-    @IBOutlet weak var mainBannerPageController: UIPageControl!
+    //@IBOutlet weak var mainBannerScrollView: UIScrollView!
+//    @IBOutlet weak var mainBannerPageController: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "맞춤카페"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        makeBannerScrollView()
-        mainBannerScrollView.delegate = self
+        //makeBannerScrollView()
+        //mainBannerScrollView.delegate = self
         
         if let locationLabelxib = Bundle.main.loadNibNamed("LocationLabelView", owner: self, options: nil)?.first as? LocationLabelView {
             locationLabelxib.delegate = self
             locationLabelxib.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: locationLabelxib.frame.height)
             self.view.addSubview(locationLabelxib)
         }
-        Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(autoScrollMainBanner), userInfo: nil, repeats: true)
+        //Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(autoScrollMainBanner), userInfo: nil, repeats: true)
     }
-    
+    /*
     func makeBannerScrollView() {
         bannerArray = [#imageLiteral(resourceName: "mainBanner1"),#imageLiteral(resourceName: "mainBanner2"),#imageLiteral(resourceName: "mainBanner3")]
         mainBannerScrollView.isPagingEnabled = true
@@ -86,7 +86,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
             listContainerViewController.selectedFilterArray.append(value)
         }
     }
-    
+    */
     @IBAction func sideBarShowButtonAction(_ sender: Any) {
         let sideBarViewController = UIStoryboard.MainViewStoryboard.instantiateViewController(withIdentifier: "SideBar")
         present(sideBarViewController, animated: false, completion: nil)
