@@ -104,40 +104,30 @@
                                     <action selector="presentFilterViewButtonAction:" destination="YGZ-vq-BQf" eventType="touchUpInside" id="jB5-pg-w0p"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainBannerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FCQ-bx-oHh">
-                                <rect key="frame" x="0.0" y="99" width="375" height="135"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainBannerImage" translatesAutoresizingMaskIntoConstraints="NO" id="FCQ-bx-oHh">
+                                <rect key="frame" x="0.0" y="89" width="375" height="160"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FCQ-bx-oHh" secondAttribute="height" multiplier="25:9" id="zgn-rp-WLZ"/>
+                                    <constraint firstAttribute="width" secondItem="FCQ-bx-oHh" secondAttribute="height" multiplier="75:32" id="RsU-rk-f6H"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGH-My-Id3">
-                                <rect key="frame" x="24" y="242.5" width="327" height="2"/>
-                                <color key="backgroundColor" red="0.19605264067649841" green="0.19609326124191284" blue="0.19605004787445068" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="tQE-R6-oiA"/>
-                                </constraints>
-                            </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FCQ-bx-oHh" firstAttribute="top" secondItem="JVo-Vc-SsV" secondAttribute="bottom" constant="35" id="3CU-D7-SMe"/>
+                            <constraint firstItem="FCQ-bx-oHh" firstAttribute="top" secondItem="JVo-Vc-SsV" secondAttribute="bottom" constant="25" id="3CU-D7-SMe"/>
                             <constraint firstItem="HUw-Vf-CO7" firstAttribute="top" secondItem="ted-6G-gWV" secondAttribute="bottom" constant="23" id="BNU-QH-5AM"/>
-                            <constraint firstItem="FCQ-bx-oHh" firstAttribute="height" secondItem="9RO-6K-g8r" secondAttribute="height" multiplier="0.2" constant="1.5999999999999943" id="Eqd-bf-O7Q"/>
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="IM7-1i-wH4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HUw-Vf-CO7" secondAttribute="trailing" constant="16.5" id="K95-ye-SrK"/>
                             <constraint firstItem="HUw-Vf-CO7" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="NhE-Hw-c9q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ted-6G-gWV" secondAttribute="trailing" constant="16.5" id="Yhu-5m-Uzy"/>
+                            <constraint firstAttribute="trailing" secondItem="FCQ-bx-oHh" secondAttribute="trailing" id="aXj-lm-bSl"/>
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="centerY" secondItem="9RO-6K-g8r" secondAttribute="centerY" multiplier="1.7" id="bdq-Bi-ar1"/>
                             <constraint firstItem="ted-6G-gWV" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="c8R-n3-0qA"/>
-                            <constraint firstItem="kGH-My-Id3" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leadingMargin" constant="8" id="eZ8-L7-ULY"/>
                             <constraint firstItem="wLl-SV-zdY" firstAttribute="leading" secondItem="HUw-Vf-CO7" secondAttribute="leading" constant="-8.5" id="et4-7X-bjc"/>
+                            <constraint firstItem="FCQ-bx-oHh" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" id="glJ-3Q-Rpi"/>
                             <constraint firstItem="ted-6G-gWV" firstAttribute="centerY" secondItem="9RO-6K-g8r" secondAttribute="centerY" multiplier="0.9" id="iI2-Au-Z2T"/>
                             <constraint firstItem="FCQ-bx-oHh" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="jd4-gO-hzo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kGH-My-Id3" secondAttribute="trailing" constant="8" id="ly4-vq-QuX"/>
-                            <constraint firstItem="kGH-My-Id3" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="sNQ-2V-0ZU"/>
                             <constraint firstItem="HUw-Vf-CO7" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" constant="32.5" id="uY6-8s-kSQ"/>
                             <constraint firstItem="ted-6G-gWV" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" constant="32.5" id="v49-Rc-Eue"/>
-                            <constraint firstItem="kGH-My-Id3" firstAttribute="top" secondItem="FCQ-bx-oHh" secondAttribute="bottom" constant="8.5" id="zTM-cV-2lJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="E8O-iC-3wb">
@@ -333,7 +323,7 @@
         <image name="FindMyCafe_Bt" width="325" height="52"/>
         <image name="SettingProfileImage" width="22" height="22"/>
         <image name="dessert" width="90" height="90"/>
-        <image name="mainBannerLogo" width="375" height="135"/>
+        <image name="mainBannerImage" width="375" height="160"/>
         <image name="meetingroom" width="90" height="90"/>
         <image name="parking" width="90" height="90"/>
         <image name="profil_side" width="80" height="80"/>
