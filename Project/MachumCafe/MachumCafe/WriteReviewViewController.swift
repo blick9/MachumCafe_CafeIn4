@@ -54,7 +54,7 @@ class WriteReviewViewController: UIViewController {
                 NetworkCafe.postCafeReview(review: review, callback: { (modelReviews, rating) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
                     self.currentCafeModel.setRating(rating: rating)
-                    self.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: false, completion: nil)
                 })
             } else {
                 UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록실패", message: "로그인 후 이용해주세요.", isHandler: false)
@@ -63,6 +63,6 @@ class WriteReviewViewController: UIViewController {
     }
     
     @IBAction func cancelReview(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
 }

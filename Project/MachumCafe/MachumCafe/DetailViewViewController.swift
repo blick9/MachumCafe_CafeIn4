@@ -22,6 +22,9 @@ class DetailViewViewController: UIViewController {
     var cafeData = [String:Any]()
     var currentCafeModel = ModelCafe()
     var cafeCategorys = [String]()
+    var userID = User.sharedInstance.user.getUser()["id"] as! String
+    var userBookmarkIDs = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+    var indexCafeID = String()
     var reviews = [ModelReview]()
     var ratingViewxib = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as! RatingView
     
@@ -37,8 +40,12 @@ class DetailViewViewController: UIViewController {
         detailTableView.separatorColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2)
         detailTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         
+        let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
+        navigationItem.rightBarButtonItem = moreButton
+        
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
+        
         NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
         
         if !(cafeData["imagesURL"] as! [String]).isEmpty {
@@ -49,13 +56,27 @@ class DetailViewViewController: UIViewController {
         
         cafeNameLabel.text = cafeData["name"] as? String
         cafeNameLabel.sizeToFit()
+        cafeNameLabel.shadowOffset = CGSize(width: 1.5, height: 1.5)
+        cafeNameLabel.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
+        bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton), for: .touchUpInside)
+        
+        containerView.addSubview(ratingViewxib)
+        ratingViewxib.translatesAutoresizingMaskIntoConstraints = false
+        ratingViewxib.leadingAnchor.constraint(equalTo: cafeNameLabel.trailingAnchor, constant: 15).isActive = true
+        ratingViewxib.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        ratingViewxib.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        ratingViewxib.centerYAnchor.constraint(equalTo: cafeNameLabel.centerYAnchor).isActive = true
         ratingViewxib.ratingLabel.text = String(describing: cafeData["rating"]!)
         ratingViewxib.ratingStarImage.image = String(describing: cafeData["rating"]!) == "0.0" ? #imageLiteral(resourceName: "RatingStarEmpty") : #imageLiteral(resourceName: "RatingStarFill")
-        ratingViewxib.frame.origin.x = UIScreen.main.bounds.maxX - ratingViewxib.frame.width - 15
-        ratingViewxib.center.y = cafeNameLabel.center.y
-        containerView.addSubview(ratingViewxib)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        indexCafeID = cafeData["id"] as! String
+        bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
     }
     
     func reloadReviewTable(_ notification: Notification) {
@@ -94,6 +115,42 @@ class DetailViewViewController: UIViewController {
             UIApplication.shared.open(url)
         }
     }
+    
+    func bookmarkToggleButton() {
+        if User.sharedInstance.isUser {
+            NetworkBookmark.setMyBookmark(userId: userID, cafeId: indexCafeID, callback: { (desc) in
+                print(desc)
+                self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadBookmark"), object: nil)
+            })
+        } else {
+            UIAlertController().presentSuggestionLogInAlert(target: self, title: "즐겨찾기", message: "로그인 후 이용해주세요.")
+        }
+    }
+    
+    func moreButtonAction() {
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let reportEditAction = UIAlertAction(title: "수정 제보", style: .default) { _ in
+            self.suggestionButtonAction()
+        }
+        let reportCloseAction = UIAlertAction(title: "폐업 신고", style: .destructive) { _ in
+            let alert = UIAlertController(title: "폐업 신고", message: "폐업 신고를 하시겠습니까?", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "취소", style: .default)
+            let confirm = UIAlertAction(title: "확인", style: .default, handler: { (_) in
+                NetworkAdmin.suggestionClesedCafe(cafe: self.cafeData)
+                UIAlertController().oneButtonAlert(target: self, title: "제보 완료", message: "소중한 의견 감사합니다.\n빠른시간 내에 적용하겠습니다 :)", isHandler: false)
+            })
+            alert.addAction(confirm)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+        }
+        let closeAction = UIAlertAction(title: "닫기", style: .cancel)
+        actionSheetController.addAction(reportEditAction)
+        actionSheetController.addAction(reportCloseAction)
+        actionSheetController.addAction(closeAction)
+        present(actionSheetController, animated: true, completion: nil)
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let writeReviewView : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
