@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="176.80000000000001" y="98.50074962518741"/>
         </scene>
-        <!--CafeDetail-->
+        <!--DetailView-->
         <scene sceneID="RL9-mg-ZhA">
             <objects>
-                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="CafeDetail" id="0cH-Ca-SGK" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="DetailView" id="0cH-Ca-SGK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIK-8B-aA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="791" y="337"/>

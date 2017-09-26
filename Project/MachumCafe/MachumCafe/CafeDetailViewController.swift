@@ -56,13 +56,13 @@ class CafeDetailViewController: UIViewController {
         cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
         
-        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) {
-            self.applyReviewTableViewHeight()
-            if self.cafeCategorys.count >= 5 {
-                self.categoryCollectionHeight.constant = CGFloat(1.7 * self.categoryCollectionView.frame.height)
-            }
-            self.view.layoutIfNeeded()
-        }
+//        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) {
+//            self.applyReviewTableViewHeight()
+//            if self.cafeCategorys.count >= 5 {
+//                self.categoryCollectionHeight.constant = CGFloat(1.7 * self.categoryCollectionView.frame.height)
+//            }
+//            self.view.layoutIfNeeded()
+//        }
         
         if !(cafeData["imagesURL"] as! [String]).isEmpty {
             makeCafeImageScrollView(imagesURL: cafeData["imagesURL"] as! [String])
@@ -226,29 +226,29 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
 
-            if indexPath.row == 0 {
-                cell.iconImage.image = cafeIcon[0]
-                if let address = cafeData["address"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.phoneCallButton.isHidden = true
-                    cell.detailLabel.text = address
-                }
-            } else if indexPath.row == 1 {
-                cell.iconImage.image = cafeIcon[1]
-                if let tel = cafeData["tel"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = tel
-                }
-            } else if indexPath.row == 2 {
-                cell.iconImage.image = cafeIcon[2]
-                if let hours = cafeData["hours"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = hours
-                }
-                cell.phoneCallButton.isHidden = true
-            }
-            cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
-            cell.phoneCallButton.addTarget(self, action: #selector(phoneCallButtonAction), for: .touchUpInside)
+//            if indexPath.row == 0 {
+//                cell.iconImage.image = cafeIcon[0]
+//                if let address = cafeData["address"] as? String {
+//                    cell.suggestionButton.isHidden = true
+//                    cell.phoneCallButton.isHidden = true
+//                    cell.detailLabel.text = address
+//                }
+//            } else if indexPath.row == 1 {
+//                cell.iconImage.image = cafeIcon[1]
+//                if let tel = cafeData["tel"] as? String {
+//                    cell.suggestionButton.isHidden = true
+//                    cell.detailLabel.text = tel
+//                }
+//            } else if indexPath.row == 2 {
+//                cell.iconImage.image = cafeIcon[2]
+//                if let hours = cafeData["hours"] as? String {
+//                    cell.suggestionButton.isHidden = true
+//                    cell.detailLabel.text = hours
+//                }
+//                cell.phoneCallButton.isHidden = true
+//            }
+//            cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
+//            cell.phoneCallButton.addTarget(self, action: #selector(phoneCallButtonAction), for: .touchUpInside)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell

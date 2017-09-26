@@ -98,7 +98,7 @@ class NetworkCafe {
         }
     }
     
-    static func getCafeReviews(cafeModel: ModelCafe, callback: @escaping () -> Void) {
+    static func getCafeReviews(cafeModel: ModelCafe, startIndex: Int=0) {
         let cafeId = cafeModel.getCafe()["id"] as! String
         var modelReviews = [ModelReview]()
         
@@ -120,7 +120,6 @@ class NetworkCafe {
                 }
             }
             cafeModel.setReviews(reviews: modelReviews)
-            callback()
         }
     }
 }

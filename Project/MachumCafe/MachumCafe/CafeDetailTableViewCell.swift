@@ -10,9 +10,8 @@ import UIKit
 
 class CafeDetailTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var iconImage: UIImageView!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var suggestionButton: UIButton!
+    @IBOutlet var detailLabel: [UILabel]!
+    @IBOutlet var suggestionButton: [UIButton]!
     @IBOutlet weak var phoneCallButton: UIButton!
     
     override func awakeFromNib() {
@@ -20,7 +19,9 @@ class CafeDetailTableViewCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        self.detailLabel.sizeToFit()
+        detailLabel.forEach { label in
+            label.sizeToFit()
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

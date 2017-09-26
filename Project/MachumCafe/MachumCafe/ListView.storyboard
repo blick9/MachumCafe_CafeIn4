@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="1084" y="81.409295352323838"/>
         </scene>
-        <!--CafeDetail-->
+        <!--DetailView-->
         <scene sceneID="m20-MD-pjc">
             <objects>
-                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="CafeDetail" id="fWC-di-gae" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="DetailView" id="fWC-di-gae" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5z-DD-Qn8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1828.8" y="-54.872563718140931"/>

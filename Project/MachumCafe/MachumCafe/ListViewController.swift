@@ -69,7 +69,7 @@ class ListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailView" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let controller = segue.destination as! CafeDetailViewController
+                let controller = segue.destination as! DetailViewViewController
                 controller.currentCafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
             }
         }

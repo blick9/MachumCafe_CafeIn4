@@ -12,7 +12,6 @@ import Cosmos
 class WriteReviewViewController: UIViewController {
     var currentCafeModel = ModelCafe()
     var cafeData = [String:Any]()
-    var reviewView = ReviewViewController()
     var userData = User.sharedInstance.user.getUser()
     var writtenDate = Date()
     var reviewDictionary = Review.sharedInstance.review.getReview()
