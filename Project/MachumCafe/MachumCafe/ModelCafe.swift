@@ -10,60 +10,79 @@ import Foundation
 
 class ModelCafe {
     
-    fileprivate var id = String()
-    fileprivate var name = String()
-    fileprivate var phoneNumber = String()
-    fileprivate var address = String()
-    fileprivate var hours = String()
-    fileprivate var latitude = String()
-    fileprivate var longitude = String()
-    fileprivate var category = [String]()
-    fileprivate var summary : String?
-    fileprivate var mainMenu : [String]?
-    fileprivate var imagesName = [String]()
-    fileprivate var imagesData : [Data]?
+    private var id : String?
+    private var name = String()
+    private var tel : String?
+    private var address = String()
+    private var hours : String?
+    private var latitude : Double?
+    private var longitude : Double?
+    private var category = [String]()
+    private var rating = Double()
+    private var menu : String?
+    private var imagesURL = [String]()
+    private var reviews = [ModelReview]() {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
+        }
+    }
     
     init() {}
         
-    init(id: String, name: String, phoneNumber: String, address: String, hours: String, latitude: String, longitude: String, category: [String], summary: String?, mainMenu: [String]?, imagesName: [String]) {
+    init(id: String? = nil, name: String, tel: String?, address: String, hours: String?, latitude: Double? = nil, longitude: Double? = nil, category: [String], rating: Double, menu: String? = nil, imagesURL: [String]) {
         self.id = id
         self.name = name
-        self.phoneNumber = phoneNumber
+        self.tel = tel
         self.address = address
         self.hours = hours
         self.latitude = latitude
         self.longitude = longitude
         self.category = category
-        self.summary = summary
-        self.mainMenu = mainMenu
-        self.imagesName = imagesName
-        self.imagesData = [Data]()
+        self.rating = rating
+        self.menu = menu
+        self.imagesURL = imagesURL
     }
     
-    func setImagesData(imageData: Data) {
-        self.imagesData?.append(imageData)
+    func setReviews(reviews: [ModelReview]) {
+        self.reviews = reviews
     }
     
     func getCafe() -> [String : Any] {
         var cafeDic = [String : Any]()
         cafeDic["id"] = id
         cafeDic["name"] = name
-        cafeDic["phoneNumber"] = phoneNumber
+        cafeDic["tel"] = tel
         cafeDic["address"] = address
         cafeDic["hours"] = hours
         cafeDic["latitude"] = latitude
         cafeDic["longitude"] = longitude
         cafeDic["category"] = category
-        cafeDic["summary"] = summary
-        cafeDic["mainMenu"] = mainMenu
-        cafeDic["imagesName"] = imagesName
-        cafeDic["imagesData"] = imagesData
+        cafeDic["rating"] = rating
+        cafeDic["menu"] = menu
+        cafeDic["imagesURL"] = imagesURL
         return cafeDic
+    }
+
+    func getReviews() -> [ModelReview] {
+        return reviews
+    }
+    
+    func setRating(rating: Double) {
+        self.rating = rating
     }
 }
 
 class Cafe {
     static let sharedInstance = Cafe()
-    var cafeList = [ModelCafe]()
+    var allCafeList = [ModelCafe]() {
+        didSet {
+            if self.allCafeList.count >= 500 {
+                self.allCafeList.removeLast(150)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshMapMarkers"), object: nil)
+            }
+        }
+    }
+    var filterCafeList = [ModelCafe]()
     var bookmarkList = [ModelCafe]()
+    var specificCafe = ModelCafe()
 }

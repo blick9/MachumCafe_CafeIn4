@@ -23,21 +23,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hy-Ex-VEn">
-                                <rect key="frame" x="33" y="148" width="309" height="30"/>
+                                <rect key="frame" x="33" y="148" width="309" height="33"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <state key="normal" title="로그아웃"/>
                                 <connections>
                                     <action selector="logOutButtonAction:" destination="y9m-lC-UzP" eventType="touchUpInside" id="ATe-ob-5E4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6D-nB-OeD">
-                                <rect key="frame" x="340" y="85" width="19" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="cancelButton">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="closeButtonAction:" destination="y9m-lC-UzP" eventType="touchUpInside" id="riV-by-lBq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -48,7 +38,13 @@
                             <constraint firstItem="4hy-Ex-VEn" firstAttribute="centerX" secondItem="0Pg-32-OzX" secondAttribute="centerX" id="bQE-ar-PhA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tYZ-tf-NV5"/>
+                    <navigationItem key="navigationItem" id="tYZ-tf-NV5">
+                        <barButtonItem key="rightBarButtonItem" image="cancelButton" id="BCa-xq-WeV">
+                            <connections>
+                                <action selector="closeButtonAction:" destination="y9m-lC-UzP" id="MI7-nx-sUF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="logOutButton" destination="4hy-Ex-VEn" id="vrh-Dw-SzB"/>
                     </connections>
@@ -60,7 +56,6 @@
         <!--Navigation Controller-->
         <scene sceneID="7NA-E8-EL0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aJe-4W-6FA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9ci-8g-hJI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IMg-9j-iPo">
@@ -72,6 +67,7 @@
                         <segue destination="y9m-lC-UzP" kind="relationship" relationship="rootViewController" id="VrT-6q-UQH"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aJe-4W-6FA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="164" y="171.36431784107947"/>
         </scene>

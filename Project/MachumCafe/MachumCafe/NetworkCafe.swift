@@ -8,54 +8,119 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
+import Kingfisher
 
 class NetworkCafe {
-    
-    // MARK: 카페 목록 데이터모델에 저장
-    static func getAllCafeList(callback: @escaping (_ cafeList: [ModelCafe]) -> Void) {
-        let url = URLpath.getURL()
-        var cafeList = [ModelCafe]()
 
-        Alamofire.request("\(url)/api/v1/cafe").responseJSON { (response) in
-            if let cafes = response.result.value as? [[String : Any]] {
-                for cafe in cafes {
-                    var summary : String?
-                    var mainMenu : [String]?
-                    
-                    if let isSummary = cafe["summary"] as? String {
-                        summary = isSummary
-                    }
-                    if let isMainMenu = cafe["mainMenu"] as? [String] {
-                        mainMenu = isMainMenu
-                    }
-                    if let id = cafe["_id"] as? String,
-                    let name = cafe["name"] as? String,
-                    let phoneNumber = cafe["phoneNumber"] as? String,
-                    let address = cafe["address"] as? String,
-                    let hours = cafe["hours"] as? String,
-                    let latitude = cafe["latitude"] as? String,
-                    let longitude = cafe["longitude"] as? String,
-                    let category = cafe["category"] as? [String],
-                    let imagesName = cafe["imagesName"] as? [String] {
-                        let modelCafe = ModelCafe(id: id, name: name, phoneNumber: phoneNumber, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, summary: summary, mainMenu: mainMenu, imagesName: imagesName)
-                        cafeList.append(modelCafe)
-                    }
+    private static let url = URLpath.getURL()
+    
+    // MARK: 현위치 반경 1km 내 카페목록 불러오기
+    static func getCafeList(coordinate: ModelLocation, callback: @escaping (_ modelCafe: [ModelCafe]) -> Void) {
+        var modelCafe = [ModelCafe]()
+        
+        Alamofire.request("\(url)/api/v1/cafe", method: .post, parameters: coordinate.getLocation(), encoding: JSONEncoding.default).responseJSON { (response) in
+            let cafes = JSON(data: response.data!).arrayValue
+            let _ = cafes.map {
+                var cafe = $0.dictionaryValue
+                
+                if let id = cafe["_id"]?.stringValue,
+                    let name = cafe["name"]?.stringValue,
+                    let address = cafe["address"]?.stringValue,
+                    let longitude = cafe["location"]?.arrayValue[0].doubleValue,
+                    let latitude = cafe["location"]?.arrayValue[1].doubleValue,
+                    let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                    let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
+                    let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
+                    let tel = cafe["tel"]?.stringValue
+                    let hours = cafe["hours"]?.stringValue
+                    let menu = cafe["menu"]?.stringValue
+                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL))
                 }
             }
-            callback(cafeList)
+            callback(modelCafe)
         }
     }
     
-    // MARK: 카페 이미지 데이터모델에 저장
-    static func getImagesData(imagesName: [String], cafe: ModelCafe) {
-        let url = URLpath.getURL()
+    static func getSpecificCafe(cafeId: String, callback: @escaping (_ modelCafe: ModelCafe) -> Void) {
+        var modelCafe = ModelCafe()
         
-        for imageName in imagesName {
-            Alamofire.request("\(url)/api/v1/cafe/\(imageName)").responseData(completionHandler: { (response) in
-                cafe.setImagesData(imageData: response.result.value!)
-            })
+        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)").responseJSON { (response) in
+            var cafe = JSON(data: response.data!).dictionaryValue
+            
+            if let id = cafe["_id"]?.stringValue,
+                let name = cafe["name"]?.stringValue,
+                let address = cafe["address"]?.stringValue,
+                let longitude = cafe["location"]?.arrayValue[0].doubleValue,
+                let latitude = cafe["location"]?.arrayValue[1].doubleValue,
+                let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
+                let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
+                let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
+                let tel = cafe["tel"]?.stringValue
+                let hours = cafe["hours"]?.stringValue
+                let menu = cafe["menu"]?.stringValue
+                modelCafe = ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL)
+            }
+            callback(modelCafe)
         }
     }
     
+    static func getCafeImage(imageURL: String) -> ImageResource {
+        let cafeImage = ImageResource(downloadURL: URL(string: imageURL)!, cacheKey: imageURL)
+        return cafeImage
+    }
     
+    static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview], _ rating: Double) -> Void) {
+        let cafeId = review.getReview()["cafeId"] as! String
+        let param : Parameters = ["review":review.getReview()]
+        var modelReviews = [ModelReview]()
+        
+        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
+            let res = JSON(data: response.data!)
+            let reviews = res["reviews"].arrayValue
+            var rating = res["rating"].doubleValue
+            rating = rating.roundToPlaces(places: 1)
+            let _ = reviews.map {
+                let review = $0.dictionaryValue
+                if let id = review["_id"]?.stringValue,
+                let isKakaoImage = review["isKakaoImage"]?.boolValue,
+                let userId = review["userId"]?.stringValue,
+                let nickname = review["nickname"]?.stringValue,
+                let profileImageURL = review["profileImageURL"]?.stringValue,
+                let date = review["date"]?.stringValue,
+                let reviewContent = review["reviewContent"]?.stringValue,
+                let rating = review["rating"]?.doubleValue {
+                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
+                    modelReviews.insert(modelReview, at: 0)
+                }
+            }
+            callback(modelReviews, rating)
+        }
+    }
+    
+    static func getCafeReviews(cafeModel: ModelCafe, callback: @escaping () -> Void) {
+        let cafeId = cafeModel.getCafe()["id"] as! String
+        var modelReviews = [ModelReview]()
+        
+        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in
+            let res = JSON(data: response.data!)
+            let reviews = res["reviews"].arrayValue
+            let _ = reviews.map {
+                let review = $0.dictionaryValue
+                if let id = review["_id"]?.stringValue,
+                let isKakaoImage = review["isKakaoImage"]?.boolValue,
+                let userId = review["userId"]?.stringValue,
+                let nickname = review["nickname"]?.stringValue,
+                let profileImageURL = review["profileImageURL"]?.stringValue,
+                let date = review["date"]?.stringValue,
+                let reviewContent = review["reviewContent"]?.stringValue,
+                let rating = review["rating"]?.doubleValue {
+                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
+                    modelReviews.insert(modelReview, at: 0)
+                }
+            }
+            cafeModel.setReviews(reviews: modelReviews)
+            callback()
+        }
+    }
 }

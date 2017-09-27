@@ -9,37 +9,56 @@
 import UIKit
 
 class BookmarkViewController: UIViewController {
+    
+    var userId = User.sharedInstance.user.getUser()["id"] as! String
+    
     @IBOutlet weak var collectionView: UICollectionView!
-    var userId = String()
-    var userBookmark = [String]()
+    @IBOutlet weak var isEmptyLabel: UILabel!
 
-    override func viewWillAppear(_ animated: Bool) {
-        // 네트워크에서 유저가 가진 북마크 목록 들고 오기
-        getBookmarkList()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "즐겨찾기"
         collectionView.delegate = self
         collectionView.dataSource = self
+        reloadBookmarkData()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadBookmarkData), name: NSNotification.Name(rawValue: "reloadBookmark"), object: nil)
     }
     
     func getBookmarkList() {
-        userId = User.sharedInstance.user.getUser()["id"] as! String
-        userBookmark = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        NetworkBookmark.getMyBookmark(userId: userId) { (message, cafe, bookmarkID) in
-            print(message)
-            Cafe.sharedInstance.bookmarkList = cafe
+        let activityIndicator = UIActivityIndicatorView()
+        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
+        NetworkBookmark.getMyBookmark(userId: userId) { (cafeList) in
+            Cafe.sharedInstance.bookmarkList = cafeList
             self.collectionView.reloadData()
+            activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
         }
+    }
+    
+    func reloadBookmarkData() {
+        getBookmarkList()
+        isEmptyLabel.text = (User.sharedInstance.user.getUser()["bookmark"] as! [String]).isEmpty ? "즐겨찾는 카페가 없습니다." : ""
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailView" {
+            if let indexPaths = self.collectionView.indexPathsForSelectedItems{
+                let controller = segue.destination as! CafeDetailViewController
+                controller.currentCafeModel = Cafe.sharedInstance.bookmarkList[indexPaths[0].row]
+            }
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        clearMemory()
+    }
 }
 
-extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewDelegate {
-    
+extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -50,31 +69,34 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! BookmarkViewCell
+        var modelBookmark = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()
         
-        cell.bookmarkCafeName.text = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()["name"] as? String
-        cell.bookmarkCafeAddress.text = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()["address"] as? String
-             return cell
-    }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("You selected cell #\(indexPath.item)!")
-//        prepare(for: , sender: <#T##Any?#>)
-//    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DetailView" {
-            if let item = self.collectionView.indexPathsForSelectedItems{
-                let indexPath = item[0]
-                    print(indexPath.row)
-                _ = segue.destination as! CafeDetailViewController
-                for cafe in Cafe.sharedInstance.cafeList {
-                    if let cafeID = cafe.getCafe()["id"] {
-                        if cafeID as! String == userBookmark[indexPath.row] {
-                            
-                        }
-                    }
-                }
-                // cafeId를 이용해서 디테일뷰 그릴 수 있게 네트워크카페 api가 있음 좋겠다.
-            }
+        if !(modelBookmark["imagesURL"] as! [String]).isEmpty {
+            let cafeImage = NetworkCafe.getCafeImage(imageURL: (modelBookmark["imagesURL"] as! [String])[0])
+            cell.bookmarkCafeImage.kf.setImage(with: cafeImage)
+        } else {
+            cell.bookmarkCafeImage.image = #imageLiteral(resourceName: "2")
         }
+        
+        cell.bookmarkCafeName.text = modelBookmark["name"] as? String
+        cell.bookmarkCafeAddress.text = modelBookmark["address"] as? String
+        return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 2 - 6
+        return CGSize(width: width, height: width*1.2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 7, left: 4, bottom: 5, right: 4)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2.0
+    }
 }

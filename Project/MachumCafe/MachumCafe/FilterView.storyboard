@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Filter View Controller-->
         <scene sceneID="Sf5-QG-eWK">
             <objects>
-                <viewController id="uKK-o8-uwZ" customClass="FilterViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FilterView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uKK-o8-uwZ" customClass="FilterViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="te9-Zj-WRq"/>
                         <viewControllerLayoutGuide type="bottom" id="Dcx-sR-0pW"/>
@@ -20,27 +20,71 @@
                     <view key="view" contentMode="scaleToFill" id="O1O-N2-Ey6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcI-9A-jgi">
+                                <rect key="frame" x="197" y="611" width="162" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.62745098039215685" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="확인">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmFilter:" destination="uKK-o8-uwZ" eventType="touchUpInside" id="iGd-oT-JfQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NEe-B4-bvh">
+                                <rect key="frame" x="16" y="611" width="162" height="36"/>
+                                <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="초기화">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetFilterArray:" destination="uKK-o8-uwZ" eventType="touchUpInside" id="ZbW-cE-8pp"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-JA-ids">
+                                <rect key="frame" x="20" y="84" width="335" height="507"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="9k5-Z0-5We" customClass="CustomCollectionViewFlowLayout" customModule="MachumCafe" customModuleProvider="target"/>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rdh-JA-ids" firstAttribute="leading" secondItem="O1O-N2-Ey6" secondAttribute="leading" constant="20" id="3UW-oR-xfR"/>
+                            <constraint firstAttribute="trailing" secondItem="rdh-JA-ids" secondAttribute="trailing" constant="20" id="54q-fs-GCD"/>
+                            <constraint firstItem="NEe-B4-bvh" firstAttribute="top" secondItem="rdh-JA-ids" secondAttribute="bottom" constant="20" id="6fb-zf-bSh"/>
+                            <constraint firstAttribute="trailing" secondItem="WcI-9A-jgi" secondAttribute="trailing" constant="16" id="6ut-Bt-73A"/>
+                            <constraint firstItem="NEe-B4-bvh" firstAttribute="width" secondItem="WcI-9A-jgi" secondAttribute="width" id="JEU-I0-UQP"/>
+                            <constraint firstItem="WcI-9A-jgi" firstAttribute="leading" secondItem="NEe-B4-bvh" secondAttribute="trailing" constant="19" id="QkW-WU-arB"/>
+                            <constraint firstItem="rdh-JA-ids" firstAttribute="top" secondItem="te9-Zj-WRq" secondAttribute="bottom" constant="20" id="RCA-7b-0I8"/>
+                            <constraint firstItem="Dcx-sR-0pW" firstAttribute="top" secondItem="NEe-B4-bvh" secondAttribute="bottom" constant="20" id="cen-OX-KZM"/>
+                            <constraint firstItem="NEe-B4-bvh" firstAttribute="leading" secondItem="O1O-N2-Ey6" secondAttribute="leading" constant="16" id="maQ-PT-vcY"/>
+                            <constraint firstItem="NEe-B4-bvh" firstAttribute="centerY" secondItem="WcI-9A-jgi" secondAttribute="centerY" id="uIK-Ly-ISM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vfd-iL-zDZ">
-                        <barButtonItem key="leftBarButtonItem" image="back_Bt" id="mUS-v9-hfO">
+                        <barButtonItem key="rightBarButtonItem" image="cancelButton" id="mUS-v9-hfO">
                             <connections>
                                 <action selector="closeButtonAction:" destination="uKK-o8-uwZ" id="Kjd-OS-l6H"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Kd7-Aa-CDj"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="rdh-JA-ids" id="CJB-hC-2V9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5n-fE-4YP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="35"/>
+            <point key="canvasLocation" x="877.60000000000002" y="34.632683658170919"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WeZ-a9-7K8">
             <objects>
-                <navigationController storyboardIdentifier="FilterView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aJu-HI-y5m" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aJu-HI-y5m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SF-Me-Z1C">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9SF-Me-Z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -55,6 +99,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back_Bt" width="12" height="20"/>
+        <image name="cancelButton" width="19" height="20"/>
     </resources>
 </document>
