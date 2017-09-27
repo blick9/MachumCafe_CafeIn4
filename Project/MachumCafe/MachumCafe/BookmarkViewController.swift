@@ -10,7 +10,7 @@ import UIKit
 
 class BookmarkViewController: UIViewController {
     
-    var userId = User.sharedInstance.user.getUser()["id"] as! String
+    var userId = User.sharedInstance.user.id
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var isEmptyLabel: UILabel!
@@ -36,7 +36,7 @@ class BookmarkViewController: UIViewController {
     
     func reloadBookmarkData() {
         getBookmarkList()
-        isEmptyLabel.text = (User.sharedInstance.user.getUser()["bookmark"] as! [String]).isEmpty ? "즐겨찾는 카페가 없습니다." : ""
+        isEmptyLabel.text = (User.sharedInstance.user.bookmark).isEmpty ? "즐겨찾는 카페가 없습니다." : ""
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {

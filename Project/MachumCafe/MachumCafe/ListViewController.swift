@@ -31,8 +31,8 @@ class ListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getUserID = User.sharedInstance.user.getUser()["id"] as! String
-        getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        getUserID = User.sharedInstance.user.id
+        getUserBookmarkArray = User.sharedInstance.user.bookmark
         currentLocation = CLLocation(latitude: Location.sharedInstance.currentLocation.latitude, longitude: Location.sharedInstance.currentLocation.longitude)
         
         displayEmptyLabel()
@@ -53,8 +53,8 @@ class ListViewController: UIViewController {
         if User.sharedInstance.isUser {
             NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID, callback: { (desc) in
                 print(desc)
-                self.getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-                print(User.sharedInstance.user.getUser()["bookmark"]!)
+                self.getUserBookmarkArray = User.sharedInstance.user.bookmark
+                print(User.sharedInstance.user.bookmark)
                 buttonTag.isSelected = !buttonTag.isSelected
             })
         } else {

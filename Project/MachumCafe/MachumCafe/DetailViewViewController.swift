@@ -22,8 +22,8 @@ class DetailViewViewController: UIViewController {
     var cafeData = [String:Any]()
     var currentCafeModel = ModelCafe()
     var cafeCategorys = [String]()
-    var userID = User.sharedInstance.user.getUser()["id"] as! String
-    var userBookmarkIDs = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+    var userID = User.sharedInstance.user.id
+    var userBookmarkIDs = User.sharedInstance.user.bookmark
     var indexCafeID = String()
     var reviews = [ModelReview]()
     var ratingViewxib = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as! RatingView

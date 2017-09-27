@@ -130,8 +130,8 @@ class CafeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userID = User.sharedInstance.user.getUser()["id"] as! String
-        userBookmarkIDs = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        userID = User.sharedInstance.user.id
+        userBookmarkIDs = User.sharedInstance.user.bookmark
         indexCafeID = cafeData["id"] as! String
         bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
     }

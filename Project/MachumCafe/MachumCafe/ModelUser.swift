@@ -10,12 +10,12 @@ import Foundation
 
 class ModelUser {
     
-    private var id = String()
-    private var isKakaoImage = Bool()
-    private var email = String()
-    private var nickname = String()
-    private var bookmark = [String]()
-    private var profileImageURL = String()
+    private(set) var id = String()
+    private(set) var isKakaoImage = Bool()
+    private(set) var email = String()
+    private(set) var nickname = String()
+    private(set) var bookmark = [String]()
+    private(set) var profileImageURL = String()
     
     init() {}
     
@@ -28,16 +28,16 @@ class ModelUser {
         self.profileImageURL = profileImageURL
     }
     
-    func getUser() -> [String : Any] {
-        var userDic = [String : Any]()
-        userDic["id"] = id
-        userDic["isKakaoImage"] = isKakaoImage
-        userDic["email"] = email
-        userDic["nickname"] = nickname
-        userDic["bookmark"] = bookmark
-        userDic["profileImageURL"] = profileImageURL
-        return userDic
-    }
+//    func getUser() -> [String : Any] {
+//        var userDic = [String : Any]()
+//        userDic["id"] = id
+//        userDic["isKakaoImage"] = isKakaoImage
+//        userDic["email"] = email
+//        userDic["nickname"] = nickname
+//        userDic["bookmark"] = bookmark
+//        userDic["profileImageURL"] = profileImageURL
+//        return userDic
+//    }
     
     func setBookmark(bookmarks : [String]) {
         bookmark = bookmarks

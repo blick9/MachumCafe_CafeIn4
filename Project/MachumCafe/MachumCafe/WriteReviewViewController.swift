@@ -12,10 +12,10 @@ import Cosmos
 class WriteReviewViewController: UIViewController {
     var currentCafeModel = ModelCafe()
     var cafeData = [String:Any]()
-    var userData = User.sharedInstance.user.getUser()
+//    var userData = User.sharedInstance.user.getUser()
     var writtenDate = Date()
     var reviewDictionary = Review.sharedInstance.review.getReview()
-    var user = User.sharedInstance.user.getUser()
+    var user = User.sharedInstance.user
     var cafe = Cafe.sharedInstance.allCafeList[1].getCafe()
     
     @IBOutlet weak var writeReview: UITextView!
@@ -50,7 +50,7 @@ class WriteReviewViewController: UIViewController {
             UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록", message: "별점 또는 내용을 입력해주세요.", isHandler: false)
         } else {
             if User.sharedInstance.isUser {
-                let review = ModelReview(isKakaoImage: userData["isKakaoImage"] as! Bool, cafeId: cafeData["id"] as! String, userId: userData["id"] as! String, nickname: userData["nickname"] as! String, profileImageURL: userData["profileImageURL"] as? String, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
+                let review = ModelReview(isKakaoImage: user.isKakaoImage, cafeId: cafeData["id"] as! String, userId: user.id, nickname: user.nickname, profileImageURL: user.profileImageURL, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
                 NetworkCafe.postCafeReview(review: review, callback: { (modelReviews, rating) in
                     self.currentCafeModel.setReviews(reviews: modelReviews)
                     self.currentCafeModel.setRating(rating: rating)
