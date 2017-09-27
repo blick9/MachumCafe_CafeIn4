@@ -33,7 +33,7 @@ class ListViewController: UIViewController {
         
         getUserID = User.sharedInstance.user.getUser()["id"] as! String
         getUserBookmarkArray = User.sharedInstance.user.getUser()["bookmark"] as! [String]
-        currentLocation = CLLocation(latitude: Location.sharedInstance.currentLocation.getLocation()["latitude"] as! Double , longitude: Location.sharedInstance.currentLocation.getLocation()["longitude"] as! Double)
+        currentLocation = CLLocation(latitude: Location.sharedInstance.currentLocation.latitude, longitude: Location.sharedInstance.currentLocation.longitude)
         
         displayEmptyLabel()
     }

@@ -16,7 +16,7 @@ class ListMapViewController: UIViewController{
     var currentSelectedCafe = ModelCafe()
     var isTapMarker = false
     var mapPaddingInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    var currentLocation = [String : Any]()
+    var currentLocation = Location.sharedInstance.currentLocation
     var markerIDArray = [String]()
 
     @IBOutlet weak var googleMap: GMSMapView!
@@ -39,7 +39,7 @@ class ListMapViewController: UIViewController{
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startMonitoringSignificantLocationChanges()
         
-        googleMap.camera = GMSCameraPosition.camera(withLatitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double, zoom: 14)
+        googleMap.camera = GMSCameraPosition.camera(withLatitude: currentLocation.latitude, longitude: currentLocation.longitude, zoom: 14)
         googleMap.delegate = self
         googleMap.isMyLocationEnabled = true
         googleMap.settings.myLocationButton = true
@@ -63,7 +63,7 @@ class ListMapViewController: UIViewController{
     }
     
     func loadModelCafeData() {
-        currentLocation = Location.sharedInstance.currentLocation.getLocation()
+        currentLocation = Location.sharedInstance.currentLocation
         modelCafe = Cafe.sharedInstance.filterCafeList
     }
     
@@ -93,7 +93,7 @@ class ListMapViewController: UIViewController{
     }
     
     func tempMakeCircle() {
-        let circleCenter = CLLocationCoordinate2D(latitude: currentLocation["latitude"] as! Double, longitude: currentLocation["longitude"] as! Double)
+        let circleCenter = CLLocationCoordinate2D(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
         let circ = GMSCircle(position: circleCenter, radius: 1000)
         
         circ.fillColor = UIColor(red: 0.35, green: 0, blue: 0, alpha: 0.03)

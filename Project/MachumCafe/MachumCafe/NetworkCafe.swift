@@ -16,8 +16,12 @@ class NetworkCafe {
     // MARK: 현위치 반경 1km 내 카페목록 불러오기
     static func getCafeList(coordinate: ModelLocation, callback: @escaping (_ modelCafe: [ModelCafe]) -> Void) {
         var modelCafe = [ModelCafe]()
+        let parameter: [String:Double] = [
+            "latitude": coordinate.latitude,
+            "longitude": coordinate.longitude
+        ]
         
-        Alamofire.request("\(Config.url)/api/v1/cafe", method: .post, parameters: coordinate.getLocation(), encoding: JSONEncoding.default).responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/cafe", method: .post, parameters: parameter, encoding: JSONEncoding.default).responseJSON { (response) in
             let cafes = JSON(data: response.data!).arrayValue
             let _ = cafes.map {
                 var cafe = $0.dictionaryValue

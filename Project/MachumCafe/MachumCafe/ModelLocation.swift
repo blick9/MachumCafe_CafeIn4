@@ -10,9 +10,9 @@ import Foundation
 
 class ModelLocation {
     
-    private var latitude = Double()
-    private var longitude = Double()
-    private var address : String?
+    private(set) var latitude = Double()
+    private(set) var longitude = Double()
+    private(set) var address : String?
     
     init() {}
     
@@ -28,13 +28,13 @@ class ModelLocation {
         self.address = address
     }
     
-    func getLocation() -> [String : Any] {
-        var locationDic = [String : Any]()
-        locationDic["latitude"] = latitude
-        locationDic["longitude"] = longitude
-        locationDic["address"] = address
-        return locationDic
-    }
+//    func getLocation() -> [String : Any] {
+//        var locationDic = [String : Any]()
+//        locationDic["latitude"] = latitude
+//        locationDic["longitude"] = longitude
+//        locationDic["address"] = address
+//        return locationDic
+//    }
 }
 
 class Location {

@@ -9,6 +9,7 @@ PODS:
   - GooglePlaces (2.2.0):
     - GoogleMaps/Base (= 2.2.0)
   - Kingfisher (3.6.2)
+  - ObjectMapper (2.2.8)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - Kingfisher (~> 3.0)
+  - ObjectMapper
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -25,8 +27,9 @@ SPEC CHECKSUMS:
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
+  ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 2bcbf207af18af9a96421b6ae6934660c4e64fed
+PODFILE CHECKSUM: c3a229c84a12b70637afba007d101c39058c542e
 
 COCOAPODS: 1.2.1

@@ -16,11 +16,11 @@ struct Config {
     }()
     
     static let googleMapKey: String = {
-        plist?["GoogleMapKey"] as? String ?? ""
+        plist?["googleMapKey"] as? String ?? ""
     }()
     
     static let googlePlaceKey: String = {
-        plist?["GooglePlaceKey"] as? String ?? ""
+        plist?["googlePlaceKey"] as? String ?? ""
     }()
     
     static let url: String = {

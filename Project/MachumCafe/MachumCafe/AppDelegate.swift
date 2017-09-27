@@ -23,10 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let googleAPIKey = Config.googleMapKey
+        let googleMapKey = Config.googleMapKey
         
-        GMSServices.provideAPIKey(googleAPIKey)
-        GMSPlacesClient.provideAPIKey(googleAPIKey)
+        GMSServices.provideAPIKey(googleMapKey)
+        GMSPlacesClient.provideAPIKey(googleMapKey)
         let backButtonImage = #imageLiteral(resourceName: "back_Bt").stretchableImage(withLeftCapWidth: 13, topCapHeight: 22)
         UIBarButtonItem.appearance().setBackButtonBackgroundImage(backButtonImage, for: .normal, barMetrics: .default)
 
