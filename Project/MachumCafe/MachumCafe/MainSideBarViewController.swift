@@ -11,7 +11,7 @@ import UIKit
 class MainSideBarViewController: UIViewController {
     
     let imagePicker = UIImagePickerController()
-    
+
     @IBOutlet weak var sideBarView: UIView!
     @IBOutlet weak var sideBarLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var userProfileImageView: UIImageView!

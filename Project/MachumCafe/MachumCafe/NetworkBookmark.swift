@@ -11,14 +11,12 @@ import Alamofire
 import SwiftyJSON
 
 class NetworkBookmark {
-
-    private static let url = URLpath.getURL()
     
     // MARK: 즐겨찾기 목록 데이터모델에 저장
     static func getMyBookmark(userId: String, callback: @escaping (_ modelCafe: [ModelCafe]) -> Void) {
         var modelCafe = [ModelCafe]()
         
-        Alamofire.request("\(url)/api/v1/user/\(userId)/bookmark").responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/user/\(userId)/bookmark").responseJSON { (response) in
             let res = JSON(data: response.data!)
             let cafes = res["cafe"].arrayValue
             
@@ -47,7 +45,7 @@ class NetworkBookmark {
     static func setMyBookmark(userId: String, cafeId: String, callback: @escaping (_ description: String) -> Void) {
         let parameters : Parameters = ["cafeId" : cafeId]
         
-        Alamofire.request("\(url)/api/v1/user/\(userId)/bookmark", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/user/\(userId)/bookmark", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             var description = String()
             var userBookmark = [String]()
             

@@ -35,7 +35,6 @@
 		A7B73A5C1EB32E1300EB24C6 /* NetworkBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A581EB32E1300EB24C6 /* NetworkBookmark.swift */; };
 		A7B73A5D1EB32E1300EB24C6 /* NetworkCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A591EB32E1300EB24C6 /* NetworkCafe.swift */; };
 		A7B73A5E1EB32E1300EB24C6 /* NetworkUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A5A1EB32E1300EB24C6 /* NetworkUser.swift */; };
-		A7B73A5F1EB32E1300EB24C6 /* URLpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */; };
 		A7B73A621EB32E2200EB24C6 /* ModelCafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A601EB32E2200EB24C6 /* ModelCafe.swift */; };
 		A7B73A631EB32E2200EB24C6 /* ModelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B73A611EB32E2200EB24C6 /* ModelUser.swift */; };
 		A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */; };
@@ -45,6 +44,8 @@
 		A7EACE961ED95A3900BD01EE /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EACE951ED95A3900BD01EE /* RatingView.swift */; };
 		B50500861F78BF7900CE2138 /* CustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50500851F78BF7900CE2138 /* CustomCollectionViewFlowLayout.swift */; };
 		B50500881F78C6C900CE2138 /* DetailViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50500871F78C6C900CE2138 /* DetailViewViewController.swift */; };
+		B505008A1F7B696000CE2138 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = B50500891F7B696000CE2138 /* Config.plist */; };
+		B505008C1F7B69ED00CE2138 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505008B1F7B69ED00CE2138 /* Config.swift */; };
 		B518D1921ED04A5E00A9C623 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */; };
 		B518D1931ED04A5E00A9C623 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */; };
 		B53EBC391ED6D2F3008950BC /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */; };
@@ -101,7 +102,6 @@
 		A7B73A581EB32E1300EB24C6 /* NetworkBookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkBookmark.swift; sourceTree = "<group>"; };
 		A7B73A591EB32E1300EB24C6 /* NetworkCafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCafe.swift; sourceTree = "<group>"; };
 		A7B73A5A1EB32E1300EB24C6 /* NetworkUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUser.swift; sourceTree = "<group>"; };
-		A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLpath.swift; sourceTree = "<group>"; };
 		A7B73A601EB32E2200EB24C6 /* ModelCafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCafe.swift; sourceTree = "<group>"; };
 		A7B73A611EB32E2200EB24C6 /* ModelUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUser.swift; sourceTree = "<group>"; };
 		A7C0F2F51EB790AC0086ADAA /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +111,8 @@
 		A7EACE951ED95A3900BD01EE /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		B50500851F78BF7900CE2138 /* CustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B50500871F78C6C900CE2138 /* DetailViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewViewController.swift; sourceTree = "<group>"; };
+		B50500891F7B696000CE2138 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		B505008B1F7B69ED00CE2138 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +288,8 @@
 				A723B6701EAF3FBF00469FE4 /* LaunchScreen.storyboard */,
 				A723B66E1EAF3FBF00469FE4 /* Assets.xcassets */,
 				B7E57DAF1EB7026900A6D9A7 /* Info.plist */,
+				B50500891F7B696000CE2138 /* Config.plist */,
+				B505008B1F7B69ED00CE2138 /* Config.swift */,
 				B55B9C9D1ED4A12000E05665 /* MachumCafe-Bridging-Header.h */,
 			);
 			name = Resource;
@@ -319,7 +323,6 @@
 				A7B73A591EB32E1300EB24C6 /* NetworkCafe.swift */,
 				A7B73A5A1EB32E1300EB24C6 /* NetworkUser.swift */,
 				B58154D71EB9CEE1003B7A92 /* NetworkMap.swift */,
-				A7B73A5B1EB32E1300EB24C6 /* URLpath.swift */,
 				B56FD1351EC465D9002BDA2B /* NetworkAdmin.swift */,
 			);
 			name = Networking;
@@ -460,6 +463,7 @@
 				A7B73A481EAF4A8100EB24C6 /* MainView.storyboard in Resources */,
 				B5BA81E71EC9840200E5BBC9 /* ReviewView.storyboard in Resources */,
 				A7EACE941ED95A1200BD01EE /* RatingView.xib in Resources */,
+				B505008A1F7B696000CE2138 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,6 +533,7 @@
 				A723B6871EAF437400469FE4 /* LogInViewController.swift in Sources */,
 				B78D2A291EBB15A50069E2E9 /* SuggestionCategory.swift in Sources */,
 				A723B6811EAF432300469FE4 /* ListViewController.swift in Sources */,
+				B505008C1F7B69ED00CE2138 /* Config.swift in Sources */,
 				A76197B61EBD84A7008E50D5 /* ModelLocation.swift in Sources */,
 				B7E57DAA1EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift in Sources */,
 				B5E394BE1EF185860044BC93 /* PhotoLibrary.swift in Sources */,
@@ -559,7 +564,6 @@
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
 				A7B73A5D1EB32E1300EB24C6 /* NetworkCafe.swift in Sources */,
 				B50500881F78C6C900CE2138 /* DetailViewViewController.swift in Sources */,
-				A7B73A5F1EB32E1300EB24C6 /* URLpath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

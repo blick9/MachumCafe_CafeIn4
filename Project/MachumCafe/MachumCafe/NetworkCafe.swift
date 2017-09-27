@@ -12,14 +12,12 @@ import SwiftyJSON
 import Kingfisher
 
 class NetworkCafe {
-
-    private static let url = URLpath.getURL()
     
     // MARK: 현위치 반경 1km 내 카페목록 불러오기
     static func getCafeList(coordinate: ModelLocation, callback: @escaping (_ modelCafe: [ModelCafe]) -> Void) {
         var modelCafe = [ModelCafe]()
         
-        Alamofire.request("\(url)/api/v1/cafe", method: .post, parameters: coordinate.getLocation(), encoding: JSONEncoding.default).responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/cafe", method: .post, parameters: coordinate.getLocation(), encoding: JSONEncoding.default).responseJSON { (response) in
             let cafes = JSON(data: response.data!).arrayValue
             let _ = cafes.map {
                 var cafe = $0.dictionaryValue
@@ -45,7 +43,7 @@ class NetworkCafe {
     static func getSpecificCafe(cafeId: String, callback: @escaping (_ modelCafe: ModelCafe) -> Void) {
         var modelCafe = ModelCafe()
         
-        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)").responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)").responseJSON { (response) in
             var cafe = JSON(data: response.data!).dictionaryValue
             
             if let id = cafe["_id"]?.stringValue,
@@ -75,7 +73,7 @@ class NetworkCafe {
         let param : Parameters = ["review":review.getReview()]
         var modelReviews = [ModelReview]()
         
-        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
             let res = JSON(data: response.data!)
             let reviews = res["reviews"].arrayValue
             var rating = res["rating"].doubleValue
@@ -102,7 +100,7 @@ class NetworkCafe {
         let cafeId = cafeModel.getCafe()["id"] as! String
         var modelReviews = [ModelReview]()
         
-        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in
             let res = JSON(data: response.data!)
             let reviews = res["reviews"].arrayValue
             let _ = reviews.map {
