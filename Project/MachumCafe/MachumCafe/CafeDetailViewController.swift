@@ -252,21 +252,21 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
-            if !reviews.isEmpty {
-                var review = reviews[indexPath.row].getReview()
-                
-                cell.reviewer.text = review["nickname"] as? String
-                cell.reviewDate.text = review["date"] as? String
-                cell.reviewContent.text = review["reviewContent"] as? String
-                cell.reviewStarRating.rating = review["rating"] as! Double
-                
-                if !(review["profileImageURL"] as! String).isEmpty {
-                    let profileImage = NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String)
-                    cell.reviewerPicture.kf.setImage(with: profileImage)
-                } else {
-                    cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
-                }
-            }
+//            if !reviews.isEmpty {
+//                var review = reviews[indexPath.row].getReview()
+//                
+//                cell.reviewer.text = review["nickname"] as? String
+//                cell.reviewDate.text = review["date"] as? String
+//                cell.reviewContent.text = review["reviewContent"] as? String
+//                cell.reviewStarRating.rating = review["rating"] as! Double
+//                
+//                if !(review["profileImageURL"] as! String).isEmpty {
+//                    let profileImage = NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String)
+//                    cell.reviewerPicture.kf.setImage(with: profileImage)
+//                } else {
+//                    cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
+//                }
+//            }
             return cell
         }
     }

@@ -73,11 +73,21 @@ class NetworkCafe {
     }
     
     static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview], _ rating: Double) -> Void) {
-        let cafeId = review.getReview()["cafeId"] as! String
-        let param : Parameters = ["review":review.getReview()]
+        let cafeId = review.cafeId
+        let reviewDic: Parameters = [
+            "cafeId": review.cafeId,
+            "isKakaoImage": review.isKakaoImage,
+            "userId": review.userId,
+            "nickname": review.nickname,
+            "profileImageURL": review.profileImageURL as Any,
+            "profileImage": review.profileImage as Any,
+            "date": review.date,
+            "reviewContent": review.reviewContent,
+            "rating": review.rating
+        ]
         var modelReviews = [ModelReview]()
         
-        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: ["review": reviewDic], encoding: JSONEncoding.default).responseJSON { (response) in
             let res = JSON(data: response.data!)
             let reviews = res["reviews"].arrayValue
             var rating = res["rating"].doubleValue

@@ -50,13 +50,13 @@ extension ReviewViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReviewTableViewCell
         
-        var review = reviews[indexPath.row].getReview()
-        cell.reviewer.text = review["nickname"] as? String
-        cell.reviewDate.text = review["date"] as? String
-        cell.reviewContent.text = review["reviewContent"] as? String
-        cell.reviewStarRating.rating = review["rating"] as! Double
-        if !(review["profileImageURL"] as! String).isEmpty {
-            let profileImage = NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String)
+        let review = reviews[indexPath.row]
+        cell.reviewer.text = review.nickname
+        cell.reviewDate.text = review.date
+        cell.reviewContent.text = review.reviewContent
+        cell.reviewStarRating.rating = review.rating
+        if let profileImageURL = review.profileImageURL {
+            let profileImage = NetworkUser.getUserImage(userID: review.userId, isKakaoImage: review.isKakaoImage, imageURL: profileImageURL)
                 cell.reviewerPicture.kf.setImage(with: profileImage)
                 cell.reviewerPicture.layer.masksToBounds = true
                 cell.reviewerPicture.layer.cornerRadius = CGFloat(cell.reviewerPicture.frame.height / 2)
