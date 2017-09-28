@@ -43,8 +43,12 @@ class ModelCafe {
         self.imagesURL = imagesURL
     }
     
-    func setReviews(reviews: [ModelReview]) {
-        self.reviews = reviews
+    func setReviews(reviews: [ModelReview]?=nil, review: ModelReview?=nil) {
+        if let reviews = reviews {
+            self.reviews = reviews
+        } else if let review = review {
+            self.reviews.insert(review, at: 0)
+        }
     }
     
     func setRating(rating: Double) {

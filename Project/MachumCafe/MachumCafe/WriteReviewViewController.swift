@@ -47,11 +47,8 @@ class WriteReviewViewController: UIViewController {
         } else {
             if User.sharedInstance.isUser {
                 let review = ModelReview(isKakaoImage: user.isKakaoImage, cafeId: cafe.id!, userId: user.id, nickname: user.nickname, profileImageURL: user.profileImageURL, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
-                NetworkCafe.postCafeReview(review: review, callback: { (modelReviews, rating) in
-                    self.cafe.setReviews(reviews: modelReviews)
-                    self.cafe.setRating(rating: rating)
-                    self.dismiss(animated: false, completion: nil)
-                })
+                NetworkCafe.postCafeReview(review: review, targetCafe: cafe)
+                self.dismiss(animated: false, completion: nil)
             } else {
                 UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록실패", message: "로그인 후 이용해주세요.", isHandler: false)
             }

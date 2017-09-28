@@ -72,66 +72,44 @@ class NetworkCafe {
         return cafeImage
     }
     
-    static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview], _ rating: Double) -> Void) {
+    static func postCafeReview(review: ModelReview, targetCafe: ModelCafe) {
         let cafeId = review.cafeId
-        let reviewDic: Parameters = [
-            "cafeId": review.cafeId,
-            "isKakaoImage": review.isKakaoImage,
-            "userId": review.userId,
-            "nickname": review.nickname,
-            "profileImageURL": review.profileImageURL as Any,
-            "profileImage": review.profileImage as Any,
-            "date": review.date,
-            "reviewContent": review.reviewContent,
-            "rating": review.rating
-        ]
-        var modelReviews = [ModelReview]()
+        let parameter = review.toJSON()
         
-        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: ["review": reviewDic], encoding: JSONEncoding.default).responseJSON { (response) in
-            let res = JSON(data: response.data!)
-            let reviews = res["reviews"].arrayValue
-            var rating = res["rating"].doubleValue
-            rating = rating.roundToPlaces(places: 1)
-            let _ = reviews.map {
-                let review = $0.dictionaryValue
-                if let id = review["_id"]?.stringValue,
-                let isKakaoImage = review["isKakaoImage"]?.boolValue,
-                let userId = review["userId"]?.stringValue,
-                let nickname = review["nickname"]?.stringValue,
-                let profileImageURL = review["profileImageURL"]?.stringValue,
-                let date = review["date"]?.stringValue,
-                let reviewContent = review["reviewContent"]?.stringValue,
-                let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
-                    modelReviews.insert(modelReview, at: 0)
+        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: parameter, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+            case .success(let response):
+                guard let contents = response as? [String:Any],
+                    let result = contents["result"] as? Bool,
+                    var rating = contents["rating"] as? Double else { return }
+                if result {
+                    targetCafe.setReviews(review: review)
+                    targetCafe.setRating(rating: rating.roundToPlaces(places: 1))
                 }
+            case .failure(let error):
+                print(String(describing: error))
             }
-            callback(modelReviews, rating)
         }
     }
     
     static func getCafeReviews(cafeModel: ModelCafe, startIndex: Int=0) {
         guard let cafeId = cafeModel.id else { return }
-        var modelReviews = [ModelReview]()
         
         Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in
-            let res = JSON(data: response.data!)
-            let reviews = res["reviews"].arrayValue
-            let _ = reviews.map {
-                let review = $0.dictionaryValue
-                if let id = review["_id"]?.stringValue,
-                let isKakaoImage = review["isKakaoImage"]?.boolValue,
-                let userId = review["userId"]?.stringValue,
-                let nickname = review["nickname"]?.stringValue,
-                let profileImageURL = review["profileImageURL"]?.stringValue,
-                let date = review["date"]?.stringValue,
-                let reviewContent = review["reviewContent"]?.stringValue,
-                let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
-                    modelReviews.insert(modelReview, at: 0)
+            switch response.result {
+            case .success(let response):
+                var modelReviews = [ModelReview]()
+                guard let contents = response as? [String:Any],
+                    let reviews = contents["reviews"] as? [[String:Any]] else { return }
+                reviews.forEach { review in
+                    if let modelReview = ModelReview(JSON: review) {
+                        modelReviews.insert(modelReview, at: 0)
+                    }
                 }
+                cafeModel.setReviews(reviews: modelReviews)
+            case .failure(let error):
+                print(String(describing: error))
             }
-            cafeModel.setReviews(reviews: modelReviews)
         }
     }
 }

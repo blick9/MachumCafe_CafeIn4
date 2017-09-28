@@ -77,7 +77,7 @@ class DetailViewViewController: UIViewController {
     }
     
     func reloadReviewTable(_ notification: Notification) {
-        reviews += cafe.reviews
+        reviews = cafe.reviews
         detailTableView.reloadData()
     }
     
