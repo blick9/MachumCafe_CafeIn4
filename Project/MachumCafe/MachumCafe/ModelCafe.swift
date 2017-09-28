@@ -47,6 +47,10 @@ class ModelCafe {
         self.reviews = reviews
     }
     
+    func setRating(rating: Double) {
+        self.rating = rating
+    }
+    
     func getParameters() -> [String:Any] {
         let paramerter: [String:Any] = [
             "id": id as Any,
@@ -65,9 +69,6 @@ class ModelCafe {
         return paramerter
     }
     
-    func setRating(rating: Double) {
-        self.rating = rating
-    }
 }
 
 class Cafe {

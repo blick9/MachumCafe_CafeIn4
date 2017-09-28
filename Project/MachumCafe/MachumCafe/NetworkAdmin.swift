@@ -48,8 +48,6 @@ class NetworkAdmin {
     
     // MARK: 기존 카페 폐업 신고
     static func suggestionClesedCafe(cafe: ModelCafe) {
-//        var cafe = cafe
-//        cafe.removeValue(forKey: "imagesData")
         Alamofire.request("\(Config.url)/api/v1/admin/suggestion/closedcafe", method: .post, parameters: cafe.getParameters(), encoding: JSONEncoding.default).responseJSON {_ in}
     }
 }

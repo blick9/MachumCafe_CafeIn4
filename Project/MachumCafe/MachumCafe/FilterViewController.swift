@@ -60,9 +60,6 @@ class FilterViewController: UIViewController {
 }
 
 extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryArray.count

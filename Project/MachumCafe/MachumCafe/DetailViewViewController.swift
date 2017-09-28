@@ -19,12 +19,10 @@ class DetailViewViewController: UIViewController {
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var showMoreReview: UIButton!
     
-//    var cafeData = [String:Any]()
     var cafe = ModelCafe()
     var cafeCategorys = [String]()
     var userID = User.sharedInstance.user.id
     var userBookmarkIDs = User.sharedInstance.user.bookmark
-//    var indexCafeID = String()
     var reviews = [ModelReview]()
     var ratingViewxib = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as! RatingView
     
