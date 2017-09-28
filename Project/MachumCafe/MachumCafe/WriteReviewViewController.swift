@@ -10,18 +10,16 @@ import UIKit
 import Cosmos
 
 class WriteReviewViewController: UIViewController {
-    var currentCafeModel = ModelCafe()
-    var cafeData = [String:Any]()
+    var cafe = ModelCafe()
     var writtenDate = Date()
     var user = User.sharedInstance.user
-    var cafe = Cafe.sharedInstance.allCafeList[1].getCafe()
+//    var cafe = Cafe.sharedInstance.allCafeList[1].getCafe()
     
     @IBOutlet weak var writeReview: UITextView!
     @IBOutlet weak var starRating: CosmosView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cafeData = currentCafeModel.getCafe()
         starRating.rating = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -48,10 +46,10 @@ class WriteReviewViewController: UIViewController {
             UIAlertController().oneButtonAlert(target: self, title: "리뷰 등록", message: "별점 또는 내용을 입력해주세요.", isHandler: false)
         } else {
             if User.sharedInstance.isUser {
-                let review = ModelReview(isKakaoImage: user.isKakaoImage, cafeId: cafeData["id"] as! String, userId: user.id, nickname: user.nickname, profileImageURL: user.profileImageURL, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
+                let review = ModelReview(isKakaoImage: user.isKakaoImage, cafeId: cafe.id!, userId: user.id, nickname: user.nickname, profileImageURL: user.profileImageURL, date: "dateTest", reviewContent: writeReview.text, rating: starRating.rating)
                 NetworkCafe.postCafeReview(review: review, callback: { (modelReviews, rating) in
-                    self.currentCafeModel.setReviews(reviews: modelReviews)
-                    self.currentCafeModel.setRating(rating: rating)
+                    self.cafe.setReviews(reviews: modelReviews)
+                    self.cafe.setRating(rating: rating)
                     self.dismiss(animated: false, completion: nil)
                 })
             } else {

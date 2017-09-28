@@ -23,18 +23,19 @@ class ReviewViewController: UIViewController {
         tableView.dataSource = self
         tableView.allowsSelection = false
         tableView.register(reviewTableViewCellNib, forCellReuseIdentifier: "Cell")
-        reviews = currentCafeModel.getReviews()
+        reviews = currentCafeModel.reviews
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
     
     func reloadReviewTable() {
-        reviews = currentCafeModel.getReviews()
+        reviews = currentCafeModel.reviews
         tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let writeReviewView : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
-        writeReviewView.currentCafeModel = currentCafeModel
+        if let writeReviewView = segue.destination as? WriteReviewViewController {
+            writeReviewView.cafe = currentCafeModel
+        }
     }
 }
 

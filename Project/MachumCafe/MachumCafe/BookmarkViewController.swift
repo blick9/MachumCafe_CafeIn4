@@ -69,17 +69,17 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! BookmarkViewCell
-        var modelBookmark = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()
+        var modelBookmark = Cafe.sharedInstance.bookmarkList[indexPath.row]
         
-        if !(modelBookmark["imagesURL"] as! [String]).isEmpty {
-            let cafeImage = NetworkCafe.getCafeImage(imageURL: (modelBookmark["imagesURL"] as! [String])[0])
+        if !modelBookmark.imagesURL.isEmpty {
+            let cafeImage = NetworkCafe.getCafeImage(imageURL: modelBookmark.imagesURL[0])
             cell.bookmarkCafeImage.kf.setImage(with: cafeImage)
         } else {
             cell.bookmarkCafeImage.image = #imageLiteral(resourceName: "2")
         }
         
-        cell.bookmarkCafeName.text = modelBookmark["name"] as? String
-        cell.bookmarkCafeAddress.text = modelBookmark["address"] as? String
+        cell.bookmarkCafeName.text = modelBookmark.name
+        cell.bookmarkCafeAddress.text = modelBookmark.address
         return cell
     }
     

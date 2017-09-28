@@ -53,7 +53,7 @@ class CafeDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = moreButton
         categoryCollectionView.register(filterCollectionViewCellnib, forCellWithReuseIdentifier: "Cell")
         
-        cafeData = currentCafeModel.getCafe()
+//        cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
         
 //        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) {
@@ -101,7 +101,7 @@ class CafeDetailViewController: UIViewController {
             let alert = UIAlertController(title: "폐업 신고", message: "폐업 신고를 하시겠습니까?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "취소", style: .default)
             let confirm = UIAlertAction(title: "확인", style: .default, handler: { (_) in
-                NetworkAdmin.suggestionClesedCafe(cafe: self.cafeData)
+//                NetworkAdmin.suggestionClesedCafe(cafe: self.cafeData)
                 UIAlertController().oneButtonAlert(target: self, title: "제보 완료", message: "소중한 의견 감사합니다.\n빠른시간 내에 적용하겠습니다 :)", isHandler: false)
             })
             alert.addAction(confirm)
@@ -116,7 +116,7 @@ class CafeDetailViewController: UIViewController {
     }
     
     func reloadReviewTable() {
-        reviews = currentCafeModel.getReviews()
+//        reviews = currentCafeModel.getReviews()
         applyReviewTableViewHeight()
         reviewTableView.reloadData()
     }
@@ -190,7 +190,7 @@ class CafeDetailViewController: UIViewController {
     func suggestionButtonAction() {
         let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
         let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
-        suggestionViewController.cafeData = cafeData
+//        suggestionViewController.cafeData = cafeData
         present(suggestionViewNavigationController, animated: true, completion: nil)
     }
     

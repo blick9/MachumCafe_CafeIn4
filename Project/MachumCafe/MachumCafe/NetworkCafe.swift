@@ -111,7 +111,7 @@ class NetworkCafe {
     }
     
     static func getCafeReviews(cafeModel: ModelCafe, startIndex: Int=0) {
-        let cafeId = cafeModel.getCafe()["id"] as! String
+        guard let cafeId = cafeModel.id else { return }
         var modelReviews = [ModelReview]()
         
         Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in

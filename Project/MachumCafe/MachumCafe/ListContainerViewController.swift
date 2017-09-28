@@ -105,7 +105,7 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         let allCafeList = Cafe.sharedInstance.allCafeList
         let _ = allCafeList.map { (cafe) in
             var result = [String]()
-            for category in cafe.getCafe()["category"] as! [String] {
+            for category in cafe.category {
                 for filter in filterArray {
                     if category == filter {
                         result.append(filter)

@@ -10,18 +10,18 @@ import Foundation
 
 class ModelCafe {
     
-    private var id : String?
-    private var name = String()
-    private var tel : String?
-    private var address = String()
-    private var hours : String?
-    private var latitude : Double?
-    private var longitude : Double?
-    private var category = [String]()
-    private var rating = Double()
-    private var menu : String?
-    private var imagesURL = [String]()
-    private var reviews = [ModelReview]() {
+    private(set) var id : String?
+    private(set) var name = String()
+    private(set) var tel : String?
+    private(set) var address = String()
+    private(set) var hours : String?
+    private(set) var latitude : Double?
+    private(set) var longitude : Double?
+    private(set) var category = [String]()
+    private(set) var rating = Double()
+    private(set) var menu : String?
+    private(set) var imagesURL = [String]()
+    private(set) var reviews = [ModelReview]() {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
         }
@@ -47,24 +47,22 @@ class ModelCafe {
         self.reviews = reviews
     }
     
-    func getCafe() -> [String : Any] {
-        var cafeDic = [String : Any]()
-        cafeDic["id"] = id
-        cafeDic["name"] = name
-        cafeDic["tel"] = tel
-        cafeDic["address"] = address
-        cafeDic["hours"] = hours
-        cafeDic["latitude"] = latitude
-        cafeDic["longitude"] = longitude
-        cafeDic["category"] = category
-        cafeDic["rating"] = rating
-        cafeDic["menu"] = menu
-        cafeDic["imagesURL"] = imagesURL
-        return cafeDic
-    }
-
-    func getReviews() -> [ModelReview] {
-        return reviews
+    func getParameters() -> [String:Any] {
+        let paramerter: [String:Any] = [
+            "id": id as Any,
+            "name": name,
+            "tel": tel as Any,
+            "address": address,
+            "hours": hours as Any,
+            "latitude": latitude as Any,
+            "longitude": longitude as Any,
+            "category": category,
+            "rating": rating,
+            "menu": menu as Any,
+            "imagesURL": imagesURL,
+            "review": reviews
+        ]
+        return paramerter
     }
     
     func setRating(rating: Double) {

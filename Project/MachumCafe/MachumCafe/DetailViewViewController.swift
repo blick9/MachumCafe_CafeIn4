@@ -19,12 +19,12 @@ class DetailViewViewController: UIViewController {
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var showMoreReview: UIButton!
     
-    var cafeData = [String:Any]()
-    var currentCafeModel = ModelCafe()
+//    var cafeData = [String:Any]()
+    var cafe = ModelCafe()
     var cafeCategorys = [String]()
     var userID = User.sharedInstance.user.id
     var userBookmarkIDs = User.sharedInstance.user.bookmark
-    var indexCafeID = String()
+//    var indexCafeID = String()
     var reviews = [ModelReview]()
     var ratingViewxib = Bundle.main.loadNibNamed("RatingView", owner: self, options: nil)?.first as! RatingView
     
@@ -43,18 +43,16 @@ class DetailViewViewController: UIViewController {
         let moreButton = UIBarButtonItem(image: #imageLiteral(resourceName: "more_Bt"), style: .plain, target: self, action: #selector(moreButtonAction))
         navigationItem.rightBarButtonItem = moreButton
         
-        cafeData = currentCafeModel.getCafe()
-        cafeCategorys = cafeData["category"] as! [String]
+        cafeCategorys = cafe.category
+        NetworkCafe.getCafeReviews(cafeModel: cafe)
         
-        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel)
-        
-        if !(cafeData["imagesURL"] as! [String]).isEmpty {
-            makeCafeImageScrollView(imagesURL: cafeData["imagesURL"] as! [String])
+        if !cafe.imagesURL.isEmpty {
+            makeCafeImageScrollView(imagesURL: cafe.imagesURL)
         } else {
             cafeImageScrollView.addSubview(UIImageView(image: #imageLiteral(resourceName: "2")))
         }
         
-        cafeNameLabel.text = cafeData["name"] as? String
+        cafeNameLabel.text = cafe.name
         cafeNameLabel.sizeToFit()
         cafeNameLabel.shadowOffset = CGSize(width: 1.5, height: 1.5)
         cafeNameLabel.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.4)
@@ -66,8 +64,8 @@ class DetailViewViewController: UIViewController {
         ratingViewxib.widthAnchor.constraint(equalToConstant: 44).isActive = true
         ratingViewxib.heightAnchor.constraint(equalToConstant: 18).isActive = true
         ratingViewxib.centerYAnchor.constraint(equalTo: cafeNameLabel.centerYAnchor).isActive = true
-        ratingViewxib.ratingLabel.text = String(describing: cafeData["rating"]!)
-        ratingViewxib.ratingStarImage.image = String(describing: cafeData["rating"]!) == "0.0" ? #imageLiteral(resourceName: "RatingStarEmpty") : #imageLiteral(resourceName: "RatingStarFill")
+        ratingViewxib.ratingLabel.text = String(describing: cafe.rating)
+        ratingViewxib.ratingStarImage.image = String(describing: cafe.rating) == "0.0" ? #imageLiteral(resourceName: "RatingStarEmpty") : #imageLiteral(resourceName: "RatingStarFill")
 
         NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewTable), name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
     }
@@ -75,12 +73,13 @@ class DetailViewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        indexCafeID = cafeData["id"] as! String
-        bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
+        if let id = cafe.id {
+            bookmarkButton.isSelected = userBookmarkIDs.contains(id) ? true : false
+        }
     }
     
     func reloadReviewTable(_ notification: Notification) {
-        reviews += currentCafeModel.getReviews()
+        reviews += cafe.reviews
         detailTableView.reloadData()
     }
     
@@ -106,19 +105,21 @@ class DetailViewViewController: UIViewController {
     func suggestionButtonAction() {
         let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
         let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
-        suggestionViewController.cafeData = cafeData
+        suggestionViewController.cafe = cafe
         present(suggestionViewNavigationController, animated: true, completion: nil)
     }
     
     func phoneCallButtonAction() {
-        if let url = URL(string: "tel://\(cafeData["tel"] as? String ?? "")") {
+        if let url = URL(string: "tel://\(cafe.tel ?? "")") {
             UIApplication.shared.open(url)
         }
     }
     
     func bookmarkToggleButton() {
+        guard let id = cafe.id else { return }
+        
         if User.sharedInstance.isUser {
-            NetworkBookmark.setMyBookmark(userId: userID, cafeId: indexCafeID, callback: { (desc) in
+            NetworkBookmark.setMyBookmark(userId: userID, cafeId: id, callback: { (desc) in
                 print(desc)
                 self.bookmarkButton.isSelected = !self.bookmarkButton.isSelected
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadBookmark"), object: nil)
@@ -137,7 +138,7 @@ class DetailViewViewController: UIViewController {
             let alert = UIAlertController(title: "폐업 신고", message: "폐업 신고를 하시겠습니까?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "취소", style: .default)
             let confirm = UIAlertAction(title: "확인", style: .default, handler: { (_) in
-                NetworkAdmin.suggestionClesedCafe(cafe: self.cafeData)
+                NetworkAdmin.suggestionClesedCafe(cafe: self.cafe)
                 UIAlertController().oneButtonAlert(target: self, title: "제보 완료", message: "소중한 의견 감사합니다.\n빠른시간 내에 적용하겠습니다 :)", isHandler: false)
             })
             alert.addAction(confirm)
@@ -154,7 +155,7 @@ class DetailViewViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let writeReviewView : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
-        writeReviewView.currentCafeModel = currentCafeModel
+        writeReviewView.cafe = cafe
     }
 }
 
@@ -190,18 +191,18 @@ extension DetailViewViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
             
-            if let address = cafeData["address"] as? String {
+            if !cafe.address.isEmpty {
                 cell.suggestionButton[0].isHidden = true
-                cell.detailLabel[0].text = address
+                cell.detailLabel[0].text = cafe.address
             }
-            if let tel = cafeData["tel"] as? String {
+            if let tel = cafe.tel {
                 cell.suggestionButton[1].isHidden = true
+                cell.phoneCallButton.isHidden = false
                 cell.detailLabel[1].text = tel
             }
-            if let hours = cafeData["hours"] as? String {
+            if let hours = cafe.hours {
                 cell.suggestionButton[2].isHidden = true
                 cell.detailLabel[2].text = hours
-                cell.phoneCallButton.isHidden = false
             }
             cell.suggestionButton.forEach { button in
                 button.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)

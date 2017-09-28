@@ -28,13 +28,6 @@ class ModelLocation {
         self.address = address
     }
     
-//    func getLocation() -> [String : Any] {
-//        var locationDic = [String : Any]()
-//        locationDic["latitude"] = latitude
-//        locationDic["longitude"] = longitude
-//        locationDic["address"] = address
-//        return locationDic
-//    }
 }
 
 class Location {

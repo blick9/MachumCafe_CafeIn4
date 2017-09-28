@@ -68,15 +68,14 @@ class ListMapViewController: UIViewController{
     }
     
     func insertCafeMarkers() {
-        modelCafe.forEach { (cafeData) in
-            let cafe = cafeData.getCafe()
-            let cafeID = cafe["id"] as! String
-            let cafeName = cafe["name"] as! String
-            let cafeAddress = cafe["address"] as! String
-            let latitude = cafe["latitude"] as! Double
-            let longitude = cafe["longitude"] as! Double
+        for cafe in modelCafe {
+            guard let cafeID = cafe.id,
+                let latitude = cafe.latitude,
+                let longitude = cafe.longitude else { continue }
+            let cafeName = cafe.name
+            let cafeAddress = cafe.address
             if !markerIDArray.contains(cafeID) {
-                createMarker(titleMarker: cafeName, snippetMarker: cafeAddress, targetData: cafeData, latitude: latitude, longitude: longitude)
+                createMarker(titleMarker: cafeName, snippetMarker: cafeAddress, targetData: cafe, latitude: latitude, longitude: longitude)
                 markerIDArray.append(cafeID)
             }
         }
@@ -107,7 +106,7 @@ class ListMapViewController: UIViewController{
             var newCafeList = [ModelCafe]()
             for cafe in modelCafe {
                 let isCafe = Cafe.sharedInstance.allCafeList.filter({ (cafeList) -> Bool in
-                    return cafeList.getCafe()["id"] as! String == cafe.getCafe()["id"] as! String
+                    return cafeList.id == cafe.id
                 })
                 if isCafe.isEmpty {
                     newCafeList.append(cafe)
@@ -140,8 +139,9 @@ class ListMapViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailView" {
-            let controller = segue.destination as! DetailViewViewController
-            controller.currentCafeModel = currentSelectedCafe
+            if let controller = segue.destination as? DetailViewViewController {
+                controller.cafe = currentSelectedCafe
+            }
         }
     }
     
@@ -166,10 +166,9 @@ extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate 
         infoViewAnimate()
         
         let cafe = marker.userData as! ModelCafe
-        let cafeDic = cafe.getCafe()
         
-        if !(cafeDic["imagesURL"] as! [String]).isEmpty {
-            let cafeImage = NetworkCafe.getCafeImage(imageURL: (cafeDic["imagesURL"] as! [String])[0])
+        if !cafe.imagesURL.isEmpty {
+            let cafeImage = NetworkCafe.getCafeImage(imageURL: cafe.imagesURL[0])
             self.cafeImageView.kf.setImage(with: cafeImage)
         } else {
             self.cafeImageView.image = #imageLiteral(resourceName: "2")
@@ -179,7 +178,7 @@ extension ListMapViewController : GMSMapViewDelegate, CLLocationManagerDelegate 
         if googleMap.camera.zoom <= 12 { googleMap.animate(toZoom: 14) }
         cafeName.text = marker.title
         cafeAddress.text = marker.snippet
-        cafePhone.text = (cafeDic["tel"] as! String)
+        cafePhone.text = cafe.tel ?? ""
         currentSelectedCafe = cafe
         return true
     }

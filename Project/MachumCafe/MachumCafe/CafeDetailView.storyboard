@@ -11,6 +11,13 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeo.ttc">
+            <string>AppleSDGothicNeo-Bold</string>
+            <string>AppleSDGothicNeo-Light</string>
+            <string>AppleSDGothicNeo-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Cafe Detail View Controller-->
         <scene sceneID="5lG-0k-MKx">
@@ -307,7 +314,7 @@
                                                         <constraint firstAttribute="width" constant="2" id="Jax-Oa-Hdh"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-dB-Nb0">
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-dB-Nb0">
                                                     <rect key="frame" x="79" y="58" width="65" height="25"/>
                                                     <state key="normal" image="phoneCall"/>
                                                 </button>
@@ -440,7 +447,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3z1-CD-BVy" customClass="CosmosView" customModule="Cosmos">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3z1-CD-BVy" customClass="CosmosView" customModule="Cosmos">
                                         <rect key="frame" x="52.5" y="17.5" width="170" height="30"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="starSize">

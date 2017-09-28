@@ -28,17 +28,6 @@ class ModelUser {
         self.profileImageURL = profileImageURL
     }
     
-//    func getUser() -> [String : Any] {
-//        var userDic = [String : Any]()
-//        userDic["id"] = id
-//        userDic["isKakaoImage"] = isKakaoImage
-//        userDic["email"] = email
-//        userDic["nickname"] = nickname
-//        userDic["bookmark"] = bookmark
-//        userDic["profileImageURL"] = profileImageURL
-//        return userDic
-//    }
-    
     func setBookmark(bookmarks : [String]) {
         bookmark = bookmarks
     }

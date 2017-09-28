@@ -49,7 +49,7 @@ class ListViewController: UIViewController {
     }
     
     func bookmarkToggleButton(_ buttonTag : UIButton) {
-        let cafeID = Cafe.sharedInstance.filterCafeList[buttonTag.tag].getCafe()["id"] as! String
+        guard let cafeID = Cafe.sharedInstance.filterCafeList[buttonTag.tag].id else { return }
         if User.sharedInstance.isUser {
             NetworkBookmark.setMyBookmark(userId: getUserID, cafeId: cafeID, callback: { (desc) in
                 print(desc)
@@ -70,7 +70,7 @@ class ListViewController: UIViewController {
         if segue.identifier == "DetailView" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! DetailViewViewController
-                controller.currentCafeModel = Cafe.sharedInstance.filterCafeList[indexPath.row]
+                controller.cafe = Cafe.sharedInstance.filterCafeList[indexPath.row]
             }
         }
     }
@@ -92,27 +92,34 @@ extension ListViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListTableViewCell
-        var cafe = Cafe.sharedInstance.filterCafeList[indexPath.row].getCafe()
-        let cafeLocation = CLLocation(latitude: cafe["latitude"] as! CLLocationDegrees, longitude: cafe["longitude"] as! CLLocationDegrees)
-        var distance = Double(currentLocation.distance(from: cafeLocation))
-        let convertByDistance = distance.meterConvertToKiloMeter(places: 2)
+        let cafe = Cafe.sharedInstance.filterCafeList[indexPath.row]
         
-        if !(cafe["imagesURL"] as! [String]).isEmpty {
-            let cafeImage = NetworkCafe.getCafeImage(imageURL: (cafe["imagesURL"] as! [String])[0])
+        if let latitude = cafe.latitude,
+            let longitude = cafe.longitude {
+            let cafeLocation = CLLocation(latitude: latitude, longitude: longitude)
+            var distance = Double(currentLocation.distance(from: cafeLocation))
+            let convertByDistance = distance.meterConvertToKiloMeter(places: 2)
+            cell.distanceLabel.text = "\(distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m")"
+        }
+        
+        if !cafe.imagesURL.isEmpty {
+            let cafeImage = NetworkCafe.getCafeImage(imageURL: cafe.imagesURL[0])
             cell.backgroundImageView.kf.setImage(with: cafeImage)
         } else {
             cell.backgroundImageView.image = #imageLiteral(resourceName: "2")
         }
-        cell.cafeNameLabel.text = cafe["name"] as? String
-        cell.cafeAddressLabel.text = cafe["address"] as? String
-        cell.ratingValue = String(describing: cafe["rating"]!)
-        cell.distanceLabel.text = "\(distance > 1000 ? "\(convertByDistance)km" : "\(Int(convertByDistance))m")"
-        if let cafeCategorys = cafe["category"] as? [String] {
-            let categorylabel = cafeCategorys.reduce("") { $0 + "#\($1) " }
+        cell.cafeNameLabel.text = cafe.name
+        cell.cafeAddressLabel.text = cafe.address
+        cell.ratingValue = String(describing: cafe.rating)
+        
+        if !cafe.category.isEmpty {
+            let categorylabel = cafe.category.reduce("") { $0 + "#\($1) " }
             cell.category.text = categorylabel
         }
         
-        cell.bookmarkButton.isSelected = getUserBookmarkArray.contains(cafe["id"] as! String) ? true : false
+        if let id = cafe.id {
+            cell.bookmarkButton.isSelected = getUserBookmarkArray.contains(id) ? true : false
+        }
         cell.bookmarkButton.tag = indexPath.row
         cell.bookmarkButton.addTarget(self, action: #selector(bookmarkToggleButton(_:)), for: .touchUpInside)
         return cell
