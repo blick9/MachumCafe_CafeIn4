@@ -219,8 +219,8 @@ extension DetailViewViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.reviewContent.text = review.reviewContent
                 cell.reviewStarRating.rating = review.rating
                 
-                if !review.profileImageURL.isEmpty {
-                    let profileImage = NetworkUser.getUserImage(userID: review.userId, isKakaoImage: review.isKakaoImage, imageURL: review.profileImageURL)
+                if let profileImageURL = review.profileImageURL {
+                    let profileImage = NetworkUser.getUserImage(userID: review.userId, isKakaoImage: review.isKakaoImage, imageURL: profileImageURL)
                     cell.reviewerPicture.kf.setImage(with: profileImage)
                 } else {
                     cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")

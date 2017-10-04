@@ -195,8 +195,9 @@ class CafeDetailViewController: UIViewController {
     }
     
     func phoneCallButtonAction() {
-        let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
-        UIApplication.shared.openURL(url as! URL)
+        if let url = URL(string: "tel://\(cafeData["tel"] as! String)") {
+            UIApplication.shared.open(url)
+        }
     }
     
     override func didReceiveMemoryWarning() {
