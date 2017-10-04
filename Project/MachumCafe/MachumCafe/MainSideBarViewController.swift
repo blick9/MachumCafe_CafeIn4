@@ -54,7 +54,7 @@ class MainSideBarViewController: UIViewController {
             settingProfileImageIcon.isHidden = true
         case true :
             let user = User.sharedInstance.user
-            if !(user.profileImageURL).isEmpty {
+            if !user.profileImageURL.isEmpty {
                 let profileImage = NetworkUser.getUserImage(userID: user.id, isKakaoImage: user.isKakaoImage, imageURL: user.profileImageURL)
                 userProfileImageView.kf.setImage(with: profileImage)
             } else {

@@ -74,16 +74,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     let email = user.email!
                     let nickname = user.property(forKey: "nickname") as! String
                     let imageURL = user.property(forKey: "profile_image") as! String
-                    
-                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL) { (result, user) in
-                        let activityIndicator = UIActivityIndicatorView()
-                        let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
-                        activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
-                        
-                        User.sharedInstance.user = user
-                        User.sharedInstance.isUser = true
-                        self.dismiss(animated: true, completion: nil)
-                    }
+                    NetworkUser.kakaoLogin(email: email, nickname: nickname, imageURL: imageURL)
+                    self.dismiss(animated: true, completion: nil)
                 })
             }
         })
@@ -92,11 +84,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
      @IBAction func logInButton(_ sender: Any) {
         let activityIndicator = UIActivityIndicatorView()
         let startedIndicator = activityIndicator.showActivityIndicatory(view: self.view)
-        NetworkUser.logIn(email: emailTextField.text!, password: passwordTextField.text!) { (result, user) in
+        
+        NetworkUser.logIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "") { result in
             activityIndicator.stopActivityIndicator(view: self.view, currentIndicator: startedIndicator)
             if result {
-                User.sharedInstance.user = user
-                User.sharedInstance.isUser = true
                 self.dismiss(animated: true, completion: nil)
             } else {
                 UIAlertController().oneButtonAlert(target: self, title: "로그인", message: "아이디 또는 비밀번호를 다시 확인하세요.", isHandler: false)

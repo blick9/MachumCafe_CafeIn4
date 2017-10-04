@@ -43,22 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             KOSessionTask.meTask(completionHandler: { (profile, error) in
                 if let userProfile = profile {
                     let user = userProfile as! KOUser
-                    let email = user.email!
-                    
-                    NetworkUser.kakaoLogin(email: email, nickname: String(), imageURL: String()) { (result, user) in
-                        User.sharedInstance.user = user
-                        User.sharedInstance.isUser = true
-                    }
+                    let email = user.email!                    
+                    NetworkUser.kakaoLogin(email: email, nickname: String(), imageURL: String())
                 }
             })
         } else {
             // 카톡 유저 아닐 경우 우리 서버에서 세션 확인 후 모델 저장
-            NetworkUser.getUser { (result, user) in
-                if result {
-                    User.sharedInstance.user = user
-                    User.sharedInstance.isUser = true
-                }
-            }
+            NetworkUser.getUser()
         }
         KOSession.shared().isAutomaticPeriodicRefresh = true
 

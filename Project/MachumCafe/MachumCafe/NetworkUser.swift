@@ -29,34 +29,32 @@ class NetworkUser {
     }
     
     // MARK: 로그인
-    static func logIn(email: String, password: String, callback: @escaping (_ result: Bool, _ modelUser: ModelUser) -> Void) {
+    static func logIn(email: String, password: String, callback: @escaping (_ result: Bool) -> Void) {
         let parameters : Parameters = [
             "email" : email,
             "password" : password
         ]
         
         Alamofire.request("\(Config.url)/api/v1/user/login", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-            var modelUser = ModelUser()
-            let res = JSON(data: response.data!)
-            let result = res["result"].boolValue
-            if let user = res["user"].dictionary {
-                if let id = user["_id"]?.stringValue,
-                let isKakaoImage = user["isKakaoImage"]?.boolValue,
-                let email = user["email"]?.stringValue,
-                let nickname = user["nickname"]?.stringValue,
-                let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
-                    var imageURL = String()
-                    if let userImageURL = user["imageURL"]?.stringValue {
-                        imageURL = userImageURL
+            switch response.result {
+            case .success(let response):
+                guard let contents = response as? [String:Any],
+                    let result = contents["result"] as? Bool else { return }
+                if result {
+                    if let user = contents["user"] as? [String:Any],
+                        let modelUser = ModelUser(JSON: user) {
+                        User.sharedInstance.user = modelUser
+                        User.sharedInstance.isUser = true
                     }
-                    modelUser = ModelUser(id: id, isKakaoImage: isKakaoImage, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
                 }
+                callback(result)
+            case .failure(let error):
+                print(error)
             }
-            callback(result, modelUser)
         }
     }
     
-    static func kakaoLogin(email: String, nickname: String, imageURL: String, callback: @escaping (_ result: Bool, _ modelUser: ModelUser) -> Void) {
+    static func kakaoLogin(email: String, nickname: String, imageURL: String) {
         let parameters : Parameters = [
             "email": email,
             "nickname": nickname,
@@ -64,48 +62,36 @@ class NetworkUser {
         ]
         
         Alamofire.request("\(Config.url)/api/v1/user/login/kakao", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
-            var modelUser = ModelUser()
-            let res = JSON(data: response.data!)
-            let result = res["result"].boolValue
-            if let user = res["user"].dictionary {
-                if let id = user["_id"]?.stringValue,
-                let isKakaoImage = user["isKakaoImage"]?.boolValue,
-                let email = user["email"]?.stringValue,
-                let nickname = user["nickname"]?.stringValue,
-                let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
-                    var imageURL = String()
-                    if let userImageURL = user["imageURL"]?.stringValue {
-                        imageURL = userImageURL
-                    }
-                    modelUser = ModelUser(id: id, isKakaoImage: isKakaoImage, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL)
+            
+            switch response.result {
+            case .success(let response):
+                guard let contents = response as? [String:Any],
+                    let user = contents["user"] as? [String:Any] else { return }
+                if let modelUser = ModelUser(JSON: user) {
+                    print(modelUser.profileImageURL)
+                    User.sharedInstance.user = modelUser
+                    User.sharedInstance.isUser = true
                 }
+            case .failure(let error):
+                print(error)
             }
-            callback(result, modelUser)
         }
     }
     
     // MARK: 세션정보 있을 경우 유저모델 저장
-    static func getUser(callback: @escaping (_ result: Bool, _ modelUser: ModelUser) -> Void) {
+    static func getUser() {
         Alamofire.request("\(Config.url)/api/v1/user/login").responseJSON { (response) in
-            var modelUser = ModelUser()
-
-            let res = JSON(data: response.data!)
-            let result = res["result"].boolValue
-            if let user = res["user"].dictionary {
-                if let id = user["_id"]?.stringValue,
-                let email = user["email"]?.stringValue,
-                let isKakaoImage = user["isKakaoImage"]?.boolValue,
-                let nickname = user["nickname"]?.stringValue,
-                let bookmark = user["bookmark"]?.arrayValue.map({ $0.stringValue }) {
-                    var imageURL = String()
-                    if let userImageURL = user["imageURL"]?.stringValue {
-                        imageURL = userImageURL
-                    }
-                    modelUser = ModelUser(id: id, isKakaoImage: isKakaoImage, email: email, nickname: nickname, bookmark: bookmark, profileImageURL: imageURL
-                    )
+            switch response.result {
+            case .success(let response):
+                guard let contents = response as? [String:Any],
+                    let user = contents["user"] as? [String:Any] else { return }
+                if let modelUser = ModelUser(JSON: user) {
+                    User.sharedInstance.user = modelUser
+                    User.sharedInstance.isUser = true
                 }
+            case .failure(let error):
+                print(error)
             }
-            callback(result, modelUser)
         }
     }
     

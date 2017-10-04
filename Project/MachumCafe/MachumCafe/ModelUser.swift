@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class ModelUser {
-    
+class ModelUser: Mappable {
     private(set) var id = String()
     private(set) var isKakaoImage = Bool()
     private(set) var email = String()
@@ -17,15 +17,19 @@ class ModelUser {
     private(set) var bookmark = [String]()
     private(set) var profileImageURL = String()
     
-    init() {}
+    required init?(map: Map) {
+    }
     
-    init(id: String, isKakaoImage: Bool, email: String, nickname: String, bookmark: [String], profileImageURL: String) {
-        self.id = id
-        self.isKakaoImage = isKakaoImage
-        self.email = email
-        self.nickname = nickname
-        self.bookmark = bookmark
-        self.profileImageURL = profileImageURL
+    init() {
+    }
+    
+    func mapping(map: Map) {
+        self.id <- map["_id"]
+        self.isKakaoImage <- map["isKakaoImgae"]
+        self.email <- map["email"]
+        self.nickname <- map["nickname"]
+        self.bookmark <- map["bookmark"]
+        self.profileImageURL <- map["imageURL"]
     }
     
     func setBookmark(bookmarks : [String]) {
