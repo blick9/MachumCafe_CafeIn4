@@ -22,18 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         let googleMapKey = Config.googleMapKey
-        
         GMSServices.provideAPIKey(googleMapKey)
         GMSPlacesClient.provideAPIKey(googleMapKey)
+        
         let backButtonImage = #imageLiteral(resourceName: "back_Bt").stretchableImage(withLeftCapWidth: 13, topCapHeight: 22)
-        UIBarButtonItem.appearance().setBackButtonBackgroundImage(backButtonImage, for: .normal, barMetrics: .default)
-
+        UINavigationBar.appearance().backIndicatorImage = backButtonImage
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor(red: 51, green: 51, blue: 51)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 255, green: 232, blue: 129)]
-        
         UINavigationBar.appearance().isTranslucent = false
         
         // MARK: 카톡 로그인 세션 있을 경우 유저정보 Get, 없을경우 우리 서버에서 유저정보 Get, 둘다 세션 없을경우 nil
