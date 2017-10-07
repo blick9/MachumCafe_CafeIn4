@@ -10,16 +10,16 @@ import UIKit
 import ObjectMapper
 
 class ModelReview: Mappable {
-    private(set) var id: String!
-    private(set) var isKakaoImage: Bool!
-    private(set) var cafeId: String!
-    private(set) var userId: String!
-    private(set) var nickname: String!
+    private(set) var id: String?
+    private(set) var isKakaoImage = Bool()
+    private(set) var cafeId = String()
+    private(set) var userId = String()
+    private(set) var nickname = String()
     private(set) var profileImageURL: String?
     private(set) var profileImage: Data?
-    private(set) var date: String!
-    private(set) var reviewContent: String!
-    private(set) var rating: Double!
+    private(set) var date = String()
+    private(set) var reviewContent = String()
+    private(set) var rating = Double()
     
     required init?(map: Map) {
     }

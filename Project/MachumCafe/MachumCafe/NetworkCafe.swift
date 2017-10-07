@@ -73,7 +73,7 @@ class NetworkCafe {
     }
     
     static func postCafeReview(review: ModelReview, targetCafe: ModelCafe) {
-        let cafeId = String(describing: review.cafeId)
+        let cafeId = review.cafeId
         let parameter = review.toJSON()
         
         Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: parameter, encoding: JSONEncoding.default).responseJSON { (response) in

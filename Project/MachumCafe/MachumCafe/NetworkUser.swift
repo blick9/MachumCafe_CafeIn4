@@ -68,7 +68,6 @@ class NetworkUser {
                 guard let contents = response as? [String:Any],
                     let user = contents["user"] as? [String:Any] else { return }
                 if let modelUser = ModelUser(JSON: user) {
-                    print(modelUser.profileImageURL)
                     User.sharedInstance.user = modelUser
                     User.sharedInstance.isUser = true
                 }
