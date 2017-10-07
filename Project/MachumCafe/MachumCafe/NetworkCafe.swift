@@ -10,37 +10,26 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import ObjectMapper
 
 class NetworkCafe {
     
     // MARK: 현위치 반경 1km 내 카페목록 불러오기
     static func getCafeList(coordinate: ModelLocation, callback: @escaping (_ modelCafe: [ModelCafe]) -> Void) {
-        var modelCafe = [ModelCafe]()
         let parameter: [String:Double] = [
             "latitude": coordinate.latitude,
             "longitude": coordinate.longitude
         ]
         
         Alamofire.request("\(Config.url)/api/v1/cafe", method: .post, parameters: parameter, encoding: JSONEncoding.default).responseJSON { (response) in
-            let cafes = JSON(data: response.data!).arrayValue
-            let _ = cafes.map {
-                var cafe = $0.dictionaryValue
-                
-                if let id = cafe["_id"]?.stringValue,
-                    let name = cafe["name"]?.stringValue,
-                    let address = cafe["address"]?.stringValue,
-                    let longitude = cafe["location"]?.arrayValue[0].doubleValue,
-                    let latitude = cafe["location"]?.arrayValue[1].doubleValue,
-                    let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
-                    let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
-                    let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
-                    let tel = cafe["tel"]?.stringValue
-                    let hours = cafe["hours"]?.stringValue
-                    let menu = cafe["menu"]?.stringValue
-                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL))
-                }
+            switch response.result {
+            case .success(let response):
+                guard let contents = response as? [[String:Any]] else { return }
+                let cafes = Mapper<ModelCafe>().mapArray(JSONArray: contents)
+                callback(cafes)
+            case .failure(let error):
+                print(error)
             }
-            callback(modelCafe)
         }
     }
     
@@ -98,15 +87,17 @@ class NetworkCafe {
         Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in
             switch response.result {
             case .success(let response):
-                var modelReviews = [ModelReview]()
+//                var modelReviews = [ModelReview]()
                 guard let contents = response as? [String:Any],
                     let reviews = contents["reviews"] as? [[String:Any]] else { return }
-                reviews.forEach { review in
-                    if let modelReview = ModelReview(JSON: review) {
-                        modelReviews.insert(modelReview, at: 0)
-                    }
-                }
-                cafeModel.setReviews(reviews: modelReviews)
+                let modelReviews = Mapper<ModelReview>().mapArray(JSONArray: reviews)
+                cafeModel.setReviews(reviews: modelReviews.reversed())
+//                reviews.forEach { review in
+//                    if let modelReview = ModelReview(JSON: review) {
+//                        modelReviews.insert(modelReview, at: 0)
+//                    }
+//                }
+//                cafeModel.setReviews(reviews: modelReviews)
             case .failure(let error):
                 print(String(describing: error))
             }

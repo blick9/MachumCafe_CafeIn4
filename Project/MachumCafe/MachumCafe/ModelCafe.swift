@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class ModelCafe {
-    
+class ModelCafe: Mappable {
     private(set) var id : String?
     private(set) var name = String()
     private(set) var tel : String?
@@ -27,7 +27,11 @@ class ModelCafe {
         }
     }
     
-    init() {}
+    required init?(map: Map) {
+    }
+    
+    init() {
+    }
         
     init(id: String? = nil, name: String, tel: String?, address: String, hours: String?, latitude: Double? = nil, longitude: Double? = nil, category: [String], rating: Double, menu: String? = nil, imagesURL: [String]) {
         self.id = id
@@ -43,6 +47,20 @@ class ModelCafe {
         self.imagesURL = imagesURL
     }
     
+    func mapping(map: Map) {
+        self.id <- map["_id"]
+        self.name <- map["name"]
+        self.tel <- map["tel"]
+        self.address <- map["address"]
+        self.hours <- map["hours"]
+        self.latitude <- map["location.1"]
+        self.longitude <- map["location.0"]
+        self.category <- map["category"]
+        self.rating <- map["rating"]
+        self.menu <- map["manu"]
+        self.imagesURL <- map["imagesURL"]
+    }
+    
     func setReviews(reviews: [ModelReview]?=nil, review: ModelReview?=nil) {
         if let reviews = reviews {
             self.reviews = reviews
@@ -53,24 +71,6 @@ class ModelCafe {
     
     func setRating(rating: Double) {
         self.rating = rating
-    }
-    
-    func getParameters() -> [String:Any] {
-        let paramerter: [String:Any] = [
-            "id": id as Any,
-            "name": name,
-            "tel": tel as Any,
-            "address": address,
-            "hours": hours as Any,
-            "latitude": latitude as Any,
-            "longitude": longitude as Any,
-            "category": category,
-            "rating": rating,
-            "menu": menu as Any,
-            "imagesURL": imagesURL,
-            "review": reviews
-        ]
-        return paramerter
     }
     
 }

@@ -38,17 +38,20 @@ class NetworkAdmin {
     
     // MARK: 새로운 카페 제보
     static func suggestionNewCafe(cafe: ModelCafe) {
-        Alamofire.request("\(Config.url)/api/v1/admin/suggestion/newcafe", method: .post, parameters: cafe.getParameters(), encoding: JSONEncoding.default).responseJSON {_ in}
+        let parameter = cafe.toJSON()
+        Alamofire.request("\(Config.url)/api/v1/admin/suggestion/newcafe", method: .post, parameters: parameter, encoding: JSONEncoding.default).responseJSON {_ in}
     }
     
     // MARK: 기존 카페 수정 제보
     static func suggestionEditCafe(cafe: ModelCafe) {
-        Alamofire.request("\(Config.url)/api/v1/admin/suggestion/editcafe", method: .post, parameters: cafe.getParameters(), encoding: JSONEncoding.default).responseJSON {_ in}
+        let parameter = cafe.toJSON()
+        Alamofire.request("\(Config.url)/api/v1/admin/suggestion/editcafe", method: .post, parameters: parameter, encoding: JSONEncoding.default).responseJSON {_ in}
     }
     
     // MARK: 기존 카페 폐업 신고
     static func suggestionClesedCafe(cafe: ModelCafe) {
-        Alamofire.request("\(Config.url)/api/v1/admin/suggestion/closedcafe", method: .post, parameters: cafe.getParameters(), encoding: JSONEncoding.default).responseJSON {_ in}
+        let parameter = cafe.toJSON()
+        Alamofire.request("\(Config.url)/api/v1/admin/suggestion/closedcafe", method: .post, parameters: parameter, encoding: JSONEncoding.default).responseJSON {_ in}
     }
 }
 

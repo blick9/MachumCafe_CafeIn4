@@ -27,6 +27,17 @@ class ModelReview: Mappable {
     init() {
     }
     
+    init(id: String? = nil, isKakaoImage: Bool, cafeId : String, userId: String, nickname: String, profileImageURL: String?=nil, date: String, reviewContent: String, rating: Double) {
+        self.cafeId = cafeId
+        self.isKakaoImage = isKakaoImage
+        self.userId = userId
+        self.nickname = nickname
+        self.profileImageURL = profileImageURL
+        self.date = date
+        self.reviewContent = reviewContent
+        self.rating = rating
+    }
+    
     func mapping(map: Map) {
         id <- map["_id"]
         isKakaoImage <- map["isKakaoImage"]
@@ -37,17 +48,6 @@ class ModelReview: Mappable {
         date <- map["date"]
         reviewContent <- map["reviewContent"]
         rating <- map["rating"]
-    }
-    
-    init(id: String? = nil, isKakaoImage: Bool, cafeId : String, userId: String, nickname: String, profileImageURL: String?=nil, date: String, reviewContent: String, rating: Double) {
-        self.cafeId = cafeId
-        self.isKakaoImage = isKakaoImage
-        self.userId = userId
-        self.nickname = nickname
-        self.profileImageURL = profileImageURL
-        self.date = date
-        self.reviewContent = reviewContent
-        self.rating = rating
     }
     
     func setProfileImage(profileImage: Data) {
