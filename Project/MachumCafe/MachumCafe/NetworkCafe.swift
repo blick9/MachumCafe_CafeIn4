@@ -10,42 +10,33 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import ObjectMapper
 
 class NetworkCafe {
-
-    private static let url = URLpath.getURL()
     
     // MARK: 현위치 반경 1km 내 카페목록 불러오기
     static func getCafeList(coordinate: ModelLocation, callback: @escaping (_ modelCafe: [ModelCafe]) -> Void) {
-        var modelCafe = [ModelCafe]()
+        let parameter: [String:Double] = [
+            "latitude": coordinate.latitude,
+            "longitude": coordinate.longitude
+        ]
         
-        Alamofire.request("\(url)/api/v1/cafe", method: .post, parameters: coordinate.getLocation(), encoding: JSONEncoding.default).responseJSON { (response) in
-            let cafes = JSON(data: response.data!).arrayValue
-            let _ = cafes.map {
-                var cafe = $0.dictionaryValue
-                
-                if let id = cafe["_id"]?.stringValue,
-                    let name = cafe["name"]?.stringValue,
-                    let address = cafe["address"]?.stringValue,
-                    let longitude = cafe["location"]?.arrayValue[0].doubleValue,
-                    let latitude = cafe["location"]?.arrayValue[1].doubleValue,
-                    let category = cafe["category"]?.arrayValue.map({ $0.stringValue }),
-                    let rating = cafe["rating"]?.doubleValue.roundToPlaces(places: 1),
-                    let imagesURL = cafe["imagesURL"]?.arrayValue.map({ $0.stringValue }) {
-                    let tel = cafe["tel"]?.stringValue
-                    let hours = cafe["hours"]?.stringValue
-                    let menu = cafe["menu"]?.stringValue
-                    modelCafe.append(ModelCafe(id: id, name: name, tel: tel, address: address, hours: hours, latitude: latitude, longitude: longitude, category: category, rating: rating, menu: menu, imagesURL: imagesURL))
-                }
+        Alamofire.request("\(Config.url)/api/v1/cafe", method: .post, parameters: parameter, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+            case .success(let response):
+                guard let contents = response as? [[String:Any]] else { return }
+                let cafes = Mapper<ModelCafe>().mapArray(JSONArray: contents)
+                callback(cafes)
+            case .failure(let error):
+                print(error)
             }
-            callback(modelCafe)
         }
     }
     
     static func getSpecificCafe(cafeId: String, callback: @escaping (_ modelCafe: ModelCafe) -> Void) {
         var modelCafe = ModelCafe()
         
-        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)").responseJSON { (response) in
+        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)").responseJSON { (response) in
             var cafe = JSON(data: response.data!).dictionaryValue
             
             if let id = cafe["_id"]?.stringValue,
@@ -70,57 +61,46 @@ class NetworkCafe {
         return cafeImage
     }
     
-    static func postCafeReview(review: ModelReview, callback: @escaping (_ modelReviews: [ModelReview], _ rating: Double) -> Void) {
-        let cafeId = review.getReview()["cafeId"] as! String
-        let param : Parameters = ["review":review.getReview()]
-        var modelReviews = [ModelReview]()
+    static func postCafeReview(review: ModelReview, targetCafe: ModelCafe) {
+        let cafeId = review.cafeId
+        let parameter = review.toJSON()
         
-        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: param, encoding: JSONEncoding.default).responseJSON { (response) in
-            let res = JSON(data: response.data!)
-            let reviews = res["reviews"].arrayValue
-            var rating = res["rating"].doubleValue
-            rating = rating.roundToPlaces(places: 1)
-            let _ = reviews.map {
-                let review = $0.dictionaryValue
-                if let id = review["_id"]?.stringValue,
-                let isKakaoImage = review["isKakaoImage"]?.boolValue,
-                let userId = review["userId"]?.stringValue,
-                let nickname = review["nickname"]?.stringValue,
-                let profileImageURL = review["profileImageURL"]?.stringValue,
-                let date = review["date"]?.stringValue,
-                let reviewContent = review["reviewContent"]?.stringValue,
-                let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
-                    modelReviews.insert(modelReview, at: 0)
+        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review", method: .put, parameters: parameter, encoding: JSONEncoding.default).responseJSON { (response) in
+            switch response.result {
+            case .success(let response):
+                guard let contents = response as? [String:Any],
+                    let result = contents["result"] as? Bool,
+                    var rating = contents["rating"] as? Double else { return }
+                if result {
+                    targetCafe.setReviews(review: review)
+                    targetCafe.setRating(rating: rating.roundToPlaces(places: 1))
                 }
+            case .failure(let error):
+                print(String(describing: error))
             }
-            callback(modelReviews, rating)
         }
     }
     
-    static func getCafeReviews(cafeModel: ModelCafe, callback: @escaping () -> Void) {
-        let cafeId = cafeModel.getCafe()["id"] as! String
-        var modelReviews = [ModelReview]()
+    static func getCafeReviews(cafeModel: ModelCafe, startIndex: Int=0) {
+        guard let cafeId = cafeModel.id else { return }
         
-        Alamofire.request("\(url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in
-            let res = JSON(data: response.data!)
-            let reviews = res["reviews"].arrayValue
-            let _ = reviews.map {
-                let review = $0.dictionaryValue
-                if let id = review["_id"]?.stringValue,
-                let isKakaoImage = review["isKakaoImage"]?.boolValue,
-                let userId = review["userId"]?.stringValue,
-                let nickname = review["nickname"]?.stringValue,
-                let profileImageURL = review["profileImageURL"]?.stringValue,
-                let date = review["date"]?.stringValue,
-                let reviewContent = review["reviewContent"]?.stringValue,
-                let rating = review["rating"]?.doubleValue {
-                    let modelReview = ModelReview(id: id, isKakaoImage: isKakaoImage, cafeId: cafeId, userId: userId, nickname: nickname, profileImageURL: profileImageURL, date: date, reviewContent: reviewContent, rating: rating)
-                    modelReviews.insert(modelReview, at: 0)
-                }
+        Alamofire.request("\(Config.url)/api/v1/cafe/\(cafeId)/review").responseJSON { (response) in
+            switch response.result {
+            case .success(let response):
+//                var modelReviews = [ModelReview]()
+                guard let contents = response as? [String:Any],
+                    let reviews = contents["reviews"] as? [[String:Any]] else { return }
+                let modelReviews = Mapper<ModelReview>().mapArray(JSONArray: reviews)
+                cafeModel.setReviews(reviews: modelReviews.reversed())
+//                reviews.forEach { review in
+//                    if let modelReview = ModelReview(JSON: review) {
+//                        modelReviews.insert(modelReview, at: 0)
+//                    }
+//                }
+//                cafeModel.setReviews(reviews: modelReviews)
+            case .failure(let error):
+                print(String(describing: error))
             }
-            cafeModel.setReviews(reviews: modelReviews)
-            callback()
         }
     }
 }

@@ -7,27 +7,31 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class ModelCafe {
-    
-    private var id : String?
-    private var name = String()
-    private var tel : String?
-    private var address = String()
-    private var hours : String?
-    private var latitude : Double?
-    private var longitude : Double?
-    private var category = [String]()
-    private var rating = Double()
-    private var menu : String?
-    private var imagesURL = [String]()
-    private var reviews = [ModelReview]() {
+class ModelCafe: Mappable {
+    private(set) var id : String?
+    private(set) var name = String()
+    private(set) var tel : String?
+    private(set) var address = String()
+    private(set) var hours : String?
+    private(set) var latitude : Double?
+    private(set) var longitude : Double?
+    private(set) var category = [String]()
+    private(set) var rating = Double()
+    private(set) var menu : String?
+    private(set) var imagesURL = [String]()
+    private(set) var reviews = [ModelReview]() {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshReview"), object: nil)
         }
     }
     
-    init() {}
+    required init?(map: Map) {
+    }
+    
+    init() {
+    }
         
     init(id: String? = nil, name: String, tel: String?, address: String, hours: String?, latitude: Double? = nil, longitude: Double? = nil, category: [String], rating: Double, menu: String? = nil, imagesURL: [String]) {
         self.id = id
@@ -43,33 +47,32 @@ class ModelCafe {
         self.imagesURL = imagesURL
     }
     
-    func setReviews(reviews: [ModelReview]) {
-        self.reviews = reviews
+    func mapping(map: Map) {
+        self.id <- map["_id"]
+        self.name <- map["name"]
+        self.tel <- map["tel"]
+        self.address <- map["address"]
+        self.hours <- map["hours"]
+        self.latitude <- map["location.1"]
+        self.longitude <- map["location.0"]
+        self.category <- map["category"]
+        self.rating <- map["rating"]
+        self.menu <- map["manu"]
+        self.imagesURL <- map["imagesURL"]
     }
     
-    func getCafe() -> [String : Any] {
-        var cafeDic = [String : Any]()
-        cafeDic["id"] = id
-        cafeDic["name"] = name
-        cafeDic["tel"] = tel
-        cafeDic["address"] = address
-        cafeDic["hours"] = hours
-        cafeDic["latitude"] = latitude
-        cafeDic["longitude"] = longitude
-        cafeDic["category"] = category
-        cafeDic["rating"] = rating
-        cafeDic["menu"] = menu
-        cafeDic["imagesURL"] = imagesURL
-        return cafeDic
-    }
-
-    func getReviews() -> [ModelReview] {
-        return reviews
+    func setReviews(reviews: [ModelReview]?=nil, review: ModelReview?=nil) {
+        if let reviews = reviews {
+            self.reviews = reviews
+        } else if let review = review {
+            self.reviews.insert(review, at: 0)
+        }
     }
     
     func setRating(rating: Double) {
         self.rating = rating
     }
+    
 }
 
 class Cafe {

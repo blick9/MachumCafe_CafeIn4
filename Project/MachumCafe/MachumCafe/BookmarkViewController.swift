@@ -10,7 +10,7 @@ import UIKit
 
 class BookmarkViewController: UIViewController {
     
-    var userId = User.sharedInstance.user.getUser()["id"] as! String
+    var userId = User.sharedInstance.user.id
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var isEmptyLabel: UILabel!
@@ -36,7 +36,7 @@ class BookmarkViewController: UIViewController {
     
     func reloadBookmarkData() {
         getBookmarkList()
-        isEmptyLabel.text = (User.sharedInstance.user.getUser()["bookmark"] as! [String]).isEmpty ? "즐겨찾는 카페가 없습니다." : ""
+        isEmptyLabel.text = (User.sharedInstance.user.bookmark).isEmpty ? "즐겨찾는 카페가 없습니다." : ""
     }
     
     @IBAction func closeButtonAction(_ sender: Any) {
@@ -69,17 +69,17 @@ extension BookmarkViewController : UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! BookmarkViewCell
-        var modelBookmark = Cafe.sharedInstance.bookmarkList[indexPath.row].getCafe()
+        let modelBookmark = Cafe.sharedInstance.bookmarkList[indexPath.row]
         
-        if !(modelBookmark["imagesURL"] as! [String]).isEmpty {
-            let cafeImage = NetworkCafe.getCafeImage(imageURL: (modelBookmark["imagesURL"] as! [String])[0])
+        if !modelBookmark.imagesURL.isEmpty {
+            let cafeImage = NetworkCafe.getCafeImage(imageURL: modelBookmark.imagesURL[0])
             cell.bookmarkCafeImage.kf.setImage(with: cafeImage)
         } else {
             cell.bookmarkCafeImage.image = #imageLiteral(resourceName: "2")
         }
         
-        cell.bookmarkCafeName.text = modelBookmark["name"] as? String
-        cell.bookmarkCafeAddress.text = modelBookmark["address"] as? String
+        cell.bookmarkCafeName.text = modelBookmark.name
+        cell.bookmarkCafeAddress.text = modelBookmark.address
         return cell
     }
     

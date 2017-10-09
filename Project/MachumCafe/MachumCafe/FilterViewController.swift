@@ -60,9 +60,6 @@ class FilterViewController: UIViewController {
 }
 
 extension FilterViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryArray.count
@@ -75,9 +72,7 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard multiple else {
-            return
-        }
+        guard multiple else { return }
 
         let filter = filterArray.filter { $0 == categoryArray[indexPath.row] }
         if filter.isEmpty {
@@ -94,16 +89,16 @@ extension FilterViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = Double((categoryArray[indexPath.row] as String).unicodeScalars.count) * 15.0 + 20
-        return CGSize(width: width, height: 35.0)
+        let width = categoryArray[indexPath.item].unicodeScalars.count * 15 + 25
+        return CGSize(width: width, height: 35)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20.0
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        return 8
     }
+    
 }
-

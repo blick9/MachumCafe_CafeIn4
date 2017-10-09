@@ -11,7 +11,7 @@ import UIKit
 class MainSideBarViewController: UIViewController {
     
     let imagePicker = UIImagePickerController()
-    
+
     @IBOutlet weak var sideBarView: UIView!
     @IBOutlet weak var sideBarLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var userProfileImageView: UIImageView!
@@ -53,15 +53,15 @@ class MainSideBarViewController: UIViewController {
             settingProfileImage.isEnabled = false
             settingProfileImageIcon.isHidden = true
         case true :
-            let user = User.sharedInstance.user.getUser()
-            if !(user["profileImageURL"] as! String).isEmpty {
-                let profileImage = NetworkUser.getUserImage(userID: user["id"] as! String, isKakaoImage: user["isKakaoImage"] as! Bool, imageURL: user["profileImageURL"] as! String)
+            let user = User.sharedInstance.user
+            if !user.profileImageURL.isEmpty {
+                let profileImage = NetworkUser.getUserImage(userID: user.id, isKakaoImage: user.isKakaoImage, imageURL: user.profileImageURL)
                 userProfileImageView.kf.setImage(with: profileImage)
             } else {
                 userProfileImageView.image = #imageLiteral(resourceName: "profil_side")
             }
             userInfoLabel.isHidden = false
-            userInfoLabel.text = ("\(User.sharedInstance.user.getUser()["nickname"] as! String)님")
+            userInfoLabel.text = ("\(user.nickname)님")
             logInButton.isHidden = true
             settingProfileImage.isEnabled = true
             settingProfileImageIcon.isHidden = false
@@ -174,7 +174,7 @@ extension MainSideBarViewController : UIImagePickerControllerDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] {
             dismiss(animated: true, completion: nil)
-            NetworkUser.setUserProfileImage(userID: User.sharedInstance.user.getUser()["id"] as! String, image: image as! UIImage, callback: { (result) in
+            NetworkUser.setUserProfileImage(userID: User.sharedInstance.user.id, image: image as! UIImage, callback: { (result) in
                 if result {
                     DispatchQueue.main.async {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "checkIsUser"), object: nil)

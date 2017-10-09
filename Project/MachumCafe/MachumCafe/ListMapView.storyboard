@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -97,7 +97,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="e2J-dp-Y0E" firstAttribute="top" secondItem="1i1-jB-5Ew" secondAttribute="bottom" priority="750" constant="517" id="1FS-aF-LWo"/>
                             <constraint firstItem="Z05-fS-31m" firstAttribute="top" secondItem="DWO-1Y-1h9" secondAttribute="top" id="4AZ-XK-bXN"/>
                             <constraint firstItem="Z05-fS-31m" firstAttribute="top" secondItem="DWO-1Y-1h9" secondAttribute="top" id="AOG-T9-epc"/>
                             <constraint firstItem="2ZI-wb-AtR" firstAttribute="top" secondItem="Z05-fS-31m" secondAttribute="bottom" id="GW6-Pu-9Cf"/>
@@ -122,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="176.80000000000001" y="98.50074962518741"/>
         </scene>
-        <!--CafeDetail-->
+        <!--DetailView-->
         <scene sceneID="RL9-mg-ZhA">
             <objects>
-                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="CafeDetail" id="0cH-Ca-SGK" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="DetailView" id="0cH-Ca-SGK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIK-8B-aA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="791" y="337"/>

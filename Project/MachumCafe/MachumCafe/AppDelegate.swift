@@ -15,7 +15,6 @@ import GooglePlaces
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-    var googleAPIKey = "AIzaSyBJK14xRWA8NkVirhJxmpuO9FvKvARRmfY"
     var locationManager = CLLocationManager()
     var seenError : Bool = false
     var locationFixAchieved : Bool = false
@@ -23,16 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        GMSServices.provideAPIKey(googleAPIKey)
-        GMSPlacesClient.provideAPIKey(googleAPIKey)
-        let backButtonImage = #imageLiteral(resourceName: "back_Bt").stretchableImage(withLeftCapWidth: 13, topCapHeight: 22)
-        UIBarButtonItem.appearance().setBackButtonBackgroundImage(backButtonImage, for: .normal, barMetrics: .default)
 
+        let googleMapKey = Config.googleMapKey
+        GMSServices.provideAPIKey(googleMapKey)
+        GMSPlacesClient.provideAPIKey(googleMapKey)
+        
+        let backButtonImage = #imageLiteral(resourceName: "back_Bt").stretchableImage(withLeftCapWidth: 13, topCapHeight: 22)
+        UINavigationBar.appearance().backIndicatorImage = backButtonImage
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor(red: 51, green: 51, blue: 51)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: 255, green: 232, blue: 129)]
-        
         UINavigationBar.appearance().isTranslucent = false
         
         // MARK: 카톡 로그인 세션 있을 경우 유저정보 Get, 없을경우 우리 서버에서 유저정보 Get, 둘다 세션 없을경우 nil
@@ -42,22 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             KOSessionTask.meTask(completionHandler: { (profile, error) in
                 if let userProfile = profile {
                     let user = userProfile as! KOUser
-                    let email = user.email!
-                    
-                    NetworkUser.kakaoLogin(email: email, nickname: String(), imageURL: String()) { (result, user) in
-                        User.sharedInstance.user = user
-                        User.sharedInstance.isUser = true
-                    }
+                    let email = user.email!                    
+                    NetworkUser.kakaoLogin(email: email, nickname: String(), imageURL: String())
                 }
             })
         } else {
             // 카톡 유저 아닐 경우 우리 서버에서 세션 확인 후 모델 저장
-            NetworkUser.getUser { (result, user) in
-                if result {
-                    User.sharedInstance.user = user
-                    User.sharedInstance.isUser = true
-                }
-            }
+            NetworkUser.getUser()
         }
         KOSession.shared().isAutomaticPeriodicRefresh = true
 

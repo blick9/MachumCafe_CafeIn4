@@ -7,36 +7,29 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class ModelUser {
+class ModelUser: Mappable {
+    private(set) var id = String()
+    private(set) var isKakaoImage = Bool()
+    private(set) var email = String()
+    private(set) var nickname = String()
+    private(set) var bookmark = [String]()
+    private(set) var profileImageURL = String()
     
-    private var id = String()
-    private var isKakaoImage = Bool()
-    private var email = String()
-    private var nickname = String()
-    private var bookmark = [String]()
-    private var profileImageURL = String()
-    
-    init() {}
-    
-    init(id: String, isKakaoImage: Bool, email: String, nickname: String, bookmark: [String], profileImageURL: String) {
-        self.id = id
-        self.isKakaoImage = isKakaoImage
-        self.email = email
-        self.nickname = nickname
-        self.bookmark = bookmark
-        self.profileImageURL = profileImageURL
+    required init?(map: Map) {
     }
     
-    func getUser() -> [String : Any] {
-        var userDic = [String : Any]()
-        userDic["id"] = id
-        userDic["isKakaoImage"] = isKakaoImage
-        userDic["email"] = email
-        userDic["nickname"] = nickname
-        userDic["bookmark"] = bookmark
-        userDic["profileImageURL"] = profileImageURL
-        return userDic
+    init() {
+    }
+    
+    func mapping(map: Map) {
+        self.id <- map["_id"]
+        self.isKakaoImage <- map["isKakaoImgae"]
+        self.email <- map["email"]
+        self.nickname <- map["nickname"]
+        self.bookmark <- map["bookmark"]
+        self.profileImageURL <- map["imageURL"]
     }
     
     func setBookmark(bookmarks : [String]) {

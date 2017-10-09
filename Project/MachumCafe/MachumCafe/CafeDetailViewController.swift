@@ -53,16 +53,16 @@ class CafeDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = moreButton
         categoryCollectionView.register(filterCollectionViewCellnib, forCellWithReuseIdentifier: "Cell")
         
-        cafeData = currentCafeModel.getCafe()
+//        cafeData = currentCafeModel.getCafe()
         cafeCategorys = cafeData["category"] as! [String]
         
-        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) {
-            self.applyReviewTableViewHeight()
-            if self.cafeCategorys.count >= 5 {
-                self.categoryCollectionHeight.constant = CGFloat(1.7 * self.categoryCollectionView.frame.height)
-            }
-            self.view.layoutIfNeeded()
-        }
+//        NetworkCafe.getCafeReviews(cafeModel: currentCafeModel) {
+//            self.applyReviewTableViewHeight()
+//            if self.cafeCategorys.count >= 5 {
+//                self.categoryCollectionHeight.constant = CGFloat(1.7 * self.categoryCollectionView.frame.height)
+//            }
+//            self.view.layoutIfNeeded()
+//        }
         
         if !(cafeData["imagesURL"] as! [String]).isEmpty {
             makeCafeImageScrollView(imagesURL: cafeData["imagesURL"] as! [String])
@@ -101,7 +101,7 @@ class CafeDetailViewController: UIViewController {
             let alert = UIAlertController(title: "폐업 신고", message: "폐업 신고를 하시겠습니까?", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "취소", style: .default)
             let confirm = UIAlertAction(title: "확인", style: .default, handler: { (_) in
-                NetworkAdmin.suggestionClesedCafe(cafe: self.cafeData)
+//                NetworkAdmin.suggestionClesedCafe(cafe: self.cafeData)
                 UIAlertController().oneButtonAlert(target: self, title: "제보 완료", message: "소중한 의견 감사합니다.\n빠른시간 내에 적용하겠습니다 :)", isHandler: false)
             })
             alert.addAction(confirm)
@@ -116,7 +116,7 @@ class CafeDetailViewController: UIViewController {
     }
     
     func reloadReviewTable() {
-        reviews = currentCafeModel.getReviews()
+//        reviews = currentCafeModel.getReviews()
         applyReviewTableViewHeight()
         reviewTableView.reloadData()
     }
@@ -130,8 +130,8 @@ class CafeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        userID = User.sharedInstance.user.getUser()["id"] as! String
-        userBookmarkIDs = User.sharedInstance.user.getUser()["bookmark"] as! [String]
+        userID = User.sharedInstance.user.id
+        userBookmarkIDs = User.sharedInstance.user.bookmark
         indexCafeID = cafeData["id"] as! String
         bookmarkButton.isSelected = userBookmarkIDs.contains(indexCafeID) ? true : false
     }
@@ -190,13 +190,14 @@ class CafeDetailViewController: UIViewController {
     func suggestionButtonAction() {
         let suggestionViewController = UIStoryboard.SuggestionViewStoryboard.instantiateViewController(withIdentifier: "Suggestion") as! SuggestionViewController
         let suggestionViewNavigationController = UINavigationController(rootViewController: suggestionViewController)
-        suggestionViewController.cafeData = cafeData
+//        suggestionViewController.cafeData = cafeData
         present(suggestionViewNavigationController, animated: true, completion: nil)
     }
     
     func phoneCallButtonAction() {
-        let url = NSURL(string: "tel://\(cafeData["tel"] as! String)")
-        UIApplication.shared.openURL(url as! URL)
+        if let url = URL(string: "tel://\(cafeData["tel"] as! String)") {
+            UIApplication.shared.open(url)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -226,47 +227,47 @@ extension CafeDetailViewController : UITableViewDelegate, UITableViewDataSource 
         if tableView.tag == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CafeDetailTableViewCell
 
-            if indexPath.row == 0 {
-                cell.iconImage.image = cafeIcon[0]
-                if let address = cafeData["address"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.phoneCallButton.isHidden = true
-                    cell.detailLabel.text = address
-                }
-            } else if indexPath.row == 1 {
-                cell.iconImage.image = cafeIcon[1]
-                if let tel = cafeData["tel"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = tel
-                }
-            } else if indexPath.row == 2 {
-                cell.iconImage.image = cafeIcon[2]
-                if let hours = cafeData["hours"] as? String {
-                    cell.suggestionButton.isHidden = true
-                    cell.detailLabel.text = hours
-                }
-                cell.phoneCallButton.isHidden = true
-            }
-            cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
-            cell.phoneCallButton.addTarget(self, action: #selector(phoneCallButtonAction), for: .touchUpInside)
+//            if indexPath.row == 0 {
+//                cell.iconImage.image = cafeIcon[0]
+//                if let address = cafeData["address"] as? String {
+//                    cell.suggestionButton.isHidden = true
+//                    cell.phoneCallButton.isHidden = true
+//                    cell.detailLabel.text = address
+//                }
+//            } else if indexPath.row == 1 {
+//                cell.iconImage.image = cafeIcon[1]
+//                if let tel = cafeData["tel"] as? String {
+//                    cell.suggestionButton.isHidden = true
+//                    cell.detailLabel.text = tel
+//                }
+//            } else if indexPath.row == 2 {
+//                cell.iconImage.image = cafeIcon[2]
+//                if let hours = cafeData["hours"] as? String {
+//                    cell.suggestionButton.isHidden = true
+//                    cell.detailLabel.text = hours
+//                }
+//                cell.phoneCallButton.isHidden = true
+//            }
+//            cell.suggestionButton.addTarget(self, action: #selector(suggestionButtonAction), for: .touchUpInside)
+//            cell.phoneCallButton.addTarget(self, action: #selector(phoneCallButtonAction), for: .touchUpInside)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReviewTableViewCell
-            if !reviews.isEmpty {
-                var review = reviews[indexPath.row].getReview()
-                
-                cell.reviewer.text = review["nickname"] as? String
-                cell.reviewDate.text = review["date"] as? String
-                cell.reviewContent.text = review["reviewContent"] as? String
-                cell.reviewStarRating.rating = review["rating"] as! Double
-                
-                if !(review["profileImageURL"] as! String).isEmpty {
-                    let profileImage = NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String)
-                    cell.reviewerPicture.kf.setImage(with: profileImage)
-                } else {
-                    cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
-                }
-            }
+//            if !reviews.isEmpty {
+//                var review = reviews[indexPath.row].getReview()
+//                
+//                cell.reviewer.text = review["nickname"] as? String
+//                cell.reviewDate.text = review["date"] as? String
+//                cell.reviewContent.text = review["reviewContent"] as? String
+//                cell.reviewStarRating.rating = review["rating"] as! Double
+//                
+//                if !(review["profileImageURL"] as! String).isEmpty {
+//                    let profileImage = NetworkUser.getUserImage(userID: review["userId"] as! String, isKakaoImage: review["isKakaoImage"] as! Bool, imageURL: review["profileImageURL"] as! String)
+//                    cell.reviewerPicture.kf.setImage(with: profileImage)
+//                } else {
+//                    cell.reviewerPicture.image = #imageLiteral(resourceName: "profil_side")
+//                }
+//            }
             return cell
         }
     }
