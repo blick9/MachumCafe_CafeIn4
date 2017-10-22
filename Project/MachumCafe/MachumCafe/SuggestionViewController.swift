@@ -84,7 +84,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func addressSerchButtonAction(_ sender: Any) {
+    @IBAction func addressSearchAction(_ sender: UITapGestureRecognizer) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         let addressFilter = GMSAutocompleteFilter()

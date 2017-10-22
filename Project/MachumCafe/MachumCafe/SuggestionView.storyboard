@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -28,14 +28,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Sgd-V8-tGX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pop-8w-lae">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-Qc-Fnl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKb-Cm-00Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cafeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rzw-Fw-wWG">
                                                 <rect key="frame" x="29" y="40" width="15" height="19"/>
@@ -149,7 +149,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n0N-dZ-KZw">
-                                        <rect key="frame" x="29" y="333.5" width="317" height="333.5"/>
+                                        <rect key="frame" x="29" y="284" width="262" height="284"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iUV-nc-V88">
                                             <size key="itemSize" width="50" height="50"/>
@@ -235,20 +235,20 @@
                         <viewControllerLayoutGuide type="bottom" id="qy1-jV-wgP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZUB-yq-Tqf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpb-7v-K4M">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-Xj-Lag">
-                                        <rect key="frame" x="29" y="15.5" width="317" height="35.5"/>
+                                        <rect key="frame" x="29" y="13" width="262" height="30.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cafeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="5fm-Kp-Rb4">
-                                                <rect key="frame" x="0.0" y="0.0" width="20" height="35.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="17" height="30.5"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="카페 이름" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ooB-XC-q6L">
-                                                <rect key="frame" x="42" y="0.0" width="275" height="35.5"/>
+                                                <rect key="frame" x="39" y="0.0" width="223" height="30.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -256,13 +256,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="azK-L1-0pT">
-                                        <rect key="frame" x="29" y="67" width="317" height="36"/>
+                                        <rect key="frame" x="29" y="59.5" width="262" height="30.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="telephoneD" translatesAutoresizingMaskIntoConstraints="NO" id="Nwl-4c-3BI">
-                                                <rect key="frame" x="0.0" y="0.0" width="18" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="15" height="30.5"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="전화번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecb-5a-vyW">
-                                                <rect key="frame" x="42" y="0.0" width="275" height="36"/>
+                                                <rect key="frame" x="39" y="0.0" width="223" height="30.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -270,50 +270,37 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="URK-aT-TwW">
-                                        <rect key="frame" x="29" y="119" width="317" height="36"/>
+                                        <rect key="frame" x="29" y="106" width="262" height="30"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adressD" translatesAutoresizingMaskIntoConstraints="NO" id="GZP-PI-j63">
-                                                <rect key="frame" x="0.0" y="0.0" width="14" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="11" height="30"/>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="o91-Wp-6QO">
-                                                <rect key="frame" x="42" y="0.0" width="275" height="36"/>
-                                                <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="주소" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="AIp-1e-Np6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="275" height="36"/>
-                                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="13"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HvQ-Pj-Ap0" userLabel="adressButton">
-                                                        <rect key="frame" x="0.0" y="36" width="275" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                                        <connections>
-                                                            <action selector="addressSerchButtonAction:" destination="RGy-aV-rfK" eventType="touchUpInside" id="YKe-0c-ruF"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="HvQ-Pj-Ap0" firstAttribute="leading" secondItem="AIp-1e-Np6" secondAttribute="leading" id="52U-el-RMF"/>
-                                                    <constraint firstItem="HvQ-Pj-Ap0" firstAttribute="trailing" secondItem="AIp-1e-Np6" secondAttribute="trailing" id="Jc3-EO-bnR"/>
-                                                    <constraint firstItem="HvQ-Pj-Ap0" firstAttribute="bottom" secondItem="AIp-1e-Np6" secondAttribute="bottom" id="td5-MI-RUh"/>
-                                                </constraints>
-                                            </stackView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="주소" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="AIp-1e-Np6">
+                                                <rect key="frame" x="39" y="0.0" width="223" height="30"/>
+                                                <gestureRecognizers/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="j3l-1l-KcE" appends="YES" id="7Cl-dy-QIT"/>
+                                                </connections>
+                                            </textField>
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="상세주소" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XTO-Xa-6LQ">
-                                        <rect key="frame" x="71" y="158" width="275" height="35.5"/>
+                                        <rect key="frame" x="68" y="139" width="223" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="pkZ-nB-rd8">
-                                        <rect key="frame" x="29" y="209.5" width="317" height="36.5"/>
+                                        <rect key="frame" x="29" y="185" width="262" height="30"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hourD" translatesAutoresizingMaskIntoConstraints="NO" id="MNd-YY-93d">
-                                                <rect key="frame" x="0.0" y="0.0" width="19" height="36.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="30"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="영업 시간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfQ-9i-yig">
-                                                <rect key="frame" x="42" y="0.0" width="275" height="36.5"/>
+                                                <rect key="frame" x="39" y="0.0" width="223" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -321,16 +308,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="GaN-KZ-jnb">
-                                        <rect key="frame" x="29" y="261.5" width="317" height="37.5"/>
+                                        <rect key="frame" x="29" y="230.5" width="262" height="29"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageD" translatesAutoresizingMaskIntoConstraints="NO" id="9hW-7K-acL">
-                                                <rect key="frame" x="0.0" y="12" width="20" height="14"/>
+                                                <rect key="frame" x="0.0" y="7.5" width="17" height="14"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YJ1-VH-NwV">
-                                                <rect key="frame" x="42" y="0.0" width="275" height="37.5"/>
+                                                <rect key="frame" x="39" y="0.0" width="223" height="29"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAI-Z3-S71">
-                                                        <rect key="frame" x="0.0" y="0.0" width="37.5" height="37.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="29" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fAI-Z3-S71" secondAttribute="height" multiplier="1:1" id="q5h-XP-kPG"/>
                                                         </constraints>
@@ -340,27 +327,27 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duc-m5-haF" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
-                                                        <rect key="frame" x="47.5" y="0.0" width="37.5" height="37.5"/>
+                                                        <rect key="frame" x="39" y="0.0" width="28.5" height="29"/>
                                                         <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBG-PM-0xd" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
-                                                        <rect key="frame" x="95" y="0.0" width="37.5" height="37.5"/>
+                                                        <rect key="frame" x="77.5" y="0.0" width="29" height="29"/>
                                                         <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSE-1i-T6Q" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
-                                                        <rect key="frame" x="142.5" y="0.0" width="37.5" height="37.5"/>
+                                                        <rect key="frame" x="116.5" y="0.0" width="29" height="29"/>
                                                         <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuE-pH-czT" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
-                                                        <rect key="frame" x="190" y="0.0" width="37.5" height="37.5"/>
+                                                        <rect key="frame" x="155.5" y="0.0" width="28.5" height="29"/>
                                                         <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </button>
                                                     <button opaque="NO" tag="4" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF6-Ei-Dpd" customClass="PreviewImageButton" customModule="MachumCafe" customModuleProvider="target">
-                                                        <rect key="frame" x="237.5" y="0.0" width="37.5" height="37.5"/>
+                                                        <rect key="frame" x="194" y="0.0" width="29" height="29"/>
                                                         <color key="backgroundColor" red="0.99889701600000003" green="0.91466850040000003" blue="0.50731867549999998" alpha="0.4961205051" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </button>
@@ -369,7 +356,7 @@
                                         </subviews>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HQR-5L-NUL">
-                                        <rect key="frame" x="29" y="315" width="317" height="333.5"/>
+                                        <rect key="frame" x="29" y="275.5" width="262" height="333.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="750" constant="333.5" id="Xfc-fP-abb"/>
@@ -394,23 +381,22 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="XTO-Xa-6LQ" firstAttribute="trailing" secondItem="ecb-5a-vyW" secondAttribute="trailing" id="0Zh-Yf-4uu"/>
+                                    <constraint firstItem="AIp-1e-Np6" firstAttribute="height" secondItem="XTO-Xa-6LQ" secondAttribute="height" id="1CL-90-mSa"/>
                                     <constraint firstItem="URK-aT-TwW" firstAttribute="leading" secondItem="azK-L1-0pT" secondAttribute="leading" id="3g8-O6-yrh"/>
                                     <constraint firstItem="HQR-5L-NUL" firstAttribute="top" secondItem="GaN-KZ-jnb" secondAttribute="bottom" constant="16" id="3zv-XS-Krc"/>
                                     <constraint firstItem="ooB-XC-q6L" firstAttribute="height" secondItem="ecb-5a-vyW" secondAttribute="height" id="4GH-b0-0Y3"/>
+                                    <constraint firstItem="AIp-1e-Np6" firstAttribute="leading" secondItem="ecb-5a-vyW" secondAttribute="leading" id="4e4-gM-jWf"/>
                                     <constraint firstAttribute="trailing" secondItem="HQR-5L-NUL" secondAttribute="trailing" constant="29" id="6pL-3J-oGe"/>
                                     <constraint firstItem="GaN-KZ-jnb" firstAttribute="top" secondItem="pkZ-nB-rd8" secondAttribute="bottom" constant="16" id="9vK-Bg-7QV"/>
                                     <constraint firstItem="azK-L1-0pT" firstAttribute="trailing" secondItem="xbe-Xj-Lag" secondAttribute="trailing" id="BGR-BS-ba1"/>
-                                    <constraint firstItem="ecb-5a-vyW" firstAttribute="height" secondItem="AIp-1e-Np6" secondAttribute="height" id="EbJ-aU-TZ4"/>
-                                    <constraint firstItem="AIp-1e-Np6" firstAttribute="height" secondItem="pfQ-9i-yig" secondAttribute="height" id="FKq-7B-6hp"/>
                                     <constraint firstItem="URK-aT-TwW" firstAttribute="trailing" secondItem="azK-L1-0pT" secondAttribute="trailing" id="G4m-le-Rg0"/>
                                     <constraint firstItem="pkZ-nB-rd8" firstAttribute="trailing" secondItem="URK-aT-TwW" secondAttribute="trailing" id="H3B-Ml-iCh"/>
                                     <constraint firstItem="ooB-XC-q6L" firstAttribute="trailing" secondItem="ecb-5a-vyW" secondAttribute="trailing" id="H7D-yN-wcd"/>
                                     <constraint firstItem="HQR-5L-NUL" firstAttribute="leading" secondItem="bpb-7v-K4M" secondAttribute="leading" constant="29" id="LbK-6d-VRx"/>
-                                    <constraint firstItem="AIp-1e-Np6" firstAttribute="height" secondItem="XTO-Xa-6LQ" secondAttribute="height" id="Lu7-e0-ioj"/>
                                     <constraint firstAttribute="trailing" secondItem="xbe-Xj-Lag" secondAttribute="trailing" constant="29" id="Me7-dc-zyo"/>
+                                    <constraint firstItem="AIp-1e-Np6" firstAttribute="trailing" secondItem="ecb-5a-vyW" secondAttribute="trailing" id="NUf-U0-wNv"/>
                                     <constraint firstItem="XTO-Xa-6LQ" firstAttribute="top" secondItem="URK-aT-TwW" secondAttribute="bottom" constant="3" id="OwR-Mq-DDl"/>
                                     <constraint firstItem="xbe-Xj-Lag" firstAttribute="centerX" secondItem="bpb-7v-K4M" secondAttribute="centerX" id="PPa-kf-LkS"/>
-                                    <constraint firstItem="AIp-1e-Np6" firstAttribute="leading" secondItem="ecb-5a-vyW" secondAttribute="leading" id="TYS-S8-W2q"/>
                                     <constraint firstItem="pfQ-9i-yig" firstAttribute="trailing" secondItem="XTO-Xa-6LQ" secondAttribute="trailing" id="WT1-Mb-2yh"/>
                                     <constraint firstItem="pkZ-nB-rd8" firstAttribute="leading" secondItem="URK-aT-TwW" secondAttribute="leading" id="ZDD-9k-m5O"/>
                                     <constraint firstAttribute="bottom" secondItem="HQR-5L-NUL" secondAttribute="bottom" id="aPm-9E-kDn"/>
@@ -418,6 +404,8 @@
                                     <constraint firstItem="YJ1-VH-NwV" firstAttribute="leading" secondItem="pfQ-9i-yig" secondAttribute="leading" id="cnF-9a-Tam"/>
                                     <constraint firstItem="ooB-XC-q6L" firstAttribute="height" secondItem="bpb-7v-K4M" secondAttribute="height" multiplier="0.054" id="dHY-ro-Qhb"/>
                                     <constraint firstItem="XTO-Xa-6LQ" firstAttribute="leading" secondItem="ecb-5a-vyW" secondAttribute="leading" id="egP-mF-l0n"/>
+                                    <constraint firstItem="XTO-Xa-6LQ" firstAttribute="height" secondItem="pfQ-9i-yig" secondAttribute="height" id="g8b-c4-v3e"/>
+                                    <constraint firstItem="ecb-5a-vyW" firstAttribute="height" secondItem="AIp-1e-Np6" secondAttribute="height" id="hee-ym-D7f"/>
                                     <constraint firstItem="pkZ-nB-rd8" firstAttribute="top" secondItem="XTO-Xa-6LQ" secondAttribute="bottom" constant="16" id="iKr-rk-wuY"/>
                                     <constraint firstItem="xbe-Xj-Lag" firstAttribute="leading" secondItem="bpb-7v-K4M" secondAttribute="leading" constant="29" id="jwf-vr-5pH"/>
                                     <constraint firstItem="pfQ-9i-yig" firstAttribute="leading" secondItem="XTO-Xa-6LQ" secondAttribute="leading" id="n4M-gu-edA"/>
@@ -468,6 +456,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dri-b1-ugx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="j3l-1l-KcE">
+                    <connections>
+                        <action selector="addressSearchAction:" destination="3ES-vg-ggZ" id="DDN-xP-DYI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4880.625" y="850.35211267605632"/>
         </scene>
@@ -476,7 +469,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="imagePicker" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pMD-oU-DIC" customClass="SuggestionImagePickerViewController" customModule="MachumCafe" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vA5-Dc-Sp3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2tR-yv-G8h">
