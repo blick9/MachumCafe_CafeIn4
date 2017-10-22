@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -126,8 +126,6 @@
                             <constraint firstItem="FCQ-bx-oHh" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" id="glJ-3Q-Rpi"/>
                             <constraint firstItem="ted-6G-gWV" firstAttribute="centerY" secondItem="9RO-6K-g8r" secondAttribute="centerY" multiplier="0.9" id="iI2-Au-Z2T"/>
                             <constraint firstItem="FCQ-bx-oHh" firstAttribute="centerX" secondItem="9RO-6K-g8r" secondAttribute="centerX" id="jd4-gO-hzo"/>
-                            <constraint firstItem="HUw-Vf-CO7" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" constant="32.5" id="uY6-8s-kSQ"/>
-                            <constraint firstItem="ted-6G-gWV" firstAttribute="leading" secondItem="9RO-6K-g8r" secondAttribute="leading" constant="32.5" id="v49-Rc-Eue"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="E8O-iC-3wb">
