@@ -21,7 +21,7 @@ class CustomCollectionViewFlowLayout: UICollectionViewFlowLayout {
         attributes.forEach { layout in
             if xPoint + layout.frame.width + minimumInteritemSpacing >= collectionView!.frame.maxX {
                 xPoint = 8
-                layout.frame.origin.y = rowSize.isEmpty ? 0 : maxY + minimumLineSpacing + 10
+                layout.frame.origin.y = rowSize.isEmpty ? 0 : maxY + minimumLineSpacing
                 if rowSize.count == 0 {
                     rowSize = [[xPoint, 0]]
                 } else {
