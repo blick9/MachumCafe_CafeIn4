@@ -430,13 +430,13 @@
                         <barButtonItem key="leftBarButtonItem" image="cancelButton" id="mHa-RF-3bY">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="closedAction:" destination="RGy-aV-rfK" id="EBx-wB-ihh"/>
+                                <action selector="closedAction:" destination="3ES-vg-ggZ" id="laV-jL-NcE"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="9Lk-aI-893">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="doneActionButton:" destination="RGy-aV-rfK" id="Q6Q-rI-izh"/>
+                                <action selector="doneActionButton:" destination="3ES-vg-ggZ" id="NVH-Wu-31b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
