@@ -323,6 +323,7 @@
                                                         </constraints>
                                                         <state key="normal" image="imagePickerButton"/>
                                                         <connections>
+                                                            <action selector="imagePickerActionButton:" destination="3ES-vg-ggZ" eventType="touchUpInside" id="Dzn-eP-z8u"/>
                                                             <action selector="imagePickerActionButton:" destination="RGy-aV-rfK" eventType="touchUpInside" id="geO-gC-Igy"/>
                                                         </connections>
                                                     </button>
@@ -356,12 +357,12 @@
                                         </subviews>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HQR-5L-NUL">
-                                        <rect key="frame" x="29" y="275.5" width="262" height="333.5"/>
+                                        <rect key="frame" x="29" y="276" width="262" height="293"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" priority="750" constant="333.5" id="Xfc-fP-abb"/>
+                                            <constraint firstAttribute="height" priority="750" constant="293" id="34s-LN-Fgc"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qig-jJ-l9h">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="Xyx-5N-Ay1" customClass="CustomCollectionViewFlowLayout" customModule="MachumCafe" customModuleProvider="target">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
