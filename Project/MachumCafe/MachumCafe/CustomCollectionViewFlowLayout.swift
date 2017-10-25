@@ -13,43 +13,43 @@ class CustomCollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let superAttributes = super.layoutAttributesForElements(in: rect) else { return nil }
         guard let attributes = NSArray(array: superAttributes, copyItems: true) as? [UICollectionViewLayoutAttributes] else { return nil }
-        var xPoint: CGFloat = collectionView!.frame.maxX
-        var maxY: CGFloat = -1
-        var rowSize = [[CGFloat]]()
-        var currentRow = 0
-        
-        attributes.forEach { layout in
-            if xPoint + layout.frame.width + minimumInteritemSpacing >= collectionView!.frame.maxX {
-                xPoint = 8
-                layout.frame.origin.y = rowSize.isEmpty ? 0 : maxY + minimumLineSpacing
-                if rowSize.count == 0 {
-                    rowSize = [[xPoint, 0]]
+
+        var xPoint: CGFloat = 0
+        var maxY: CGFloat = -1.0
+        var rowSizes: [CGFloat] = []
+        var currentRow: Int = 0
+        attributes.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                xPoint = 0
+                
+                if rowSizes.count == 0 {
+                    rowSizes = [xPoint]
                 } else {
-                    rowSize.append([xPoint, 0])
+                    rowSizes.append(xPoint)
                     currentRow += 1
                 }
             }
-            layout.frame.origin.x = xPoint
-            xPoint += layout.frame.width + minimumInteritemSpacing
-            maxY = max(layout.frame.maxY, maxY)
-            rowSize[currentRow][1] = xPoint - minimumInteritemSpacing
+            layoutAttribute.frame.origin.x = xPoint
+            xPoint += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY, maxY)
+            rowSizes[currentRow] = xPoint - minimumInteritemSpacing
         }
         
-        xPoint = 8
+        xPoint = 0
         maxY = -1.0
         currentRow = 0
         
-        attributes.forEach { layout in
-            if layout.frame.origin.y >= maxY {
-                xPoint = 8
-                let rowWidth = rowSize[currentRow][1] - rowSize[currentRow][0]
-                let appendedMargin = (collectionView!.frame.width - 8 - rowWidth - 8) / 2
+        attributes.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                xPoint = 0
+                let rowWidth = rowSizes[currentRow]
+                let appendedMargin = (collectionView!.frame.width - rowWidth) / 2
                 xPoint += appendedMargin
                 currentRow += 1
             }
-            layout.frame.origin.x = xPoint
-            xPoint += layout.frame.width + minimumInteritemSpacing
-            maxY = max(layout.frame.maxY, maxY)
+            layoutAttribute.frame.origin.x = xPoint
+            xPoint += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY, maxY)
         }
         
         return attributes

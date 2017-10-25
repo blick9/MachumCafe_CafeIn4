@@ -36,7 +36,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
         super.viewDidLoad()
         
         suggestionScrollView.contentSize.height = self.view.frame.height
-        
+
         previewImage = [previewImage1,previewImage2,previewImage3,previewImage4,previewImage5]
         for item in previewImage {
             item.addTarget(self, action: #selector(SuggestionViewController.buttonTapped), for: UIControlEvents.touchUpInside)
@@ -186,9 +186,11 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
         cell.category.text = categoryArray[indexPath.row]
         
-        if indexPath.item == categoryArray.count-1 {
+        if collectionView.frame.height < collectionView.contentSize.height {
+            collectionView.frame.size.height = collectionView.contentSize.height
             categoryCollectionView.heightAnchor.constraint(equalToConstant: collectionView.contentSize.height+16).isActive = true
         }
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -213,10 +215,11 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10.0
+        return 10
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3.0
+        return 8
     }
     
 }
