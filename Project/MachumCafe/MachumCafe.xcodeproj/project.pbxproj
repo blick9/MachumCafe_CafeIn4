@@ -43,6 +43,8 @@
 		A7C0F2FA1EB7A58B0086ADAA /* StaticFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */; };
 		A7EACE941ED95A1200BD01EE /* RatingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7EACE931ED95A1200BD01EE /* RatingView.xib */; };
 		A7EACE961ED95A3900BD01EE /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EACE951ED95A3900BD01EE /* RatingView.swift */; };
+		B50500861F78BF7900CE2138 /* CustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50500851F78BF7900CE2138 /* CustomCollectionViewFlowLayout.swift */; };
+		B50500881F78C6C900CE2138 /* DetailViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50500871F78C6C900CE2138 /* DetailViewViewController.swift */; };
 		B518D1921ED04A5E00A9C623 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */; };
 		B518D1931ED04A5E00A9C623 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */; };
 		B53EBC391ED6D2F3008950BC /* ListMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */; };
@@ -107,6 +109,8 @@
 		A7C0F2F91EB7A58B0086ADAA /* StaticFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticFunction.swift; sourceTree = "<group>"; };
 		A7EACE931ED95A1200BD01EE /* RatingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingView.xib; sourceTree = "<group>"; };
 		A7EACE951ED95A3900BD01EE /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		B50500851F78BF7900CE2138 /* CustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		B50500871F78C6C900CE2138 /* DetailViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewViewController.swift; sourceTree = "<group>"; };
 		B518D1901ED04A5E00A9C623 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		B518D1911ED04A5E00A9C623 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		B53EBC381ED6D2F3008950BC /* ListMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMapViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				A7B73A521EB2597000EB24C6 /* FilterViewController.swift */,
+				B50500851F78BF7900CE2138 /* CustomCollectionViewFlowLayout.swift */,
 				A7B73A541EB2597700EB24C6 /* FilterView.storyboard */,
 			);
 			name = FilterView;
@@ -369,6 +374,7 @@
 				B7E57DA31EB59F2200A6D9A7 /* CafeDetailTableViewCell.swift */,
 				B7E57DA91EB5A03000A6D9A7 /* CafeDetailReviewTableViewCell.swift */,
 				B7E57DA41EB59F2200A6D9A7 /* CafeDetailView.storyboard */,
+				B50500871F78C6C900CE2138 /* DetailViewViewController.swift */,
 			);
 			name = CafeDetailView;
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 				B56FD1361EC465D9002BDA2B /* NetworkAdmin.swift in Sources */,
 				B58AAFDD1EB6D118002313CC /* BookmarkViewCell.swift in Sources */,
 				A723B6891EAF437A00469FE4 /* SignUpViewController.swift in Sources */,
+				B50500861F78BF7900CE2138 /* CustomCollectionViewFlowLayout.swift in Sources */,
 				A7EACE961ED95A3900BD01EE /* RatingView.swift in Sources */,
 				A7B73A5E1EB32E1300EB24C6 /* NetworkUser.swift in Sources */,
 				A723B6681EAF3FBF00469FE4 /* AppDelegate.swift in Sources */,
@@ -551,6 +558,7 @@
 				A7C0F2F61EB790AC0086ADAA /* SettingViewController.swift in Sources */,
 				A723B68D1EAF483F00469FE4 /* ExtentionUIColorClass.swift in Sources */,
 				A7B73A5D1EB32E1300EB24C6 /* NetworkCafe.swift in Sources */,
+				B50500881F78C6C900CE2138 /* DetailViewViewController.swift in Sources */,
 				A7B73A5F1EB32E1300EB24C6 /* URLpath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

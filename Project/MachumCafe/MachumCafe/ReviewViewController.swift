@@ -34,7 +34,6 @@ class ReviewViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let writeReviewView : WriteReviewViewController = (segue.destination as? WriteReviewViewController)!
-        writeReviewView.reviewView = self
         writeReviewView.currentCafeModel = currentCafeModel
     }
 }

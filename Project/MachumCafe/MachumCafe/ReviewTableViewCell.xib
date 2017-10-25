@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,14 +81,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5M-Lb-1bV">
                         <rect key="frame" x="0.0" y="72" width="375" height="119.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAt-UI-TgM">
-                                <rect key="frame" x="23" y="0.0" width="352" height="119.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="750" constant="135.5" id="d1Q-oK-5Zo"/>
-                                </constraints>
-                                <string key="text">Review Content
-Review Content
-Review Content</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAt-UI-TgM">
+                                <rect key="frame" x="23" y="23" width="329" height="73.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -97,9 +91,9 @@ Review Content</string>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VAt-UI-TgM" firstAttribute="leading" secondItem="f5M-Lb-1bV" secondAttribute="leading" constant="23" id="47p-wT-z07"/>
-                            <constraint firstAttribute="trailing" secondItem="VAt-UI-TgM" secondAttribute="trailing" id="6Ws-Xr-eGZ"/>
-                            <constraint firstAttribute="bottom" secondItem="VAt-UI-TgM" secondAttribute="bottom" id="NNV-WZ-soh"/>
-                            <constraint firstItem="VAt-UI-TgM" firstAttribute="top" secondItem="f5M-Lb-1bV" secondAttribute="top" id="yXY-Zs-8Hp"/>
+                            <constraint firstAttribute="trailing" secondItem="VAt-UI-TgM" secondAttribute="trailing" constant="23" id="TEm-mT-guW"/>
+                            <constraint firstItem="VAt-UI-TgM" firstAttribute="top" secondItem="f5M-Lb-1bV" secondAttribute="top" constant="23" id="izc-cv-TDd"/>
+                            <constraint firstAttribute="bottom" secondItem="VAt-UI-TgM" secondAttribute="bottom" constant="23" id="mpS-eY-Zgk"/>
                         </constraints>
                     </view>
                 </subviews>

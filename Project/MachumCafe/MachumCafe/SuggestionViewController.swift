@@ -34,6 +34,9 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        suggestionScrollView.contentSize.height = self.view.frame.height
+
         previewImage = [previewImage1,previewImage2,previewImage3,previewImage4,previewImage5]
         for item in previewImage {
             item.addTarget(self, action: #selector(SuggestionViewController.buttonTapped), for: UIControlEvents.touchUpInside)
@@ -81,7 +84,7 @@ class SuggestionViewController: UIViewController, SavedImageDelegate, UITextFiel
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func addressSerchButtonAction(_ sender: Any) {
+    @IBAction func addressSearchAction(_ sender: UITapGestureRecognizer) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
         let addressFilter = GMSAutocompleteFilter()
@@ -182,6 +185,12 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! FilterCollectionViewCell
         cell.category.text = categoryArray[indexPath.row]
+        
+        if collectionView.frame.height < collectionView.contentSize.height {
+            collectionView.frame.size.height = collectionView.contentSize.height
+            categoryCollectionView.heightAnchor.constraint(equalToConstant: collectionView.contentSize.height+16).isActive = true
+        }
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -206,10 +215,11 @@ extension SuggestionViewController : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10.0
+        return 10
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3.0
+        return 8
     }
     
 }

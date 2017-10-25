@@ -40,7 +40,7 @@
                                                     <color key="backgroundColor" red="0.94498242161128909" green="1" blue="0.80681792621773774" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="listDim" translatesAutoresizingMaskIntoConstraints="NO" id="Yua-Zm-33X" userLabel="BlackLayer">
-                                                    <rect key="frame" x="-1" y="0.0" width="377" height="179.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qci-mE-oGf">
                                                     <rect key="frame" x="10" y="103" width="80" height="38"/>
@@ -94,7 +94,7 @@
                                                 <constraint firstItem="v0Y-uU-oTA" firstAttribute="trailing" secondItem="62y-l0-bhi" secondAttribute="trailing" id="J8l-hW-q6p"/>
                                                 <constraint firstItem="Qci-mE-oGf" firstAttribute="top" secondItem="C8J-TL-mI0" secondAttribute="bottom" constant="75" id="JK2-4g-2EU"/>
                                                 <constraint firstItem="Yua-Zm-33X" firstAttribute="height" secondItem="Bva-Mx-vSx" secondAttribute="height" id="KM5-Sz-syw"/>
-                                                <constraint firstItem="Yua-Zm-33X" firstAttribute="width" secondItem="Bva-Mx-vSx" secondAttribute="width" constant="2" id="Mqs-xC-rBP"/>
+                                                <constraint firstItem="Yua-Zm-33X" firstAttribute="width" secondItem="Bva-Mx-vSx" secondAttribute="width" id="Mqs-xC-rBP"/>
                                                 <constraint firstItem="MEi-ZB-fXA" firstAttribute="trailing" secondItem="C8J-TL-mI0" secondAttribute="leading" priority="750" constant="-5" id="TMx-zj-dXv"/>
                                                 <constraint firstItem="Bva-Mx-vSx" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="top" id="WE0-En-yhK"/>
                                                 <constraint firstItem="C8J-TL-mI0" firstAttribute="top" secondItem="uEH-gx-lLS" secondAttribute="topMargin" constant="-1" id="bSx-YY-K7e"/>
@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="1084" y="81.409295352323838"/>
         </scene>
-        <!--CafeDetail-->
+        <!--DetailView-->
         <scene sceneID="m20-MD-pjc">
             <objects>
-                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="CafeDetail" id="fWC-di-gae" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CafeDetailView" referencedIdentifier="DetailView" id="fWC-di-gae" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5z-DD-Qn8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1828.8" y="-54.872563718140931"/>
