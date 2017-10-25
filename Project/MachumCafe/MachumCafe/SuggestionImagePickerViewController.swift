@@ -73,8 +73,8 @@ class SuggestionImagePickerViewController: UICollectionViewController, UICollect
         DispatchQueue.global(qos: .background).async {
             self.photoLibrary.setPhoto(at: indexPath.row) { (image) in
                 if let image = image {
-                    self.imageDic[indexPath.row] = image
                     DispatchQueue.main.async {
+                        self.imageDic[indexPath.row] = image
                         cell.photoLibraryImage.image = image
                     }
                 }
