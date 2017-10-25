@@ -10,8 +10,8 @@ import UIKit
 
 class ListContainerViewController: UIViewController, SavedFilterDelegate {
     
-    var listTableViewController = UIViewController() as? ListViewController
-    var listMapViewController = UIViewController()
+    var listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as! ListViewController
+    var listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap") as! ListMapViewController
     var isMapView = false
     var selectedFilterArray = [String]()
     let listViewNib = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
@@ -30,6 +30,12 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addChildViewController(listTableViewController)
+        listTableViewController.didMove(toParentViewController: self)
+        listTableViewController.view.frame = CGRect(x: 0, y: 0, width: listView.frame.width, height: listView.frame.height)
+        listView.addSubview(listTableViewController.view)
+        
         self.navigationItem.title = "맞춤카페 목록"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         selectedFilterViewTopConstraint.constant = -40
@@ -37,9 +43,6 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
         listcollectionView.dataSource = self
         listcollectionView.register(listViewNib, forCellWithReuseIdentifier: "Cell")
         listcollectionView.allowsSelection = false
-        
-        listTableViewController = UIStoryboard.ListViewStoryboard.instantiateViewController(withIdentifier: "ListView") as? ListViewController
-        listMapViewController = UIStoryboard.ListMapViewStoryboard.instantiateViewController(withIdentifier: "ListMap")
         
         applyFilter()
         
@@ -71,17 +74,17 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
+        print(childViewControllers)
         viewSwitchButtonItem.image = isMapView ? #imageLiteral(resourceName: "map_Bt") : #imageLiteral(resourceName: "list_Bt")
         
-        let newController = isMapView ? listTableViewController! : listMapViewController
+        let newController = isMapView ? listTableViewController : listMapViewController
         let oldController = childViewControllers.last
         
         oldController?.willMove(toParentViewController: nil)
         addChildViewController(newController)
-        newController.view.frame = (oldController?.view.frame)!
+        newController.view.frame = oldController!.view.frame
         transition(from: oldController!, to: newController, duration: 0.3, options: isMapView ? .transitionFlipFromLeft : .transitionFlipFromRight, animations: {
         }) { _ in
-            oldController?.removeFromParentViewController()
             newController.didMove(toParentViewController: self)
         }
         isMapView = !isMapView
