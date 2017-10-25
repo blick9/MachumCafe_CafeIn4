@@ -62,7 +62,7 @@ class DetailViewViewController: UIViewController {
         
         containerView.addSubview(ratingViewxib)
         ratingViewxib.translatesAutoresizingMaskIntoConstraints = false
-        ratingViewxib.leadingAnchor.constraint(equalTo: cafeNameLabel.trailingAnchor, constant: 15).isActive = true
+        ratingViewxib.leadingAnchor.constraint(equalTo: cafeNameLabel.trailingAnchor, constant: 5).isActive = true
         ratingViewxib.widthAnchor.constraint(equalToConstant: 44).isActive = true
         ratingViewxib.heightAnchor.constraint(equalToConstant: 18).isActive = true
         ratingViewxib.centerYAnchor.constraint(equalTo: cafeNameLabel.centerYAnchor).isActive = true
