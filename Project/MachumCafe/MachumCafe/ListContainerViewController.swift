@@ -74,7 +74,6 @@ class ListContainerViewController: UIViewController, SavedFilterDelegate {
     }
     
     @IBAction func listViewSwitchToggleButtonAction(_ sender: Any) {
-        print(childViewControllers)
         viewSwitchButtonItem.image = isMapView ? #imageLiteral(resourceName: "map_Bt") : #imageLiteral(resourceName: "list_Bt")
         
         let newController = isMapView ? listTableViewController : listMapViewController

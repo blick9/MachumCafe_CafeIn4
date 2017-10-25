@@ -43,7 +43,7 @@
                                     <action selector="resetFilterArray:" destination="uKK-o8-uwZ" eventType="touchUpInside" id="ZbW-cE-8pp"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-JA-ids">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rdh-JA-ids">
                                 <rect key="frame" x="20" y="84" width="335" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="ffK-yG-Dtx" customClass="CustomCollectionViewFlowLayout" customModule="MachumCafe" customModuleProvider="target">
